@@ -1,0 +1,54 @@
+{
+  "semantic": {
+    "font-family": {
+      "$type": "fontFamily",
+      "$value": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+    },
+    "text-large-title-size": { "$type": "dimension", "$value": "26px", "$description": "unverified" },
+    "text-large-title-leading": { "$type": "dimension", "$value": "32px", "$description": "unverified" },
+    "text-large-title-weight": { "$type": "fontWeight", "$value": 700, "$description": "unverified" },
+    "text-title-1-size": { "$type": "dimension", "$value": "22px", "$description": "unverified" },
+    "text-title-1-leading": { "$type": "dimension", "$value": "26px", "$description": "unverified" },
+    "text-title-1-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "text-title-2-size": { "$type": "dimension", "$value": "17px", "$description": "unverified" },
+    "text-title-2-leading": { "$type": "dimension", "$value": "22px", "$description": "unverified" },
+    "text-title-2-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "text-title-3-size": { "$type": "dimension", "$value": "15px", "$description": "unverified" },
+    "text-title-3-leading": { "$type": "dimension", "$value": "20px", "$description": "unverified" },
+    "text-title-3-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "text-headline-size": { "$type": "dimension", "$value": "13px", "$description": "unverified" },
+    "text-headline-leading": { "$type": "dimension", "$value": "16px", "$description": "unverified" },
+    "text-headline-weight": { "$type": "fontWeight", "$value": 700, "$description": "unverified" },
+    "text-body-size": { "$type": "dimension", "$value": "13px", "$description": "unverified" },
+    "text-body-leading": { "$type": "dimension", "$value": "16px", "$description": "unverified" },
+    "text-body-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "text-callout-size": { "$type": "dimension", "$value": "12px", "$description": "unverified" },
+    "text-callout-leading": { "$type": "dimension", "$value": "15px", "$description": "unverified" },
+    "text-callout-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "text-subheadline-size": { "$type": "dimension", "$value": "11px", "$description": "unverified" },
+    "text-subheadline-leading": { "$type": "dimension", "$value": "14px", "$description": "unverified" },
+    "text-subheadline-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "text-footnote-size": { "$type": "dimension", "$value": "10px", "$description": "unverified" },
+    "text-footnote-leading": { "$type": "dimension", "$value": "13px", "$description": "unverified" },
+    "text-footnote-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "text-caption-1-size": { "$type": "dimension", "$value": "10px", "$description": "unverified" },
+    "text-caption-1-leading": { "$type": "dimension", "$value": "13px", "$description": "unverified" },
+    "text-caption-1-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "text-caption-2-size": { "$type": "dimension", "$value": "10px", "$description": "unverified" },
+    "text-caption-2-leading": { "$type": "dimension", "$value": "13px", "$description": "unverified" },
+    "text-caption-2-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "focus-ring-width": { "$type": "dimension", "$value": "3px", "$description": "unverified" },
+    "accent-hover": {
+      "$type": "color",
+      "$value": "color-mix(in oklab, var(--macvue-accent), black 6%)"
+    },
+    "accent-pressed": {
+      "$type": "color",
+      "$value": "color-mix(in oklab, var(--macvue-accent), black 12%)"
+    },
+    "focus-ring": {
+      "$type": "color",
+      "$value": "color-mix(in srgb, var(--macvue-accent), transparent 50%)"
+    }
+  }
+}

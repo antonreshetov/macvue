@@ -1,0 +1,31 @@
+{
+  "ref": {
+    "$type": "color",
+    "blue": { "$value": "#007AFF" },
+    "purple": { "$value": "#AF52DE" },
+    "pink": { "$value": "#FF2D55" },
+    "red": { "$value": "#FF3B30" },
+    "orange": { "$value": "#FF9500" },
+    "yellow": { "$value": "#FFCC00" },
+    "green": { "$value": "#34C759" },
+    "gray": { "$value": "#8E8E93" },
+    "blue-dark": { "$value": "#0A84FF" },
+    "purple-dark": { "$value": "#BF5AF2" },
+    "pink-dark": { "$value": "#FF375F" },
+    "red-dark": { "$value": "#FF453A" },
+    "orange-dark": { "$value": "#FF9F0A" },
+    "yellow-dark": { "$value": "#FFD60A" },
+    "green-dark": { "$value": "#30D158" },
+    "gray-dark": { "$value": "#98989D" },
+    "black-847": { "$value": "rgb(0 0 0 / 0.847)" },
+    "black-498": { "$value": "rgb(0 0 0 / 0.498)" },
+    "black-260": { "$value": "rgb(0 0 0 / 0.26)", "$description": "unverified" },
+    "black-130": { "$value": "rgb(0 0 0 / 0.13)", "$description": "unverified" },
+    "black-100": { "$value": "rgb(0 0 0 / 0.1)", "$description": "unverified" },
+    "white-847": { "$value": "rgb(255 255 255 / 0.847)" },
+    "white-550": { "$value": "rgb(255 255 255 / 0.55)", "$description": "unverified" },
+    "white-260": { "$value": "rgb(255 255 255 / 0.26)", "$description": "unverified" },
+    "white-130": { "$value": "rgb(255 255 255 / 0.13)", "$description": "unverified" },
+    "white-100": { "$value": "rgb(255 255 255 / 0.1)", "$description": "unverified" }
+  }
+}

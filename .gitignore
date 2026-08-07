@@ -6,3 +6,5 @@ cache
 coverage
 .vite
 docs/.vitepress/cache
+*.gen.css
+*.gen.ts

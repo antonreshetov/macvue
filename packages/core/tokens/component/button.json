@@ -1,0 +1,11 @@
+{
+  "button": {
+    "height-large": { "$type": "dimension", "$value": "28px", "$description": "unverified" },
+    "height-regular": { "$type": "dimension", "$value": "22px", "$description": "unverified" },
+    "height-small": { "$type": "dimension", "$value": "19px", "$description": "unverified" },
+    "height-mini": { "$type": "dimension", "$value": "15px", "$description": "unverified" },
+    "radius": { "$type": "dimension", "$value": "{ref.radius-6}" },
+    "bg": { "$type": "color", "$value": "{semantic.control-bg}" },
+    "bg-prominent": { "$type": "color", "$value": "{semantic.accent}" }
+  }
+}

@@ -45,8 +45,9 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vite build",
-    "typecheck": "vue-tsc --noEmit"
+    "build": "pnpm run build:tokens && vite build",
+    "build:tokens": "node scripts/build-tokens.mjs",
+    "typecheck": "vue-tsc --noEmit && vue-tsc --noEmit -p tsconfig.test.json"
   },
   "peerDependencies": {
     "vue": "^3.4.0"
@@ -55,7 +56,9 @@
     "reka-ui": "^2.10.1"
   },
   "devDependencies": {
+    "@types/node": "^26.1.2",
     "@vitejs/plugin-vue": "^6.0.8",
+    "style-dictionary": "5.5.1",
     "typescript": "~5.9.3",
     "vite": "^8.2.1",
     "vite-plugin-dts": "^5.0.3",

@@ -1,0 +1,38 @@
+{
+  "semantic": {
+    "$type": "color",
+    "label": { "$value": "{ref.white-847}" },
+    "label-secondary": { "$value": "{ref.white-550}" },
+    "label-tertiary": { "$value": "{ref.white-260}" },
+    "label-quaternary": { "$value": "{ref.white-130}" },
+    "window-bg": { "$value": "#323232" },
+    "control-bg": { "$value": "#1E1E1E", "$description": "unverified" },
+    "content-bg": { "$value": "#1E1E1E", "$description": "unverified" },
+    "under-page-bg": { "$value": "#282828", "$description": "unverified" },
+    "accent": { "$value": "{ref.blue-dark}" },
+    "selection-bg": { "$value": "{semantic.accent}" },
+    "selection-bg-unfocused": { "$value": "{ref.white-100}", "$description": "unverified" },
+    "separator": { "$value": "{ref.white-100}" },
+    "border-control": { "$value": "{ref.white-130}", "$description": "unverified" },
+    "material-sidebar-bg": { "$value": "rgb(30 30 30 / 0.7)" },
+    "material-sidebar-blur": { "$type": "dimension", "$value": "{ref.blur-20}" },
+    "material-popover-bg": { "$value": "rgb(30 30 30 / 0.8)", "$description": "unverified" },
+    "material-popover-blur": { "$type": "dimension", "$value": "{ref.blur-24}" },
+    "material-hud-bg": { "$value": "rgb(0 0 0 / 0.65)" },
+    "shadow-window": {
+      "$type": "shadow",
+      "$value": "0 10px 30px rgb(0 0 0 / 0.5), 0 0 1px rgb(0 0 0 / 0.4)",
+      "$description": "unverified"
+    },
+    "shadow-popover": {
+      "$type": "shadow",
+      "$value": "0 4px 16px rgb(0 0 0 / 0.5), 0 0 1px rgb(0 0 0 / 0.4)",
+      "$description": "unverified"
+    },
+    "shadow-menu": {
+      "$type": "shadow",
+      "$value": "0 5px 20px rgb(0 0 0 / 0.5), 0 0 1px rgb(0 0 0 / 0.4)",
+      "$description": "unverified"
+    }
+  }
+}
