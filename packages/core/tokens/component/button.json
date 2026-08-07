@@ -5,7 +5,22 @@
     "height-small": { "$type": "dimension", "$value": "19px", "$description": "unverified" },
     "height-mini": { "$type": "dimension", "$value": "15px", "$description": "unverified" },
     "radius": { "$type": "dimension", "$value": "{ref.radius-6}" },
-    "bg": { "$type": "color", "$value": "{semantic.control-bg}" },
-    "bg-prominent": { "$type": "color", "$value": "{semantic.accent}" }
+    "padding-x-large": { "$type": "dimension", "$value": "{ref.spacing-16}", "$description": "unverified" },
+    "padding-x-regular": { "$type": "dimension", "$value": "{ref.spacing-12}", "$description": "unverified" },
+    "padding-x-small": { "$type": "dimension", "$value": "{ref.spacing-8}", "$description": "unverified" },
+    "padding-x-mini": { "$type": "dimension", "$value": "{ref.spacing-6}", "$description": "unverified" },
+    "font-size-large": { "$type": "dimension", "$value": "{semantic.control-text-size-large}" },
+    "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
+    "font-size-small": { "$type": "dimension", "$value": "{semantic.control-text-size-small}" },
+    "font-size-mini": { "$type": "dimension", "$value": "{semantic.control-text-size-mini}" },
+    "bg": { "$type": "color", "$value": "{semantic.control}" },
+    "bg-pressed": { "$type": "color", "$value": "{semantic.control-pressed}" },
+    "bg-prominent": { "$type": "color", "$value": "{semantic.accent}" },
+    "bg-prominent-pressed": { "$type": "color", "$value": "{semantic.accent-pressed}" },
+    "label": { "$type": "color", "$value": "{semantic.label}" },
+    "label-prominent": { "$type": "color", "$value": "{semantic.label-on-accent}" },
+    "label-destructive": { "$type": "color", "$value": "{semantic.destructive}" },
+    "border": { "$type": "color", "$value": "{semantic.border-control}" },
+    "border-width": { "$type": "dimension", "$value": "{ref.spacing-1}" }
   }
 }

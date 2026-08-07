@@ -1,0 +1,67 @@
+@layer macvue.components {
+  .macvue-button {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--macvue-font-family);
+    font-weight: var(--macvue-control-text-weight);
+    color: var(--macvue-button-label);
+    background: var(--macvue-button-bg);
+    border: var(--macvue-button-border-width) solid var(--macvue-button-border);
+    border-radius: var(--macvue-button-radius);
+    /* macOS uses the arrow cursor on buttons, not the hand. */
+    cursor: default;
+    user-select: none;
+  }
+
+  .macvue-button:active:not(:disabled) {
+    background: var(--macvue-button-bg-pressed);
+  }
+
+  .macvue-button--large {
+    height: var(--macvue-button-height-large);
+    padding-inline: var(--macvue-button-padding-x-large);
+    font-size: var(--macvue-button-font-size-large);
+  }
+
+  .macvue-button--regular {
+    height: var(--macvue-button-height-regular);
+    padding-inline: var(--macvue-button-padding-x-regular);
+    font-size: var(--macvue-button-font-size-regular);
+  }
+
+  .macvue-button--small {
+    height: var(--macvue-button-height-small);
+    padding-inline: var(--macvue-button-padding-x-small);
+    font-size: var(--macvue-button-font-size-small);
+  }
+
+  .macvue-button--mini {
+    height: var(--macvue-button-height-mini);
+    padding-inline: var(--macvue-button-padding-x-mini);
+    font-size: var(--macvue-button-font-size-mini);
+  }
+
+  .macvue-button--prominent {
+    background: var(--macvue-button-bg-prominent);
+    color: var(--macvue-button-label-prominent);
+    border-color: transparent;
+  }
+
+  .macvue-button--prominent:active:not(:disabled) {
+    background: var(--macvue-button-bg-prominent-pressed);
+  }
+
+  .macvue-button--destructive {
+    color: var(--macvue-button-label-destructive);
+  }
+
+  .macvue-button:disabled {
+    opacity: var(--macvue-disabled-opacity);
+  }
+
+  .macvue-button:focus-visible {
+    outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+}

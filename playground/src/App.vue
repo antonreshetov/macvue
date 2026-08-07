@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { MacButton } from 'macvue'
 import { ref } from 'vue'
 
 type Appearance = 'light' | 'dark' | 'auto'
@@ -51,11 +52,14 @@ const labels = [
   { label: 'label-secondary', variable: '--macvue-label-secondary' },
   { label: 'label-tertiary', variable: '--macvue-label-tertiary' },
   { label: 'label-quaternary', variable: '--macvue-label-quaternary' },
+  { label: 'destructive', variable: '--macvue-destructive' },
 ]
 
 const surfaces = [
   { label: 'window-bg', variable: '--macvue-window-bg' },
   { label: 'control-bg', variable: '--macvue-control-bg' },
+  { label: 'control', variable: '--macvue-control' },
+  { label: 'control-pressed', variable: '--macvue-control-pressed' },
   { label: 'content-bg', variable: '--macvue-content-bg' },
   { label: 'under-page-bg', variable: '--macvue-under-page-bg' },
 ]
@@ -73,6 +77,9 @@ const textStyles = [
   'caption-1',
   'caption-2',
 ]
+
+const buttonSizes = ['large', 'regular', 'small', 'mini'] as const
+const buttonVariants = ['default', 'prominent', 'destructive'] as const
 
 function textStyleCss(name: string) {
   return {
@@ -180,6 +187,40 @@ function textStyleCss(name: string) {
             {{ item.label }}
           </figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Button
+      </h2>
+      <div class="button-rows">
+        <div
+          v-for="variant in buttonVariants"
+          :key="variant"
+          class="button-row"
+        >
+          <span class="button-row-name">{{ variant }}</span>
+          <MacButton
+            v-for="size in buttonSizes"
+            :key="size"
+            :variant="variant"
+            :size="size"
+          >
+            {{ size }}
+          </MacButton>
+        </div>
+        <div class="button-row">
+          <span class="button-row-name">disabled</span>
+          <MacButton
+            v-for="variant in buttonVariants"
+            :key="variant"
+            :variant="variant"
+            disabled
+          >
+            {{ variant }}
+          </MacButton>
+        </div>
       </div>
     </section>
 
@@ -341,6 +382,23 @@ body {
   margin: 0;
   font-size: var(--macvue-text-body-size);
   line-height: var(--macvue-text-body-leading);
+}
+
+.button-rows {
+  display: grid;
+  gap: 12px;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.button-row-name {
+  width: 120px;
+  font-size: var(--macvue-text-caption-1-size);
+  color: var(--macvue-label-secondary);
 }
 
 .text-styles {

@@ -37,6 +37,13 @@
     "text-caption-2-size": { "$type": "dimension", "$value": "10px", "$description": "unverified" },
     "text-caption-2-leading": { "$type": "dimension", "$value": "13px", "$description": "unverified" },
     "text-caption-2-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
-    "focus-ring-width": { "$type": "dimension", "$value": "3px", "$description": "unverified" }
+    "focus-ring-width": { "$type": "dimension", "$value": "3px", "$description": "unverified" },
+    "control-text-size-large": { "$type": "dimension", "$value": "15px", "$description": "unverified" },
+    "control-text-size-regular": { "$type": "dimension", "$value": "13px", "$description": "unverified" },
+    "control-text-size-small": { "$type": "dimension", "$value": "11px", "$description": "unverified" },
+    "control-text-size-mini": { "$type": "dimension", "$value": "9px", "$description": "unverified" },
+    "control-text-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
+    "disabled-opacity": { "$type": "number", "$value": 0.5, "$description": "unverified" },
+    "label-on-accent": { "$type": "color", "$value": "#FFFFFF" }
   }
 }

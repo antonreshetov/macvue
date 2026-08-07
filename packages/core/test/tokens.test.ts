@@ -49,7 +49,7 @@ describe('tokens.gen.css', () => {
   })
 
   it('emits component tokens as references to semantic variables', () => {
-    expect(lightCss).toContain('--macvue-button-bg: var(--macvue-control-bg)')
+    expect(lightCss).toContain('--macvue-button-bg: var(--macvue-control)')
     expect(lightCss).toContain(
       '--macvue-button-bg-prominent: var(--macvue-accent)',
     )
