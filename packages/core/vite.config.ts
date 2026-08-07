@@ -9,6 +9,9 @@ export default defineConfig({
     dts({
       tsconfigPath: './tsconfig.json',
       cleanVueFileName: true,
+      // tokens.gen.ts is bundled into index.js, so a standalone tokens.gen.d.ts
+      // would advertise a module path with no runtime behind it.
+      exclude: ['**/*.gen.ts'],
     }),
   ],
   resolve: {

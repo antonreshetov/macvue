@@ -29,6 +29,17 @@ describe('tokens.gen.css', () => {
     expect(lightCss).toContain('color-scheme: light')
   })
 
+  it('scopes color-scheme to the light appearance selector, not :root', () => {
+    const rootBlock = lightCss.match(/:root \{([^}]*)\}/)?.[1]
+    expect(rootBlock).toBeDefined()
+    expect(rootBlock).not.toContain('color-scheme')
+
+    const lightBlock = lightCss.match(
+      /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
+    )?.[1]
+    expect(lightBlock).toContain('color-scheme: light')
+  })
+
   it('emits reference tokens verbatim', () => {
     expect(lightCss.toLowerCase()).toContain('--macvue-ref-blue: #007aff')
   })
@@ -67,6 +78,12 @@ describe('tokens-dark.gen.css', () => {
     expect(darkCss).toContain('@media (prefers-color-scheme: dark)')
     expect(darkCss).toContain('[data-macvue-appearance=\'auto\']')
     expect(darkCss).toContain('color-scheme: dark')
+  })
+
+  it('re-declares accent derivatives so scoped dark themes recompute them', () => {
+    expect(darkCss).toContain('--macvue-accent-hover:')
+    expect(darkCss).toContain('--macvue-accent-pressed:')
+    expect(darkCss).toContain('--macvue-focus-ring:')
   })
 
   it('overrides only the semantic level', () => {
