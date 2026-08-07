@@ -1,0 +1,64 @@
+{
+  "name": "macvue",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "macOS UI components for Vue",
+  "author": {
+    "name": "Anton Reshetov",
+    "url": "https://github.com/antonreshetov"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/antonreshetov/macvue#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonreshetov/macvue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/antonreshetov/macvue/issues"
+  },
+  "keywords": [
+    "vue",
+    "components",
+    "macos",
+    "ui",
+    "design-system",
+    "reka-ui"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "README.md",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "dependencies": {
+    "reka-ui": "^2.10.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "typescript": "~5.9.3",
+    "vite": "^8.2.1",
+    "vite-plugin-dts": "^5.0.3",
+    "vue": "^3.5.41"
+  }
+}

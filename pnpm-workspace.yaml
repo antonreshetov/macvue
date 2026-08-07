@@ -1,0 +1,13 @@
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
+packages:
+  - packages/*
+  - playground
+  - docs
+
+onlyBuiltDependencies:
+  - esbuild
+  - simple-git-hooks
+  - vue-demi

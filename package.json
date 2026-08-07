@@ -1,0 +1,52 @@
+{
+  "name": "@macvue/monorepo",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "macOS UI components for Vue",
+  "author": {
+    "name": "Anton Reshetov",
+    "url": "https://github.com/antonreshetov"
+  },
+  "license": "MIT",
+  "engines": {
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "pnpm --filter macvue build",
+    "play": "pnpm --filter @macvue/playground dev",
+    "docs:dev": "pnpm --filter @macvue/docs dev",
+    "docs:build": "pnpm --filter @macvue/docs build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "pnpm --filter macvue typecheck",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "prepare": "simple-git-hooks"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.3.0",
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
+    "eslint": "^10.8.0",
+    "lint-staged": "^17.3.0",
+    "prettier": "^3.9.6",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10",
+    "vue-tsc": "^3.3.9"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "npx commitlint --edit $1"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "volta": {
+    "node": "22.17.0"
+  }
+}
