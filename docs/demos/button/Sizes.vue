@@ -4,6 +4,9 @@ import { MacButton } from 'macvue'
 
 <template>
   <div style="display: flex; align-items: center; gap: 12px">
+    <MacButton size="extra-large">
+      Extra large
+    </MacButton>
     <MacButton size="large">
       Large
     </MacButton>

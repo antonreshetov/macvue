@@ -1,6 +1,6 @@
 # Button
 
-A macOS push button. Supports default, prominent, and destructive variants in the four standard control sizes.
+A macOS push button. Supports default, prominent, and destructive variants in the five standard control sizes.
 
 <ComponentPreview name="button/Basic">
 
@@ -50,7 +50,7 @@ import { MacButton } from 'macvue'
 
 | Prop | Type | Default |
 | --- | --- | --- |
-| `size` | `'large' \| 'regular' \| 'small' \| 'mini'` | `'regular'` |
+| `size` | `'extra-large' \| 'large' \| 'regular' \| 'small' \| 'mini'` | `'regular'` |
 | `variant` | `'default' \| 'prominent' \| 'destructive'` | `'default'` |
 | `disabled` | `boolean` | `false` |
 

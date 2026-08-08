@@ -8,8 +8,7 @@
     font-weight: var(--macvue-control-text-weight);
     color: var(--macvue-button-label);
     background: var(--macvue-button-bg);
-    border: var(--macvue-button-border-width) solid var(--macvue-button-border);
-    border-radius: var(--macvue-button-radius);
+    border: 0;
     /* macOS uses the arrow cursor on buttons, not the hand. */
     cursor: default;
     user-select: none;
@@ -19,34 +18,44 @@
     background: var(--macvue-button-bg-pressed);
   }
 
+  .macvue-button--extra-large {
+    height: var(--macvue-button-height-extra-large);
+    padding-inline: var(--macvue-button-padding-x-extra-large);
+    font-size: var(--macvue-button-font-size-extra-large);
+    border-radius: var(--macvue-button-radius-extra-large);
+  }
+
   .macvue-button--large {
     height: var(--macvue-button-height-large);
     padding-inline: var(--macvue-button-padding-x-large);
     font-size: var(--macvue-button-font-size-large);
+    border-radius: var(--macvue-button-radius-large);
   }
 
   .macvue-button--regular {
     height: var(--macvue-button-height-regular);
     padding-inline: var(--macvue-button-padding-x-regular);
     font-size: var(--macvue-button-font-size-regular);
+    border-radius: var(--macvue-button-radius-regular);
   }
 
   .macvue-button--small {
     height: var(--macvue-button-height-small);
     padding-inline: var(--macvue-button-padding-x-small);
     font-size: var(--macvue-button-font-size-small);
+    border-radius: var(--macvue-button-radius-small);
   }
 
   .macvue-button--mini {
     height: var(--macvue-button-height-mini);
     padding-inline: var(--macvue-button-padding-x-mini);
     font-size: var(--macvue-button-font-size-mini);
+    border-radius: var(--macvue-button-radius-mini);
   }
 
   .macvue-button--prominent {
     background: var(--macvue-button-bg-prominent);
     color: var(--macvue-button-label-prominent);
-    border-color: transparent;
   }
 
   .macvue-button--prominent:active:not(:disabled) {
@@ -54,10 +63,30 @@
   }
 
   .macvue-button--destructive {
+    background: var(--macvue-button-bg-destructive);
     color: var(--macvue-button-label-destructive);
   }
 
+  .macvue-button--destructive:active:not(:disabled) {
+    background: var(--macvue-button-bg-destructive-pressed);
+  }
+
+  /* Tahoe disables with exact fills, not a blanket opacity: the label of a
+     disabled prominent button stays fully white on the 25%-accent bezel. */
   .macvue-button:disabled {
+    background: var(--macvue-button-bg-disabled);
+    color: var(--macvue-button-label-disabled);
+  }
+
+  .macvue-button--prominent:disabled {
+    background: var(--macvue-button-bg-prominent-disabled);
+    color: var(--macvue-button-label-prominent);
+  }
+
+  /* The kit's disabled destructive is the idle look dimmed to 0.5. */
+  .macvue-button--destructive:disabled {
+    background: var(--macvue-button-bg-destructive);
+    color: var(--macvue-button-label-destructive);
     opacity: var(--macvue-disabled-opacity);
   }
 

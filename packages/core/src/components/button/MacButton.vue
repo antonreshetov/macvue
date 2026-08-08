@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import './button.css'
 
 export interface MacButtonProps {
-  size?: 'large' | 'regular' | 'small' | 'mini'
+  size?: 'extra-large' | 'large' | 'regular' | 'small' | 'mini'
   variant?: 'default' | 'prominent' | 'destructive'
   disabled?: boolean
 }

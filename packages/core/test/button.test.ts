@@ -50,6 +50,17 @@ describe('macButton', () => {
     expect(button.classList.contains('macvue-button--prominent')).toBe(true)
   })
 
+  it('renders a modifier class for every control size', () => {
+    const sizes = ['extra-large', 'large', 'regular', 'small', 'mini'] as const
+    for (const size of sizes) {
+      const { getByRole, unmount } = renderButton({ size })
+      expect(
+        getByRole('button').classList.contains(`macvue-button--${size}`),
+      ).toBe(true)
+      unmount()
+    }
+  })
+
   it('merges a user class with component classes', () => {
     const { getByRole } = renderButton({ class: 'custom' })
     const button = getByRole('button')
