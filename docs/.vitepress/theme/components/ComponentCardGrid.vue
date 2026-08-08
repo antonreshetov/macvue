@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import {
+  MacBadge,
+  MacBox,
   MacButton,
   MacCheckbox,
+  MacHelpButton,
+  MacLabel,
   MacProgress,
   MacRadio,
   MacRadioGroup,
@@ -9,6 +13,7 @@ import {
   MacSecureField,
   MacSegment,
   MacSegmentedControl,
+  MacSeparator,
   MacSlider,
   MacSpinner,
   MacStepper,
@@ -130,6 +135,72 @@ const passphrase = ref('')
         :max="99"
         aria-label="Copies"
       />
+    </ComponentCard>
+    <ComponentCard
+      title="Label"
+      href="/components/label"
+    >
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <MacLabel
+          variant="title-3"
+          as="h4"
+        >
+          Storage
+        </MacLabel>
+        <MacLabel
+          secondary
+          variant="footnote"
+        >
+          Manage space on this Mac.
+        </MacLabel>
+      </div>
+    </ComponentCard>
+    <ComponentCard
+      title="Badge"
+      href="/components/badge"
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 140px;
+        "
+      >
+        <MacLabel>Inbox</MacLabel>
+        <MacBadge>128</MacBadge>
+      </div>
+    </ComponentCard>
+    <ComponentCard
+      title="Box"
+      href="/components/box"
+    >
+      <MacBox
+        title="Network"
+        style="width: 160px"
+      >
+        <MacLabel variant="footnote">
+          Wi-Fi and Bluetooth
+        </MacLabel>
+      </MacBox>
+    </ComponentCard>
+    <ComponentCard
+      title="Separator"
+      href="/components/separator"
+    >
+      <div
+        style="display: flex; flex-direction: column; gap: 8px; width: 140px"
+      >
+        <MacLabel>Displays</MacLabel>
+        <MacSeparator />
+        <MacLabel>Wallpaper</MacLabel>
+      </div>
+    </ComponentCard>
+    <ComponentCard
+      title="Help Button"
+      href="/components/help-button"
+    >
+      <MacHelpButton />
     </ComponentCard>
     <ComponentCard
       title="Text Field"

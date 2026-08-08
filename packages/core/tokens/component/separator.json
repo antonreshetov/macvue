@@ -1,0 +1,6 @@
+{
+  "separator": {
+    "thickness": { "$type": "dimension", "$value": "{ref.spacing-1}", "$description": "unverified. Hairline; the kits carry no explicit separator geometry" },
+    "color": { "$type": "color", "$value": "{semantic.separator}" }
+  }
+}

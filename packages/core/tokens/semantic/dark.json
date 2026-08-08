@@ -67,6 +67,10 @@
       "$value": "#282828",
       "$description": "unverified"
     },
+    "group-box": {
+      "$value": "{ref.white-30}",
+      "$description": "Kit-27 dark Group Box fill: Fills/Dark/4 Quaternary"
+    },
     "accent": {
       "$value": "{ref.blue-dark}"
     },

@@ -1,0 +1,20 @@
+@layer macvue.components {
+  .macvue-box {
+    box-sizing: border-box;
+  }
+
+  /* Footnote caption above the box, as on live System Settings panes. */
+  .macvue-box-title {
+    display: block;
+    margin-block-end: var(--macvue-box-title-gap);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-box-title-size);
+    color: var(--macvue-box-title);
+  }
+
+  .macvue-box-body {
+    padding: var(--macvue-box-padding);
+    background: var(--macvue-box-bg);
+    border-radius: var(--macvue-box-radius);
+  }
+}

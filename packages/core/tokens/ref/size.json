@@ -44,6 +44,10 @@
       "$type": "dimension",
       "$value": "10px"
     },
+    "radius-12": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
     "radius-full": {
       "$type": "dimension",
       "$value": "999px"

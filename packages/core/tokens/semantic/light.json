@@ -65,6 +65,10 @@
       "$value": "#E8E8E8",
       "$description": "unverified"
     },
+    "group-box": {
+      "$value": "{ref.black-30}",
+      "$description": "Kit Group Box fill: Fills/Light/4 Quaternary, radius 12"
+    },
     "accent": {
       "$value": "{ref.blue}"
     },

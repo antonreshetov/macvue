@@ -1,0 +1,19 @@
+{
+  "help-button": {
+    "size-extra-large": { "$type": "dimension", "$value": "36px" },
+    "size-large": { "$type": "dimension", "$value": "28px" },
+    "size-regular": { "$type": "dimension", "$value": "24px" },
+    "size-small": { "$type": "dimension", "$value": "20px" },
+    "size-mini": { "$type": "dimension", "$value": "16px" },
+    "font-size-extra-large": { "$type": "dimension", "$value": "{semantic.control-text-size-extra-large}" },
+    "font-size-large": { "$type": "dimension", "$value": "{semantic.control-text-size-large}" },
+    "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
+    "font-size-small": { "$type": "dimension", "$value": "{semantic.control-text-size-small}" },
+    "font-size-mini": { "$type": "dimension", "$value": "{semantic.control-text-size-mini}" },
+    "bg": { "$type": "color", "$value": "{semantic.control}" },
+    "bg-pressed": { "$type": "color", "$value": "{semantic.control-pressed}" },
+    "bg-disabled": { "$type": "color", "$value": "{semantic.control-disabled}" },
+    "glyph": { "$type": "color", "$value": "{semantic.label}" },
+    "glyph-disabled": { "$type": "color", "$value": "{semantic.label-disabled}" }
+  }
+}

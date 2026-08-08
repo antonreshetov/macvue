@@ -98,6 +98,10 @@
     "black-40": {
       "$value": "rgb(0 0 0 / 0.04)"
     },
+    "black-30": {
+      "$value": "rgb(0 0 0 / 0.03)",
+      "$description": "Kit Fills/Light/4 Quaternary — group box fill"
+    },
     "white-870": {
       "$value": "rgb(255 255 255 / 0.87)",
       "$description": "Live-system switch-knob fill over accent (eyedrop #DFEBFF); matches the kit-26 stack flatten"
@@ -131,6 +135,10 @@
     },
     "white-40": {
       "$value": "rgb(255 255 255 / 0.04)"
+    },
+    "white-30": {
+      "$value": "rgb(255 255 255 / 0.03)",
+      "$description": "Kit Fills/Dark/4 Quaternary — group box fill in dark"
     }
   }
 }

@@ -1,0 +1,77 @@
+@layer macvue.components {
+  .macvue-label {
+    margin: 0;
+    font-family: var(--macvue-font-family);
+    color: var(--macvue-label);
+  }
+
+  .macvue-label--secondary {
+    color: var(--macvue-label-secondary);
+  }
+
+  .macvue-label--large-title {
+    font-size: var(--macvue-text-large-title-size);
+    line-height: var(--macvue-text-large-title-leading);
+    font-weight: var(--macvue-text-large-title-weight);
+  }
+
+  .macvue-label--title-1 {
+    font-size: var(--macvue-text-title-1-size);
+    line-height: var(--macvue-text-title-1-leading);
+    font-weight: var(--macvue-text-title-1-weight);
+  }
+
+  .macvue-label--title-2 {
+    font-size: var(--macvue-text-title-2-size);
+    line-height: var(--macvue-text-title-2-leading);
+    font-weight: var(--macvue-text-title-2-weight);
+  }
+
+  .macvue-label--title-3 {
+    font-size: var(--macvue-text-title-3-size);
+    line-height: var(--macvue-text-title-3-leading);
+    font-weight: var(--macvue-text-title-3-weight);
+  }
+
+  .macvue-label--headline {
+    font-size: var(--macvue-text-headline-size);
+    line-height: var(--macvue-text-headline-leading);
+    font-weight: var(--macvue-text-headline-weight);
+  }
+
+  .macvue-label--body {
+    font-size: var(--macvue-text-body-size);
+    line-height: var(--macvue-text-body-leading);
+    font-weight: var(--macvue-text-body-weight);
+  }
+
+  .macvue-label--callout {
+    font-size: var(--macvue-text-callout-size);
+    line-height: var(--macvue-text-callout-leading);
+    font-weight: var(--macvue-text-callout-weight);
+  }
+
+  .macvue-label--subheadline {
+    font-size: var(--macvue-text-subheadline-size);
+    line-height: var(--macvue-text-subheadline-leading);
+    font-weight: var(--macvue-text-subheadline-weight);
+  }
+
+  .macvue-label--footnote {
+    font-size: var(--macvue-text-footnote-size);
+    line-height: var(--macvue-text-footnote-leading);
+    font-weight: var(--macvue-text-footnote-weight);
+  }
+
+  .macvue-label--caption-1 {
+    font-size: var(--macvue-text-caption-1-size);
+    line-height: var(--macvue-text-caption-1-leading);
+    font-weight: var(--macvue-text-caption-1-weight);
+  }
+
+  .macvue-label--caption-2 {
+    font-size: var(--macvue-text-caption-2-size);
+    line-height: var(--macvue-text-caption-2-leading);
+    font-weight: var(--macvue-text-caption-2-weight);
+  }
+}

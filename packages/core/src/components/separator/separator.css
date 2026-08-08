@@ -1,0 +1,15 @@
+@layer macvue.components {
+  .macvue-separator {
+    background: var(--macvue-separator-color);
+  }
+
+  .macvue-separator[data-orientation='horizontal'] {
+    width: 100%;
+    height: var(--macvue-separator-thickness);
+  }
+
+  .macvue-separator[data-orientation='vertical'] {
+    width: var(--macvue-separator-thickness);
+    height: 100%;
+  }
+}

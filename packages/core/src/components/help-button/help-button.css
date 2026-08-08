@@ -1,0 +1,68 @@
+@layer macvue.components {
+  /* The base rule assigns the regular set as a safety net for invalid size
+     values; the size modifiers below override it. The circle diameter
+     follows the verified button height scale — the kits ship no help
+     button masters. */
+  .macvue-help-button {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--macvue-help-button-size-regular);
+    height: var(--macvue-help-button-size-regular);
+    padding: 0;
+    background: var(--macvue-help-button-bg);
+    border: 0;
+    border-radius: var(--macvue-ref-radius-full);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-help-button-font-size-regular);
+    font-weight: var(--macvue-control-text-weight);
+    color: var(--macvue-help-button-glyph);
+    /* macOS uses the arrow cursor on buttons, not the hand. */
+    cursor: default;
+    user-select: none;
+  }
+
+  .macvue-help-button--extra-large {
+    width: var(--macvue-help-button-size-extra-large);
+    height: var(--macvue-help-button-size-extra-large);
+    font-size: var(--macvue-help-button-font-size-extra-large);
+  }
+
+  .macvue-help-button--large {
+    width: var(--macvue-help-button-size-large);
+    height: var(--macvue-help-button-size-large);
+    font-size: var(--macvue-help-button-font-size-large);
+  }
+
+  .macvue-help-button--regular {
+    width: var(--macvue-help-button-size-regular);
+    height: var(--macvue-help-button-size-regular);
+    font-size: var(--macvue-help-button-font-size-regular);
+  }
+
+  .macvue-help-button--small {
+    width: var(--macvue-help-button-size-small);
+    height: var(--macvue-help-button-size-small);
+    font-size: var(--macvue-help-button-font-size-small);
+  }
+
+  .macvue-help-button--mini {
+    width: var(--macvue-help-button-size-mini);
+    height: var(--macvue-help-button-size-mini);
+    font-size: var(--macvue-help-button-font-size-mini);
+  }
+
+  .macvue-help-button:active:not(:disabled) {
+    background: var(--macvue-help-button-bg-pressed);
+  }
+
+  .macvue-help-button:disabled {
+    background: var(--macvue-help-button-bg-disabled);
+    color: var(--macvue-help-button-glyph-disabled);
+  }
+
+  .macvue-help-button:focus-visible {
+    outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+}

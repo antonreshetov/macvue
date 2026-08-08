@@ -1,0 +1,17 @@
+@layer macvue.components {
+  .macvue-badge {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--macvue-badge-height);
+    padding-inline: var(--macvue-badge-padding-x);
+    background: var(--macvue-badge-bg);
+    border-radius: var(--macvue-badge-radius);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-badge-font-size);
+    font-weight: var(--macvue-control-text-weight);
+    color: var(--macvue-badge-label);
+    user-select: none;
+  }
+}
