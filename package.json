@@ -22,10 +22,12 @@
     "typecheck": "pnpm --filter macvue typecheck",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
+    "release": "bumpy",
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.3.0",
+    "@antonreshetov/bumpy": "^0.4.0",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@vitejs/plugin-vue": "^6.0.8",
