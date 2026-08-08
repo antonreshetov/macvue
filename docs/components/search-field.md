@@ -59,6 +59,7 @@ The clear button empties the field and returns focus to the input. Keyboard user
 | `size` | `'extra-large' \| 'large' \| 'regular' \| 'small' \| 'mini'` | `'regular'` |
 | `disabled` | `boolean` | `false` |
 | `placeholder` | `string` | `'Search'` |
+| `clearLabel` | `string` | `'Clear text'` |
 | `name` | `string` | — |
 | `required` | `boolean` | `false` |
 

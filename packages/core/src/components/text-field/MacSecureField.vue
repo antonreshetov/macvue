@@ -27,6 +27,12 @@ const emit = defineEmits<{
 const model = useFieldModel(props, emit)
 const { wrapperAttrs, inputAttrs } = useFieldAttrs()
 
+// A fallthrough type attribute must never unmask the input.
+const secureInputAttrs = computed(() => {
+  const { type: _type, ...rest } = inputAttrs.value
+  return rest
+})
+
 const classes = computed(() => ['macvue-field', `macvue-field--${props.size}`])
 
 // Not useTemplateRef: it landed in Vue 3.5 and the peer range starts at 3.4.
@@ -54,7 +60,7 @@ defineExpose({
       :placeholder="placeholder"
       :name="name"
       :required="required"
-      v-bind="inputAttrs"
+      v-bind="secureInputAttrs"
     >
   </div>
 </template>

@@ -62,6 +62,23 @@ describe('macSearchField', () => {
     expect(queryByLabelText('Clear text')).toBeNull()
   })
 
+  it('lets Escape pass through untouched when the field is empty', async () => {
+    const { getByRole, emitted } = renderField()
+    const input = getByRole('searchbox') as HTMLInputElement
+    input.focus()
+    await userEvent.keyboard('{Escape}')
+    expect(emitted('update:modelValue')).toBeUndefined()
+  })
+
+  it('supports a custom clear-button label', () => {
+    const { queryByLabelText } = renderField({
+      modelValue: 'cats',
+      clearLabel: 'Suche löschen',
+    })
+    expect(queryByLabelText('Suche löschen')).toBeTruthy()
+    expect(queryByLabelText('Clear text')).toBeNull()
+  })
+
   it('clears on Escape', async () => {
     const { getByRole, emitted } = renderField({ defaultValue: 'cats' })
     const input = getByRole('searchbox') as HTMLInputElement

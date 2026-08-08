@@ -26,6 +26,16 @@ const name = ref('')
 </template>
 ```
 
+## Labelling
+
+The field ships without a built-in label — `NSTextField` labels are separate elements. Pair it with a `<label for>`: the `id` falls through to the inner input.
+
+<ComponentPreview name="text-field/Labelled">
+
+<<< @/demos/text-field/Labelled.vue
+
+</ComponentPreview>
+
 ## Sizes
 
 All five macOS control sizes; `regular` is the default.

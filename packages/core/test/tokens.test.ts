@@ -141,7 +141,8 @@ describe('tokens.gen.css', () => {
     const prefixes = [
       '--macvue-field-height-',
       '--macvue-field-radius-',
-      '--macvue-field-padding-x-',
+      '--macvue-field-padding-inline-start-',
+      '--macvue-field-padding-inline-end-',
       '--macvue-field-font-size-',
       '--macvue-field-search-icon-width-',
       '--macvue-field-search-icon-height-',
@@ -175,6 +176,9 @@ describe('tokens.gen.css', () => {
       )
       expect(block).toContain(
         '--macvue-field-border: var(--macvue-border-control)',
+      )
+      expect(block).toContain(
+        '--macvue-field-label-disabled: var(--macvue-label-disabled)',
       )
       expect(block).toContain('--macvue-focus-ring-border:')
     }

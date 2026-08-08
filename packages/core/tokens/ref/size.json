@@ -60,6 +60,10 @@
       "$type": "dimension",
       "$value": "2px"
     },
+    "spacing-2-5": {
+      "$type": "dimension",
+      "$value": "2.5px"
+    },
     "spacing-3": {
       "$type": "dimension",
       "$value": "3px"

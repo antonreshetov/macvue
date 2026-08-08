@@ -37,6 +37,12 @@ describe('macSecureField', () => {
     expect(container.querySelector('button')).toBeNull()
   })
 
+  it('ignores a fallthrough type attribute — the input stays masked', () => {
+    const { getByLabelText } = renderField({ type: 'text' })
+    const input = getByLabelText('Password') as HTMLInputElement
+    expect(input.type).toBe('password')
+  })
+
   it('supports uncontrolled usage through defaultValue', async () => {
     const { getByLabelText } = renderField({ defaultValue: 'secret' })
     const input = getByLabelText('Password') as HTMLInputElement

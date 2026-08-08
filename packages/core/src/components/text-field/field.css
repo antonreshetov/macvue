@@ -19,7 +19,8 @@
     font-size: var(--macvue-field-font-size-regular);
     font-weight: var(--macvue-control-text-weight);
     --_macvue-field-radius: var(--macvue-field-radius-regular);
-    --_macvue-field-padding-x: var(--macvue-field-padding-x-regular);
+    --_macvue-field-padding-inline-start: var(--macvue-field-padding-inline-start-regular);
+    --_macvue-field-padding-inline-end: var(--macvue-field-padding-inline-end-regular);
     --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-regular);
     --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-regular);
     --_macvue-field-clear-size: var(--macvue-field-clear-size-regular);
@@ -29,7 +30,8 @@
     height: var(--macvue-field-height-extra-large);
     font-size: var(--macvue-field-font-size-extra-large);
     --_macvue-field-radius: var(--macvue-field-radius-extra-large);
-    --_macvue-field-padding-x: var(--macvue-field-padding-x-extra-large);
+    --_macvue-field-padding-inline-start: var(--macvue-field-padding-inline-start-extra-large);
+    --_macvue-field-padding-inline-end: var(--macvue-field-padding-inline-end-extra-large);
     --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-extra-large);
     --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-extra-large);
     --_macvue-field-clear-size: var(--macvue-field-clear-size-extra-large);
@@ -39,7 +41,8 @@
     height: var(--macvue-field-height-large);
     font-size: var(--macvue-field-font-size-large);
     --_macvue-field-radius: var(--macvue-field-radius-large);
-    --_macvue-field-padding-x: var(--macvue-field-padding-x-large);
+    --_macvue-field-padding-inline-start: var(--macvue-field-padding-inline-start-large);
+    --_macvue-field-padding-inline-end: var(--macvue-field-padding-inline-end-large);
     --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-large);
     --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-large);
     --_macvue-field-clear-size: var(--macvue-field-clear-size-large);
@@ -49,7 +52,8 @@
     height: var(--macvue-field-height-regular);
     font-size: var(--macvue-field-font-size-regular);
     --_macvue-field-radius: var(--macvue-field-radius-regular);
-    --_macvue-field-padding-x: var(--macvue-field-padding-x-regular);
+    --_macvue-field-padding-inline-start: var(--macvue-field-padding-inline-start-regular);
+    --_macvue-field-padding-inline-end: var(--macvue-field-padding-inline-end-regular);
     --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-regular);
     --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-regular);
     --_macvue-field-clear-size: var(--macvue-field-clear-size-regular);
@@ -59,7 +63,8 @@
     height: var(--macvue-field-height-small);
     font-size: var(--macvue-field-font-size-small);
     --_macvue-field-radius: var(--macvue-field-radius-small);
-    --_macvue-field-padding-x: var(--macvue-field-padding-x-small);
+    --_macvue-field-padding-inline-start: var(--macvue-field-padding-inline-start-small);
+    --_macvue-field-padding-inline-end: var(--macvue-field-padding-inline-end-small);
     --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-small);
     --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-small);
     --_macvue-field-clear-size: var(--macvue-field-clear-size-small);
@@ -69,7 +74,8 @@
     height: var(--macvue-field-height-mini);
     font-size: var(--macvue-field-font-size-mini);
     --_macvue-field-radius: var(--macvue-field-radius-mini);
-    --_macvue-field-padding-x: var(--macvue-field-padding-x-mini);
+    --_macvue-field-padding-inline-start: var(--macvue-field-padding-inline-start-mini);
+    --_macvue-field-padding-inline-end: var(--macvue-field-padding-inline-end-mini);
     --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-mini);
     --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-mini);
     --_macvue-field-clear-size: var(--macvue-field-clear-size-mini);
@@ -97,7 +103,10 @@
     min-width: 0;
     height: 100%;
     padding: 0;
-    padding-inline: var(--_macvue-field-padding-x);
+    /* The kit pads fields asymmetrically: the trailing side is tighter. */
+    padding-inline-start: var(--_macvue-field-padding-inline-start);
+    padding-inline-end: var(--_macvue-field-padding-inline-end);
+    appearance: none;
     background: none;
     border: 0;
     border-radius: inherit;
@@ -105,6 +114,23 @@
     outline: none;
     font: inherit;
     color: var(--macvue-field-label);
+  }
+
+  /* WebKit draws its own cancel button in non-empty search inputs, which
+     would double our clear button. */
+  .macvue-field-input::-webkit-search-cancel-button,
+  .macvue-field-input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+  }
+
+  .macvue-field-input:disabled {
+    color: var(--macvue-field-label-disabled);
+  }
+
+  .macvue-field-input:disabled::placeholder {
+    color: var(--macvue-field-placeholder-disabled);
   }
 
   .macvue-field-input::placeholder {
@@ -120,23 +146,27 @@
   .macvue-field--search .macvue-field-input {
     padding-inline-start: var(--macvue-field-search-gap);
     padding-inline-end: calc(
-      var(--_macvue-field-padding-x) + var(--_macvue-field-clear-size) +
+      var(--_macvue-field-padding-inline-end) + var(--_macvue-field-clear-size) +
         var(--macvue-field-search-gap)
     );
   }
 
   .macvue-field-search-icon {
     flex: none;
-    margin-inline-start: var(--_macvue-field-padding-x);
+    margin-inline-start: var(--_macvue-field-padding-inline-start);
     width: var(--_macvue-field-search-icon-width);
     height: var(--_macvue-field-search-icon-height);
     color: var(--macvue-field-icon);
     pointer-events: none;
   }
 
+  .macvue-field:has(.macvue-field-input:disabled) .macvue-field-search-icon {
+    color: var(--macvue-field-icon-disabled);
+  }
+
   .macvue-field-clear {
     position: absolute;
-    inset-inline-end: var(--_macvue-field-padding-x);
+    inset-inline-end: var(--_macvue-field-padding-inline-end);
     top: 50%;
     transform: translateY(-50%);
     display: inline-flex;
@@ -152,6 +182,10 @@
 
   .macvue-field-clear:active {
     color: var(--macvue-field-clear-pressed);
+  }
+
+  .macvue-field-clear:disabled {
+    color: var(--macvue-field-clear-disabled);
   }
 
   .macvue-field-clear svg {

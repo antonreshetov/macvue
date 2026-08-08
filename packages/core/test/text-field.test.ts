@@ -106,6 +106,29 @@ describe('macTextField', () => {
     expect(input.getAttribute('aria-describedby')).toBe('hint')
   })
 
+  it('forwards id and listeners to the input and reacts to late class changes', async () => {
+    const onFocus = vi.fn()
+    const onInput = vi.fn()
+    const { getByRole, rerender } = renderField({
+      id: 'server',
+      onFocus,
+      onInput,
+    })
+    const input = getByRole('textbox') as HTMLInputElement
+    expect(input.id).toBe('server')
+
+    await userEvent.type(input, 'a')
+    expect(onFocus).toHaveBeenCalled()
+    expect(onInput).toHaveBeenCalled()
+
+    // A class appearing only after mount must still reach the wrapper
+    // (guards the attrs-proxy reactivity of wrapperAttrs).
+    await rerender({ 'aria-label': 'Name', 'id': 'server', 'class': 'late' })
+    expect(input.closest('.macvue-field')?.classList.contains('late')).toBe(
+      true,
+    )
+  })
+
   it('disables the input and suppresses input events', async () => {
     const { getByRole, emitted } = renderField({ disabled: true })
     const input = getByRole('textbox') as HTMLInputElement
@@ -190,6 +213,29 @@ describe('macTextField', () => {
       expect(outlineRules).toHaveLength(1)
       expect(outlineRules[0]).toContain('.macvue-field-input')
       expect(outlineRules[0]).toContain('outline: none')
+    })
+
+    it('suppresses the native appearance including the WebKit search cancel button', () => {
+      expect(css).toContain('appearance: none')
+      expect(css).toContain('::-webkit-search-cancel-button')
+      expect(css).toContain('::-webkit-search-decoration')
+      const webkitRule = (css.match(/[^{}]+\{[^{}]*\}/g) ?? []).find(rule =>
+        rule.includes('::-webkit-search-cancel-button'),
+      )
+      expect(webkitRule).toContain('display: none')
+    })
+
+    it('dims disabled fields with exact colors, not opacity', () => {
+      expect(css).not.toContain('opacity')
+      expect(css).toContain('var(--macvue-field-label-disabled)')
+      expect(css).toContain('var(--macvue-field-placeholder-disabled)')
+      expect(css).toContain('var(--macvue-field-icon-disabled)')
+      expect(css).toContain('var(--macvue-field-clear-disabled)')
+      const rules = css.match(/[^{}]+\{[^{}]*\}/g) ?? []
+      for (const rule of rules) {
+        if (rule.includes('-disabled)'))
+          expect(rule.slice(0, rule.indexOf('{'))).toContain(':disabled')
+      }
     })
 
     it('uses only tokens: no hex colors, no raw px values', () => {

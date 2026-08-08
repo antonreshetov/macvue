@@ -139,7 +139,7 @@
     "focus-ring-width": {
       "$type": "dimension",
       "$value": "3.5px",
-      "$description": "Kit focused-field accent ring thickness (3.5px outside)"
+      "$description": "Kit focused-field accent ring thickness (verified for fields, kit 26); reused for buttons/toggles — unverified"
     },
     "control-text-size-extra-large": {
       "$type": "dimension",

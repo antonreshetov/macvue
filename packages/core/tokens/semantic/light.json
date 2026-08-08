@@ -81,11 +81,11 @@
     },
     "focus-ring": {
       "$value": "color-mix(in srgb, var(--macvue-accent), transparent 75%)",
-      "$description": "Kit focused-field ring: accent 25%"
+      "$description": "Kit focused-field ring: accent 25% (verified for fields, kit 26); reused for buttons/toggles — unverified, the kit has no focus masters for them"
     },
     "focus-ring-border": {
       "$value": "color-mix(in srgb, var(--macvue-accent), transparent 85%)",
-      "$description": "Kit focused-field hairline: accent 15%, 1px outside"
+      "$description": "Kit focused-field hairline: accent 15%, 1px outside (verified for fields, kit 26)"
     },
     "label-on-accent-disabled": {
       "$value": "{semantic.label-on-accent}",

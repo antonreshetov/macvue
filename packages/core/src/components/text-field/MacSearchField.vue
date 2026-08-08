@@ -10,6 +10,8 @@ export interface MacSearchFieldProps {
   size?: MacControlSize
   disabled?: boolean
   placeholder?: string
+  /** Accessible label of the clear button (no locale layer yet). */
+  clearLabel?: string
   name?: string
   required?: boolean
 }
@@ -19,6 +21,7 @@ defineOptions({ inheritAttrs: false })
 const props = withDefaults(defineProps<MacSearchFieldProps>(), {
   size: 'regular',
   placeholder: 'Search',
+  clearLabel: 'Clear text',
 })
 
 const emit = defineEmits<{
@@ -40,8 +43,22 @@ const el = ref<HTMLInputElement | null>(null)
 // NSSearchField clears on Escape and on the clear button; the button sits
 // outside the tab order (keyboard users clear with Escape instead).
 function clear() {
+  if (!model.value)
+    return
   model.value = ''
   el.value?.focus()
+}
+
+// Escape on a NON-empty field clears and is consumed: preventDefault stops
+// WebKit's native search clearing from doubling ours, and overlay
+// primitives (Reka dialogs) skip defaultPrevented Escapes — so a search
+// inside a future dialog clears first, and only a second Escape closes.
+// On an empty field the event passes through untouched.
+function onEscape(event: KeyboardEvent) {
+  if (!model.value)
+    return
+  event.preventDefault()
+  clear()
 }
 
 defineExpose({
@@ -86,14 +103,14 @@ defineExpose({
       :name="name"
       :required="required"
       v-bind="inputAttrs"
-      @keydown.escape="clear"
+      @keydown.escape="onEscape"
     >
     <button
       v-if="model !== ''"
       type="button"
       class="macvue-field-clear"
       tabindex="-1"
-      aria-label="Clear text"
+      :aria-label="clearLabel"
       :disabled="disabled"
       @mousedown.prevent
       @click="clear"

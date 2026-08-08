@@ -4,7 +4,10 @@ import {
   MacCheckbox,
   MacRadio,
   MacRadioGroup,
+  MacSearchField,
+  MacSecureField,
   MacSwitch,
+  MacTextField,
 } from 'macvue'
 import { ref } from 'vue'
 
@@ -97,6 +100,9 @@ const checkboxChecked = ref(true)
 const checkboxMixed = ref<boolean | 'indeterminate'>('indeterminate')
 const radioValue = ref('name')
 const switchOn = ref(true)
+const fieldValue = ref('')
+const fieldPassword = ref('')
+const fieldQuery = ref('')
 
 function textStyleCss(name: string) {
   return {
@@ -304,6 +310,33 @@ function textStyleCss(name: string) {
         >
           Disabled on
         </MacSwitch>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Text fields
+      </h2>
+      <div class="control-column">
+        <MacTextField
+          v-model="fieldValue"
+          aria-label="Name"
+          placeholder="Name"
+        />
+        <MacSecureField
+          v-model="fieldPassword"
+          aria-label="Password"
+          placeholder="Password"
+        />
+        <MacSearchField
+          v-model="fieldQuery"
+          aria-label="Search"
+        />
+        <MacTextField
+          disabled
+          model-value="Disabled value"
+          aria-label="Disabled"
+        />
       </div>
     </section>
 
