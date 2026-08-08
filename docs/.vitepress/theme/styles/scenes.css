@@ -2,7 +2,9 @@
 
 .mv-scene {
   border: 1px solid var(--docs-card-border);
-  border-radius: var(--docs-radius-card-lg);
+  /* Scenes depict macOS windows, so the radius is the library's window-ish
+     10px, not the docs card radius — cards and stages keep --docs-radius-*. */
+  border-radius: var(--macvue-ref-radius-10);
   background: var(--macvue-window-bg);
   color: var(--macvue-label);
   box-shadow: var(--macvue-shadow-window);
