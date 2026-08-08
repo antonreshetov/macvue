@@ -219,6 +219,29 @@
   gap: 8px;
 }
 
+/* Login scene */
+
+.mv-scene-login {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(260px, 100%);
+  margin: 0 auto;
+}
+
+.mv-scene-login-hint {
+  margin: 0 0 4px;
+  font-size: var(--macvue-control-text-size-regular);
+  color: var(--macvue-label-secondary);
+}
+
+.mv-scene-login-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
 .mv-swatches {
   display: flex;
   gap: 8px;

@@ -1,0 +1,161 @@
+@layer macvue.components {
+  /* The base rule assigns the regular set as a safety net for invalid size
+     values; the size modifiers below override it. `--_macvue-*` bridge
+     variables are INTERNAL — the public override surface is the per-size
+     `--macvue-field-*-<size>` tokens they point at.
+
+     The kit draws field borders OUTSIDE the shape, so they live in
+     box-shadow (no layout shift, and the focus ring stacks on top). */
+  .macvue-field {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: var(--macvue-field-height-regular);
+    background: var(--macvue-field-bg);
+    border-radius: var(--_macvue-field-radius);
+    box-shadow: 0 0 0 var(--macvue-ref-spacing-1) var(--macvue-field-border);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-field-font-size-regular);
+    font-weight: var(--macvue-control-text-weight);
+    --_macvue-field-radius: var(--macvue-field-radius-regular);
+    --_macvue-field-padding-x: var(--macvue-field-padding-x-regular);
+    --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-regular);
+    --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-regular);
+    --_macvue-field-clear-size: var(--macvue-field-clear-size-regular);
+  }
+
+  .macvue-field--extra-large {
+    height: var(--macvue-field-height-extra-large);
+    font-size: var(--macvue-field-font-size-extra-large);
+    --_macvue-field-radius: var(--macvue-field-radius-extra-large);
+    --_macvue-field-padding-x: var(--macvue-field-padding-x-extra-large);
+    --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-extra-large);
+    --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-extra-large);
+    --_macvue-field-clear-size: var(--macvue-field-clear-size-extra-large);
+  }
+
+  .macvue-field--large {
+    height: var(--macvue-field-height-large);
+    font-size: var(--macvue-field-font-size-large);
+    --_macvue-field-radius: var(--macvue-field-radius-large);
+    --_macvue-field-padding-x: var(--macvue-field-padding-x-large);
+    --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-large);
+    --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-large);
+    --_macvue-field-clear-size: var(--macvue-field-clear-size-large);
+  }
+
+  .macvue-field--regular {
+    height: var(--macvue-field-height-regular);
+    font-size: var(--macvue-field-font-size-regular);
+    --_macvue-field-radius: var(--macvue-field-radius-regular);
+    --_macvue-field-padding-x: var(--macvue-field-padding-x-regular);
+    --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-regular);
+    --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-regular);
+    --_macvue-field-clear-size: var(--macvue-field-clear-size-regular);
+  }
+
+  .macvue-field--small {
+    height: var(--macvue-field-height-small);
+    font-size: var(--macvue-field-font-size-small);
+    --_macvue-field-radius: var(--macvue-field-radius-small);
+    --_macvue-field-padding-x: var(--macvue-field-padding-x-small);
+    --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-small);
+    --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-small);
+    --_macvue-field-clear-size: var(--macvue-field-clear-size-small);
+  }
+
+  .macvue-field--mini {
+    height: var(--macvue-field-height-mini);
+    font-size: var(--macvue-field-font-size-mini);
+    --_macvue-field-radius: var(--macvue-field-radius-mini);
+    --_macvue-field-padding-x: var(--macvue-field-padding-x-mini);
+    --_macvue-field-search-icon-width: var(--macvue-field-search-icon-width-mini);
+    --_macvue-field-search-icon-height: var(--macvue-field-search-icon-height-mini);
+    --_macvue-field-clear-size: var(--macvue-field-clear-size-mini);
+  }
+
+  /* Fields show the ring on ANY focus, not only keyboard focus — that is
+     how macOS text fields behave, hence :focus-within here instead of the
+     keyboard-only pseudo-class the other controls use. The kit stack, top
+     to bottom: hairline accent border + base border + the wide accent
+     ring, all outside the shape. */
+  .macvue-field:focus-within {
+    box-shadow:
+      0 0 0 var(--macvue-ref-spacing-1) var(--macvue-focus-ring-border),
+      0 0 0 var(--macvue-ref-spacing-1) var(--macvue-field-border),
+      0 0 0 var(--macvue-focus-ring-width) var(--macvue-focus-ring);
+  }
+
+  .macvue-field:has(.macvue-field-input:disabled) {
+    background: var(--macvue-field-bg-disabled);
+    box-shadow: 0 0 0 var(--macvue-ref-spacing-1) var(--macvue-field-border-disabled);
+  }
+
+  .macvue-field-input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    padding-inline: var(--_macvue-field-padding-x);
+    background: none;
+    border: 0;
+    border-radius: inherit;
+    /* The ring lives on the wrapper via :focus-within. */
+    outline: none;
+    font: inherit;
+    color: var(--macvue-field-label);
+  }
+
+  .macvue-field-input::placeholder {
+    color: var(--macvue-field-placeholder);
+  }
+
+  /* Search variant: capsule at every size, magnifier inline on the left,
+     clear button overlaid on the right. */
+  .macvue-field--search {
+    --_macvue-field-radius: var(--macvue-field-search-radius);
+  }
+
+  .macvue-field--search .macvue-field-input {
+    padding-inline-start: var(--macvue-field-search-gap);
+    padding-inline-end: calc(
+      var(--_macvue-field-padding-x) + var(--_macvue-field-clear-size) +
+        var(--macvue-field-search-gap)
+    );
+  }
+
+  .macvue-field-search-icon {
+    flex: none;
+    margin-inline-start: var(--_macvue-field-padding-x);
+    width: var(--_macvue-field-search-icon-width);
+    height: var(--_macvue-field-search-icon-height);
+    color: var(--macvue-field-icon);
+    pointer-events: none;
+  }
+
+  .macvue-field-clear {
+    position: absolute;
+    inset-inline-end: var(--_macvue-field-padding-x);
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    width: var(--_macvue-field-clear-size);
+    height: var(--_macvue-field-clear-size);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--macvue-field-clear);
+    /* macOS uses the arrow cursor on controls, not the hand. */
+    cursor: default;
+  }
+
+  .macvue-field-clear:active {
+    color: var(--macvue-field-clear-pressed);
+  }
+
+  .macvue-field-clear svg {
+    width: 100%;
+    height: 100%;
+  }
+}

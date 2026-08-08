@@ -7,6 +7,7 @@ import ComponentCardGrid from './ComponentCardGrid.vue'
 import SceneAppearance from './scenes/SceneAppearance.vue'
 import SceneDialog from './scenes/SceneDialog.vue'
 import SceneEnergySaver from './scenes/SceneEnergySaver.vue'
+import SceneLogin from './scenes/SceneLogin.vue'
 import SceneNotifications from './scenes/SceneNotifications.vue'
 import SceneSettings from './scenes/SceneSettings.vue'
 import SceneSoftwareUpdate from './scenes/SceneSoftwareUpdate.vue'
@@ -95,6 +96,9 @@ function isExternal(link: string) {
       </div>
       <div class="mv-wall-card">
         <SceneDialog />
+      </div>
+      <div class="mv-wall-card">
+        <SceneLogin />
       </div>
       <div class="mv-wall-card">
         <SceneAppearance appearance="dark" />
