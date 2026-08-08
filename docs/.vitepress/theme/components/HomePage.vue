@@ -4,9 +4,12 @@ import { ref } from 'vue'
 import { defaultAccent } from '../accents'
 import AccentSwatches from './AccentSwatches.vue'
 import ComponentCardGrid from './ComponentCardGrid.vue'
-import SceneControls from './scenes/SceneControls.vue'
+import SceneAppearance from './scenes/SceneAppearance.vue'
 import SceneDialog from './scenes/SceneDialog.vue'
+import SceneEnergySaver from './scenes/SceneEnergySaver.vue'
+import SceneNotifications from './scenes/SceneNotifications.vue'
 import SceneSettings from './scenes/SceneSettings.vue'
+import SceneSoftwareUpdate from './scenes/SceneSoftwareUpdate.vue'
 
 const { frontmatter } = useData()
 
@@ -77,14 +80,24 @@ function isExternal(link: string) {
     </section>
 
     <h2 class="mv-home-section-title">
-      Real pieces, live on the page
+      Real macOS pieces, live on the page
     </h2>
-    <section class="mv-bento">
-      <div class="mv-bento-card">
+    <!-- One scene = one file in scenes/ plus one card here. -->
+    <section class="mv-wall">
+      <div class="mv-wall-card">
+        <SceneNotifications />
+      </div>
+      <div class="mv-wall-card">
+        <SceneSoftwareUpdate appearance="dark" />
+      </div>
+      <div class="mv-wall-card">
+        <SceneEnergySaver />
+      </div>
+      <div class="mv-wall-card">
         <SceneDialog />
       </div>
-      <div class="mv-bento-card">
-        <SceneControls />
+      <div class="mv-wall-card">
+        <SceneAppearance appearance="dark" />
       </div>
     </section>
 
