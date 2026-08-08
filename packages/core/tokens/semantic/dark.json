@@ -34,6 +34,14 @@
     "material-popover-bg": { "$value": "rgb(30 30 30 / 0.8)", "$description": "unverified" },
     "material-popover-blur": { "$type": "dimension", "$value": "{ref.blur-24}" },
     "material-hud-bg": { "$value": "rgb(0 0 0 / 0.65)" },
+    "material-glass-regular-bg": { "$value": "rgb(0 0 0 / 0.4)", "$description": "Liquid Glass Dark/Regular - Medium top fill" },
+    "material-glass-regular-blur": { "$type": "dimension", "$value": "{ref.blur-8}" },
+    "material-glass-regular-saturation": { "$type": "dimension", "$value": "130%" },
+    "material-glass-regular-shadow": {
+      "$type": "shadow",
+      "$value": "0 8px 40px rgb(0 0 0 / 0.12), 0 0 8px rgb(0 0 0 / 0.1), inset 0 1px 2px rgb(76 76 76 / 0.7), inset 0 -1px 2px rgb(26 26 26 / 0.7)",
+      "$description": "Practical subset of the kit Dark/Regular - Medium shadow pack: drops + rim speculars (rim alphas approximated)"
+    },
     "shadow-window": {
       "$type": "shadow",
       "$value": "0 10px 30px rgb(0 0 0 / 0.5), 0 0 1px rgb(0 0 0 / 0.4)",

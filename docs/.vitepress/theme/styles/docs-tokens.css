@@ -20,8 +20,9 @@
   --docs-display-leading: 1.07;
   /* Library footnote (10px) is app-chrome scale; web prose needs 12px. */
   --docs-text-footnote: 12px;
-  --docs-header-bg: var(--macvue-material-sidebar-bg);
-  --docs-header-blur: var(--macvue-material-sidebar-blur);
+  --docs-header-bg: var(--macvue-material-glass-regular-bg);
+  --docs-header-blur: var(--macvue-material-glass-regular-blur);
+  --docs-header-saturation: var(--macvue-material-glass-regular-saturation);
 }
 
 /* Light re-declared on the bare attribute (like the library tokens) so a

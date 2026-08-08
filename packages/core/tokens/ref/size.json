@@ -19,6 +19,8 @@
     "spacing-12": { "$type": "dimension", "$value": "12px" },
     "spacing-16": { "$type": "dimension", "$value": "16px" },
     "spacing-20": { "$type": "dimension", "$value": "20px" },
+    "blur-8": { "$type": "dimension", "$value": "8px" },
+    "blur-10": { "$type": "dimension", "$value": "10px" },
     "blur-20": { "$type": "dimension", "$value": "20px" },
     "blur-24": { "$type": "dimension", "$value": "24px" }
   }
