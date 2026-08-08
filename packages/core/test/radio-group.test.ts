@@ -33,6 +33,19 @@ function renderGroup(props: Record<string, unknown> = {}) {
 }
 
 describe('macRadioGroup', () => {
+  it('renders a modifier class on the group for every control size', () => {
+    const sizes = ['extra-large', 'large', 'regular', 'small', 'mini'] as const
+    for (const size of sizes) {
+      const { getByRole, unmount } = renderGroup({ size })
+      expect(
+        getByRole('radiogroup').classList.contains(
+          `macvue-radio-group--${size}`,
+        ),
+      ).toBe(true)
+      unmount()
+    }
+  })
+
   it('renders a radiogroup with radio items and captions', () => {
     const { getByRole, getAllByRole } = renderGroup()
     expect(getByRole('radiogroup')).toBeTruthy()

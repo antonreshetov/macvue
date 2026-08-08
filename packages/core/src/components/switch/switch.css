@@ -5,12 +5,59 @@
     align-items: center;
     gap: var(--macvue-switch-gap);
     font-family: var(--macvue-font-family);
-    font-size: var(--macvue-switch-font-size-regular);
     font-weight: var(--macvue-control-text-weight);
     color: var(--macvue-switch-label);
     /* macOS uses the arrow cursor on controls, not the hand. */
     cursor: default;
     user-select: none;
+  }
+
+  /* Size modifiers assign the per-size tokens to unsuffixed bridge
+     variables; the geometry rules below (including the thumb travel
+     formula) consume only the bridges. */
+  .macvue-switch--extra-large {
+    font-size: var(--macvue-switch-font-size-extra-large);
+    --macvue-switch-track-width: var(--macvue-switch-track-width-extra-large);
+    --macvue-switch-track-height: var(--macvue-switch-track-height-extra-large);
+    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-extra-large);
+    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-extra-large);
+    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-extra-large);
+  }
+
+  .macvue-switch--large {
+    font-size: var(--macvue-switch-font-size-large);
+    --macvue-switch-track-width: var(--macvue-switch-track-width-large);
+    --macvue-switch-track-height: var(--macvue-switch-track-height-large);
+    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-large);
+    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-large);
+    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-large);
+  }
+
+  .macvue-switch--regular {
+    font-size: var(--macvue-switch-font-size-regular);
+    --macvue-switch-track-width: var(--macvue-switch-track-width-regular);
+    --macvue-switch-track-height: var(--macvue-switch-track-height-regular);
+    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-regular);
+    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-regular);
+    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-regular);
+  }
+
+  .macvue-switch--small {
+    font-size: var(--macvue-switch-font-size-small);
+    --macvue-switch-track-width: var(--macvue-switch-track-width-small);
+    --macvue-switch-track-height: var(--macvue-switch-track-height-small);
+    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-small);
+    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-small);
+    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-small);
+  }
+
+  .macvue-switch--mini {
+    font-size: var(--macvue-switch-font-size-mini);
+    --macvue-switch-track-width: var(--macvue-switch-track-width-mini);
+    --macvue-switch-track-height: var(--macvue-switch-track-height-mini);
+    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-mini);
+    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-mini);
+    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-mini);
   }
 
   /* :has() keys off Reka's data-disabled on the control itself, so any

@@ -1,9 +1,12 @@
 {
   "ref": {
+    "radius-3-5": { "$type": "dimension", "$value": "3.5px" },
     "radius-4": { "$type": "dimension", "$value": "4px" },
+    "radius-4-5": { "$type": "dimension", "$value": "4.5px" },
     "radius-5": { "$type": "dimension", "$value": "5px" },
     "radius-5-5": { "$type": "dimension", "$value": "5.5px" },
     "radius-6": { "$type": "dimension", "$value": "6px" },
+    "radius-6-5": { "$type": "dimension", "$value": "6.5px" },
     "radius-8": { "$type": "dimension", "$value": "8px" },
     "radius-10": { "$type": "dimension", "$value": "10px" },
     "radius-full": { "$type": "dimension", "$value": "999px" },

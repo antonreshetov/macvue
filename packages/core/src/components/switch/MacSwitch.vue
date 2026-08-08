@@ -7,6 +7,7 @@ import './switch.css'
 export interface MacSwitchProps {
   modelValue?: boolean
   defaultValue?: boolean
+  size?: 'extra-large' | 'large' | 'regular' | 'small' | 'mini'
   disabled?: boolean
   name?: string
   value?: string
@@ -15,13 +16,26 @@ export interface MacSwitchProps {
 
 defineOptions({ inheritAttrs: false })
 
-const props = defineProps<MacSwitchProps>()
+const props = withDefaults(defineProps<MacSwitchProps>(), {
+  size: 'regular',
+})
 
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
 }>()
 
-const forwarded = useForwardPropsEmits(props, emit)
+// size is presentation-only; forwarding it would land as a size="..."
+// attribute on Reka's button.
+const delegated = computed(() => {
+  const { size: _size, ...rest } = props
+  return rest
+})
+const forwarded = useForwardPropsEmits(delegated, emit)
+
+const classes = computed(() => [
+  'macvue-switch',
+  `macvue-switch--${props.size}`,
+])
 
 // class/style skin the visible root; everything else (aria attributes,
 // listeners) belongs on the actual control, not on a generic <label>.
@@ -59,7 +73,7 @@ defineExpose({
        Clicking the caption toggles: the label forwards its click to the
        button. -->
   <label
-    class="macvue-switch"
+    :class="classes"
     v-bind="labelAttrs"
   >
     <span

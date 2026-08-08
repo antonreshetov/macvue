@@ -14,13 +14,52 @@
     align-items: center;
   }
 
+  /* Size lives on the GROUP (like AppKit controlSize) and reaches the
+     radios through inherited bridge variables — pure CSS cascade, no
+     provide/inject. Radios rendered outside a sized group fall back to
+     regular via the var() defaults below. */
+  .macvue-radio-group--extra-large {
+    --macvue-radio-size: var(--macvue-radio-size-extra-large);
+    --macvue-radio-dot-size: var(--macvue-radio-dot-size-extra-large);
+    --macvue-radio-gap: var(--macvue-radio-gap-extra-large);
+    --macvue-radio-font-size: var(--macvue-radio-font-size-extra-large);
+  }
+
+  .macvue-radio-group--large {
+    --macvue-radio-size: var(--macvue-radio-size-large);
+    --macvue-radio-dot-size: var(--macvue-radio-dot-size-large);
+    --macvue-radio-gap: var(--macvue-radio-gap-large);
+    --macvue-radio-font-size: var(--macvue-radio-font-size-large);
+  }
+
+  .macvue-radio-group--regular {
+    --macvue-radio-size: var(--macvue-radio-size-regular);
+    --macvue-radio-dot-size: var(--macvue-radio-dot-size-regular);
+    --macvue-radio-gap: var(--macvue-radio-gap-regular);
+    --macvue-radio-font-size: var(--macvue-radio-font-size-regular);
+  }
+
+  .macvue-radio-group--small {
+    --macvue-radio-size: var(--macvue-radio-size-small);
+    --macvue-radio-dot-size: var(--macvue-radio-dot-size-small);
+    --macvue-radio-gap: var(--macvue-radio-gap-small);
+    --macvue-radio-font-size: var(--macvue-radio-font-size-small);
+  }
+
+  .macvue-radio-group--mini {
+    --macvue-radio-size: var(--macvue-radio-size-mini);
+    --macvue-radio-dot-size: var(--macvue-radio-dot-size-mini);
+    --macvue-radio-gap: var(--macvue-radio-gap-mini);
+    --macvue-radio-font-size: var(--macvue-radio-font-size-mini);
+  }
+
   .macvue-radio {
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
-    gap: var(--macvue-radio-gap);
+    gap: var(--macvue-radio-gap, var(--macvue-radio-gap-regular));
     font-family: var(--macvue-font-family);
-    font-size: var(--macvue-radio-font-size-regular);
+    font-size: var(--macvue-radio-font-size, var(--macvue-radio-font-size-regular));
     font-weight: var(--macvue-control-text-weight);
     color: var(--macvue-radio-label);
     /* macOS uses the arrow cursor on controls, not the hand. */
@@ -36,8 +75,8 @@
     box-sizing: border-box;
     flex: none;
     position: relative;
-    width: var(--macvue-radio-size-regular);
-    height: var(--macvue-radio-size-regular);
+    width: var(--macvue-radio-size, var(--macvue-radio-size-regular));
+    height: var(--macvue-radio-size, var(--macvue-radio-size-regular));
     padding: 0;
     background: var(--macvue-radio-bg);
     border: 0;
@@ -74,8 +113,8 @@
     position: absolute;
     inset: 0;
     margin: auto;
-    width: var(--macvue-radio-dot-size-regular);
-    height: var(--macvue-radio-dot-size-regular);
+    width: var(--macvue-radio-dot-size, var(--macvue-radio-dot-size-regular));
+    height: var(--macvue-radio-dot-size, var(--macvue-radio-dot-size-regular));
     border-radius: 50%;
     background: var(--macvue-radio-dot);
   }

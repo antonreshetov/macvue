@@ -33,6 +33,16 @@ const enabled = ref(true)
 
 </ComponentPreview>
 
+## Sizes
+
+All five macOS control sizes; `regular` is the default.
+
+<ComponentPreview name="switch/Sizes">
+
+<<< @/demos/switch/Sizes.vue
+
+</ComponentPreview>
+
 ## API
 
 ### Props
@@ -41,6 +51,7 @@ const enabled = ref(true)
 | --- | --- | --- |
 | `modelValue` (`v-model`) | `boolean` | — |
 | `defaultValue` | `boolean` | — |
+| `size` | `'extra-large' \| 'large' \| 'regular' \| 'small' \| 'mini'` | `'regular'` |
 | `disabled` | `boolean` | `false` |
 | `name` | `string` | — |
 | `value` | `string` | `'on'` |

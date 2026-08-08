@@ -36,6 +36,18 @@ describe('macCheckbox', () => {
     expect(checkbox.closest('label')?.textContent).toContain('Enable option')
   })
 
+  it('renders a modifier class for every control size and keeps size off the control', () => {
+    const sizes = ['extra-large', 'large', 'regular', 'small', 'mini'] as const
+    for (const size of sizes) {
+      const { getByRole, unmount } = renderCheckbox({ size })
+      const label = getByRole('checkbox').closest('label')
+      expect(label?.classList.contains(`macvue-checkbox--${size}`)).toBe(true)
+      // size is presentation-only and must not leak as an attribute.
+      expect(getByRole('checkbox').hasAttribute('size')).toBe(false)
+      unmount()
+    }
+  })
+
   it('toggles uncontrolled state from defaultValue on click', async () => {
     const { getByRole } = renderCheckbox({ defaultValue: true })
     const checkbox = getByRole('checkbox')

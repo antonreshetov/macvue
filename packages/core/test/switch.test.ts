@@ -39,6 +39,18 @@ describe('macSwitch', () => {
     ).toBeTruthy()
   })
 
+  it('renders a modifier class for every control size and keeps size off the control', () => {
+    const sizes = ['extra-large', 'large', 'regular', 'small', 'mini'] as const
+    for (const size of sizes) {
+      const { getByRole, unmount } = renderSwitch({ size })
+      const label = getByRole('switch').closest('label')
+      expect(label?.classList.contains(`macvue-switch--${size}`)).toBe(true)
+      // size is presentation-only and must not leak as an attribute.
+      expect(getByRole('switch').hasAttribute('size')).toBe(false)
+      unmount()
+    }
+  })
+
   it('toggles uncontrolled state from defaultValue and updates aria-checked', async () => {
     const { getByRole } = renderSwitch({ defaultValue: true })
     const control = getByRole('switch')

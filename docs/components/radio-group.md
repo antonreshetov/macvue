@@ -53,6 +53,16 @@ Disable the whole group or individual items.
 
 </ComponentPreview>
 
+## Sizes
+
+All five macOS control sizes. Like `controlSize` in AppKit, `size` is set on the group and inherited by every `MacRadio` in it — individual radios have no `size` prop.
+
+<ComponentPreview name="radio-group/Sizes">
+
+<<< @/demos/radio-group/Sizes.vue
+
+</ComponentPreview>
+
 ## API
 
 ### MacRadioGroup props
@@ -61,6 +71,7 @@ Disable the whole group or individual items.
 | --- | --- | --- |
 | `modelValue` (`v-model`) | `string` | — |
 | `defaultValue` | `string` | — |
+| `size` | `'extra-large' \| 'large' \| 'regular' \| 'small' \| 'mini'` | `'regular'` |
 | `disabled` | `boolean` | `false` |
 | `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` |
 | `name` | `string` | — |

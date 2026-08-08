@@ -35,6 +35,16 @@ Pass `defaultValue` for uncontrolled usage. The model accepts `'indeterminate'` 
 
 </ComponentPreview>
 
+## Sizes
+
+All five macOS control sizes; `regular` is the default.
+
+<ComponentPreview name="checkbox/Sizes">
+
+<<< @/demos/checkbox/Sizes.vue
+
+</ComponentPreview>
+
 ## Disabled
 
 <ComponentPreview name="checkbox/Disabled">
@@ -51,6 +61,7 @@ Pass `defaultValue` for uncontrolled usage. The model accepts `'indeterminate'` 
 | --- | --- | --- |
 | `modelValue` (`v-model`) | `boolean \| 'indeterminate'` | — |
 | `defaultValue` | `boolean \| 'indeterminate'` | — |
+| `size` | `'extra-large' \| 'large' \| 'regular' \| 'small' \| 'mini'` | `'regular'` |
 | `disabled` | `boolean` | `false` |
 | `name` | `string` | — |
 | `value` | `string` | `'on'` |

@@ -8,6 +8,7 @@ import './checkbox.css'
 export interface MacCheckboxProps {
   modelValue?: boolean | 'indeterminate'
   defaultValue?: boolean | 'indeterminate'
+  size?: 'extra-large' | 'large' | 'regular' | 'small' | 'mini'
   disabled?: boolean
   name?: string
   value?: string
@@ -16,13 +17,26 @@ export interface MacCheckboxProps {
 
 defineOptions({ inheritAttrs: false })
 
-const props = defineProps<MacCheckboxProps>()
+const props = withDefaults(defineProps<MacCheckboxProps>(), {
+  size: 'regular',
+})
 
 const emit = defineEmits<{
   'update:modelValue': [value: CheckboxCheckedState]
 }>()
 
-const forwarded = useForwardPropsEmits(props, emit)
+// size is presentation-only; forwarding it would land as a size="..."
+// attribute on Reka's button.
+const delegated = computed(() => {
+  const { size: _size, ...rest } = props
+  return rest
+})
+const forwarded = useForwardPropsEmits(delegated, emit)
+
+const classes = computed(() => [
+  'macvue-checkbox',
+  `macvue-checkbox--${props.size}`,
+])
 
 // class/style skin the visible root; everything else (aria attributes,
 // listeners) belongs on the actual control, not on a generic <label>.
@@ -59,7 +73,7 @@ defineExpose({
   <!-- Clicking the caption toggles: the label forwards its click to the
        button, matching the AppKit hit-area of NSButton titles. -->
   <label
-    class="macvue-checkbox"
+    :class="classes"
     v-bind="labelAttrs"
   >
     <CheckboxRoot

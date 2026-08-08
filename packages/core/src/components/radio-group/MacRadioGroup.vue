@@ -7,6 +7,7 @@ import './radio-group.css'
 export interface MacRadioGroupProps {
   modelValue?: string
   defaultValue?: string
+  size?: 'extra-large' | 'large' | 'regular' | 'small' | 'mini'
   disabled?: boolean
   orientation?: 'vertical' | 'horizontal'
   name?: string
@@ -14,6 +15,7 @@ export interface MacRadioGroupProps {
 }
 
 const props = withDefaults(defineProps<MacRadioGroupProps>(), {
+  size: 'regular',
   orientation: 'vertical',
 })
 
@@ -27,9 +29,13 @@ function onUpdate(value: unknown) {
   emit('update:modelValue', value as string)
 }
 
+// size is applied as a group class only: the radios read the per-size
+// geometry through inherited CSS variables (the AppKit model — controlSize
+// is set on the group), so no provide/inject is needed.
 const classes = computed(() => [
   'macvue-radio-group',
   `macvue-radio-group--${props.orientation}`,
+  `macvue-radio-group--${props.size}`,
 ])
 
 // Not useTemplateRef: it landed in Vue 3.5 and the peer range starts at 3.4.

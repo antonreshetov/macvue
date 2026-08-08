@@ -102,6 +102,36 @@ describe('tokens.gen.css', () => {
     }
   })
 
+  it('emits per-size toggle tokens for all five control sizes', () => {
+    const sizes = ['extra-large', 'large', 'regular', 'small', 'mini']
+    const prefixes = [
+      '--macvue-checkbox-size-',
+      '--macvue-checkbox-radius-',
+      '--macvue-checkbox-gap-',
+      '--macvue-checkbox-check-width-',
+      '--macvue-checkbox-dash-width-',
+      '--macvue-checkbox-font-size-',
+      '--macvue-radio-size-',
+      '--macvue-radio-dot-size-',
+      '--macvue-radio-gap-',
+      '--macvue-radio-font-size-',
+      '--macvue-switch-track-width-',
+      '--macvue-switch-track-height-',
+      '--macvue-switch-thumb-width-',
+      '--macvue-switch-thumb-height-',
+      '--macvue-switch-thumb-inset-',
+      '--macvue-switch-font-size-',
+    ]
+    for (const prefix of prefixes) {
+      for (const size of sizes) expect(lightCss).toContain(`${prefix}${size}:`)
+    }
+    // Spot-check kit values.
+    expect(lightCss).toContain('--macvue-checkbox-size-mini: 12px')
+    expect(lightCss).toContain('--macvue-radio-dot-size-small: 4.8px')
+    expect(lightCss).toContain('--macvue-switch-track-width-extra-large: 80px')
+    expect(lightCss).toContain('--macvue-switch-thumb-height-mini: 13px')
+  })
+
   it('re-declares the 2x disabled-compensation tokens in both theme islands', () => {
     const lightBlock = lightCss.match(
       /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
