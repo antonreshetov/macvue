@@ -62,7 +62,8 @@ describe('macProgress', () => {
     expect(fill.style.width).toBe('80%')
   })
 
-  it('respects max and clamps overshoot', () => {
+  it('respects max and clamps overshoot in style AND aria', () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
     const { getByRole, container } = renderProgress({ value: 30, max: 40 })
     expect(getByRole('progressbar').getAttribute('aria-valuemax')).toBe('40')
     expect(
@@ -71,10 +72,26 @@ describe('macProgress', () => {
     ).toBe('75%')
 
     const over = renderProgress({ value: 50, max: 40 })
+    const bar = over.container.querySelector(
+      '[role="progressbar"]',
+    ) as HTMLElement
+    // Clamped before Reka: aria-valuenow never exceeds aria-valuemax.
+    expect(bar.getAttribute('aria-valuenow')).toBe('40')
     expect(
       (over.container.querySelector('.macvue-progress-fill') as HTMLElement)
         .style.width,
     ).toBe('100%')
+    // Pre-clamped bindings keep Reka's validation silent.
+    expect(errorSpy).not.toHaveBeenCalled()
+    errorSpy.mockRestore()
+  })
+
+  it('labels itself by default so an indeterminate bar passes axe alone', async () => {
+    const { getByRole, container } = render(MacProgress)
+    expect(getByRole('progressbar').getAttribute('aria-label')).toBe(
+      'Progress',
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 
   it('renders both bar sizes', () => {

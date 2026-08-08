@@ -71,6 +71,38 @@ describe('macSegmentedControl', () => {
     expect(selected.getAttribute('data-state')).toBe('on')
   })
 
+  it('selects from an empty start and still never deselects', async () => {
+    // HIGH regression guard: an undefined start once detached the model
+    // from Reka's internal proxy, breaking the deselect guard.
+    const { container, emitted } = await renderControl()
+    await userEvent.click(segment(container, 'icons'))
+    expect(emitted('update:modelValue')).toEqual([['icons']])
+    expect(segment(container, 'icons').getAttribute('data-state')).toBe('on')
+
+    await userEvent.click(segment(container, 'icons'))
+    expect(emitted('update:modelValue')).toEqual([['icons']])
+    expect(segment(container, 'icons').getAttribute('data-state')).toBe('on')
+    // The pill stays in sync with the selected segment.
+    expect(container.querySelector('.macvue-segmented-pill')).toBeTruthy()
+  })
+
+  it('clears the selection when a controlled model resets to undefined', async () => {
+    const { container, rerender } = await renderControl({
+      modelValue: 'icons',
+      name: 'view',
+    })
+    expect(segment(container, 'icons').getAttribute('data-state')).toBe('on')
+
+    await rerender({
+      'aria-label': 'View',
+      'modelValue': undefined,
+      'name': 'view',
+    })
+    for (const label of ['list', 'icons', 'columns'])
+      expect(segment(container, label).getAttribute('data-state')).toBe('off')
+    expect(container.querySelector('input[type="hidden"]')).toBeNull()
+  })
+
   it('supports multiple selection with an array model', async () => {
     const { container, emitted } = await renderControl({
       type: 'multiple',
@@ -144,6 +176,21 @@ describe('macSegmentedControl', () => {
     })
     await nextTick()
     expect(segment(single.container, 'b').disabled).toBe(true)
+  })
+
+  it('matches the disabled-pill selector against the real DOM structure', async () => {
+    const { container } = await renderControl({
+      modelValue: 'icons',
+      disabled: true,
+    })
+    // A disabled group propagates :disabled to the buttons, so the CSS
+    // rule keyed off the segment (not the never-present root
+    // data-disabled) applies.
+    expect(
+      container.querySelector(
+        '.macvue-segmented .macvue-segment[data-state=\'on\']:disabled',
+      ),
+    ).toBeTruthy()
   })
 
   it('renders a modifier class for every control size', async () => {
@@ -275,6 +322,11 @@ describe('macSegmentedControl', () => {
         expect(rule.slice(0, rule.indexOf('{'))).toContain(':focus-visible')
       }
       expect(css).not.toMatch(/:focus(?!-visible)/)
+    })
+
+    it('keys the disabled pill off the segment button, not the root', () => {
+      expect(css).toContain(':has(.macvue-segment[data-state=\'on\']:disabled)')
+      expect(css).not.toContain('[data-disabled]')
     })
 
     it('uses only tokens: no hex colors, no raw px values', () => {

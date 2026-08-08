@@ -1,6 +1,6 @@
 # Progress
 
-A macOS progress bar (`NSProgressIndicator`, bar style). Omit `value` (or pass `null`) for the indeterminate state — an accent comet ping-pongs across the track. The control is display-only, so there is no `v-model`. With reduced motion enabled the comet is replaced by a static muted fill.
+A macOS progress bar (`NSProgressIndicator`, bar style). Omit `value` (or pass `null`) for the indeterminate state — an accent comet ping-pongs across the track. The control is display-only, so there is no `v-model`. It labels itself `Progress` by default; pass `label` (or an `aria-label`) to override. With reduced motion enabled the comet is replaced by a static muted fill.
 
 <ComponentPreview name="progress/Basic">
 
@@ -50,3 +50,4 @@ The bar ships in two sizes — `regular` (10px) and `small` (6px) — the only t
 | `value` | `number \| null` | `null` (indeterminate) |
 | `max` | `number` | `100` |
 | `size` | `'regular' \| 'small'` | `'regular'` |
+| `label` | `string` | `'Progress'` |

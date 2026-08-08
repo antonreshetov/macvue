@@ -33,7 +33,7 @@ const view = ref('list')
 </template>
 ```
 
-Arrow keys move both focus and selection focus between segments; Space or Enter selects.
+Arrow keys move focus between segments; Space or Enter selects the focused segment.
 
 ## Multiple
 

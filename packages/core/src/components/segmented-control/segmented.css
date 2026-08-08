@@ -77,6 +77,8 @@
   .macvue-segmented-pill {
     position: absolute;
     inset-block: 0;
+    /* Under the segment labels. */
+    z-index: 0;
     background: var(--macvue-segmented-on-bg);
     border-radius: var(--_macvue-segmented-radius);
     transition:
@@ -89,12 +91,17 @@
     background: var(--macvue-segmented-on-bg-pressed);
   }
 
-  .macvue-segmented[data-disabled] .macvue-segmented-pill {
+  /* Keyed off the segment button's :disabled — Reka does not put
+     data-disabled on the group root (covers both a disabled group and a
+     disabled selected segment). */
+  .macvue-segmented:has(.macvue-segment[data-state='on']:disabled)
+    .macvue-segmented-pill {
     background: var(--macvue-segmented-on-bg-disabled);
   }
 
   .macvue-segment {
     position: relative;
+    z-index: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -156,15 +163,6 @@
   .macvue-segment[data-state='on'] + .macvue-segment::before,
   .macvue-segment[data-state='on']::before {
     opacity: 0;
-  }
-
-  /* The pill sits under the labels. */
-  .macvue-segmented-pill {
-    z-index: 0;
-  }
-
-  .macvue-segment {
-    z-index: 1;
   }
 
   .macvue-segment:focus-visible {

@@ -32,15 +32,33 @@ const emit = defineEmits<{
   'update:modelValue': [value: string | string[]]
 }>()
 
+// Controlled-ness is fixed at setup, mirroring Reka: a later controlled
+// reset to undefined then CLEARS the selection instead of silently falling
+// back to the internal state.
+const isControlled = props.modelValue !== undefined
 const internal = ref<string | string[] | undefined>(props.defaultValue)
-const current = computed(() => props.modelValue ?? internal.value)
+const current = computed(() =>
+  isControlled ? props.modelValue : internal.value,
+)
+
+// Reka must never see undefined: its single/multiple resolver samples the
+// passive value once in setup, and an undefined start would detach our
+// model from Reka's own proxy (the deselect guard below would stop
+// working). An empty string / empty array is "no selection".
+const rekaValue = computed(
+  () => current.value ?? (props.type === 'multiple' ? [] : ''),
+)
 
 // The state is held controlled towards Reka: its single-type toggle group
-// deselects on a repeated click (emits undefined), which NSSegmentedControl
-// never does — that update is swallowed.
+// deselects on a repeated click (emits undefined/empty), which
+// NSSegmentedControl never does — that update is swallowed.
 function onUpdate(value: unknown) {
-  if (props.type === 'single' && (value === undefined || value === null))
+  if (
+    props.type === 'single'
+    && (value === undefined || value === null || value === '')
+  ) {
     return
+  }
   internal.value = value as string | string[]
   emit('update:modelValue', value as string | string[])
 }
@@ -64,7 +82,9 @@ const root = ref<ComponentPublicInstance | null>(null)
 const el = computed<HTMLElement | null>(() => root.value?.$el ?? null)
 
 // Sliding pill (single mode): positioned from the active segment's offset
-// geometry. SSR-safe — nothing renders until mounted.
+// geometry. SSR-safe — nothing renders until mounted. Note: offsetLeft is
+// physical (LTR-based), so the pill position is correct in RTL too, but a
+// future RTL pass should double-check the transition direction.
 const mounted = ref(false)
 const pillStyle = ref<{ left: string, width: string } | null>(null)
 let resizeObserver: ResizeObserver | undefined
@@ -115,7 +135,7 @@ defineExpose({ el, focus, blur })
   <ToggleGroupRoot
     ref="root"
     :type="type"
-    :model-value="current"
+    :model-value="rekaValue"
     :disabled="disabled"
     orientation="horizontal"
     :class="classes"
