@@ -142,15 +142,6 @@
   gap: 8px;
 }
 
-/* Accent palette scene */
-
-.mv-scene-palette {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-}
-
 .mv-swatches {
   display: flex;
   gap: 8px;
@@ -173,7 +164,7 @@
     0 0 0 3.5px var(--macvue-label-tertiary);
 }
 
-.mv-scene-palette-controls {
+.mv-scene-controls {
   display: flex;
   align-items: center;
   gap: 16px;

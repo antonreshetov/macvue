@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { defaultAccent } from '../accents'
 import AccentSwatches from './AccentSwatches.vue'
 import ComponentCardGrid from './ComponentCardGrid.vue'
-import SceneAccentPalette from './scenes/SceneAccentPalette.vue'
+import SceneControls from './scenes/SceneControls.vue'
 import SceneDialog from './scenes/SceneDialog.vue'
 import SceneSettings from './scenes/SceneSettings.vue'
 
@@ -84,7 +84,7 @@ function isExternal(link: string) {
         <SceneDialog />
       </div>
       <div class="mv-bento-card">
-        <SceneAccentPalette />
+        <SceneControls />
       </div>
     </section>
 
