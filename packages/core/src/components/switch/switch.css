@@ -30,21 +30,35 @@
     background: var(--macvue-switch-track);
     border: 0;
     border-radius: calc(var(--macvue-switch-track-height) / 2);
+    /* The kit draws a hairline ring around the off track only. */
+    box-shadow: var(--macvue-switch-track-shadow);
     cursor: default;
     /* The only animated control in the library; timings come from the
        motion tokens so prefers-reduced-motion can zero them globally. */
     transition: background-color var(--macvue-duration-fast) var(--macvue-easing-default);
   }
 
-  .macvue-switch-control[data-state='checked'] {
-    background: var(--macvue-switch-track-on);
+  /* :active on the label: in AppKit the title is part of the hit-area, so
+     pressing the caption highlights the track too. */
+  .macvue-switch:active .macvue-switch-control:not([data-disabled]) {
+    background: var(--macvue-switch-track-pressed);
   }
 
+  .macvue-switch-control[data-state='checked'] {
+    background: var(--macvue-switch-track-on);
+    box-shadow: none;
+  }
+
+  .macvue-switch:active .macvue-switch-control[data-state='checked']:not([data-disabled]) {
+    background: var(--macvue-switch-track-on-pressed);
+  }
+
+  /* The Tahoe thumb is a capsule, wider than tall. */
   .macvue-switch-thumb {
     display: block;
-    width: var(--macvue-switch-thumb-size);
-    height: var(--macvue-switch-thumb-size);
-    border-radius: 50%;
+    width: var(--macvue-switch-thumb-width);
+    height: var(--macvue-switch-thumb-height);
+    border-radius: calc(var(--macvue-switch-thumb-height) / 2);
     background: var(--macvue-switch-thumb-bg);
     box-shadow: var(--macvue-switch-thumb-shadow);
     transition: transform var(--macvue-duration-fast) var(--macvue-easing-default);
@@ -53,7 +67,7 @@
   .macvue-switch-thumb[data-state='checked'] {
     transform: translateX(
       calc(
-        var(--macvue-switch-track-width) - var(--macvue-switch-thumb-size) - 2 *
+        var(--macvue-switch-track-width) - var(--macvue-switch-thumb-width) - 2 *
           var(--macvue-switch-thumb-inset)
       )
     );

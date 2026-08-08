@@ -29,9 +29,12 @@
   --macvue-button-bg-prominent-disabled: var(--macvue-accent-disabled);
   --macvue-checkbox-bg-on: var(--macvue-accent);
   --macvue-checkbox-bg-on-pressed: var(--macvue-accent-pressed);
+  --macvue-checkbox-bg-on-disabled: var(--macvue-accent-disabled-strong);
   --macvue-radio-bg-on: var(--macvue-accent);
   --macvue-radio-bg-on-pressed: var(--macvue-accent-pressed);
+  --macvue-radio-bg-on-disabled: var(--macvue-accent-disabled-strong);
   --macvue-switch-track-on: var(--macvue-accent);
+  --macvue-switch-track-on-pressed: var(--macvue-accent-pressed-soft);
 }
 
 .mv-scene-titlebar {

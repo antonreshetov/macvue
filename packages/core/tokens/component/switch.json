@@ -1,14 +1,18 @@
 {
   "switch": {
-    "track-width": { "$type": "dimension", "$value": "38px", "$description": "unverified" },
-    "track-height": { "$type": "dimension", "$value": "22px", "$description": "unverified" },
-    "thumb-size": { "$type": "dimension", "$value": "20px", "$description": "unverified" },
-    "thumb-inset": { "$type": "dimension", "$value": "{ref.spacing-1}", "$description": "unverified" },
+    "track-width": { "$type": "dimension", "$value": "54px" },
+    "track-height": { "$type": "dimension", "$value": "24px" },
+    "thumb-width": { "$type": "dimension", "$value": "32px" },
+    "thumb-height": { "$type": "dimension", "$value": "20px" },
+    "thumb-inset": { "$type": "dimension", "$value": "{ref.spacing-2}" },
     "gap": { "$type": "dimension", "$value": "{ref.spacing-8}", "$description": "unverified" },
     "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
     "track": { "$type": "color", "$value": "{semantic.control-track}" },
+    "track-pressed": { "$type": "color", "$value": "{semantic.control-track-pressed}" },
     "track-on": { "$type": "color", "$value": "{semantic.accent}" },
-    "thumb-bg": { "$type": "color", "$value": "{ref.white}" },
+    "track-on-pressed": { "$type": "color", "$value": "{semantic.accent-pressed-soft}" },
+    "track-shadow": { "$type": "shadow", "$value": "{semantic.shadow-switch-track}" },
+    "thumb-bg": { "$type": "color", "$value": "{ref.white-870}" },
     "thumb-shadow": { "$type": "shadow", "$value": "{semantic.shadow-switch-thumb}" },
     "label": { "$type": "color", "$value": "{semantic.label}" }
   }

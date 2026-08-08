@@ -68,28 +68,30 @@ defineExpose({
       class="macvue-checkbox-box"
     >
       <CheckboxIndicator class="macvue-checkbox-indicator">
+        <!-- Glyph boxes match the kit's fixed check (9.3×8.9) and dash
+             (6.5×2) instead of stretching across the control. -->
         <svg
           class="macvue-checkbox-check"
-          viewBox="0 0 14 14"
+          viewBox="0 0 9.3 8.9"
           fill="none"
           stroke="currentColor"
-          stroke-width="1.75"
+          stroke-width="1.7"
           stroke-linecap="round"
           stroke-linejoin="round"
           aria-hidden="true"
         >
-          <path d="M3.5 7.5 6 10l4.5-6" />
+          <path d="M0.9 5.1 3.3 7.8 8.4 1.1" />
         </svg>
         <svg
           class="macvue-checkbox-dash"
-          viewBox="0 0 14 14"
+          viewBox="0 0 6.5 2"
           fill="none"
           stroke="currentColor"
-          stroke-width="1.75"
+          stroke-width="2"
           stroke-linecap="round"
           aria-hidden="true"
         >
-          <path d="M4 7h6" />
+          <path d="M1 1h4.5" />
         </svg>
       </CheckboxIndicator>
     </CheckboxRoot>

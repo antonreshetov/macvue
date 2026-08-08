@@ -40,7 +40,7 @@
     height: var(--macvue-radio-size-regular);
     padding: 0;
     background: var(--macvue-radio-bg);
-    border: var(--macvue-radio-border-width) solid var(--macvue-radio-border);
+    border: 0;
     border-radius: 50%;
     cursor: default;
   }
@@ -53,11 +53,16 @@
 
   .macvue-radio-control[data-state='checked'] {
     background: var(--macvue-radio-bg-on);
-    border-color: transparent;
   }
 
   .macvue-radio:active .macvue-radio-control[data-state='checked']:not([data-disabled]) {
     background: var(--macvue-radio-bg-on-pressed);
+  }
+
+  /* Accent at 2× the kit's disabled alpha: the row's disabled-opacity 0.5
+     halves it back to the kit's effective 25% fill. */
+  .macvue-radio-control[data-state='checked'][data-disabled] {
+    background: var(--macvue-radio-bg-on-disabled);
   }
 
   .macvue-radio-control[data-state='checked']::after {

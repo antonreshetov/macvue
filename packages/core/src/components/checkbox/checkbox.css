@@ -29,7 +29,7 @@
     height: var(--macvue-checkbox-size-regular);
     padding: 0;
     background: var(--macvue-checkbox-bg);
-    border: var(--macvue-checkbox-border-width) solid var(--macvue-checkbox-border);
+    border: 0;
     border-radius: var(--macvue-checkbox-radius);
     color: var(--macvue-checkbox-mark);
     cursor: default;
@@ -44,7 +44,6 @@
   .macvue-checkbox-box[data-state='checked'],
   .macvue-checkbox-box[data-state='indeterminate'] {
     background: var(--macvue-checkbox-bg-on);
-    border-color: transparent;
   }
 
   .macvue-checkbox:active .macvue-checkbox-box[data-state='checked']:not([data-disabled]),
@@ -52,16 +51,30 @@
     background: var(--macvue-checkbox-bg-on-pressed);
   }
 
+  /* Accent at 2× the kit's disabled alpha: the row's disabled-opacity 0.5
+     halves it back to the kit's effective 25% fill. */
+  .macvue-checkbox-box[data-state='checked'][data-disabled],
+  .macvue-checkbox-box[data-state='indeterminate'][data-disabled] {
+    background: var(--macvue-checkbox-bg-on-disabled);
+  }
+
   .macvue-checkbox-indicator {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
   }
 
-  .macvue-checkbox-check,
+  /* The kit glyph keeps its own size inside the box, it is not stretched. */
+  .macvue-checkbox-check {
+    width: var(--macvue-checkbox-check-width);
+    height: var(--macvue-checkbox-check-height);
+  }
+
   .macvue-checkbox-dash {
-    width: 100%;
-    height: 100%;
+    width: var(--macvue-checkbox-dash-width);
+    height: var(--macvue-checkbox-dash-height);
   }
 
   .macvue-checkbox-box[data-state='checked'] .macvue-checkbox-dash,

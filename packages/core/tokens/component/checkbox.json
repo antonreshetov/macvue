@@ -1,16 +1,19 @@
 {
   "checkbox": {
-    "size-regular": { "$type": "dimension", "$value": "14px", "$description": "unverified" },
-    "radius": { "$type": "dimension", "$value": "{ref.radius-3-5}", "$description": "unverified" },
-    "gap": { "$type": "dimension", "$value": "{ref.spacing-6}", "$description": "unverified" },
+    "size-regular": { "$type": "dimension", "$value": "16px" },
+    "radius": { "$type": "dimension", "$value": "{ref.radius-5-5}" },
+    "gap": { "$type": "dimension", "$value": "{ref.spacing-5}" },
+    "check-width": { "$type": "dimension", "$value": "9.3px" },
+    "check-height": { "$type": "dimension", "$value": "8.9px" },
+    "dash-width": { "$type": "dimension", "$value": "6.5px" },
+    "dash-height": { "$type": "dimension", "$value": "2px" },
     "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
     "bg": { "$type": "color", "$value": "{semantic.control}" },
     "bg-pressed": { "$type": "color", "$value": "{semantic.control-pressed}" },
     "bg-on": { "$type": "color", "$value": "{semantic.accent}" },
     "bg-on-pressed": { "$type": "color", "$value": "{semantic.accent-pressed}" },
+    "bg-on-disabled": { "$type": "color", "$value": "{semantic.accent-disabled-strong}" },
     "mark": { "$type": "color", "$value": "{semantic.label-on-accent}" },
-    "label": { "$type": "color", "$value": "{semantic.label}" },
-    "border": { "$type": "color", "$value": "{semantic.border-control}" },
-    "border-width": { "$type": "dimension", "$value": "{ref.spacing-1}" }
+    "label": { "$type": "color", "$value": "{semantic.label}" }
   }
 }
