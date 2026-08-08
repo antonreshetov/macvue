@@ -1,6 +1,9 @@
-/* Markdown content: typography, tables, code, component previews. */
+/* Markdown content: typography, tables, code, component previews.
+   :not(.macvue-label) everywhere below: these rules are unlayered and would
+   otherwise beat @layer macvue.components inside live previews (a MacLabel
+   rendered as h3 must keep its own text style). */
 
-.mv-content h1 {
+.mv-content h1:not(.macvue-label) {
   margin: 0 0 16px;
   font-size: clamp(30px, 6vw, var(--docs-display-size-sm));
   font-weight: var(--docs-display-weight);
@@ -8,7 +11,7 @@
   line-height: var(--docs-display-leading);
 }
 
-.mv-content h2 {
+.mv-content h2:not(.macvue-label) {
   margin: 56px 0 16px;
   font-size: var(--macvue-text-title-2-size);
   font-weight: 600;
@@ -16,15 +19,15 @@
   line-height: 1.3;
 }
 
-.mv-content h3 {
+.mv-content h3:not(.macvue-label) {
   margin: 28px 0 8px;
   font-size: var(--macvue-text-title-3-size);
   font-weight: 600;
   line-height: 1.4;
 }
 
-.mv-content p,
-.mv-content li {
+.mv-content p:not(.macvue-label),
+.mv-content li:not(.macvue-label) {
   color: var(--macvue-label);
 }
 

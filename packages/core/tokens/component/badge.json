@@ -1,10 +1,33 @@
 {
   "badge": {
-    "height": { "$type": "dimension", "$value": "16px", "$description": "unverified. No badge masters in the kits — modeled on the live sidebar look" },
-    "padding-x": { "$type": "dimension", "$value": "{ref.spacing-5}", "$description": "unverified" },
-    "radius": { "$type": "dimension", "$value": "{ref.radius-full}" },
-    "font-size": { "$type": "dimension", "$value": "{semantic.control-text-size-small}", "$description": "unverified" },
-    "bg": { "$type": "color", "$value": "{semantic.control}", "$description": "unverified. Translucent neutral capsule" },
-    "label": { "$type": "color", "$value": "{semantic.label-secondary}" }
+    "height": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "unverified. No badge masters in the kits — modeled on the live sidebar look"
+    },
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-5}",
+      "$description": "unverified"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{ref.radius-full}",
+      "$description": "unverified. Capsule assumed from the live sidebar look — no badge masters in the kits"
+    },
+    "font-size": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-small}",
+      "$description": "unverified"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{semantic.control}",
+      "$description": "unverified. Translucent neutral capsule"
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{semantic.label-secondary}"
+    }
   }
 }

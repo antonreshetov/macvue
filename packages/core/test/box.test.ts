@@ -52,6 +52,21 @@ describe('macBox', () => {
     )
   })
 
+  it('exposes a titled box as a labelled group', () => {
+    const { container, getByRole } = render(MacBox, {
+      props: { title: 'General' },
+      slots: { default: () => 'Content' },
+    })
+    const group = getByRole('group')
+    const titleId = container.querySelector('.macvue-box-title')?.id
+    expect(titleId).toBeTruthy()
+    expect(group.getAttribute('aria-labelledby')).toBe(titleId)
+
+    // An untitled box is a plain container, not a group.
+    const untitled = render(MacBox, { slots: { default: () => 'Content' } })
+    expect(untitled.container.querySelector('[role="group"]')).toBeNull()
+  })
+
   it('has no axe violations', async () => {
     const { container } = render({
       render() {
@@ -75,6 +90,12 @@ describe('macBox', () => {
       expect(css).not.toContain(':hover')
       expect(css).not.toContain('transition')
       expect(css).not.toContain(':focus')
+    })
+
+    it('draws no border — the kit group box is fill-only', () => {
+      expect(css).not.toContain('border:')
+      expect(css).not.toContain('border-color')
+      expect(css).not.toContain('box-shadow')
     })
 
     it('uses only tokens: no hex colors, no raw px values', () => {

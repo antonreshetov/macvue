@@ -1,19 +1,74 @@
 {
   "help-button": {
-    "size-extra-large": { "$type": "dimension", "$value": "36px" },
-    "size-large": { "$type": "dimension", "$value": "28px" },
-    "size-regular": { "$type": "dimension", "$value": "24px" },
-    "size-small": { "$type": "dimension", "$value": "20px" },
-    "size-mini": { "$type": "dimension", "$value": "16px" },
-    "font-size-extra-large": { "$type": "dimension", "$value": "{semantic.control-text-size-extra-large}" },
-    "font-size-large": { "$type": "dimension", "$value": "{semantic.control-text-size-large}" },
-    "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
-    "font-size-small": { "$type": "dimension", "$value": "{semantic.control-text-size-small}" },
-    "font-size-mini": { "$type": "dimension", "$value": "{semantic.control-text-size-mini}" },
-    "bg": { "$type": "color", "$value": "{semantic.control}" },
-    "bg-pressed": { "$type": "color", "$value": "{semantic.control-pressed}" },
-    "bg-disabled": { "$type": "color", "$value": "{semantic.control-disabled}" },
-    "glyph": { "$type": "color", "$value": "{semantic.label}" },
-    "glyph-disabled": { "$type": "color", "$value": "{semantic.label-disabled}" }
+    "size-extra-large": {
+      "$type": "dimension",
+      "$value": "36px",
+      "$description": "Verified button height scale reused for the circle diameter; the circular shape and glyph are unverified — the kits ship no help-button masters (same pattern as the focus-ring reuse)"
+    },
+    "size-large": {
+      "$type": "dimension",
+      "$value": "28px",
+      "$description": "Verified button height scale reused for the circle diameter; the circular shape and glyph are unverified — the kits ship no help-button masters (same pattern as the focus-ring reuse)"
+    },
+    "size-regular": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$description": "Verified button height scale reused for the circle diameter; the circular shape and glyph are unverified — the kits ship no help-button masters (same pattern as the focus-ring reuse)"
+    },
+    "size-small": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$description": "Verified button height scale reused for the circle diameter; the circular shape and glyph are unverified — the kits ship no help-button masters (same pattern as the focus-ring reuse)"
+    },
+    "size-mini": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "Verified button height scale reused for the circle diameter; the circular shape and glyph are unverified — the kits ship no help-button masters (same pattern as the focus-ring reuse)"
+    },
+    "font-size-extra-large": {
+      "$type": "dimension",
+      "$value": "19px",
+      "$description": "unverified. Glyph scaled proportionally to the circle diameter (~0.54) — no help-button masters in the kits"
+    },
+    "font-size-large": {
+      "$type": "dimension",
+      "$value": "15px",
+      "$description": "unverified. Glyph scaled proportionally to the circle diameter (~0.54) — no help-button masters in the kits"
+    },
+    "font-size-regular": {
+      "$type": "dimension",
+      "$value": "13px",
+      "$description": "unverified. Glyph scaled proportionally to the circle diameter (~0.54) — no help-button masters in the kits"
+    },
+    "font-size-small": {
+      "$type": "dimension",
+      "$value": "11px",
+      "$description": "unverified. Glyph scaled proportionally to the circle diameter (~0.54) — no help-button masters in the kits"
+    },
+    "font-size-mini": {
+      "$type": "dimension",
+      "$value": "9px",
+      "$description": "unverified. Glyph scaled proportionally to the circle diameter (~0.54) — no help-button masters in the kits"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{semantic.control}"
+    },
+    "bg-pressed": {
+      "$type": "color",
+      "$value": "{semantic.control-pressed}"
+    },
+    "bg-disabled": {
+      "$type": "color",
+      "$value": "{semantic.control-disabled}"
+    },
+    "glyph": {
+      "$type": "color",
+      "$value": "{semantic.label}"
+    },
+    "glyph-disabled": {
+      "$type": "color",
+      "$value": "{semantic.label-disabled}"
+    }
   }
 }

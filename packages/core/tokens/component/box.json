@@ -1,10 +1,32 @@
 {
   "box": {
-    "bg": { "$type": "color", "$value": "{semantic.group-box}" },
-    "radius": { "$type": "dimension", "$value": "{ref.radius-12}" },
-    "padding": { "$type": "dimension", "$value": "{ref.spacing-12}", "$description": "unverified. The kit master carries no content padding" },
-    "title": { "$type": "color", "$value": "{semantic.label-secondary}" },
-    "title-size": { "$type": "dimension", "$value": "{semantic.text-footnote-size}", "$description": "unverified. Footnote-style caption above the box, as on live System Settings panes" },
-    "title-gap": { "$type": "dimension", "$value": "{ref.spacing-6}", "$description": "unverified" }
+    "bg": {
+      "$type": "color",
+      "$value": "{semantic.group-box}"
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "{ref.radius-12}"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-12}",
+      "$description": "unverified. The kit master carries no content padding"
+    },
+    "title": {
+      "$type": "color",
+      "$value": "{semantic.label-secondary}",
+      "$description": "unverified. Secondary caption color from the live System Settings look — the kit master has no title"
+    },
+    "title-size": {
+      "$type": "dimension",
+      "$value": "{semantic.text-footnote-size}",
+      "$description": "unverified. Footnote-style caption above the box, as on live System Settings panes"
+    },
+    "title-gap": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-6}",
+      "$description": "unverified"
+    }
   }
 }
