@@ -53,6 +53,32 @@ describe('tokens.gen.css', () => {
     expect(lightCss).toContain(
       '--macvue-button-bg-prominent: var(--macvue-accent)',
     )
+    expect(lightCss).toContain(
+      '--macvue-button-bg-pressed: var(--macvue-control-pressed)',
+    )
+    expect(lightCss).toContain(
+      '--macvue-button-font-size-regular: var(--macvue-control-text-size-regular)',
+    )
+  })
+
+  it('emits ref-only component tokens as references to ref variables', () => {
+    expect(lightCss).toContain(
+      '--macvue-button-border-width: var(--macvue-ref-spacing-1)',
+    )
+  })
+
+  it('re-declares themed tokens in the light island for use inside dark ancestors', () => {
+    const lightBlock = lightCss.match(
+      /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
+    )?.[1]
+    expect(lightBlock).toBeDefined()
+    expect(lightBlock).toContain('--macvue-label: var(--macvue-ref-black-847)')
+    expect(lightBlock).toContain('--macvue-accent: var(--macvue-ref-blue)')
+    expect(lightBlock).toContain('--macvue-accent-hover:')
+    expect(lightBlock).toContain('--macvue-accent-pressed:')
+    expect(lightBlock).toContain('--macvue-focus-ring:')
+    expect(lightBlock).toContain('--macvue-button-bg: var(--macvue-control)')
+    expect(lightBlock).toContain('--macvue-button-label: var(--macvue-label)')
   })
 
   it('routes selection-bg through the accent variable', () => {
@@ -86,9 +112,20 @@ describe('tokens-dark.gen.css', () => {
     expect(darkCss).toContain('--macvue-focus-ring:')
   })
 
-  it('overrides only the semantic level', () => {
+  it('re-declares semantic-dependent component tokens so scoped dark themes recompute them', () => {
+    expect(darkCss).toContain('--macvue-button-bg: var(--macvue-control)')
+    expect(darkCss).toContain('--macvue-button-label: var(--macvue-label)')
+    expect(darkCss).toContain(
+      '--macvue-button-bg-prominent: var(--macvue-accent)',
+    )
+  })
+
+  it('keeps ref definitions and ref-only component tokens out of overrides', () => {
     expect(darkCss).not.toMatch(/--macvue-ref-[\w-]+:/)
-    expect(darkCss).not.toMatch(/--macvue-button-[\w-]+:/)
+    expect(darkCss).not.toContain('--macvue-button-height-regular')
+    expect(darkCss).not.toContain('--macvue-button-radius')
+    expect(darkCss).not.toMatch(/--macvue-button-padding-x-[\w-]+:/)
+    expect(darkCss).not.toContain('--macvue-button-border-width')
   })
 })
 

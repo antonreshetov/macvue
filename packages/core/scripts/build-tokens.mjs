@@ -34,10 +34,33 @@ function cssVariables(dictionary, options) {
   })
 }
 
+// A custom property computes on the element where it is DECLARED, so themed
+// selectors must re-declare not only the semantic tokens but also every
+// component token that aliases a semantic one — otherwise a scoped theme
+// island keeps the ancestor's already-computed component values. Purely
+// ref-based tokens (heights, radii, paddings) are theme-independent and
+// stay in :root only.
+function isThemedOverride(token, themeDir) {
+  if (token.filePath.includes(themeDir))
+    return true
+  return token.filePath.includes('tokens/component/')
+    && typeof token.original?.$value === 'string'
+    && token.original.$value.includes('{semantic.')
+}
+
 StyleDictionary.registerFormat({
   name: 'css/macvue-root',
   format({ dictionary, options }) {
     const vars = cssVariables(dictionary, options)
+    const overrides = cssVariables(
+      {
+        ...dictionary,
+        allTokens: dictionary.allTokens.filter(token =>
+          isThemedOverride(token, 'semantic/light'),
+        ),
+      },
+      options,
+    )
     return `${HEADER}
 @layer macvue.tokens {
   :root {
@@ -46,6 +69,7 @@ ${vars}
 
   [data-macvue-appearance='light'] {
     color-scheme: light;
+${overrides}
   }
 }
 `
@@ -130,11 +154,13 @@ export async function buildTokens(outDir = path.join(packageRoot, 'src')) {
 
   const dark = new StyleDictionary({
     usesDtcg: true,
-    // ref tokens are included only to resolve aliases; the file filter below
-    // keeps them out of the output so dark overrides stay semantic-only.
+    // ref and base tokens are included only to resolve aliases; the file
+    // filter below keeps them out of the output.
     source: [
       `${packageRoot}tokens/ref/*.json`,
+      `${packageRoot}tokens/semantic/base.json`,
       `${packageRoot}tokens/semantic/dark.json`,
+      `${packageRoot}tokens/component/*.json`,
     ],
     platforms: {
       css: {
@@ -145,7 +171,7 @@ export async function buildTokens(outDir = path.join(packageRoot, 'src')) {
           {
             destination: 'tokens-dark.gen.css',
             format: 'css/macvue-dark',
-            filter: token => token.filePath.includes('semantic/dark'),
+            filter: token => isThemedOverride(token, 'semantic/dark'),
             options: { outputReferences: true },
           },
         ],

@@ -165,17 +165,22 @@ describe('macButton', () => {
     })
 
     it('declares the focus ring only under :focus-visible', () => {
-      const outlineRules
-        = css.match(/\.macvue-button[^{]*\{[^}]*outline/g) ?? []
+      // Split by rules so an outline slipping into any selector fails,
+      // not just one prefixed with .macvue-button.
+      const rules = css.match(/[^{}]+\{[^{}]*\}/g) ?? []
+      const outlineRules = rules.filter(rule => rule.includes('outline'))
       expect(outlineRules.length).toBeGreaterThan(0)
-      for (const rule of outlineRules) expect(rule).toContain(':focus-visible')
+      expect(outlineRules.length).toBe(css.split('outline').length - 1)
+      for (const rule of outlineRules) {
+        expect(rule.slice(0, rule.indexOf('{'))).toContain(':focus-visible')
+      }
       expect(css).not.toMatch(/:focus(?!-visible)/)
     })
 
     it('uses only tokens: no hex colors, no raw px values', () => {
       expect(css).not.toMatch(/#[0-9a-f]{3,8}/i)
       const pxValues = css.match(/[\d.]+px/g) ?? []
-      expect(pxValues.every(value => value === '1px')).toBe(true)
+      expect(pxValues).toHaveLength(0)
     })
   })
 })
