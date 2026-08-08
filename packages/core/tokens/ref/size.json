@@ -1,5 +1,6 @@
 {
   "ref": {
+    "radius-3-5": { "$type": "dimension", "$value": "3.5px" },
     "radius-4": { "$type": "dimension", "$value": "4px" },
     "radius-6": { "$type": "dimension", "$value": "6px" },
     "radius-8": { "$type": "dimension", "$value": "8px" },

@@ -1,0 +1,110 @@
+# Radio Group
+
+A group of macOS radio buttons. Exactly one option is selected at a time; arrow keys move both focus and selection, and clicking a caption selects its radio.
+
+<ComponentPreview name="radio-group/Basic">
+
+<<< @/demos/radio-group/Basic.vue
+
+</ComponentPreview>
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import { MacRadio, MacRadioGroup } from 'macvue'
+import { ref } from 'vue'
+
+const sortBy = ref('name')
+</script>
+
+<template>
+  <MacRadioGroup
+    v-model="sortBy"
+    aria-label="Sort by"
+  >
+    <MacRadio value="name">
+      Name
+    </MacRadio>
+    <MacRadio value="kind">
+      Kind
+    </MacRadio>
+  </MacRadioGroup>
+</template>
+```
+
+## Orientation
+
+The group is vertical by default; set `orientation="horizontal"` for a row.
+
+<ComponentPreview name="radio-group/Horizontal">
+
+<<< @/demos/radio-group/Horizontal.vue
+
+</ComponentPreview>
+
+## Disabled
+
+Disable the whole group or individual items.
+
+<ComponentPreview name="radio-group/Disabled">
+
+<<< @/demos/radio-group/Disabled.vue
+
+</ComponentPreview>
+
+## API
+
+### MacRadioGroup props
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `modelValue` (`v-model`) | `string` | — |
+| `defaultValue` | `string` | — |
+| `disabled` | `boolean` | `false` |
+| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` |
+| `name` | `string` | — |
+| `required` | `boolean` | `false` |
+
+`orientation` only affects the layout: all four arrow keys move the selection either way, as the ARIA radio-group pattern prescribes. With `name` set, the group renders a hidden input inside a `<form>` and participates in native form submission.
+
+### MacRadioGroup events
+
+| Event | Payload |
+| --- | --- |
+| `update:modelValue` | `string` |
+
+### MacRadioGroup slots
+
+| Slot | Description |
+| --- | --- |
+| `default` | `MacRadio` items. |
+
+### MacRadioGroup exposed
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `el` | `Ref<HTMLElement \| null>` | The group element. |
+| `focus` | `() => void` | Focuses the current radio in the group. |
+| `blur` | `() => void` | Removes focus from the group. |
+
+### MacRadio props
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `value` | `string` | — (required) |
+| `disabled` | `boolean` | `false` |
+
+### MacRadio slots
+
+| Slot | Description |
+| --- | --- |
+| `default` | Radio caption. |
+
+### MacRadio exposed
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `el` | `Ref<HTMLButtonElement \| null>` | The underlying radio button. |
+| `focus` | `() => void` | Focuses the radio. |
+| `blur` | `() => void` | Removes focus from the radio. |

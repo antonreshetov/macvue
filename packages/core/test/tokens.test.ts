@@ -81,6 +81,27 @@ describe('tokens.gen.css', () => {
     expect(lightBlock).toContain('--macvue-button-label: var(--macvue-label)')
   })
 
+  it('emits motion tokens as CSS variables', () => {
+    expect(lightCss).toContain('--macvue-duration-fast: 150ms')
+    expect(lightCss).toContain('--macvue-easing-default: ease-out')
+  })
+
+  it('re-declares the switch track pair in both theme islands', () => {
+    const lightBlock = lightCss.match(
+      /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
+    )?.[1]
+    const darkBlock = darkCss.match(
+      /\[data-macvue-appearance='dark'\] \{([^}]*)\}/,
+    )?.[1]
+    for (const block of [lightBlock, darkBlock]) {
+      expect(block).toBeDefined()
+      expect(block).toContain('--macvue-control-track:')
+      expect(block).toContain(
+        '--macvue-switch-track: var(--macvue-control-track)',
+      )
+    }
+  })
+
   it('routes selection-bg through the accent variable', () => {
     expect(lightCss).toContain('--macvue-selection-bg: var(--macvue-accent)')
     expect(darkCss).toContain('--macvue-selection-bg: var(--macvue-accent)')
@@ -134,6 +155,36 @@ describe('tokens.gen.ts', () => {
     expect(tokenTs).toContain('export type MacvueTokenName')
     expect(tokenTs).toContain('export const macvueTokenNames')
     expect(tokenTs).toMatch(/'--macvue-[\w-]+',/)
+  })
+})
+
+describe('styles/index.css reduced motion', () => {
+  let indexCss: string
+
+  beforeAll(async () => {
+    indexCss = await readFile(
+      join(import.meta.dirname, '../src/styles/index.css'),
+      'utf8',
+    )
+  })
+
+  it('zeroes every duration token inside the tokens layer, after the imports', () => {
+    const layerBlock = indexCss.match(
+      /@layer macvue\.tokens \{\s*@media \(prefers-reduced-motion: reduce\) \{\s*:root \{([^}]*)\}/,
+    )
+    expect(layerBlock).toBeTruthy()
+
+    const lastImport = indexCss.lastIndexOf('@import')
+    expect(lastImport).toBeGreaterThanOrEqual(0)
+    expect(
+      indexCss.indexOf('@media (prefers-reduced-motion: reduce)'),
+    ).toBeGreaterThan(lastImport)
+
+    const durations = [...new Set(lightCss.match(/--macvue-duration-[\w-]+/g))]
+    expect(durations.length).toBeGreaterThan(0)
+    for (const name of durations) {
+      expect(layerBlock![1]).toContain(`${name}: 0ms`)
+    }
   })
 })
 

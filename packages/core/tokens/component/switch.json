@@ -1,0 +1,15 @@
+{
+  "switch": {
+    "track-width": { "$type": "dimension", "$value": "38px", "$description": "unverified" },
+    "track-height": { "$type": "dimension", "$value": "22px", "$description": "unverified" },
+    "thumb-size": { "$type": "dimension", "$value": "20px", "$description": "unverified" },
+    "thumb-inset": { "$type": "dimension", "$value": "{ref.spacing-1}", "$description": "unverified" },
+    "gap": { "$type": "dimension", "$value": "{ref.spacing-8}", "$description": "unverified" },
+    "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
+    "track": { "$type": "color", "$value": "{semantic.control-track}" },
+    "track-on": { "$type": "color", "$value": "{semantic.accent}" },
+    "thumb-bg": { "$type": "color", "$value": "{ref.white}" },
+    "thumb-shadow": { "$type": "shadow", "$value": "{semantic.shadow-switch-thumb}" },
+    "label": { "$type": "color", "$value": "{semantic.label}" }
+  }
+}

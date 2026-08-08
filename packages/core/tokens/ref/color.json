@@ -1,6 +1,7 @@
 {
   "ref": {
     "$type": "color",
+    "white": { "$value": "#FFFFFF" },
     "blue": { "$value": "#007AFF" },
     "purple": { "$value": "#AF52DE" },
     "pink": { "$value": "#FF2D55" },

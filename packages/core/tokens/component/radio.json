@@ -1,0 +1,17 @@
+{
+  "radio": {
+    "size-regular": { "$type": "dimension", "$value": "14px", "$description": "unverified" },
+    "dot-size-regular": { "$type": "dimension", "$value": "6px", "$description": "unverified" },
+    "gap": { "$type": "dimension", "$value": "{ref.spacing-6}", "$description": "unverified" },
+    "group-gap": { "$type": "dimension", "$value": "{ref.spacing-8}", "$description": "unverified" },
+    "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
+    "bg": { "$type": "color", "$value": "{semantic.control}" },
+    "bg-pressed": { "$type": "color", "$value": "{semantic.control-pressed}" },
+    "bg-on": { "$type": "color", "$value": "{semantic.accent}" },
+    "bg-on-pressed": { "$type": "color", "$value": "{semantic.accent-pressed}" },
+    "dot": { "$type": "color", "$value": "{semantic.label-on-accent}" },
+    "label": { "$type": "color", "$value": "{semantic.label}" },
+    "border": { "$type": "color", "$value": "{semantic.border-control}" },
+    "border-width": { "$type": "dimension", "$value": "{ref.spacing-1}" }
+  }
+}

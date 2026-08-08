@@ -1,0 +1,77 @@
+@layer macvue.components {
+  .macvue-radio-group {
+    display: inline-flex;
+    gap: var(--macvue-radio-group-gap);
+  }
+
+  .macvue-radio-group--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .macvue-radio-group--horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .macvue-radio {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--macvue-radio-gap);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-radio-font-size-regular);
+    font-weight: var(--macvue-control-text-weight);
+    color: var(--macvue-radio-label);
+    /* macOS uses the arrow cursor on controls, not the hand. */
+    cursor: default;
+    user-select: none;
+  }
+
+  .macvue-radio:has(.macvue-radio-control[data-disabled]) {
+    opacity: var(--macvue-disabled-opacity);
+  }
+
+  .macvue-radio-control {
+    box-sizing: border-box;
+    flex: none;
+    position: relative;
+    width: var(--macvue-radio-size-regular);
+    height: var(--macvue-radio-size-regular);
+    padding: 0;
+    background: var(--macvue-radio-bg);
+    border: var(--macvue-radio-border-width) solid var(--macvue-radio-border);
+    border-radius: 50%;
+    cursor: default;
+  }
+
+  /* :active on the label: in AppKit the title is part of the hit-area, so
+     pressing the caption highlights the circle too. */
+  .macvue-radio:active .macvue-radio-control:not([data-disabled]) {
+    background: var(--macvue-radio-bg-pressed);
+  }
+
+  .macvue-radio-control[data-state='checked'] {
+    background: var(--macvue-radio-bg-on);
+    border-color: transparent;
+  }
+
+  .macvue-radio:active .macvue-radio-control[data-state='checked']:not([data-disabled]) {
+    background: var(--macvue-radio-bg-on-pressed);
+  }
+
+  .macvue-radio-control[data-state='checked']::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: var(--macvue-radio-dot-size-regular);
+    height: var(--macvue-radio-dot-size-regular);
+    border-radius: 50%;
+    background: var(--macvue-radio-dot);
+  }
+
+  .macvue-radio-control:focus-visible {
+    outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+}

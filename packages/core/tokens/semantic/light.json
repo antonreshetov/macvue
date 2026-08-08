@@ -9,6 +9,7 @@
     "control-bg": { "$value": "#FFFFFF", "$description": "Mirrors NSColor.controlBackgroundColor — background of content areas (lists, tables). Not the button bezel — use `control` for bezels" },
     "control": { "$value": "#FFFFFF", "$description": "Bezel fill of push buttons, mirrors NSColor.controlColor" },
     "control-pressed": { "$value": "color-mix(in oklab, var(--macvue-control), black 8%)", "$description": "unverified" },
+    "control-track": { "$value": "#D9D9DE", "$description": "unverified. Off-state fill of NSSwitch-like tracks" },
     "content-bg": { "$value": "#FFFFFF" },
     "under-page-bg": { "$value": "#E8E8E8", "$description": "unverified" },
     "accent": { "$value": "{ref.blue}" },
@@ -38,6 +39,11 @@
     "shadow-menu": {
       "$type": "shadow",
       "$value": "0 5px 20px rgb(0 0 0 / 0.2), 0 0 1px rgb(0 0 0 / 0.2)",
+      "$description": "unverified"
+    },
+    "shadow-switch-thumb": {
+      "$type": "shadow",
+      "$value": "0 0 1px rgb(0 0 0 / 0.25), 0 1px 2px rgb(0 0 0 / 0.2)",
       "$description": "unverified"
     }
   }

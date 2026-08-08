@@ -2,3 +2,13 @@
 
 @import './tokens.gen.css';
 @import './tokens-dark.gen.css';
+
+/* Single global reduced-motion switch: zeroing the duration tokens collapses
+   every animation in the library without per-component media queries. */
+@layer macvue.tokens {
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --macvue-duration-fast: 0ms;
+    }
+  }
+}

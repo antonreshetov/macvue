@@ -44,6 +44,8 @@
     "control-text-size-mini": { "$type": "dimension", "$value": "9px", "$description": "unverified" },
     "control-text-weight": { "$type": "fontWeight", "$value": 400, "$description": "unverified" },
     "disabled-opacity": { "$type": "number", "$value": 0.5, "$description": "unverified" },
-    "label-on-accent": { "$type": "color", "$value": "#FFFFFF" }
+    "label-on-accent": { "$type": "color", "$value": "#FFFFFF" },
+    "duration-fast": { "$type": "duration", "$value": "150ms", "$description": "unverified" },
+    "easing-default": { "$type": "cubicBezier", "$value": "ease-out", "$description": "unverified" }
   }
 }

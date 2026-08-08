@@ -1,0 +1,75 @@
+@layer macvue.components {
+  .macvue-checkbox {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--macvue-checkbox-gap);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-checkbox-font-size-regular);
+    font-weight: var(--macvue-control-text-weight);
+    color: var(--macvue-checkbox-label);
+    /* macOS uses the arrow cursor on controls, not the hand. */
+    cursor: default;
+    user-select: none;
+  }
+
+  /* :has() keys off Reka's data-disabled on the control itself, so any
+     source of disabling (prop or future context) dims the whole row. */
+  .macvue-checkbox:has(.macvue-checkbox-box[data-disabled]) {
+    opacity: var(--macvue-disabled-opacity);
+  }
+
+  .macvue-checkbox-box {
+    box-sizing: border-box;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--macvue-checkbox-size-regular);
+    height: var(--macvue-checkbox-size-regular);
+    padding: 0;
+    background: var(--macvue-checkbox-bg);
+    border: var(--macvue-checkbox-border-width) solid var(--macvue-checkbox-border);
+    border-radius: var(--macvue-checkbox-radius);
+    color: var(--macvue-checkbox-mark);
+    cursor: default;
+  }
+
+  /* :active on the label: in AppKit the title is part of the hit-area, so
+     pressing the caption highlights the box too. */
+  .macvue-checkbox:active .macvue-checkbox-box:not([data-disabled]) {
+    background: var(--macvue-checkbox-bg-pressed);
+  }
+
+  .macvue-checkbox-box[data-state='checked'],
+  .macvue-checkbox-box[data-state='indeterminate'] {
+    background: var(--macvue-checkbox-bg-on);
+    border-color: transparent;
+  }
+
+  .macvue-checkbox:active .macvue-checkbox-box[data-state='checked']:not([data-disabled]),
+  .macvue-checkbox:active .macvue-checkbox-box[data-state='indeterminate']:not([data-disabled]) {
+    background: var(--macvue-checkbox-bg-on-pressed);
+  }
+
+  .macvue-checkbox-indicator {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .macvue-checkbox-check,
+  .macvue-checkbox-dash {
+    width: 100%;
+    height: 100%;
+  }
+
+  .macvue-checkbox-box[data-state='checked'] .macvue-checkbox-dash,
+  .macvue-checkbox-box[data-state='indeterminate'] .macvue-checkbox-check {
+    display: none;
+  }
+
+  .macvue-checkbox-box:focus-visible {
+    outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+}

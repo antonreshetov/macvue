@@ -45,7 +45,12 @@ export default defineConfig({
       },
       {
         text: 'Components',
-        items: [{ text: 'Button', link: '/components/button' }],
+        items: [
+          { text: 'Button', link: '/components/button' },
+          { text: 'Checkbox', link: '/components/checkbox' },
+          { text: 'Radio Group', link: '/components/radio-group' },
+          { text: 'Switch', link: '/components/switch' },
+        ],
       },
     ],
   },

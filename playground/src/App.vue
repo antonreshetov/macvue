@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { MacButton } from 'macvue'
+import {
+  MacButton,
+  MacCheckbox,
+  MacRadio,
+  MacRadioGroup,
+  MacSwitch,
+} from 'macvue'
 import { ref } from 'vue'
 
 type Appearance = 'light' | 'dark' | 'auto'
@@ -80,6 +86,11 @@ const textStyles = [
 
 const buttonSizes = ['large', 'regular', 'small', 'mini'] as const
 const buttonVariants = ['default', 'prominent', 'destructive'] as const
+
+const checkboxChecked = ref(true)
+const checkboxMixed = ref<boolean | 'indeterminate'>('indeterminate')
+const radioValue = ref('name')
+const switchOn = ref(true)
 
 function textStyleCss(name: string) {
   return {
@@ -221,6 +232,72 @@ function textStyleCss(name: string) {
             {{ variant }}
           </MacButton>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Checkbox
+      </h2>
+      <div class="control-column">
+        <MacCheckbox v-model="checkboxChecked">
+          Checked ({{ checkboxChecked }})
+        </MacCheckbox>
+        <MacCheckbox v-model="checkboxMixed">
+          Mixed ({{ checkboxMixed }})
+        </MacCheckbox>
+        <MacCheckbox disabled>
+          Disabled
+        </MacCheckbox>
+        <MacCheckbox
+          :default-value="true"
+          disabled
+        >
+          Disabled checked
+        </MacCheckbox>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Radio
+      </h2>
+      <MacRadioGroup
+        v-model="radioValue"
+        aria-label="Sort by"
+      >
+        <MacRadio value="name">
+          Name
+        </MacRadio>
+        <MacRadio value="kind">
+          Kind
+        </MacRadio>
+        <MacRadio
+          value="date"
+          disabled
+        >
+          Date modified (disabled)
+        </MacRadio>
+      </MacRadioGroup>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Switch
+      </h2>
+      <div class="control-column">
+        <MacSwitch v-model="switchOn">
+          Wi-Fi ({{ switchOn ? "on" : "off" }})
+        </MacSwitch>
+        <MacSwitch disabled>
+          Disabled off
+        </MacSwitch>
+        <MacSwitch
+          :default-value="true"
+          disabled
+        >
+          Disabled on
+        </MacSwitch>
       </div>
     </section>
 
@@ -399,6 +476,13 @@ body {
   width: 120px;
   font-size: var(--macvue-text-caption-1-size);
   color: var(--macvue-label-secondary);
+}
+
+.control-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .text-styles {
