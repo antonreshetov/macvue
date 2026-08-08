@@ -31,6 +31,7 @@
     "label": { "$type": "color", "$value": "{semantic.label}" },
     "label-disabled": { "$type": "color", "$value": "{semantic.label-disabled}" },
     "label-prominent": { "$type": "color", "$value": "{semantic.label-on-accent}" },
+    "label-prominent-disabled": { "$type": "color", "$value": "{semantic.label-on-accent-disabled}" },
     "label-destructive": { "$type": "color", "$value": "{semantic.destructive}" }
   }
 }

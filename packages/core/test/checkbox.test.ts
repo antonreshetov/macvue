@@ -214,5 +214,11 @@ describe('macCheckbox', () => {
       const pxValues = css.match(/[\d.]+px/g) ?? []
       expect(pxValues).toHaveLength(0)
     })
+
+    it('doubles the disabled fills so the row dim lands on the kit values', () => {
+      expect(css).toContain('[data-state=\'checked\'][data-disabled]')
+      expect(css).toContain('var(--macvue-checkbox-bg-on-disabled)')
+      expect(css).toContain('var(--macvue-checkbox-bg-disabled)')
+    })
   })
 })

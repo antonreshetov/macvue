@@ -2,7 +2,7 @@
 
 > macOS UI components for Vue.
 
-Work in progress.
+Work in progress. Until 1.0 the design tokens (`--macvue-*` names and scales) are **not a stable contract** — renames and removals may land in minor releases while the library is calibrated against the macOS Tahoe reference.
 
 ## Development
 

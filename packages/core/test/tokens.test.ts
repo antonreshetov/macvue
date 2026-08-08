@@ -102,6 +102,33 @@ describe('tokens.gen.css', () => {
     }
   })
 
+  it('re-declares the 2x disabled-compensation tokens in both theme islands', () => {
+    const lightBlock = lightCss.match(
+      /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
+    )?.[1]
+    const darkBlock = darkCss.match(
+      /\[data-macvue-appearance='dark'\] \{([^}]*)\}/,
+    )?.[1]
+    for (const block of [lightBlock, darkBlock]) {
+      expect(block).toBeDefined()
+      expect(block).toContain(
+        '--macvue-checkbox-bg-on-disabled: var(--macvue-accent-disabled-strong)',
+      )
+      expect(block).toContain(
+        '--macvue-radio-bg-on-disabled: var(--macvue-accent-disabled-strong)',
+      )
+      expect(block).toContain(
+        '--macvue-switch-track-on-disabled: var(--macvue-accent-disabled-strong)',
+      )
+      expect(block).toContain(
+        '--macvue-checkbox-bg-disabled: var(--macvue-control-disabled-strong)',
+      )
+      expect(block).toContain(
+        '--macvue-radio-bg-disabled: var(--macvue-control-disabled-strong)',
+      )
+    }
+  })
+
   it('routes selection-bg through the accent variable', () => {
     expect(lightCss).toContain('--macvue-selection-bg: var(--macvue-accent)')
     expect(darkCss).toContain('--macvue-selection-bg: var(--macvue-accent)')

@@ -14,9 +14,10 @@
      substituted where it is declared), so a per-scene --macvue-accent would
      never reach them. Redeclare the whole accent chain here with the exact
      formulas/aliases from packages/core/src/styles/tokens.gen.css — guarded
-     by packages/core/test/docs-scene-accent.test.ts. This wins over the
-     generated declarations only because they sit in @layer macvue.tokens
-     while this file is unlayered; moving docs CSS into a layer breaks it. */
+     by packages/core/test/docs-scene-accent.test.ts (names AND right-hand
+     sides). This wins over the generated declarations only because they sit
+     in @layer macvue.tokens while this file is unlayered; moving docs CSS
+     into a layer breaks it. */
   --macvue-accent-hover: color-mix(in srgb, var(--macvue-accent), black 6%);
   --macvue-accent-pressed: color-mix(in srgb, var(--macvue-accent), black 15%);
   --macvue-accent-pressed-soft: color-mix(in srgb, var(--macvue-accent), black 8%);
@@ -35,6 +36,34 @@
   --macvue-radio-bg-on-disabled: var(--macvue-accent-disabled-strong);
   --macvue-switch-track-on: var(--macvue-accent);
   --macvue-switch-track-on-pressed: var(--macvue-accent-pressed-soft);
+  --macvue-switch-track-on-disabled: var(--macvue-accent-disabled-strong);
+}
+
+/* Dark scenes (own attribute, or sitting inside a dark page without a light
+   override) need the DARK formulas — after the Tahoe rebase pressed/disabled
+   lighten with white instead of darkening with black. Mirrors
+   tokens-dark.gen.css, guarded by the same test. */
+.mv-scene[data-macvue-appearance='dark'],
+[data-macvue-appearance='dark'] .mv-scene:not([data-macvue-appearance='light']) {
+  --macvue-accent-hover: color-mix(in srgb, var(--macvue-accent), white 6%);
+  --macvue-accent-pressed: color-mix(in srgb, var(--macvue-accent), white 8%);
+  --macvue-accent-pressed-soft: color-mix(in srgb, var(--macvue-accent), white 10%);
+  --macvue-accent-disabled: color-mix(in srgb, var(--macvue-accent) 40%, transparent);
+  --macvue-accent-disabled-strong: color-mix(in srgb, var(--macvue-accent) 90%, transparent);
+  --macvue-focus-ring: color-mix(in srgb, var(--macvue-accent), transparent 50%);
+  --macvue-selection-bg: var(--macvue-accent);
+  --macvue-button-bg-prominent: var(--macvue-accent);
+  --macvue-button-bg-prominent-pressed: var(--macvue-accent-pressed-soft);
+  --macvue-button-bg-prominent-disabled: var(--macvue-accent-disabled);
+  --macvue-checkbox-bg-on: var(--macvue-accent);
+  --macvue-checkbox-bg-on-pressed: var(--macvue-accent-pressed);
+  --macvue-checkbox-bg-on-disabled: var(--macvue-accent-disabled-strong);
+  --macvue-radio-bg-on: var(--macvue-accent);
+  --macvue-radio-bg-on-pressed: var(--macvue-accent-pressed);
+  --macvue-radio-bg-on-disabled: var(--macvue-accent-disabled-strong);
+  --macvue-switch-track-on: var(--macvue-accent);
+  --macvue-switch-track-on-pressed: var(--macvue-accent-pressed-soft);
+  --macvue-switch-track-on-disabled: var(--macvue-accent-disabled-strong);
 }
 
 .mv-scene-titlebar {

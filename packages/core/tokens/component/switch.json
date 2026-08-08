@@ -11,6 +11,7 @@
     "track-pressed": { "$type": "color", "$value": "{semantic.control-track-pressed}" },
     "track-on": { "$type": "color", "$value": "{semantic.accent}" },
     "track-on-pressed": { "$type": "color", "$value": "{semantic.accent-pressed-soft}" },
+    "track-on-disabled": { "$type": "color", "$value": "{semantic.accent-disabled-strong}" },
     "track-shadow": { "$type": "shadow", "$value": "{semantic.shadow-switch-track}" },
     "thumb-bg": { "$type": "color", "$value": "{ref.white-870}" },
     "thumb-shadow": { "$type": "shadow", "$value": "{semantic.shadow-switch-thumb}" },

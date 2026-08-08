@@ -51,8 +51,12 @@
     background: var(--macvue-checkbox-bg-on-pressed);
   }
 
-  /* Accent at 2× the kit's disabled alpha: the row's disabled-opacity 0.5
-     halves it back to the kit's effective 25% fill. */
+  /* Fills at 2× the kit's disabled alpha: the row's disabled-opacity 0.5
+     halves them back to the kit's effective values. */
+  .macvue-checkbox-box[data-disabled] {
+    background: var(--macvue-checkbox-bg-disabled);
+  }
+
   .macvue-checkbox-box[data-state='checked'][data-disabled],
   .macvue-checkbox-box[data-state='indeterminate'][data-disabled] {
     background: var(--macvue-checkbox-bg-on-disabled);

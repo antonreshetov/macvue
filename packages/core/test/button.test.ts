@@ -193,5 +193,27 @@ describe('macButton', () => {
       const pxValues = css.match(/[\d.]+px/g) ?? []
       expect(pxValues).toHaveLength(0)
     })
+
+    it('disables default and prominent with exact fills, not a blanket opacity', () => {
+      const rules = css.match(/[^{}]+\{[^{}]*\}/g) ?? []
+      // Comments (leading ones land in the selector text) would trip both
+      // the selector match and the opacity check below.
+      const stripComments = (text: string) =>
+        text.replaceAll(/\/\*[\s\S]*?\*\//g, '')
+      const disabledRule = (selector: string) =>
+        rules
+          .map(stripComments)
+          .find(rule => rule.slice(0, rule.indexOf('{')).trim() === selector)
+
+      const base = disabledRule('.macvue-button:disabled')
+      expect(base).toBeDefined()
+      expect(base).not.toContain('opacity')
+      expect(base).toContain('var(--macvue-button-bg-disabled)')
+
+      const prominent = disabledRule('.macvue-button--prominent:disabled')
+      expect(prominent).toBeDefined()
+      expect(prominent).not.toContain('opacity')
+      expect(prominent).toContain('var(--macvue-button-bg-prominent-disabled)')
+    })
   })
 })

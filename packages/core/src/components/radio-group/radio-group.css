@@ -59,8 +59,12 @@
     background: var(--macvue-radio-bg-on-pressed);
   }
 
-  /* Accent at 2× the kit's disabled alpha: the row's disabled-opacity 0.5
-     halves it back to the kit's effective 25% fill. */
+  /* Fills at 2× the kit's disabled alpha: the row's disabled-opacity 0.5
+     halves them back to the kit's effective values. */
+  .macvue-radio-control[data-disabled] {
+    background: var(--macvue-radio-bg-disabled);
+  }
+
   .macvue-radio-control[data-state='checked'][data-disabled] {
     background: var(--macvue-radio-bg-on-disabled);
   }

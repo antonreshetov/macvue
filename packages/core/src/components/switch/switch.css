@@ -34,8 +34,12 @@
     box-shadow: var(--macvue-switch-track-shadow);
     cursor: default;
     /* The only animated control in the library; timings come from the
-       motion tokens so prefers-reduced-motion can zero them globally. */
-    transition: background-color var(--macvue-duration-fast) var(--macvue-easing-default);
+       motion tokens so prefers-reduced-motion can zero them globally.
+       box-shadow is animated too so the off-track ring fades with the
+       fill instead of snapping when the state flips. */
+    transition:
+      background-color var(--macvue-duration-fast) var(--macvue-easing-default),
+      box-shadow var(--macvue-duration-fast) var(--macvue-easing-default);
   }
 
   /* :active on the label: in AppKit the title is part of the hit-area, so
@@ -51,6 +55,12 @@
 
   .macvue-switch:active .macvue-switch-control[data-state='checked']:not([data-disabled]) {
     background: var(--macvue-switch-track-on-pressed);
+  }
+
+  /* Accent at 2× the kit's disabled alpha: the row's disabled-opacity 0.5
+     halves it back to the kit's effective fill. */
+  .macvue-switch-control[data-state='checked'][data-disabled] {
+    background: var(--macvue-switch-track-on-disabled);
   }
 
   /* The Tahoe thumb is a capsule, wider than tall. */

@@ -84,7 +84,13 @@ const textStyles = [
   'caption-2',
 ]
 
-const buttonSizes = ['large', 'regular', 'small', 'mini'] as const
+const buttonSizes = [
+  'extra-large',
+  'large',
+  'regular',
+  'small',
+  'mini',
+] as const
 const buttonVariants = ['default', 'prominent', 'destructive'] as const
 
 const checkboxChecked = ref(true)

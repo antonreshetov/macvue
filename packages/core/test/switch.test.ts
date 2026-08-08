@@ -179,14 +179,21 @@ describe('macSwitch', () => {
       expect(css).not.toContain(':hover')
     })
 
-    it('allows transitions only for transform/background-color driven by the motion tokens', () => {
+    it('allows transitions only for transform/background-color/box-shadow driven by the motion tokens', () => {
       const transitions = css.match(/transition:[^;]+;/g) ?? []
       expect(transitions.length).toBeGreaterThan(0)
+      const entry
+        = /(?:transform|background-color|box-shadow) var\(--macvue-duration-[\w-]+\) var\(--macvue-easing-[\w-]+\)/
       for (const transition of transitions) {
-        expect(transition).toMatch(
-          /^transition: (?:transform|background-color) var\(--macvue-duration-[\w-]+\) var\(--macvue-easing-[\w-]+\);$/,
+        expect(transition.replaceAll(/\s+/g, ' ')).toMatch(
+          new RegExp(`^transition: ${entry.source}(?:, ${entry.source})*;$`),
         )
       }
+    })
+
+    it('doubles the disabled-on fill so the row dim lands on the kit value', () => {
+      expect(css).toContain('[data-state=\'checked\'][data-disabled]')
+      expect(css).toContain('var(--macvue-switch-track-on-disabled)')
     })
 
     it('has no keyframe animations', () => {

@@ -80,7 +80,8 @@
 
   .macvue-button--prominent:disabled {
     background: var(--macvue-button-bg-prominent-disabled);
-    color: var(--macvue-button-label-prominent);
+    /* Fully white in light; dark dims the label to 0.5 (kit 27). */
+    color: var(--macvue-button-label-prominent-disabled);
   }
 
   /* The kit's disabled destructive is the idle look dimmed to 0.5. */

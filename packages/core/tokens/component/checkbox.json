@@ -10,6 +10,7 @@
     "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
     "bg": { "$type": "color", "$value": "{semantic.control}" },
     "bg-pressed": { "$type": "color", "$value": "{semantic.control-pressed}" },
+    "bg-disabled": { "$type": "color", "$value": "{semantic.control-disabled-strong}" },
     "bg-on": { "$type": "color", "$value": "{semantic.accent}" },
     "bg-on-pressed": { "$type": "color", "$value": "{semantic.accent-pressed}" },
     "bg-on-disabled": { "$type": "color", "$value": "{semantic.accent-disabled-strong}" },

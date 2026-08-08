@@ -69,7 +69,9 @@ defineExpose({
     >
       <CheckboxIndicator class="macvue-checkbox-indicator">
         <!-- Glyph boxes match the kit's fixed check (9.3×8.9) and dash
-             (6.5×2) instead of stretching across the control. -->
+             (6.5×2) instead of stretching across the control. The kit ships
+             the check as a filled shape, so stroke-width 1.7 is picked
+             visually to match — only the bbox is measured. -->
         <svg
           class="macvue-checkbox-check"
           viewBox="0 0 9.3 8.9"
