@@ -1,39 +1,109 @@
 {
   "ref": {
     "$type": "color",
-    "white": { "$value": "#FFFFFF" },
-    "blue": { "$value": "#0088FF" },
-    "purple": { "$value": "#CB30E0" },
-    "pink": { "$value": "#FF2D55" },
-    "red": { "$value": "#FF383C" },
-    "orange": { "$value": "#FF8D28" },
-    "yellow": { "$value": "#FFCC00" },
-    "green": { "$value": "#34C759" },
-    "gray": { "$value": "#8E8E93" },
-    "blue-dark": { "$value": "#0091FF" },
-    "purple-dark": { "$value": "#DB34F2" },
-    "pink-dark": { "$value": "#FF375F" },
-    "red-dark": { "$value": "#FF4245" },
-    "orange-dark": { "$value": "#FF9230" },
-    "yellow-dark": { "$value": "#FFD600" },
-    "green-dark": { "$value": "#30D158" },
-    "gray-dark": { "$value": "#98989D" },
-    "gray-tertiary": { "$value": "#BFBFBF", "$description": "Tahoe kit Label Colors/Light Vibrant/3 Tertiary — solid disabled-text gray" },
-    "black-850": { "$value": "rgb(0 0 0 / 0.85)" },
-    "black-500": { "$value": "rgb(0 0 0 / 0.5)" },
-    "black-250": { "$value": "rgb(0 0 0 / 0.25)" },
-    "black-150": { "$value": "rgb(0 0 0 / 0.15)" },
-    "black-100": { "$value": "rgb(0 0 0 / 0.1)" },
-    "black-80": { "$value": "rgb(0 0 0 / 0.08)" },
-    "black-60": { "$value": "rgb(0 0 0 / 0.06)" },
-    "black-50": { "$value": "rgb(0 0 0 / 0.05)" },
-    "black-40": { "$value": "rgb(0 0 0 / 0.04)" },
-    "white-870": { "$value": "rgb(255 255 255 / 0.87)", "$description": "Flattened Tahoe kit switch-knob stack (#FFF 0.65/0.45/0.35)" },
-    "white-550": { "$value": "rgb(255 255 255 / 0.55)" },
-    "white-500": { "$value": "rgb(255 255 255 / 0.5)" },
-    "white-250": { "$value": "rgb(255 255 255 / 0.25)" },
-    "white-190": { "$value": "rgb(255 255 255 / 0.19)" },
-    "white-100": { "$value": "rgb(255 255 255 / 0.1)" },
-    "white-40": { "$value": "rgb(255 255 255 / 0.04)" }
+    "white": {
+      "$value": "#FFFFFF"
+    },
+    "blue": {
+      "$value": "#0088FF"
+    },
+    "purple": {
+      "$value": "#CB30E0"
+    },
+    "pink": {
+      "$value": "#FF2D55"
+    },
+    "red": {
+      "$value": "#FF383C"
+    },
+    "orange": {
+      "$value": "#FF8D28"
+    },
+    "yellow": {
+      "$value": "#FFCC00"
+    },
+    "green": {
+      "$value": "#34C759"
+    },
+    "gray": {
+      "$value": "#8E8E93"
+    },
+    "blue-dark": {
+      "$value": "#0091FF"
+    },
+    "purple-dark": {
+      "$value": "#DB34F2"
+    },
+    "pink-dark": {
+      "$value": "#FF375F"
+    },
+    "red-dark": {
+      "$value": "#FF4245"
+    },
+    "orange-dark": {
+      "$value": "#FF9230"
+    },
+    "yellow-dark": {
+      "$value": "#FFD600"
+    },
+    "green-dark": {
+      "$value": "#30D158"
+    },
+    "gray-dark": {
+      "$value": "#98989D"
+    },
+    "gray-tertiary": {
+      "$value": "#BFBFBF",
+      "$description": "Tahoe kit Label Colors/Light Vibrant/3 Tertiary — solid disabled-text gray"
+    },
+    "black-850": {
+      "$value": "rgb(0 0 0 / 0.85)"
+    },
+    "black-500": {
+      "$value": "rgb(0 0 0 / 0.5)"
+    },
+    "black-250": {
+      "$value": "rgb(0 0 0 / 0.25)"
+    },
+    "black-150": {
+      "$value": "rgb(0 0 0 / 0.15)"
+    },
+    "black-100": {
+      "$value": "rgb(0 0 0 / 0.1)"
+    },
+    "black-80": {
+      "$value": "rgb(0 0 0 / 0.08)"
+    },
+    "black-60": {
+      "$value": "rgb(0 0 0 / 0.06)"
+    },
+    "black-50": {
+      "$value": "rgb(0 0 0 / 0.05)"
+    },
+    "black-40": {
+      "$value": "rgb(0 0 0 / 0.04)"
+    },
+    "white-850": {
+      "$value": "rgb(255 255 255 / 0.85)",
+      "$description": "Kit-27 dark switch-knob fill"
+    },
+    "white-550": {
+      "$value": "rgb(255 255 255 / 0.55)"
+    },
+    "white-500": {
+      "$value": "rgb(255 255 255 / 0.5)"
+    },
+    "white-250": {
+      "$value": "rgb(255 255 255 / 0.25)"
+    },
+    "white-190": {
+      "$value": "rgb(255 255 255 / 0.19)"
+    },
+    "white-100": {
+      "$value": "rgb(255 255 255 / 0.1)"
+    },
+    "white-40": {
+      "$value": "rgb(255 255 255 / 0.04)"
+    }
   }
 }

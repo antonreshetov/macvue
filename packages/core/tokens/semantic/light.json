@@ -1,44 +1,142 @@
 {
   "semantic": {
     "$type": "color",
-    "label": { "$value": "{ref.black-850}" },
-    "label-secondary": { "$value": "{ref.black-500}" },
-    "label-tertiary": { "$value": "{ref.black-250}" },
-    "label-quaternary": { "$value": "{ref.black-100}" },
-    "label-disabled": { "$value": "{ref.gray-tertiary}", "$description": "Mirrors NSColor.disabledControlTextColor" },
-    "window-bg": { "$value": "#F6F6F6" },
-    "control-bg": { "$value": "#FFFFFF", "$description": "Mirrors NSColor.controlBackgroundColor — background of content areas (lists, tables). Not the button bezel — use `control` for bezels" },
-    "control": { "$value": "{ref.black-50}", "$description": "Bezel fill of push buttons and toggles, mirrors NSColor.controlColor" },
-    "control-pressed": { "$value": "{ref.black-150}" },
-    "control-disabled": { "$value": "{ref.black-40}" },
-    "control-disabled-strong": { "$value": "{ref.black-80}", "$description": "Kit unchecked-disabled fill (0.04) at 2×: consumers are additionally dimmed by disabled-opacity 0.5, so the effective fill matches the kit" },
-    "control-track": { "$value": "{ref.black-60}", "$description": "Off-state fill of NSSwitch-like tracks" },
-    "control-track-pressed": { "$value": "color-mix(in srgb, var(--macvue-control-track), black 8%)" },
-    "content-bg": { "$value": "#FFFFFF" },
-    "under-page-bg": { "$value": "#E8E8E8", "$description": "unverified" },
-    "accent": { "$value": "{ref.blue}" },
-    "accent-hover": { "$value": "color-mix(in srgb, var(--macvue-accent), black 6%)", "$description": "unverified. The Tahoe kit has no hover for bordered controls" },
-    "accent-pressed": { "$value": "color-mix(in srgb, var(--macvue-accent), black 15%)", "$description": "Kit pressed overlay on accent toggles: rgba(0,0,0,0.15)" },
-    "accent-pressed-soft": { "$value": "color-mix(in srgb, var(--macvue-accent), black 8%)", "$description": "Kit pressed overlay on prominent buttons and filled tracks: rgba(0,0,0,0.08)" },
-    "accent-disabled": { "$value": "color-mix(in srgb, var(--macvue-accent) 25%, transparent)", "$description": "Kit disabled prominent-button fill: Accent 25%" },
-    "accent-disabled-strong": { "$value": "color-mix(in srgb, var(--macvue-accent) 50%, transparent)", "$description": "Accent 50% for controls that are additionally dimmed by disabled-opacity 0.5 — effective 25% as in the kit" },
-    "focus-ring": { "$value": "color-mix(in srgb, var(--macvue-accent), transparent 50%)" },
-    "label-on-accent-disabled": { "$value": "{semantic.label-on-accent}", "$description": "Kit light keeps the label fully white on a disabled prominent bezel; dark dims it to 0.5" },
-    "destructive": { "$value": "{ref.red}" },
-    "destructive-bg": { "$value": "color-mix(in srgb, var(--macvue-destructive) 25%, transparent)", "$description": "Kit Bordered Destructive fill: rgba(255,56,60,0.25)" },
-    "destructive-bg-pressed": { "$value": "color-mix(in srgb, color-mix(in srgb, var(--macvue-destructive) 25%, transparent), black 15%)", "$description": "Approximation of the kit pressed stack: destructive 25% + rgba(0,0,0,0.15) overlay" },
-    "selection-bg": { "$value": "{semantic.accent}" },
-    "selection-bg-unfocused": { "$value": "{ref.black-100}", "$description": "unverified" },
-    "separator": { "$value": "{ref.black-100}" },
-    "border-control": { "$value": "{ref.black-100}", "$description": "unverified. Tahoe controls are borderless; kept for non-control strokes" },
-    "material-sidebar-bg": { "$value": "rgb(255 255 255 / 0.7)" },
-    "material-sidebar-blur": { "$type": "dimension", "$value": "{ref.blur-20}" },
-    "material-popover-bg": { "$value": "rgb(255 255 255 / 0.8)", "$description": "unverified" },
-    "material-popover-blur": { "$type": "dimension", "$value": "{ref.blur-24}" },
-    "material-hud-bg": { "$value": "rgb(0 0 0 / 0.65)" },
-    "material-glass-regular-bg": { "$value": "rgb(255 255 255 / 0.7)", "$description": "Liquid Glass Light/Regular - Medium top fill" },
-    "material-glass-regular-blur": { "$type": "dimension", "$value": "{ref.blur-10}" },
-    "material-glass-regular-saturation": { "$type": "dimension", "$value": "170%" },
+    "label": {
+      "$value": "{ref.black-850}"
+    },
+    "label-secondary": {
+      "$value": "{ref.black-500}"
+    },
+    "label-tertiary": {
+      "$value": "{ref.black-250}"
+    },
+    "label-quaternary": {
+      "$value": "{ref.black-100}"
+    },
+    "label-disabled": {
+      "$value": "{ref.gray-tertiary}",
+      "$description": "Mirrors NSColor.disabledControlTextColor"
+    },
+    "window-bg": {
+      "$value": "#F6F6F6"
+    },
+    "control-bg": {
+      "$value": "#FFFFFF",
+      "$description": "Mirrors NSColor.controlBackgroundColor — background of content areas (lists, tables). Not the button bezel — use `control` for bezels"
+    },
+    "control": {
+      "$value": "{ref.black-50}",
+      "$description": "Bezel fill of push buttons and toggles, mirrors NSColor.controlColor"
+    },
+    "control-pressed": {
+      "$value": "{ref.black-150}"
+    },
+    "control-disabled": {
+      "$value": "{ref.black-40}"
+    },
+    "control-disabled-strong": {
+      "$value": "{ref.black-80}",
+      "$description": "Kit unchecked-disabled fill (0.04) at 2×: consumers are additionally dimmed by disabled-opacity 0.5, so the effective fill matches the kit"
+    },
+    "control-track": {
+      "$value": "{ref.black-60}",
+      "$description": "Off-state fill of NSSwitch-like tracks"
+    },
+    "control-track-pressed": {
+      "$value": "color-mix(in srgb, var(--macvue-control-track), black 8%)"
+    },
+    "content-bg": {
+      "$value": "#FFFFFF"
+    },
+    "under-page-bg": {
+      "$value": "#E8E8E8",
+      "$description": "unverified"
+    },
+    "accent": {
+      "$value": "{ref.blue}"
+    },
+    "accent-hover": {
+      "$value": "color-mix(in srgb, var(--macvue-accent), black 6%)",
+      "$description": "unverified. The Tahoe kit has no hover for bordered controls"
+    },
+    "accent-pressed": {
+      "$value": "color-mix(in srgb, var(--macvue-accent), black 15%)",
+      "$description": "Kit pressed overlay on accent toggles: rgba(0,0,0,0.15)"
+    },
+    "accent-pressed-soft": {
+      "$value": "color-mix(in srgb, var(--macvue-accent), black 8%)",
+      "$description": "Kit pressed overlay on prominent buttons and filled tracks: rgba(0,0,0,0.08)"
+    },
+    "accent-disabled": {
+      "$value": "color-mix(in srgb, var(--macvue-accent) 25%, transparent)",
+      "$description": "Kit disabled prominent-button fill: Accent 25%"
+    },
+    "accent-disabled-strong": {
+      "$value": "color-mix(in srgb, var(--macvue-accent) 50%, transparent)",
+      "$description": "Accent 50% for controls that are additionally dimmed by disabled-opacity 0.5 — effective 25% as in the kit"
+    },
+    "focus-ring": {
+      "$value": "color-mix(in srgb, var(--macvue-accent), transparent 50%)"
+    },
+    "label-on-accent-disabled": {
+      "$value": "{semantic.label-on-accent}",
+      "$description": "Kit light keeps the label fully white on a disabled prominent bezel; dark dims it to 0.5"
+    },
+    "destructive": {
+      "$value": "{ref.red}"
+    },
+    "destructive-bg": {
+      "$value": "color-mix(in srgb, var(--macvue-destructive) 25%, transparent)",
+      "$description": "Kit Bordered Destructive fill: rgba(255,56,60,0.25)"
+    },
+    "destructive-bg-pressed": {
+      "$value": "color-mix(in srgb, color-mix(in srgb, var(--macvue-destructive) 25%, transparent), black 15%)",
+      "$description": "Approximation of the kit pressed stack: destructive 25% + rgba(0,0,0,0.15) overlay"
+    },
+    "selection-bg": {
+      "$value": "{semantic.accent}"
+    },
+    "selection-bg-unfocused": {
+      "$value": "{ref.black-100}",
+      "$description": "unverified"
+    },
+    "separator": {
+      "$value": "{ref.black-100}"
+    },
+    "border-control": {
+      "$value": "{ref.black-100}",
+      "$description": "unverified. Tahoe controls are borderless; kept for non-control strokes"
+    },
+    "material-sidebar-bg": {
+      "$value": "rgb(255 255 255 / 0.7)"
+    },
+    "material-sidebar-blur": {
+      "$type": "dimension",
+      "$value": "{ref.blur-20}"
+    },
+    "material-popover-bg": {
+      "$value": "rgb(255 255 255 / 0.8)",
+      "$description": "unverified"
+    },
+    "material-popover-blur": {
+      "$type": "dimension",
+      "$value": "{ref.blur-24}"
+    },
+    "material-hud-bg": {
+      "$value": "rgb(0 0 0 / 0.65)"
+    },
+    "material-glass-regular-bg": {
+      "$value": "rgb(255 255 255 / 0.7)",
+      "$description": "Liquid Glass Light/Regular - Medium top fill"
+    },
+    "material-glass-regular-blur": {
+      "$type": "dimension",
+      "$value": "{ref.blur-10}"
+    },
+    "material-glass-regular-saturation": {
+      "$type": "dimension",
+      "$value": "170%"
+    },
     "material-glass-regular-shadow": {
       "$type": "shadow",
       "$value": "0 8px 40px rgb(0 0 0 / 0.12), 0 0 8px 1px rgb(0 0 0 / 0.2), inset 0 1px 2px rgb(255 255 255 / 0.7), inset 0 -1px 2px rgb(26 26 26 / 0.15)",
@@ -68,6 +166,11 @@
       "$type": "shadow",
       "$value": "0 0 4px -0.5px rgb(0 0 0 / 0.05), 0 0 1px -0.25px rgb(0 0 0 / 0.05), 0 0 44px rgb(0 0 0 / 0.1)",
       "$description": "Practical subset of the kit-26 knob shadow stack (speculars omitted)"
+    },
+    "switch-thumb": {
+      "$type": "color",
+      "$value": "{ref.white}",
+      "$description": "Solid white knob: live-system screenshot + kit-27 light (kit-26 stack flatten 0.87 rejected as visibly tinted)"
     }
   }
 }
