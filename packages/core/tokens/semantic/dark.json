@@ -1,26 +1,34 @@
 {
   "semantic": {
     "$type": "color",
-    "label": { "$value": "{ref.white-847}" },
+    "label": { "$value": "{ref.white}" },
     "label-secondary": { "$value": "{ref.white-550}" },
-    "label-tertiary": { "$value": "{ref.white-260}" },
-    "label-quaternary": { "$value": "{ref.white-130}" },
+    "label-tertiary": { "$value": "{ref.white-250}" },
+    "label-quaternary": { "$value": "{ref.white-100}" },
+    "label-disabled": { "$value": "{ref.white-250}", "$description": "Mirrors NSColor.disabledControlTextColor; kit-27 dark disabled labels use Labels/Dark/3 Tertiary" },
     "window-bg": { "$value": "#323232" },
     "control-bg": { "$value": "#1E1E1E", "$description": "unverified. Mirrors NSColor.controlBackgroundColor — background of content areas (lists, tables). Not the button bezel — use `control` for bezels" },
-    "control": { "$value": "{ref.white-260}", "$description": "unverified. Bezel fill of push buttons, mirrors NSColor.controlColor" },
-    "control-pressed": { "$value": "color-mix(in oklab, var(--macvue-control), white 8%)", "$description": "unverified" },
-    "control-track": { "$value": "#48484C", "$description": "unverified. Off-state fill of NSSwitch-like tracks" },
+    "control": { "$value": "{ref.white-100}", "$description": "Kit-27 dark toggles use Fills/Dark/1 Primary; dark neutral buttons are #FFF 7% — the toggle scale wins, divergence noted in 11-tahoe-metrics" },
+    "control-pressed": { "$value": "{ref.white-190}" },
+    "control-disabled": { "$value": "{ref.white-40}" },
+    "control-track": { "$value": "{ref.white-100}", "$description": "Off-state fill of NSSwitch-like tracks" },
+    "control-track-pressed": { "$value": "color-mix(in srgb, var(--macvue-control-track), white 8%)", "$description": "Approximation: kit-27 dark clicked track is a flat #FFF 19%" },
     "content-bg": { "$value": "#1E1E1E", "$description": "unverified" },
     "under-page-bg": { "$value": "#282828", "$description": "unverified" },
     "accent": { "$value": "{ref.blue-dark}" },
-    "accent-hover": { "$value": "color-mix(in oklab, var(--macvue-accent), black 6%)" },
-    "accent-pressed": { "$value": "color-mix(in oklab, var(--macvue-accent), black 12%)" },
+    "accent-hover": { "$value": "color-mix(in srgb, var(--macvue-accent), white 6%)", "$description": "unverified. The Tahoe kit has no hover for bordered controls" },
+    "accent-pressed": { "$value": "color-mix(in srgb, var(--macvue-accent), white 8%)", "$description": "Kit-27 dark pressed overlay on accent toggles: #FFF 8%" },
+    "accent-pressed-soft": { "$value": "color-mix(in srgb, var(--macvue-accent), white 10%)", "$description": "Kit-27 dark prominent clicked: plus-lighter accent + #FFF 10% (plus-lighter base approximated by the accent itself)" },
+    "accent-disabled": { "$value": "color-mix(in srgb, var(--macvue-accent) 40%, transparent)", "$description": "Kit-27 dark disabled prominent-button fill: accent at opacity 0.4" },
+    "accent-disabled-strong": { "$value": "color-mix(in srgb, var(--macvue-accent) 90%, transparent)", "$description": "Kit-27 dark disabled checked toggle sits at opacity 0.45; doubled to compensate the disabled-opacity 0.5 row dim" },
     "focus-ring": { "$value": "color-mix(in srgb, var(--macvue-accent), transparent 50%)" },
     "destructive": { "$value": "{ref.red-dark}" },
+    "destructive-bg": { "$value": "color-mix(in srgb, var(--macvue-destructive) 20%, transparent)", "$description": "Kit-27 dark Bordered Destructive: (red + #FFF 14%) at opacity 0.2; white tint dropped" },
+    "destructive-bg-pressed": { "$value": "color-mix(in srgb, var(--macvue-destructive) 28%, transparent)", "$description": "Kit-27 dark clicked: same stack at opacity 0.28" },
     "selection-bg": { "$value": "{semantic.accent}" },
     "selection-bg-unfocused": { "$value": "{ref.white-100}", "$description": "unverified" },
     "separator": { "$value": "{ref.white-100}" },
-    "border-control": { "$value": "{ref.white-130}", "$description": "unverified" },
+    "border-control": { "$value": "{ref.white-100}", "$description": "unverified. Tahoe controls are borderless; kept for non-control strokes" },
     "material-sidebar-bg": { "$value": "rgb(30 30 30 / 0.7)" },
     "material-sidebar-blur": { "$type": "dimension", "$value": "{ref.blur-20}" },
     "material-popover-bg": { "$value": "rgb(30 30 30 / 0.8)", "$description": "unverified" },
@@ -41,10 +49,15 @@
       "$value": "0 5px 20px rgb(0 0 0 / 0.5), 0 0 1px rgb(0 0 0 / 0.4)",
       "$description": "unverified"
     },
+    "shadow-switch-track": {
+      "$type": "shadow",
+      "$value": "0 0 1px rgb(0 0 0 / 0.06)",
+      "$description": "unverified. Kit-27 dark off-track has no ring; light value kept"
+    },
     "shadow-switch-thumb": {
       "$type": "shadow",
-      "$value": "0 0 1px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.4)",
-      "$description": "unverified"
+      "$value": "0 0 4px -0.5px rgb(0 0 0 / 0.05), 0 0 1px -0.25px rgb(0 0 0 / 0.05), 0 0 44px rgb(0 0 0 / 0.1)",
+      "$description": "unverified. Kit-26 light subset; kit-27 dark shows a simplified 0 3 36 shadow"
     }
   }
 }

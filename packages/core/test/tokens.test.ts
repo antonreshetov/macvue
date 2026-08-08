@@ -41,7 +41,7 @@ describe('tokens.gen.css', () => {
   })
 
   it('emits reference tokens verbatim', () => {
-    expect(lightCss.toLowerCase()).toContain('--macvue-ref-blue: #007aff')
+    expect(lightCss.toLowerCase()).toContain('--macvue-ref-blue: #0088ff')
   })
 
   it('emits semantic tokens as references to ref variables', () => {
@@ -63,7 +63,7 @@ describe('tokens.gen.css', () => {
 
   it('emits ref-only component tokens as references to ref variables', () => {
     expect(lightCss).toContain(
-      '--macvue-button-border-width: var(--macvue-ref-spacing-1)',
+      '--macvue-button-padding-x-large: var(--macvue-ref-spacing-16)',
     )
   })
 
@@ -72,7 +72,7 @@ describe('tokens.gen.css', () => {
       /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
     )?.[1]
     expect(lightBlock).toBeDefined()
-    expect(lightBlock).toContain('--macvue-label: var(--macvue-ref-black-847)')
+    expect(lightBlock).toContain('--macvue-label: var(--macvue-ref-black-850)')
     expect(lightBlock).toContain('--macvue-accent: var(--macvue-ref-blue)')
     expect(lightBlock).toContain('--macvue-accent-hover:')
     expect(lightBlock).toContain('--macvue-accent-pressed:')
@@ -143,10 +143,10 @@ describe('tokens-dark.gen.css', () => {
 
   it('keeps ref definitions and ref-only component tokens out of overrides', () => {
     expect(darkCss).not.toMatch(/--macvue-ref-[\w-]+:/)
-    expect(darkCss).not.toContain('--macvue-button-height-regular')
-    expect(darkCss).not.toContain('--macvue-button-radius')
+    expect(darkCss).not.toMatch(/--macvue-button-height-[\w-]+:/)
+    // Anchored on the colon so future button-radius-* tokens are caught too.
+    expect(darkCss).not.toMatch(/--macvue-button-radius[\w-]*:/)
     expect(darkCss).not.toMatch(/--macvue-button-padding-x-[\w-]+:/)
-    expect(darkCss).not.toContain('--macvue-button-border-width')
   })
 })
 
