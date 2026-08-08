@@ -37,7 +37,8 @@
 
 [data-macvue-appearance='dark'] {
   --docs-page-bg: #161617;
-  --docs-surface: #1d1d1f;
+  /* Live-system eyedrop: matches the native dark pane (#1E1E1E). */
+  --docs-surface: #1e1e1e;
   --docs-surface-secondary: #252527;
   --docs-card-border: rgb(255 255 255 / 0.08);
   --docs-card-border-hover: rgb(255 255 255 / 0.16);

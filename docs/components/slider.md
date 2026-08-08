@@ -38,7 +38,7 @@ All five macOS control sizes; `regular` is the default.
 
 ## Tick marks
 
-`ticks` renders evenly spaced marks under the track. With `snapToTicks` the step is derived from the tick count: `step = (max - min) / (ticks - 1)`.
+`ticks` renders evenly spaced marks under the track. With `snapToTicks` the step is derived from the tick count: `step = (max - min) / (ticks - 1)`. When the range does not divide evenly, the derived step — and the emitted values — are fractional; no rounding is applied.
 
 <ComponentPreview name="slider/Ticks">
 
