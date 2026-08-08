@@ -5,59 +5,68 @@
     align-items: center;
     gap: var(--macvue-switch-gap);
     font-family: var(--macvue-font-family);
+    font-size: var(--macvue-switch-font-size-regular);
     font-weight: var(--macvue-control-text-weight);
     color: var(--macvue-switch-label);
     /* macOS uses the arrow cursor on controls, not the hand. */
     cursor: default;
     user-select: none;
+    --_macvue-switch-track-width: var(--macvue-switch-track-width-regular);
+    --_macvue-switch-track-height: var(--macvue-switch-track-height-regular);
+    --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-regular);
+    --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-regular);
+    --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-regular);
   }
 
-  /* Size modifiers assign the per-size tokens to unsuffixed bridge
+  /* Size modifiers assign the per-size tokens to `--_macvue-*` bridge
      variables; the geometry rules below (including the thumb travel
-     formula) consume only the bridges. */
+     formula) consume only the bridges. The bridges are INTERNAL — the
+     public override surface is the per-size tokens they point at. The
+     base rule above carries the regular set as a safety net for invalid
+     size values. */
   .macvue-switch--extra-large {
     font-size: var(--macvue-switch-font-size-extra-large);
-    --macvue-switch-track-width: var(--macvue-switch-track-width-extra-large);
-    --macvue-switch-track-height: var(--macvue-switch-track-height-extra-large);
-    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-extra-large);
-    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-extra-large);
-    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-extra-large);
+    --_macvue-switch-track-width: var(--macvue-switch-track-width-extra-large);
+    --_macvue-switch-track-height: var(--macvue-switch-track-height-extra-large);
+    --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-extra-large);
+    --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-extra-large);
+    --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-extra-large);
   }
 
   .macvue-switch--large {
     font-size: var(--macvue-switch-font-size-large);
-    --macvue-switch-track-width: var(--macvue-switch-track-width-large);
-    --macvue-switch-track-height: var(--macvue-switch-track-height-large);
-    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-large);
-    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-large);
-    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-large);
+    --_macvue-switch-track-width: var(--macvue-switch-track-width-large);
+    --_macvue-switch-track-height: var(--macvue-switch-track-height-large);
+    --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-large);
+    --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-large);
+    --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-large);
   }
 
   .macvue-switch--regular {
     font-size: var(--macvue-switch-font-size-regular);
-    --macvue-switch-track-width: var(--macvue-switch-track-width-regular);
-    --macvue-switch-track-height: var(--macvue-switch-track-height-regular);
-    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-regular);
-    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-regular);
-    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-regular);
+    --_macvue-switch-track-width: var(--macvue-switch-track-width-regular);
+    --_macvue-switch-track-height: var(--macvue-switch-track-height-regular);
+    --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-regular);
+    --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-regular);
+    --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-regular);
   }
 
   .macvue-switch--small {
     font-size: var(--macvue-switch-font-size-small);
-    --macvue-switch-track-width: var(--macvue-switch-track-width-small);
-    --macvue-switch-track-height: var(--macvue-switch-track-height-small);
-    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-small);
-    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-small);
-    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-small);
+    --_macvue-switch-track-width: var(--macvue-switch-track-width-small);
+    --_macvue-switch-track-height: var(--macvue-switch-track-height-small);
+    --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-small);
+    --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-small);
+    --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-small);
   }
 
   .macvue-switch--mini {
     font-size: var(--macvue-switch-font-size-mini);
-    --macvue-switch-track-width: var(--macvue-switch-track-width-mini);
-    --macvue-switch-track-height: var(--macvue-switch-track-height-mini);
-    --macvue-switch-thumb-width: var(--macvue-switch-thumb-width-mini);
-    --macvue-switch-thumb-height: var(--macvue-switch-thumb-height-mini);
-    --macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-mini);
+    --_macvue-switch-track-width: var(--macvue-switch-track-width-mini);
+    --_macvue-switch-track-height: var(--macvue-switch-track-height-mini);
+    --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-mini);
+    --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-mini);
+    --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-mini);
   }
 
   /* :has() keys off Reka's data-disabled on the control itself, so any
@@ -71,12 +80,12 @@
     flex: none;
     display: inline-flex;
     align-items: center;
-    width: var(--macvue-switch-track-width);
-    height: var(--macvue-switch-track-height);
-    padding: var(--macvue-switch-thumb-inset);
+    width: var(--_macvue-switch-track-width);
+    height: var(--_macvue-switch-track-height);
+    padding: var(--_macvue-switch-thumb-inset);
     background: var(--macvue-switch-track);
     border: 0;
-    border-radius: calc(var(--macvue-switch-track-height) / 2);
+    border-radius: calc(var(--_macvue-switch-track-height) / 2);
     /* The kit draws a hairline ring around the off track only. */
     box-shadow: var(--macvue-switch-track-shadow);
     cursor: default;
@@ -113,9 +122,9 @@
   /* The Tahoe thumb is a capsule, wider than tall. */
   .macvue-switch-thumb {
     display: block;
-    width: var(--macvue-switch-thumb-width);
-    height: var(--macvue-switch-thumb-height);
-    border-radius: calc(var(--macvue-switch-thumb-height) / 2);
+    width: var(--_macvue-switch-thumb-width);
+    height: var(--_macvue-switch-thumb-height);
+    border-radius: calc(var(--_macvue-switch-thumb-height) / 2);
     background: var(--macvue-switch-thumb-bg);
     box-shadow: var(--macvue-switch-thumb-shadow);
     transition: transform var(--macvue-duration-fast) var(--macvue-easing-default);
@@ -124,8 +133,8 @@
   .macvue-switch-thumb[data-state='checked'] {
     transform: translateX(
       calc(
-        var(--macvue-switch-track-width) - var(--macvue-switch-thumb-width) - 2 *
-          var(--macvue-switch-thumb-inset)
+        var(--_macvue-switch-track-width) - var(--_macvue-switch-thumb-width) - 2 *
+          var(--_macvue-switch-thumb-inset)
       )
     );
   }

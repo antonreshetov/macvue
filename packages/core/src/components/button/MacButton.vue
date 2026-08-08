@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { MacControlSize } from '../../types'
 import { computed, ref } from 'vue'
 import './button.css'
 
 export interface MacButtonProps {
-  size?: 'extra-large' | 'large' | 'regular' | 'small' | 'mini'
+  size?: MacControlSize
   variant?: 'default' | 'prominent' | 'destructive'
   disabled?: boolean
 }

@@ -1,71 +1,89 @@
 @layer macvue.components {
+  /* The base rule assigns the regular set as a safety net for invalid size
+     values; the size modifiers below override it. `--_macvue-*` bridge
+     variables are INTERNAL — the public override surface is the per-size
+     `--macvue-checkbox-*-<size>` tokens they point at. */
   .macvue-checkbox {
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
+    gap: var(--macvue-checkbox-gap-regular);
+    /* The kit's row height separates the size steps (large and extra-large
+       share box geometry and differ by row rhythm). */
+    min-height: var(--macvue-checkbox-row-height-regular);
     font-family: var(--macvue-font-family);
+    font-size: var(--macvue-checkbox-font-size-regular);
     font-weight: var(--macvue-control-text-weight);
     color: var(--macvue-checkbox-label);
     /* macOS uses the arrow cursor on controls, not the hand. */
     cursor: default;
     user-select: none;
+    --_macvue-checkbox-size: var(--macvue-checkbox-size-regular);
+    --_macvue-checkbox-radius: var(--macvue-checkbox-radius-regular);
+    --_macvue-checkbox-check-width: var(--macvue-checkbox-check-width-regular);
+    --_macvue-checkbox-check-height: var(--macvue-checkbox-check-height-regular);
+    --_macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-regular);
+    --_macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-regular);
   }
 
-  /* Size modifiers assign the per-size tokens to unsuffixed bridge
-     variables; the geometry rules below consume only the bridges. */
   .macvue-checkbox--extra-large {
     gap: var(--macvue-checkbox-gap-extra-large);
+    min-height: var(--macvue-checkbox-row-height-extra-large);
     font-size: var(--macvue-checkbox-font-size-extra-large);
-    --macvue-checkbox-size: var(--macvue-checkbox-size-extra-large);
-    --macvue-checkbox-radius: var(--macvue-checkbox-radius-extra-large);
-    --macvue-checkbox-check-width: var(--macvue-checkbox-check-width-extra-large);
-    --macvue-checkbox-check-height: var(--macvue-checkbox-check-height-extra-large);
-    --macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-extra-large);
-    --macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-extra-large);
+    --_macvue-checkbox-size: var(--macvue-checkbox-size-extra-large);
+    --_macvue-checkbox-radius: var(--macvue-checkbox-radius-extra-large);
+    --_macvue-checkbox-check-width: var(--macvue-checkbox-check-width-extra-large);
+    --_macvue-checkbox-check-height: var(--macvue-checkbox-check-height-extra-large);
+    --_macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-extra-large);
+    --_macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-extra-large);
   }
 
   .macvue-checkbox--large {
     gap: var(--macvue-checkbox-gap-large);
+    min-height: var(--macvue-checkbox-row-height-large);
     font-size: var(--macvue-checkbox-font-size-large);
-    --macvue-checkbox-size: var(--macvue-checkbox-size-large);
-    --macvue-checkbox-radius: var(--macvue-checkbox-radius-large);
-    --macvue-checkbox-check-width: var(--macvue-checkbox-check-width-large);
-    --macvue-checkbox-check-height: var(--macvue-checkbox-check-height-large);
-    --macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-large);
-    --macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-large);
+    --_macvue-checkbox-size: var(--macvue-checkbox-size-large);
+    --_macvue-checkbox-radius: var(--macvue-checkbox-radius-large);
+    --_macvue-checkbox-check-width: var(--macvue-checkbox-check-width-large);
+    --_macvue-checkbox-check-height: var(--macvue-checkbox-check-height-large);
+    --_macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-large);
+    --_macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-large);
   }
 
   .macvue-checkbox--regular {
     gap: var(--macvue-checkbox-gap-regular);
+    min-height: var(--macvue-checkbox-row-height-regular);
     font-size: var(--macvue-checkbox-font-size-regular);
-    --macvue-checkbox-size: var(--macvue-checkbox-size-regular);
-    --macvue-checkbox-radius: var(--macvue-checkbox-radius-regular);
-    --macvue-checkbox-check-width: var(--macvue-checkbox-check-width-regular);
-    --macvue-checkbox-check-height: var(--macvue-checkbox-check-height-regular);
-    --macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-regular);
-    --macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-regular);
+    --_macvue-checkbox-size: var(--macvue-checkbox-size-regular);
+    --_macvue-checkbox-radius: var(--macvue-checkbox-radius-regular);
+    --_macvue-checkbox-check-width: var(--macvue-checkbox-check-width-regular);
+    --_macvue-checkbox-check-height: var(--macvue-checkbox-check-height-regular);
+    --_macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-regular);
+    --_macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-regular);
   }
 
   .macvue-checkbox--small {
     gap: var(--macvue-checkbox-gap-small);
+    min-height: var(--macvue-checkbox-row-height-small);
     font-size: var(--macvue-checkbox-font-size-small);
-    --macvue-checkbox-size: var(--macvue-checkbox-size-small);
-    --macvue-checkbox-radius: var(--macvue-checkbox-radius-small);
-    --macvue-checkbox-check-width: var(--macvue-checkbox-check-width-small);
-    --macvue-checkbox-check-height: var(--macvue-checkbox-check-height-small);
-    --macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-small);
-    --macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-small);
+    --_macvue-checkbox-size: var(--macvue-checkbox-size-small);
+    --_macvue-checkbox-radius: var(--macvue-checkbox-radius-small);
+    --_macvue-checkbox-check-width: var(--macvue-checkbox-check-width-small);
+    --_macvue-checkbox-check-height: var(--macvue-checkbox-check-height-small);
+    --_macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-small);
+    --_macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-small);
   }
 
   .macvue-checkbox--mini {
     gap: var(--macvue-checkbox-gap-mini);
+    min-height: var(--macvue-checkbox-row-height-mini);
     font-size: var(--macvue-checkbox-font-size-mini);
-    --macvue-checkbox-size: var(--macvue-checkbox-size-mini);
-    --macvue-checkbox-radius: var(--macvue-checkbox-radius-mini);
-    --macvue-checkbox-check-width: var(--macvue-checkbox-check-width-mini);
-    --macvue-checkbox-check-height: var(--macvue-checkbox-check-height-mini);
-    --macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-mini);
-    --macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-mini);
+    --_macvue-checkbox-size: var(--macvue-checkbox-size-mini);
+    --_macvue-checkbox-radius: var(--macvue-checkbox-radius-mini);
+    --_macvue-checkbox-check-width: var(--macvue-checkbox-check-width-mini);
+    --_macvue-checkbox-check-height: var(--macvue-checkbox-check-height-mini);
+    --_macvue-checkbox-dash-width: var(--macvue-checkbox-dash-width-mini);
+    --_macvue-checkbox-dash-height: var(--macvue-checkbox-dash-height-mini);
   }
 
   /* :has() keys off Reka's data-disabled on the control itself, so any
@@ -80,12 +98,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--macvue-checkbox-size);
-    height: var(--macvue-checkbox-size);
+    width: var(--_macvue-checkbox-size);
+    height: var(--_macvue-checkbox-size);
     padding: 0;
     background: var(--macvue-checkbox-bg);
     border: 0;
-    border-radius: var(--macvue-checkbox-radius);
+    border-radius: var(--_macvue-checkbox-radius);
     color: var(--macvue-checkbox-mark);
     cursor: default;
   }
@@ -127,13 +145,13 @@
 
   /* The kit glyph keeps its own size inside the box, it is not stretched. */
   .macvue-checkbox-check {
-    width: var(--macvue-checkbox-check-width);
-    height: var(--macvue-checkbox-check-height);
+    width: var(--_macvue-checkbox-check-width);
+    height: var(--_macvue-checkbox-check-height);
   }
 
   .macvue-checkbox-dash {
-    width: var(--macvue-checkbox-dash-width);
-    height: var(--macvue-checkbox-dash-height);
+    width: var(--_macvue-checkbox-dash-width);
+    height: var(--_macvue-checkbox-dash-height);
   }
 
   .macvue-checkbox-box[data-state='checked'] .macvue-checkbox-dash,

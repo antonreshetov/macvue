@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CheckboxCheckedState } from 'reka-ui'
 import type { ComponentPublicInstance } from 'vue'
+import type { MacControlSize } from '../../types'
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from 'reka-ui'
 import { computed, ref, useAttrs } from 'vue'
 import './checkbox.css'
@@ -8,7 +9,7 @@ import './checkbox.css'
 export interface MacCheckboxProps {
   modelValue?: boolean | 'indeterminate'
   defaultValue?: boolean | 'indeterminate'
-  size?: 'extra-large' | 'large' | 'regular' | 'small' | 'mini'
+  size?: MacControlSize
   disabled?: boolean
   name?: string
   value?: string

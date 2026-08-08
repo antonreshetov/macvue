@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ComponentPublicInstance } from 'vue'
+import type { MacControlSize } from '../../types'
 import { RadioGroupRoot } from 'reka-ui'
 import { computed, ref, watchPostEffect } from 'vue'
 import './radio-group.css'
@@ -7,7 +8,7 @@ import './radio-group.css'
 export interface MacRadioGroupProps {
   modelValue?: string
   defaultValue?: string
-  size?: 'extra-large' | 'large' | 'regular' | 'small' | 'mini'
+  size?: MacControlSize
   disabled?: boolean
   orientation?: 'vertical' | 'horizontal'
   name?: string

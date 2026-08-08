@@ -228,6 +228,30 @@ describe('macSwitch', () => {
       expect(css).not.toMatch(/:focus(?!-visible)/)
     })
 
+    it('assigns the complete bridge set in every size modifier', () => {
+      const sizes = ['extra-large', 'large', 'regular', 'small', 'mini']
+      const sets = sizes.map((size) => {
+        const block = css.match(
+          new RegExp(`\\.macvue-switch--${size} \\{([^}]*)\\}`),
+        )?.[1]
+        expect(block, `modifier for ${size} must exist`).toBeDefined()
+        const bridges = [...block!.matchAll(/(--_macvue-[\w-]+):([^;]+);/g)]
+        expect(bridges.length).toBeGreaterThan(0)
+        // Every bridge must point at the per-size token of ITS size.
+        for (const [, name, value] of bridges) {
+          expect(value.trim(), `${name} in the ${size} modifier`).toBe(
+            `var(${name.replace('--_macvue', '--macvue')}-${size})`,
+          )
+        }
+        return bridges
+          .map(([, name]) => name)
+          .sort()
+          .join()
+      })
+      // All five modifiers must assign the same set of bridges.
+      expect(new Set(sets).size).toBe(1)
+    })
+
     it('uses only tokens: no hex colors, no raw px values', () => {
       expect(css).not.toMatch(/#[0-9a-f]{3,8}/i)
       const pxValues = css.match(/[\d.]+px/g) ?? []

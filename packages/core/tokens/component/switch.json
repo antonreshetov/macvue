@@ -98,7 +98,7 @@
     },
     "thumb-inset-mini": {
       "$type": "dimension",
-      "$value": "1.5px"
+      "$value": "{ref.spacing-1-5}"
     },
     "gap": {
       "$type": "dimension",

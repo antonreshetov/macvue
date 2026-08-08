@@ -169,8 +169,8 @@
     },
     "switch-thumb": {
       "$type": "color",
-      "$value": "{ref.white}",
-      "$description": "Solid white knob: live-system screenshot + kit-27 light (kit-26 stack flatten 0.87 rejected as visibly tinted)"
+      "$value": "{ref.white-870}",
+      "$description": "Live-system eyedrop #DFEBFF over accent ≈ white 0.87; kit-26 stack flatten confirmed, kit-27 'solid white' rejected"
     }
   }
 }

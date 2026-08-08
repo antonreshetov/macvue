@@ -1,6 +1,6 @@
 # Checkbox
 
-A macOS checkbox. Supports checked, unchecked, and mixed (indeterminate) states; clicking the caption toggles the control, just like an `NSButton` title.
+A macOS checkbox (`NSButton` `.switch`). Supports checked, unchecked, and mixed (indeterminate) states; clicking the caption toggles the control, just like an `NSButton` title.
 
 <ComponentPreview name="checkbox/Basic">
 

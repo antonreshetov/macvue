@@ -1,6 +1,6 @@
 # Radio Group
 
-A group of macOS radio buttons. Exactly one option is selected at a time; arrow keys move both focus and selection, and clicking a caption selects its radio.
+A group of macOS radio buttons (`NSButton` `.radio`). Exactly one option is selected at a time; arrow keys move both focus and selection, and clicking a caption selects its radio.
 
 <ComponentPreview name="radio-group/Basic">
 

@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import type { MacControlSize } from 'macvue'
 import { MacRadio, MacRadioGroup } from 'macvue'
+
+const sizes: { size: MacControlSize, label: string }[] = [
+  { size: 'extra-large', label: 'Extra large' },
+  { size: 'large', label: 'Large' },
+  { size: 'regular', label: 'Regular' },
+  { size: 'small', label: 'Small' },
+  { size: 'mini', label: 'Mini' },
+]
 </script>
 
 <template>
@@ -8,43 +17,19 @@ import { MacRadio, MacRadioGroup } from 'macvue'
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+      gap: 12px;
     "
   >
     <MacRadioGroup
-      size="large"
+      v-for="item in sizes"
+      :key="item.size"
+      :size="item.size"
       default-value="on"
       orientation="horizontal"
-      aria-label="Large radios"
+      :aria-label="`${item.label} radios`"
     >
       <MacRadio value="on">
-        Large
-      </MacRadio>
-      <MacRadio value="off">
-        Option
-      </MacRadio>
-    </MacRadioGroup>
-    <MacRadioGroup
-      size="regular"
-      default-value="on"
-      orientation="horizontal"
-      aria-label="Regular radios"
-    >
-      <MacRadio value="on">
-        Regular
-      </MacRadio>
-      <MacRadio value="off">
-        Option
-      </MacRadio>
-    </MacRadioGroup>
-    <MacRadioGroup
-      size="mini"
-      default-value="on"
-      orientation="horizontal"
-      aria-label="Mini radios"
-    >
-      <MacRadio value="on">
-        Mini
+        {{ item.label }}
       </MacRadio>
       <MacRadio value="off">
         Option

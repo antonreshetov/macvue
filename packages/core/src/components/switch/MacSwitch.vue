@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ComponentPublicInstance } from 'vue'
+import type { MacControlSize } from '../../types'
 import { SwitchRoot, SwitchThumb, useForwardPropsEmits } from 'reka-ui'
 import { computed, ref, useAttrs } from 'vue'
 import './switch.css'
@@ -7,7 +8,7 @@ import './switch.css'
 export interface MacSwitchProps {
   modelValue?: boolean
   defaultValue?: boolean
-  size?: 'extra-large' | 'large' | 'regular' | 'small' | 'mini'
+  size?: MacControlSize
   disabled?: boolean
   name?: string
   value?: string

@@ -1,33 +1,141 @@
 {
   "radio": {
-    "size-extra-large": { "$type": "dimension", "$value": "18px" },
-    "size-large": { "$type": "dimension", "$value": "18px" },
-    "size-regular": { "$type": "dimension", "$value": "16px" },
-    "size-small": { "$type": "dimension", "$value": "14px" },
-    "size-mini": { "$type": "dimension", "$value": "12px" },
-    "dot-size-extra-large": { "$type": "dimension", "$value": "5px" },
-    "dot-size-large": { "$type": "dimension", "$value": "5px" },
-    "dot-size-regular": { "$type": "dimension", "$value": "4.8px" },
-    "dot-size-small": { "$type": "dimension", "$value": "4.8px" },
-    "dot-size-mini": { "$type": "dimension", "$value": "4px" },
-    "gap-extra-large": { "$type": "dimension", "$value": "{ref.spacing-7}" },
-    "gap-large": { "$type": "dimension", "$value": "{ref.spacing-5}" },
-    "gap-regular": { "$type": "dimension", "$value": "{ref.spacing-3}" },
-    "gap-small": { "$type": "dimension", "$value": "{ref.spacing-3}" },
-    "gap-mini": { "$type": "dimension", "$value": "{ref.spacing-3}" },
-    "group-gap": { "$type": "dimension", "$value": "{ref.spacing-8}", "$description": "unverified" },
-    "font-size-extra-large": { "$type": "dimension", "$value": "{semantic.control-text-size-extra-large}" },
-    "font-size-large": { "$type": "dimension", "$value": "{semantic.control-text-size-large}" },
-    "font-size-regular": { "$type": "dimension", "$value": "{semantic.control-text-size-regular}" },
-    "font-size-small": { "$type": "dimension", "$value": "{semantic.control-text-size-small}" },
-    "font-size-mini": { "$type": "dimension", "$value": "{semantic.control-text-size-mini}" },
-    "bg": { "$type": "color", "$value": "{semantic.control}" },
-    "bg-pressed": { "$type": "color", "$value": "{semantic.control-pressed}" },
-    "bg-disabled": { "$type": "color", "$value": "{semantic.control-disabled-strong}" },
-    "bg-on": { "$type": "color", "$value": "{semantic.accent}" },
-    "bg-on-pressed": { "$type": "color", "$value": "{semantic.accent-pressed}" },
-    "bg-on-disabled": { "$type": "color", "$value": "{semantic.accent-disabled-strong}" },
-    "dot": { "$type": "color", "$value": "{semantic.label-on-accent}" },
-    "label": { "$type": "color", "$value": "{semantic.label}" }
+    "size-extra-large": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "size-large": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "size-regular": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "size-small": {
+      "$type": "dimension",
+      "$value": "14px"
+    },
+    "size-mini": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "row-height-extra-large": {
+      "$type": "dimension",
+      "$value": "36px"
+    },
+    "row-height-large": {
+      "$type": "dimension",
+      "$value": "28px"
+    },
+    "row-height-regular": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "row-height-small": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "row-height-mini": {
+      "$type": "dimension",
+      "$value": "14px"
+    },
+    "dot-size-extra-large": {
+      "$type": "dimension",
+      "$value": "5px"
+    },
+    "dot-size-large": {
+      "$type": "dimension",
+      "$value": "5px"
+    },
+    "dot-size-regular": {
+      "$type": "dimension",
+      "$value": "4.8px"
+    },
+    "dot-size-small": {
+      "$type": "dimension",
+      "$value": "4.8px"
+    },
+    "dot-size-mini": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "gap-extra-large": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-7}"
+    },
+    "gap-large": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-5}"
+    },
+    "gap-regular": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-3}"
+    },
+    "gap-small": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-3}"
+    },
+    "gap-mini": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-3}"
+    },
+    "group-gap": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-8}",
+      "$description": "unverified"
+    },
+    "font-size-extra-large": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-extra-large}"
+    },
+    "font-size-large": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-large}"
+    },
+    "font-size-regular": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-regular}"
+    },
+    "font-size-small": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-small}"
+    },
+    "font-size-mini": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-mini}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{semantic.control}"
+    },
+    "bg-pressed": {
+      "$type": "color",
+      "$value": "{semantic.control-pressed}"
+    },
+    "bg-disabled": {
+      "$type": "color",
+      "$value": "{semantic.control-disabled-strong}"
+    },
+    "bg-on": {
+      "$type": "color",
+      "$value": "{semantic.accent}"
+    },
+    "bg-on-pressed": {
+      "$type": "color",
+      "$value": "{semantic.accent-pressed}"
+    },
+    "bg-on-disabled": {
+      "$type": "color",
+      "$value": "{semantic.accent-disabled-strong}"
+    },
+    "dot": {
+      "$type": "color",
+      "$value": "{semantic.label-on-accent}"
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{semantic.label}"
+    }
   }
 }

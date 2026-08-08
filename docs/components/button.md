@@ -1,6 +1,6 @@
 # Button
 
-A macOS push button. Supports default, prominent, and destructive variants in the five standard control sizes.
+A macOS push button (`NSButton`). Supports default, prominent, and destructive variants in the five standard control sizes.
 
 <ComponentPreview name="button/Basic">
 

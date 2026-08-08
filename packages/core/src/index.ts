@@ -9,5 +9,6 @@ export {
   type MacRadioProps,
 } from './components/radio-group'
 export { MacSwitch, type MacSwitchProps } from './components/switch'
+export type { MacControlSize } from './types'
 
 export const version = '0.0.0'
