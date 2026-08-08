@@ -2,4 +2,4 @@
 
 macOS UI components for Vue.
 
-> Work in progress.
+[Get Started](/introduction) · [GitHub](https://github.com/antonreshetov/macvue)

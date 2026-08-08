@@ -46,6 +46,10 @@ importers:
         version: 3.3.9(typescript@5.9.3)
 
   docs:
+    dependencies:
+      macvue:
+        specifier: workspace:*
+        version: link:../packages/core
     devDependencies:
       vitepress:
         specifier: ^1.6.4
