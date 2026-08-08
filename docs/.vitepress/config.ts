@@ -32,7 +32,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Docs', link: '/introduction' },
-      { text: 'Components', link: '/components/button' },
+      { text: 'Components', link: '/components/' },
       { text: 'GitHub', link: 'https://github.com/antonreshetov/macvue' },
     ],
     sidebar: [
@@ -46,6 +46,7 @@ export default defineConfig({
       {
         text: 'Components',
         items: [
+          { text: 'Overview', link: '/components/' },
           { text: 'Button', link: '/components/button' },
           { text: 'Checkbox', link: '/components/checkbox' },
           { text: 'Radio Group', link: '/components/radio-group' },

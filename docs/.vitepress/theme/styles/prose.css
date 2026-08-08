@@ -1,0 +1,167 @@
+/* Markdown content: typography, tables, code, component previews. */
+
+.mv-content h1 {
+  margin: 0 0 16px;
+  font-size: clamp(30px, 6vw, var(--docs-display-size-sm));
+  font-weight: var(--docs-display-weight);
+  letter-spacing: var(--docs-display-tracking);
+  line-height: var(--docs-display-leading);
+}
+
+.mv-content h2 {
+  margin: 56px 0 16px;
+  font-size: var(--macvue-text-title-2-size);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.mv-content h3 {
+  margin: 28px 0 8px;
+  font-size: var(--macvue-text-title-3-size);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.mv-content p,
+.mv-content li {
+  color: var(--macvue-label);
+}
+
+.mv-content blockquote {
+  margin: 16px 0;
+  padding: 0 16px;
+  border-left: 2px solid var(--macvue-separator);
+  font-size: var(--docs-text-footnote);
+  line-height: 1.5;
+  color: var(--macvue-label-secondary);
+}
+
+.mv-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.mv-content th,
+.mv-content td {
+  padding: 8px 16px 8px 0;
+  border-bottom: 1px solid var(--macvue-separator);
+  text-align: left;
+  vertical-align: top;
+}
+
+.mv-content th {
+  font-size: var(--docs-text-footnote);
+  font-weight: 600;
+  color: var(--macvue-label-secondary);
+}
+
+/* Code */
+
+.mv-content :not(pre) > code {
+  padding: 2px 5px;
+  border-radius: var(--macvue-ref-radius-4);
+  background: var(--macvue-label-quaternary);
+  font-size: 0.9em;
+}
+
+.mv-content div[class*='language-'] {
+  position: relative;
+  margin: 16px 0;
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--docs-radius-snippet);
+  background: var(--docs-surface);
+  overflow: hidden;
+}
+
+.mv-content div[class*='language-'] pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  /* The container owns the background token; Shiki inlines its own on pre. */
+  background: transparent !important;
+}
+
+.mv-content div[class*='language-'] code {
+  font-size: 12px;
+}
+
+/* Default-theme leftovers rendered by VitePress markdown */
+.mv-content div[class*='language-'] > button.copy,
+.mv-content div[class*='language-'] > span.lang {
+  display: none;
+}
+
+/* Shiki dual theme — spans only carry --shiki-light/--shiki-dark variables,
+   so a base rule must apply them; our appearance attribute replaces the
+   default `.dark` class for the dark override. */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+}
+
+[data-macvue-appearance='dark'] .shiki,
+[data-macvue-appearance='dark'] .shiki span {
+  color: var(--shiki-dark) !important;
+}
+
+/* Component preview */
+
+.mv-preview {
+  margin: 16px 0;
+}
+
+.mv-preview-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.mv-preview-tab {
+  padding: 4px 12px;
+  border: none;
+  border-radius: var(--docs-radius-pill);
+  background: transparent;
+  color: var(--macvue-label-secondary);
+  font-family: inherit;
+  font-size: var(--macvue-text-callout-size);
+  cursor: pointer;
+}
+
+.mv-preview-tab:hover {
+  color: var(--macvue-label);
+}
+
+.mv-preview-tab--active {
+  background: var(--macvue-label-quaternary);
+  color: var(--macvue-label);
+}
+
+.mv-preview-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 40px 24px;
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--docs-radius-card);
+  background: var(--docs-surface);
+}
+
+.mv-preview-code {
+  position: relative;
+}
+
+.mv-preview-code > div[class*='language-'] {
+  margin: 0;
+}
+
+.mv-preview-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}

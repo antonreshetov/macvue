@@ -1,0 +1,317 @@
+/* Page chrome: reset, header, nav, mobile menu, sidebar, aside, prev/next. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--macvue-font-family);
+  background: var(--docs-page-bg);
+  color: var(--macvue-label);
+  font-size: var(--macvue-text-body-size);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--macvue-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+
+.mv-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--docs-card-border);
+  background: var(--docs-header-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(var(--docs-header-blur));
+  backdrop-filter: saturate(180%) blur(var(--docs-header-blur));
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .mv-header {
+    background: var(--docs-page-bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+.mv-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: var(--docs-page-width);
+  margin: 0 auto;
+  padding: 12px 24px;
+}
+
+.mv-logo {
+  font-size: var(--macvue-text-title-3-size);
+  font-weight: 600;
+  color: var(--macvue-label);
+}
+
+.mv-logo:hover {
+  text-decoration: none;
+}
+
+.mv-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.mv-nav-link {
+  padding: 5px 14px;
+  border-radius: var(--docs-radius-pill);
+  color: var(--macvue-label-secondary);
+}
+
+.mv-nav-link:hover {
+  color: var(--macvue-label);
+  text-decoration: none;
+}
+
+.mv-nav-link--active {
+  background: var(--macvue-label-quaternary);
+  color: var(--macvue-label);
+}
+
+/* Appearance toggle — label is driven by CSS off the appearance attribute
+   to avoid a hydration mismatch (SSR renders with isDark = false). */
+
+.mv-toggle-light {
+  display: none;
+}
+
+[data-macvue-appearance='dark'] .mv-toggle-light {
+  display: inline;
+}
+
+[data-macvue-appearance='dark'] .mv-toggle-dark {
+  display: none;
+}
+
+/* Mobile menu */
+
+.mv-menu {
+  position: relative;
+  display: none;
+}
+
+.mv-menu summary {
+  padding: 5px 14px;
+  border-radius: var(--docs-radius-pill);
+  color: var(--macvue-label);
+  font-size: var(--macvue-text-callout-size);
+  list-style: none;
+  cursor: pointer;
+}
+
+.mv-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.mv-menu summary::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 6px;
+  border-right: 1.5px solid currentcolor;
+  border-bottom: 1.5px solid currentcolor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--macvue-duration-fast) var(--macvue-easing-default);
+}
+
+.mv-menu[open] summary {
+  background: var(--macvue-label-quaternary);
+}
+
+.mv-menu[open] summary::after {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+.mv-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  min-width: 220px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 12px 16px;
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--docs-radius-card);
+  background: var(--docs-surface);
+  box-shadow: var(--macvue-shadow-popover);
+}
+
+@media (max-width: 720px) {
+  .mv-nav {
+    display: none;
+  }
+
+  .mv-menu {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+/* Docs page layout */
+
+.mv-container {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) 180px;
+  gap: 48px;
+  max-width: var(--docs-page-width);
+  margin: 0 auto;
+  padding: 32px 24px 96px;
+}
+
+.mv-sidebar {
+  position: sticky;
+  top: 88px;
+  align-self: start;
+}
+
+.mv-sidebar-group + .mv-sidebar-group {
+  margin-top: 24px;
+}
+
+.mv-sidebar-title {
+  margin: 0 0 8px;
+  font-size: var(--macvue-text-callout-size);
+  font-weight: 600;
+  color: var(--macvue-label);
+}
+
+.mv-sidebar-link {
+  display: block;
+  padding: 3px 0;
+  color: var(--macvue-label-secondary);
+}
+
+.mv-sidebar-link:hover {
+  color: var(--macvue-label);
+  text-decoration: none;
+}
+
+.mv-sidebar-link--active {
+  color: var(--macvue-accent);
+}
+
+.mv-main {
+  min-width: 0;
+}
+
+.mv-content {
+  min-width: 0;
+  max-width: 720px;
+}
+
+/* On this page */
+
+.mv-aside {
+  position: sticky;
+  top: 88px;
+  align-self: start;
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
+  font-size: var(--macvue-text-callout-size);
+}
+
+.mv-aside-title {
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: var(--macvue-label);
+}
+
+.mv-aside-link {
+  display: block;
+  padding: 3px 0;
+  color: var(--macvue-label-secondary);
+}
+
+.mv-aside-link:hover {
+  color: var(--macvue-label);
+  text-decoration: none;
+}
+
+.mv-aside-link--h3 {
+  padding-left: 12px;
+}
+
+/* Prev / next footer */
+
+.mv-prev-next {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 720px;
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--docs-card-border);
+}
+
+.mv-prev-next-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mv-prev-next-link--next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.mv-prev-next-label {
+  font-size: var(--macvue-text-callout-size);
+  color: var(--macvue-label-secondary);
+}
+
+.mv-prev-next-link:hover {
+  text-decoration: none;
+}
+
+.mv-prev-next-link:hover .mv-prev-next-title {
+  text-decoration: underline;
+}
+
+.mv-not-found {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .mv-container {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+
+  .mv-aside {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .mv-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mv-sidebar {
+    display: none;
+  }
+}

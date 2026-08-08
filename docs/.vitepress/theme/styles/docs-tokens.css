@@ -1,0 +1,43 @@
+/* Docs-only design values layered over --macvue-* library tokens.
+   Kept out of @layer so they always win over layered library CSS. */
+
+:root {
+  --docs-page-width: 1280px;
+  --docs-page-bg: #f5f5f7;
+  --docs-surface: #ffffff;
+  --docs-surface-secondary: #fafafc;
+  --docs-card-border: rgb(0 0 0 / 0.06);
+  --docs-card-border-hover: rgb(0 0 0 / 0.12);
+  --docs-radius-card: 18px;
+  --docs-radius-card-lg: 28px;
+  --docs-radius-snippet: 12px;
+  --docs-radius-pill: 980px;
+  --docs-display-size-xl: 56px;
+  --docs-display-size: 48px;
+  --docs-display-size-sm: 40px;
+  --docs-display-tracking: -0.02em;
+  --docs-display-weight: 700;
+  --docs-display-leading: 1.07;
+  /* Library footnote (10px) is app-chrome scale; web prose needs 12px. */
+  --docs-text-footnote: 12px;
+  --docs-header-bg: var(--macvue-material-sidebar-bg);
+  --docs-header-blur: var(--macvue-material-sidebar-blur);
+}
+
+/* Light re-declared on the bare attribute (like the library tokens) so a
+   light scene island inside a dark page gets light docs values back. */
+[data-macvue-appearance='light'] {
+  --docs-page-bg: #f5f5f7;
+  --docs-surface: #ffffff;
+  --docs-surface-secondary: #fafafc;
+  --docs-card-border: rgb(0 0 0 / 0.06);
+  --docs-card-border-hover: rgb(0 0 0 / 0.12);
+}
+
+[data-macvue-appearance='dark'] {
+  --docs-page-bg: #161617;
+  --docs-surface: #1d1d1f;
+  --docs-surface-secondary: #252527;
+  --docs-card-border: rgb(255 255 255 / 0.08);
+  --docs-card-border-hover: rgb(255 255 255 / 0.16);
+}

@@ -1,0 +1,361 @@
+/* Live scenes (SceneFrame + compositions) and the home page. */
+
+.mv-scene {
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--docs-radius-card-lg);
+  background: var(--macvue-window-bg);
+  color: var(--macvue-label);
+  box-shadow: var(--macvue-shadow-window);
+  overflow: hidden;
+
+  /* Accent-derived tokens resolve at :root (var() in a custom property is
+     substituted where it is declared), so a per-scene --macvue-accent would
+     never reach them. Redeclare the whole accent chain here with the exact
+     formulas/aliases from packages/core/src/styles/tokens.gen.css — guarded
+     by packages/core/test/docs-scene-accent.test.ts. This wins over the
+     generated declarations only because they sit in @layer macvue.tokens
+     while this file is unlayered; moving docs CSS into a layer breaks it. */
+  --macvue-accent-hover: color-mix(in oklab, var(--macvue-accent), black 6%);
+  --macvue-accent-pressed: color-mix(in oklab, var(--macvue-accent), black 12%);
+  --macvue-focus-ring: color-mix(in srgb, var(--macvue-accent), transparent 50%);
+  --macvue-selection-bg: var(--macvue-accent);
+  --macvue-button-bg-prominent: var(--macvue-accent);
+  --macvue-button-bg-prominent-pressed: var(--macvue-accent-pressed);
+  --macvue-checkbox-bg-on: var(--macvue-accent);
+  --macvue-checkbox-bg-on-pressed: var(--macvue-accent-pressed);
+  --macvue-radio-bg-on: var(--macvue-accent);
+  --macvue-radio-bg-on-pressed: var(--macvue-accent-pressed);
+  --macvue-switch-track-on: var(--macvue-accent);
+}
+
+.mv-scene-titlebar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--macvue-separator);
+}
+
+.mv-scene-lights {
+  display: flex;
+  gap: 8px;
+}
+
+.mv-scene-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 0.5px solid rgb(0 0 0 / 0.15);
+}
+
+.mv-scene-light--close {
+  background: #ff5f57;
+}
+
+.mv-scene-light--minimize {
+  background: #febc2e;
+}
+
+.mv-scene-light--zoom {
+  background: #28c840;
+}
+
+.mv-scene-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--macvue-text-callout-size);
+  font-weight: 600;
+  color: var(--macvue-label-secondary);
+}
+
+.mv-scene-body {
+  padding: 20px;
+}
+
+/* Settings scene */
+
+.mv-scene-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: min(420px, 100%);
+}
+
+.mv-scene-settings-group {
+  border: 1px solid var(--macvue-separator);
+  border-radius: var(--macvue-ref-radius-8);
+  background: var(--macvue-content-bg);
+}
+
+.mv-scene-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+}
+
+.mv-scene-settings-row + .mv-scene-settings-row {
+  border-top: 1px solid var(--macvue-separator);
+}
+
+.mv-scene-settings-label {
+  font-size: var(--macvue-control-text-size-regular);
+}
+
+.mv-scene-settings-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Dialog scene */
+
+.mv-scene-dialog {
+  width: min(300px, 100%);
+  padding: 20px;
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--macvue-ref-radius-10);
+  background: var(--macvue-window-bg);
+  color: var(--macvue-label);
+  box-shadow: var(--macvue-shadow-window);
+  text-align: center;
+}
+
+.mv-scene-dialog-headline {
+  margin: 0 0 6px;
+  font-size: var(--macvue-text-title-3-size);
+  font-weight: 600;
+}
+
+.mv-scene-dialog-body {
+  margin: 0 0 16px;
+  font-size: var(--macvue-control-text-size-regular);
+  color: var(--macvue-label-secondary);
+}
+
+.mv-scene-dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Accent palette scene */
+
+.mv-scene-palette {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.mv-swatches {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mv-swatch {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0.5px solid rgb(0 0 0 / 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* box-shadow, not outline, so :focus-visible keeps the browser focus ring. */
+.mv-swatch--active {
+  box-shadow:
+    0 0 0 2px var(--docs-surface),
+    0 0 0 3.5px var(--macvue-label-tertiary);
+}
+
+.mv-scene-palette-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Home page */
+
+.mv-home {
+  max-width: var(--docs-page-width);
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+.mv-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.mv-hero-title {
+  margin: 0;
+  max-width: 720px;
+  font-size: clamp(36px, 8vw, var(--docs-display-size-xl));
+  font-weight: var(--docs-display-weight);
+  letter-spacing: var(--docs-display-tracking);
+  line-height: var(--docs-display-leading);
+}
+
+.mv-hero-tagline {
+  margin: 0;
+  max-width: 560px;
+  font-size: var(--macvue-text-title-3-size);
+  color: var(--macvue-label-secondary);
+}
+
+.mv-hero-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.mv-cta {
+  padding: 8px 20px;
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--docs-radius-pill);
+  background: var(--docs-surface);
+  color: var(--macvue-label);
+  font-weight: 500;
+}
+
+.mv-cta:hover {
+  text-decoration: none;
+  filter: brightness(0.97);
+}
+
+.mv-cta--primary {
+  border-color: transparent;
+  background: var(--macvue-accent);
+  color: var(--macvue-label-on-accent);
+}
+
+.mv-cta--primary:hover {
+  background: var(--macvue-accent-hover);
+  filter: none;
+}
+
+.mv-hero-scene {
+  width: min(560px, 100%);
+  margin-top: 24px;
+}
+
+.mv-hero-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.mv-segment {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--docs-radius-pill);
+  background: var(--docs-surface);
+}
+
+.mv-segment-button {
+  padding: 3px 12px;
+  border: none;
+  border-radius: var(--docs-radius-pill);
+  background: transparent;
+  color: var(--macvue-label-secondary);
+  font-family: inherit;
+  font-size: var(--macvue-text-callout-size);
+  cursor: pointer;
+}
+
+.mv-segment-button--active {
+  background: var(--macvue-label-quaternary);
+  color: var(--macvue-label);
+}
+
+.mv-home-section-title {
+  margin: 96px 0 24px;
+  font-size: clamp(28px, 5vw, var(--docs-display-size));
+  font-weight: var(--docs-display-weight);
+  letter-spacing: var(--docs-display-tracking);
+  line-height: var(--docs-display-leading);
+  text-align: center;
+}
+
+.mv-bento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.mv-bento-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  padding: 32px 24px;
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--docs-radius-card-lg);
+  background: var(--docs-surface);
+}
+
+/* Component cards (bento index) */
+
+.mv-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.mv-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--docs-card-border);
+  border-radius: var(--docs-radius-card);
+  background: var(--docs-surface);
+  overflow: hidden;
+}
+
+.mv-card:hover {
+  border-color: var(--docs-card-border-hover);
+}
+
+.mv-card-preview {
+  position: relative;
+  /* Above the stretched link so the live controls stay interactive. */
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  min-height: 140px;
+  padding: 24px;
+  background: var(--docs-surface-secondary);
+}
+
+.mv-card-title {
+  margin: 0;
+  padding: 12px 20px 16px;
+  font-weight: 600;
+}
+
+.mv-card-link {
+  color: var(--macvue-label);
+}
+
+.mv-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
