@@ -1,45 +1,34 @@
 <script setup lang="ts">
 import { MacSwitch } from 'macvue'
+
+const sizes = [
+  { size: 'extra-large', label: 'Extra large' },
+  { size: 'large', label: 'Large' },
+  { size: 'regular', label: 'Regular' },
+  { size: 'small', label: 'Small' },
+  { size: 'mini', label: 'Mini' },
+] as const
 </script>
 
 <template>
+  <!-- Settings-style rows: labels flush left, switches flush right,
+       as macOS lays out NSSwitch in a form. -->
   <div
     style="
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 12px;
+      width: min(260px, 100%);
     "
   >
     <MacSwitch
-      size="extra-large"
+      v-for="item in sizes"
+      :key="item.size"
+      :size="item.size"
       default-value
+      style="justify-content: space-between"
     >
-      Extra large
-    </MacSwitch>
-    <MacSwitch
-      size="large"
-      default-value
-    >
-      Large
-    </MacSwitch>
-    <MacSwitch
-      size="regular"
-      default-value
-    >
-      Regular
-    </MacSwitch>
-    <MacSwitch
-      size="small"
-      default-value
-    >
-      Small
-    </MacSwitch>
-    <MacSwitch
-      size="mini"
-      default-value
-    >
-      Mini
+      {{ item.label }}
     </MacSwitch>
   </div>
 </template>
