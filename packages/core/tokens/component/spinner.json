@@ -1,0 +1,16 @@
+{
+  "spinner": {
+    "size-regular": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "size-small": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "blade-color": {
+      "$type": "color",
+      "$value": "{semantic.spinner-color}"
+    }
+  }
+}

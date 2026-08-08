@@ -33,6 +33,10 @@
       "$value": "{ref.black-50}",
       "$description": "Bezel fill of push buttons and toggles, mirrors NSColor.controlColor"
     },
+    "segmented-container": {
+      "$value": "{ref.black-50}",
+      "$description": "Kit-26 segmented container = neutral control fill; kit 27 shows 0.08 — kit 26 wins"
+    },
     "control-pressed": {
       "$value": "{ref.black-150}"
     },
@@ -49,6 +53,10 @@
     },
     "control-track-pressed": {
       "$value": "color-mix(in srgb, var(--macvue-control-track), black 8%)"
+    },
+    "progress-bar-track": {
+      "$value": "{semantic.control-track}",
+      "$description": "Kit-26 linear progress track = switch/slider track contract"
     },
     "content-bg": {
       "$value": "#FFFFFF"
@@ -71,6 +79,10 @@
     "accent-pressed-soft": {
       "$value": "color-mix(in srgb, var(--macvue-accent), black 8%)",
       "$description": "Kit pressed overlay on prominent buttons and filled tracks: rgba(0,0,0,0.08)"
+    },
+    "segmented-on-pressed": {
+      "$value": "color-mix(in srgb, var(--macvue-accent), black 15%)",
+      "$description": "Kit-26 pressed selected segment: accent + black 15% overlay"
     },
     "accent-disabled": {
       "$value": "color-mix(in srgb, var(--macvue-accent) 25%, transparent)",
@@ -112,6 +124,10 @@
     },
     "separator": {
       "$value": "{ref.black-100}"
+    },
+    "separator-on-control": {
+      "$value": "{ref.gray-quinary}",
+      "$description": "Kit-26 segmented separator: Light Vibrant 5 Quinary"
     },
     "separator-vibrant": {
       "$value": "{ref.gray-tertiary}",
@@ -190,6 +206,10 @@
       "$type": "color",
       "$value": "{ref.white}",
       "$description": "Live-system eyedrop: solid white, unlike the translucent switch knob"
+    },
+    "spinner-color": {
+      "$value": "{ref.black}",
+      "$description": "Kit-27 spinner blades: monochrome black, per-blade opacity 0.55→0.06"
     }
   }
 }

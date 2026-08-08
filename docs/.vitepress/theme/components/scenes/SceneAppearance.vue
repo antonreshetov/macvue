@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import { MacCheckbox, MacRadio, MacRadioGroup } from 'macvue'
+import {
+  MacCheckbox,
+  MacRadio,
+  MacRadioGroup,
+  MacSegment,
+  MacSegmentedControl,
+} from 'macvue'
 import { ref } from 'vue'
 import SceneFrame from './SceneFrame.vue'
 
 defineProps<{ appearance?: 'light' | 'dark' }>()
 
-// Scene content only — this radio does not retheme anything.
+// Scene content only — these controls do not retheme anything.
 const mode = ref('light')
 const accentInMenus = ref(true)
+const iconSize = ref('medium')
 </script>
 
 <template>
@@ -34,6 +41,24 @@ const accentInMenus = ref(true)
               Auto
             </MacRadio>
           </MacRadioGroup>
+        </div>
+        <div class="mv-scene-settings-row">
+          <span class="mv-scene-settings-label">Sidebar icon size</span>
+          <MacSegmentedControl
+            v-model="iconSize"
+            size="small"
+            aria-label="Sidebar icon size"
+          >
+            <MacSegment value="small">
+              S
+            </MacSegment>
+            <MacSegment value="medium">
+              M
+            </MacSegment>
+            <MacSegment value="large">
+              L
+            </MacSegment>
+          </MacSegmentedControl>
         </div>
         <div class="mv-scene-settings-row">
           <MacCheckbox v-model="accentInMenus">

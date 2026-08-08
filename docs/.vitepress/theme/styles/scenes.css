@@ -40,6 +40,11 @@
   --macvue-switch-track-on-disabled: var(--macvue-accent-disabled-strong);
   --macvue-slider-range: var(--macvue-accent);
   --macvue-slider-range-disabled: var(--macvue-accent-disabled);
+  --macvue-segmented-on-pressed: color-mix(in srgb, var(--macvue-accent), black 15%);
+  --macvue-segmented-on-bg: var(--macvue-accent);
+  --macvue-segmented-on-bg-pressed: var(--macvue-segmented-on-pressed);
+  --macvue-segmented-on-bg-disabled: var(--macvue-accent-disabled);
+  --macvue-progress-fill: var(--macvue-accent);
 }
 
 /* Dark scenes (own attribute, or sitting inside a dark page without a light
@@ -70,6 +75,11 @@
   --macvue-switch-track-on-disabled: var(--macvue-accent-disabled-strong);
   --macvue-slider-range: var(--macvue-accent);
   --macvue-slider-range-disabled: var(--macvue-accent-disabled);
+  --macvue-segmented-on-pressed: color-mix(in srgb, var(--macvue-accent), white 14%);
+  --macvue-segmented-on-bg: var(--macvue-accent);
+  --macvue-segmented-on-bg-pressed: var(--macvue-segmented-on-pressed);
+  --macvue-segmented-on-bg-disabled: var(--macvue-accent-disabled);
+  --macvue-progress-fill: var(--macvue-accent);
 }
 
 .mv-scene-titlebar {
@@ -221,6 +231,43 @@
   display: flex;
   justify-content: center;
   gap: 8px;
+}
+
+/* File-copy scene */
+
+.mv-scene-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(300px, 100%);
+}
+
+.mv-scene-copy-title {
+  margin: 0;
+  font-size: var(--macvue-control-text-size-regular);
+  font-weight: 600;
+}
+
+.mv-scene-copy-sub {
+  margin: 0;
+  font-size: var(--macvue-text-footnote-size);
+  color: var(--macvue-label-secondary);
+}
+
+.mv-scene-copy-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.mv-scene-copy-preparing {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--macvue-text-footnote-size);
+  color: var(--macvue-label-secondary);
 }
 
 /* Login scene */

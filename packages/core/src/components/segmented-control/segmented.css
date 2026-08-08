@@ -1,0 +1,173 @@
+@layer macvue.components {
+  /* The base rule assigns the regular set as a safety net for invalid size
+     values; the size modifiers below override it. `--_macvue-*` bridge
+     variables are INTERNAL — the public override surface is the per-size
+     `--macvue-segmented-*-<size>` tokens they point at.
+
+     Equal-width segments: inline-grid with 1fr auto-columns — the AppKit
+     default distribution (.fit sizing is not modeled). */
+  .macvue-segmented {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    height: var(--macvue-segmented-height-regular);
+    background: var(--macvue-segmented-bg);
+    border-radius: var(--macvue-segmented-radius-regular);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-segmented-font-size-regular);
+    font-weight: var(--macvue-control-text-weight);
+    /* macOS uses the arrow cursor on controls, not the hand. */
+    cursor: default;
+    user-select: none;
+    --_macvue-segmented-radius: var(--macvue-segmented-radius-regular);
+    --_macvue-segmented-padding-x: var(--macvue-segmented-padding-x-regular);
+    --_macvue-segmented-separator-height: var(--macvue-segmented-separator-height-regular);
+  }
+
+  .macvue-segmented--extra-large {
+    height: var(--macvue-segmented-height-extra-large);
+    border-radius: var(--macvue-segmented-radius-extra-large);
+    font-size: var(--macvue-segmented-font-size-extra-large);
+    --_macvue-segmented-radius: var(--macvue-segmented-radius-extra-large);
+    --_macvue-segmented-padding-x: var(--macvue-segmented-padding-x-extra-large);
+    --_macvue-segmented-separator-height: var(--macvue-segmented-separator-height-extra-large);
+  }
+
+  .macvue-segmented--large {
+    height: var(--macvue-segmented-height-large);
+    border-radius: var(--macvue-segmented-radius-large);
+    font-size: var(--macvue-segmented-font-size-large);
+    --_macvue-segmented-radius: var(--macvue-segmented-radius-large);
+    --_macvue-segmented-padding-x: var(--macvue-segmented-padding-x-large);
+    --_macvue-segmented-separator-height: var(--macvue-segmented-separator-height-large);
+  }
+
+  .macvue-segmented--regular {
+    height: var(--macvue-segmented-height-regular);
+    border-radius: var(--macvue-segmented-radius-regular);
+    font-size: var(--macvue-segmented-font-size-regular);
+    --_macvue-segmented-radius: var(--macvue-segmented-radius-regular);
+    --_macvue-segmented-padding-x: var(--macvue-segmented-padding-x-regular);
+    --_macvue-segmented-separator-height: var(--macvue-segmented-separator-height-regular);
+  }
+
+  .macvue-segmented--small {
+    height: var(--macvue-segmented-height-small);
+    border-radius: var(--macvue-segmented-radius-small);
+    font-size: var(--macvue-segmented-font-size-small);
+    --_macvue-segmented-radius: var(--macvue-segmented-radius-small);
+    --_macvue-segmented-padding-x: var(--macvue-segmented-padding-x-small);
+    --_macvue-segmented-separator-height: var(--macvue-segmented-separator-height-small);
+  }
+
+  .macvue-segmented--mini {
+    height: var(--macvue-segmented-height-mini);
+    border-radius: var(--macvue-segmented-radius-mini);
+    font-size: var(--macvue-segmented-font-size-mini);
+    --_macvue-segmented-radius: var(--macvue-segmented-radius-mini);
+    --_macvue-segmented-padding-x: var(--macvue-segmented-padding-x-mini);
+    --_macvue-segmented-separator-height: var(--macvue-segmented-separator-height-mini);
+  }
+
+  /* The sliding selection pill (single mode). Positioned from the active
+     segment's offset geometry; hidden until mounted (SSR renders none).
+     One of the two motion effects this control is allowed. */
+  .macvue-segmented-pill {
+    position: absolute;
+    inset-block: 0;
+    background: var(--macvue-segmented-on-bg);
+    border-radius: var(--_macvue-segmented-radius);
+    transition:
+      left var(--macvue-duration-fast) var(--macvue-easing-default),
+      width var(--macvue-duration-fast) var(--macvue-easing-default);
+  }
+
+  .macvue-segmented:has(.macvue-segment[data-state='on']:active:not(:disabled))
+    .macvue-segmented-pill {
+    background: var(--macvue-segmented-on-bg-pressed);
+  }
+
+  .macvue-segmented[data-disabled] .macvue-segmented-pill {
+    background: var(--macvue-segmented-on-bg-disabled);
+  }
+
+  .macvue-segment {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 0;
+    padding-inline: var(--_macvue-segmented-padding-x);
+    background: none;
+    border: 0;
+    border-radius: var(--_macvue-segmented-radius);
+    color: var(--macvue-segmented-label);
+    font: inherit;
+    cursor: default;
+  }
+
+  .macvue-segment:active:not(:disabled)[data-state='off'] {
+    background: var(--macvue-segmented-off-bg-pressed);
+  }
+
+  .macvue-segment[data-state='on'] {
+    color: var(--macvue-segmented-on-label);
+  }
+
+  .macvue-segment:disabled {
+    color: var(--macvue-segmented-label-disabled);
+  }
+
+  .macvue-segment[data-state='on']:disabled {
+    color: var(--macvue-segmented-on-label-disabled);
+  }
+
+  /* Multiple mode has no sliding pill: each selected segment fills itself. */
+  .macvue-segmented--multiple .macvue-segment[data-state='on'] {
+    background: var(--macvue-segmented-on-bg);
+  }
+
+  .macvue-segmented--multiple .macvue-segment[data-state='on']:active:not(:disabled) {
+    background: var(--macvue-segmented-on-bg-pressed);
+  }
+
+  .macvue-segmented--multiple .macvue-segment[data-state='on']:disabled {
+    background: var(--macvue-segmented-on-bg-disabled);
+  }
+
+  /* Hairline separators between segments; the ones adjacent to a selected
+     segment fade out, as in the kit. */
+  .macvue-segment + .macvue-segment::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: calc(var(--macvue-segmented-separator-width) / -2);
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--macvue-segmented-separator-width);
+    height: var(--_macvue-segmented-separator-height);
+    border-radius: var(--macvue-ref-radius-full);
+    background: var(--macvue-segmented-separator);
+    transition: opacity var(--macvue-duration-fast) var(--macvue-easing-default);
+  }
+
+  .macvue-segment[data-state='on'] + .macvue-segment::before,
+  .macvue-segment[data-state='on']::before {
+    opacity: 0;
+  }
+
+  /* The pill sits under the labels. */
+  .macvue-segmented-pill {
+    z-index: 0;
+  }
+
+  .macvue-segment {
+    z-index: 1;
+  }
+
+  .macvue-segment:focus-visible {
+    outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+}

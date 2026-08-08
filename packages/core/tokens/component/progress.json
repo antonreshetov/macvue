@@ -1,0 +1,29 @@
+{
+  "progress": {
+    "height-regular": {
+      "$type": "dimension",
+      "$value": "10px"
+    },
+    "height-small": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "track": {
+      "$type": "color",
+      "$value": "{semantic.progress-bar-track}"
+    },
+    "track-shadow": {
+      "$type": "shadow",
+      "$value": "{semantic.shadow-switch-track}"
+    },
+    "fill": {
+      "$type": "color",
+      "$value": "{semantic.accent}"
+    },
+    "indeterminate-width": {
+      "$type": "dimension",
+      "$value": "34%",
+      "$description": "Kit comet: 48/140 of the track width"
+    }
+  }
+}

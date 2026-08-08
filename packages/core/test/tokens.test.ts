@@ -215,6 +215,59 @@ describe('tokens.gen.css', () => {
     expect(lightCss).toContain('--macvue-stepper-chevron-width-mini: 6.8px')
   })
 
+  it('emits per-size segmented tokens with kit values', () => {
+    const sizes = ['extra-large', 'large', 'regular', 'small', 'mini']
+    const prefixes = [
+      '--macvue-segmented-height-',
+      '--macvue-segmented-radius-',
+      '--macvue-segmented-padding-x-',
+      '--macvue-segmented-font-size-',
+      '--macvue-segmented-separator-height-',
+    ]
+    for (const prefix of prefixes) {
+      for (const size of sizes) expect(lightCss).toContain(`${prefix}${size}:`)
+    }
+    // Spot-check kit values.
+    expect(lightCss).toContain(
+      '--macvue-segmented-padding-x-mini: var(--macvue-ref-spacing-4-5)',
+    )
+    expect(lightCss).toContain(
+      '--macvue-segmented-separator-height-large: 18px',
+    )
+    expect(lightCss).toContain(
+      '--macvue-segmented-radius-large: var(--macvue-ref-radius-full)',
+    )
+    expect(lightCss).toContain('--macvue-progress-height-small: 6px')
+    expect(lightCss).toContain('--macvue-spinner-size-regular: 32px')
+  })
+
+  it('re-declares themed segmented/progress/spinner tokens in both islands', () => {
+    const lightBlock = lightCss.match(
+      /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
+    )?.[1]
+    const darkBlock = darkCss.match(
+      /\[data-macvue-appearance='dark'\] \{([^}]*)\}/,
+    )?.[1]
+    for (const block of [lightBlock, darkBlock]) {
+      expect(block).toBeDefined()
+      expect(block).toContain(
+        '--macvue-segmented-bg: var(--macvue-segmented-container)',
+      )
+      expect(block).toContain(
+        '--macvue-segmented-on-bg-pressed: var(--macvue-segmented-on-pressed)',
+      )
+      expect(block).toContain(
+        '--macvue-segmented-separator: var(--macvue-separator-on-control)',
+      )
+      expect(block).toContain(
+        '--macvue-progress-track: var(--macvue-progress-bar-track)',
+      )
+      expect(block).toContain(
+        '--macvue-spinner-blade-color: var(--macvue-spinner-color)',
+      )
+    }
+  })
+
   it('re-declares the 2x disabled-compensation tokens in both theme islands', () => {
     const lightBlock = lightCss.match(
       /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
@@ -325,6 +378,14 @@ describe('styles/index.css reduced motion', () => {
     for (const name of durations) {
       expect(layerBlock![1]).toContain(`${name}: 0ms`)
     }
+
+    // Essential-motion durations live OUTSIDE the zero block: the spinner
+    // keeps stepping, the indeterminate bar swaps to a static busy look
+    // in its component CSS instead.
+    expect(layerBlock![1]).not.toContain('--macvue-spinner-duration')
+    expect(layerBlock![1]).not.toContain(
+      '--macvue-progress-indeterminate-duration',
+    )
   })
 })
 

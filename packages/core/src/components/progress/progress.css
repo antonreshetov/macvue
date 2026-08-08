@@ -1,0 +1,90 @@
+@layer macvue.components {
+  .macvue-progress {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: var(--macvue-progress-height-regular);
+    overflow: hidden;
+    background: var(--macvue-progress-track);
+    border-radius: var(--macvue-ref-radius-full);
+    /* The kit draws a hairline ring around the track. */
+    box-shadow: var(--macvue-progress-track-shadow);
+  }
+
+  .macvue-progress--small {
+    height: var(--macvue-progress-height-small);
+  }
+
+  /* The fill is its own capsule sliding over the track, not a clip. */
+  .macvue-progress-fill {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    background: var(--macvue-progress-fill);
+    border-radius: var(--macvue-ref-radius-full);
+    transition: width var(--macvue-duration-fast) var(--macvue-easing-default);
+  }
+
+  /* Indeterminate comet: a solid head with a gradient tail, ping-ponging
+     across the track (mirrored on the way back). Runs on its own duration
+     token, deliberately outside the global reduced-motion zeroing. */
+  .macvue-progress-comet {
+    position: absolute;
+    inset-block: 0;
+    width: var(--macvue-progress-indeterminate-width);
+    border-radius: var(--macvue-ref-radius-full);
+    animation: macvue-progress-comet var(--macvue-progress-indeterminate-duration)
+      var(--macvue-easing-default) infinite;
+  }
+
+  @keyframes macvue-progress-comet {
+    0% {
+      inset-inline-start: 0%;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--macvue-progress-fill) 65%
+      );
+    }
+
+    50% {
+      inset-inline-start: 66%;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--macvue-progress-fill) 65%
+      );
+    }
+
+    51% {
+      inset-inline-start: 66%;
+      background: linear-gradient(
+        to left,
+        transparent,
+        var(--macvue-progress-fill) 65%
+      );
+    }
+
+    100% {
+      inset-inline-start: 0%;
+      background: linear-gradient(
+        to left,
+        transparent,
+        var(--macvue-progress-fill) 65%
+      );
+    }
+  }
+
+  /* Reduced motion: the bar must still read as busy — the comet is
+     replaced by a static muted accent fill. */
+  @media (prefers-reduced-motion: reduce) {
+    .macvue-progress-comet {
+      display: none;
+    }
+
+    .macvue-progress[data-state='indeterminate'] {
+      background: var(--macvue-accent-disabled);
+    }
+  }
+}

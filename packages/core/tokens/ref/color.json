@@ -4,6 +4,9 @@
     "white": {
       "$value": "#FFFFFF"
     },
+    "black": {
+      "$value": "#000000"
+    },
     "blue": {
       "$value": "#0088FF"
     },
@@ -55,6 +58,10 @@
     "gray-tertiary": {
       "$value": "#BFBFBF",
       "$description": "Tahoe kit Label Colors/Light Vibrant/3 Tertiary — solid disabled-text gray"
+    },
+    "gray-quinary": {
+      "$value": "#E6E6E6",
+      "$description": "Kit Label Colors/Light Vibrant/5 Quinary — segmented separator in light"
     },
     "gray-dark-quaternary": {
       "$value": "#262626",
@@ -111,8 +118,16 @@
     "white-190": {
       "$value": "rgb(255 255 255 / 0.19)"
     },
+    "white-160": {
+      "$value": "rgb(255 255 255 / 0.16)",
+      "$description": "Kit-27 dark pressed fill of button-scale controls (segmented off-clicked)"
+    },
     "white-100": {
       "$value": "rgb(255 255 255 / 0.1)"
+    },
+    "white-80": {
+      "$value": "rgb(255 255 255 / 0.08)",
+      "$description": "Kit-27 Fills/Dark/2 Secondary — segmented container, dark progress track"
     },
     "white-40": {
       "$value": "rgb(255 255 255 / 0.04)"

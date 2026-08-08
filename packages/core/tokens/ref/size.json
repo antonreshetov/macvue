@@ -72,9 +72,17 @@
       "$type": "dimension",
       "$value": "4px"
     },
+    "spacing-4-5": {
+      "$type": "dimension",
+      "$value": "4.5px"
+    },
     "spacing-5": {
       "$type": "dimension",
       "$value": "5px"
+    },
+    "spacing-5-5": {
+      "$type": "dimension",
+      "$value": "5.5px"
     },
     "spacing-6": {
       "$type": "dimension",

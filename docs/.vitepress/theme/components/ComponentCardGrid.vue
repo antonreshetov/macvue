@@ -2,11 +2,15 @@
 import {
   MacButton,
   MacCheckbox,
+  MacProgress,
   MacRadio,
   MacRadioGroup,
   MacSearchField,
   MacSecureField,
+  MacSegment,
+  MacSegmentedControl,
   MacSlider,
+  MacSpinner,
   MacStepper,
   MacSwitch,
   MacTextField,
@@ -19,6 +23,7 @@ const sortBy = ref('name')
 const enabled = ref(true)
 const query = ref('')
 const volume = ref(50)
+const view = ref('list')
 const copies = ref(1)
 const serverName = ref('')
 const passphrase = ref('')
@@ -71,6 +76,39 @@ const passphrase = ref('')
       <MacSwitch v-model="enabled">
         Wi-Fi
       </MacSwitch>
+    </ComponentCard>
+    <ComponentCard
+      title="Segmented Control"
+      href="/components/segmented-control"
+    >
+      <MacSegmentedControl
+        v-model="view"
+        size="small"
+        aria-label="View"
+      >
+        <MacSegment value="list">
+          List
+        </MacSegment>
+        <MacSegment value="icons">
+          Icons
+        </MacSegment>
+      </MacSegmentedControl>
+    </ComponentCard>
+    <ComponentCard
+      title="Progress"
+      href="/components/progress"
+    >
+      <MacProgress
+        :value="65"
+        aria-label="Progress"
+        style="width: 160px"
+      />
+    </ComponentCard>
+    <ComponentCard
+      title="Spinner"
+      href="/components/spinner"
+    >
+      <MacSpinner />
     </ComponentCard>
     <ComponentCard
       title="Slider"

@@ -2,11 +2,15 @@
 import {
   MacButton,
   MacCheckbox,
+  MacProgress,
   MacRadio,
   MacRadioGroup,
   MacSearchField,
   MacSecureField,
+  MacSegment,
+  MacSegmentedControl,
   MacSlider,
+  MacSpinner,
   MacStepper,
   MacSwitch,
   MacTextField,
@@ -107,6 +111,8 @@ const fieldPassword = ref('')
 const fieldQuery = ref('')
 const sliderValue = ref(50)
 const stepperValue = ref(5)
+const segmentedView = ref('list')
+const segmentedStyles = ref(['bold'])
 
 function textStyleCss(name: string) {
   return {
@@ -393,6 +399,73 @@ function textStyleCss(name: string) {
           :default-value="5"
           aria-label="Disabled"
         />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Segmented control
+      </h2>
+      <div class="control-column">
+        <MacSegmentedControl
+          v-model="segmentedView"
+          aria-label="View"
+        >
+          <MacSegment value="list">
+            List
+          </MacSegment>
+          <MacSegment value="icons">
+            Icons
+          </MacSegment>
+          <MacSegment value="columns">
+            Columns
+          </MacSegment>
+        </MacSegmentedControl>
+        <MacSegmentedControl
+          v-model="segmentedStyles"
+          type="multiple"
+          aria-label="Style"
+        >
+          <MacSegment value="bold">
+            B
+          </MacSegment>
+          <MacSegment value="italic">
+            I
+          </MacSegment>
+        </MacSegmentedControl>
+        <MacSegmentedControl
+          disabled
+          default-value="list"
+          aria-label="Disabled"
+        >
+          <MacSegment value="list">
+            List
+          </MacSegment>
+          <MacSegment value="icons">
+            Icons
+          </MacSegment>
+        </MacSegmentedControl>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Progress
+      </h2>
+      <div class="control-column">
+        <MacProgress
+          :value="65"
+          aria-label="Determinate"
+          style="width: 240px"
+        />
+        <MacProgress
+          aria-label="Indeterminate"
+          style="width: 240px"
+        />
+        <div style="display: flex; align-items: center; gap: 16px">
+          <MacSpinner />
+          <MacSpinner size="small" />
+        </div>
       </div>
     </section>
 

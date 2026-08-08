@@ -1,0 +1,31 @@
+@layer macvue.components {
+  .macvue-spinner {
+    display: inline-block;
+    width: var(--macvue-spinner-size-regular);
+    height: var(--macvue-spinner-size-regular);
+    color: var(--macvue-spinner-blade-color);
+  }
+
+  .macvue-spinner--small {
+    width: var(--macvue-spinner-size-small);
+    height: var(--macvue-spinner-size-small);
+  }
+
+  /* Native macOS steps the blades discretely — steps(8) over one turn.
+     The animation deliberately keeps running with reduced motion enabled
+     (essential motion: it is the only busy signal) and runs on its own
+     duration token, outside the global zeroing. */
+  .macvue-spinner svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    animation: macvue-spinner-rotate var(--macvue-spinner-duration) steps(8)
+      infinite;
+  }
+
+  @keyframes macvue-spinner-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

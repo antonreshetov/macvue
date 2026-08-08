@@ -1,0 +1,149 @@
+{
+  "segmented": {
+    "height-extra-large": {
+      "$type": "dimension",
+      "$value": "36px"
+    },
+    "height-large": {
+      "$type": "dimension",
+      "$value": "28px"
+    },
+    "height-regular": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "height-small": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "height-mini": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "radius-extra-large": {
+      "$type": "dimension",
+      "$value": "{ref.radius-full}"
+    },
+    "radius-large": {
+      "$type": "dimension",
+      "$value": "{ref.radius-full}"
+    },
+    "radius-regular": {
+      "$type": "dimension",
+      "$value": "{ref.radius-6}"
+    },
+    "radius-small": {
+      "$type": "dimension",
+      "$value": "{ref.radius-5}"
+    },
+    "radius-mini": {
+      "$type": "dimension",
+      "$value": "{ref.radius-4}"
+    },
+    "padding-x-extra-large": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-10}"
+    },
+    "padding-x-large": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-8}"
+    },
+    "padding-x-regular": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-6}"
+    },
+    "padding-x-small": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-5-5}"
+    },
+    "padding-x-mini": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-4-5}"
+    },
+    "font-size-extra-large": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-extra-large}"
+    },
+    "font-size-large": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-large}"
+    },
+    "font-size-regular": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-regular}"
+    },
+    "font-size-small": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-small}"
+    },
+    "font-size-mini": {
+      "$type": "dimension",
+      "$value": "{semantic.control-text-size-mini}"
+    },
+    "separator-height-extra-large": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "separator-height-large": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "separator-height-regular": {
+      "$type": "dimension",
+      "$value": "14px"
+    },
+    "separator-height-small": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "separator-height-mini": {
+      "$type": "dimension",
+      "$value": "10px"
+    },
+    "separator-width": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-1}"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{semantic.segmented-container}"
+    },
+    "on-bg": {
+      "$type": "color",
+      "$value": "{semantic.accent}"
+    },
+    "on-bg-pressed": {
+      "$type": "color",
+      "$value": "{semantic.segmented-on-pressed}"
+    },
+    "on-bg-disabled": {
+      "$type": "color",
+      "$value": "{semantic.accent-disabled}"
+    },
+    "off-bg-pressed": {
+      "$type": "color",
+      "$value": "{semantic.control-pressed}"
+    },
+    "label": {
+      "$type": "color",
+      "$value": "{semantic.label}"
+    },
+    "label-disabled": {
+      "$type": "color",
+      "$value": "{semantic.label-disabled}"
+    },
+    "on-label": {
+      "$type": "color",
+      "$value": "{semantic.label-on-accent}"
+    },
+    "on-label-disabled": {
+      "$type": "color",
+      "$value": "{ref.white-500}",
+      "$description": "Kit: the selected disabled segment dims its white label to 0.5 in both appearances"
+    },
+    "separator": {
+      "$type": "color",
+      "$value": "{semantic.separator-on-control}"
+    }
+  }
+}

@@ -178,6 +178,16 @@
       "$value": "150ms",
       "$description": "unverified"
     },
+    "progress-indeterminate-duration": {
+      "$type": "duration",
+      "$value": "2000ms",
+      "$description": "unverified. One full ping-pong of the indeterminate comet; excluded from the global reduced-motion zeroing (the bar gets a static busy look instead)"
+    },
+    "spinner-duration": {
+      "$type": "duration",
+      "$value": "800ms",
+      "$description": "unverified. One full spinner revolution (8 discrete steps); intentionally NOT zeroed under reduced motion — essential motion, as native macOS"
+    },
     "easing-default": {
       "$type": "cubicBezier",
       "$value": "ease-out",
