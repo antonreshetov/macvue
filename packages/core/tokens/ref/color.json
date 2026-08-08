@@ -56,6 +56,10 @@
       "$value": "#BFBFBF",
       "$description": "Tahoe kit Label Colors/Light Vibrant/3 Tertiary — solid disabled-text gray"
     },
+    "gray-dark-quaternary": {
+      "$value": "#262626",
+      "$description": "Kit-27 Labels/Dark Vibrant/4 Quaternary — stepper separator in dark"
+    },
     "black-850": {
       "$value": "rgb(0 0 0 / 0.85)"
     },

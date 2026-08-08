@@ -1,0 +1,111 @@
+@layer macvue.components {
+  /* The base rule assigns the regular set as a safety net for invalid size
+     values; the size modifiers below override it. `--_macvue-*` bridge
+     variables are INTERNAL — the public override surface is the per-size
+     `--macvue-stepper-*-<size>` tokens they point at. */
+  .macvue-stepper {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    width: var(--macvue-stepper-width-regular);
+    height: var(--macvue-stepper-height-regular);
+    border-radius: var(--macvue-stepper-radius-regular);
+    overflow: hidden;
+    /* macOS uses the arrow cursor on controls, not the hand. */
+    cursor: default;
+    user-select: none;
+    --_macvue-stepper-separator-width: var(--macvue-stepper-separator-width-regular);
+    --_macvue-stepper-chevron-width: var(--macvue-stepper-chevron-width-regular);
+    --_macvue-stepper-chevron-height: var(--macvue-stepper-chevron-height-regular);
+  }
+
+  .macvue-stepper--extra-large {
+    width: var(--macvue-stepper-width-extra-large);
+    height: var(--macvue-stepper-height-extra-large);
+    border-radius: var(--macvue-stepper-radius-extra-large);
+    --_macvue-stepper-separator-width: var(--macvue-stepper-separator-width-extra-large);
+    --_macvue-stepper-chevron-width: var(--macvue-stepper-chevron-width-extra-large);
+    --_macvue-stepper-chevron-height: var(--macvue-stepper-chevron-height-extra-large);
+  }
+
+  .macvue-stepper--large {
+    width: var(--macvue-stepper-width-large);
+    height: var(--macvue-stepper-height-large);
+    border-radius: var(--macvue-stepper-radius-large);
+    --_macvue-stepper-separator-width: var(--macvue-stepper-separator-width-large);
+    --_macvue-stepper-chevron-width: var(--macvue-stepper-chevron-width-large);
+    --_macvue-stepper-chevron-height: var(--macvue-stepper-chevron-height-large);
+  }
+
+  .macvue-stepper--regular {
+    width: var(--macvue-stepper-width-regular);
+    height: var(--macvue-stepper-height-regular);
+    border-radius: var(--macvue-stepper-radius-regular);
+    --_macvue-stepper-separator-width: var(--macvue-stepper-separator-width-regular);
+    --_macvue-stepper-chevron-width: var(--macvue-stepper-chevron-width-regular);
+    --_macvue-stepper-chevron-height: var(--macvue-stepper-chevron-height-regular);
+  }
+
+  .macvue-stepper--small {
+    width: var(--macvue-stepper-width-small);
+    height: var(--macvue-stepper-height-small);
+    border-radius: var(--macvue-stepper-radius-small);
+    --_macvue-stepper-separator-width: var(--macvue-stepper-separator-width-small);
+    --_macvue-stepper-chevron-width: var(--macvue-stepper-chevron-width-small);
+    --_macvue-stepper-chevron-height: var(--macvue-stepper-chevron-height-small);
+  }
+
+  .macvue-stepper--mini {
+    width: var(--macvue-stepper-width-mini);
+    height: var(--macvue-stepper-height-mini);
+    border-radius: var(--macvue-stepper-radius-mini);
+    --_macvue-stepper-separator-width: var(--macvue-stepper-separator-width-mini);
+    --_macvue-stepper-chevron-width: var(--macvue-stepper-chevron-width-mini);
+    --_macvue-stepper-chevron-height: var(--macvue-stepper-chevron-height-mini);
+  }
+
+  .macvue-stepper-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: var(--macvue-stepper-bg);
+    color: var(--macvue-stepper-chevron);
+    cursor: default;
+  }
+
+  /* Only the pressed half highlights, as in the kit. */
+  .macvue-stepper-button:active:not(:disabled) {
+    background: var(--macvue-stepper-bg-pressed);
+  }
+
+  .macvue-stepper-button:disabled {
+    background: var(--macvue-stepper-bg-disabled);
+    color: var(--macvue-stepper-chevron-disabled);
+  }
+
+  .macvue-stepper-button svg {
+    width: var(--_macvue-stepper-chevron-width);
+    height: var(--_macvue-stepper-chevron-height);
+  }
+
+  .macvue-stepper-separator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--_macvue-stepper-separator-width);
+    height: var(--macvue-stepper-separator-height);
+    border-radius: var(--macvue-ref-radius-full);
+    background: var(--macvue-stepper-separator);
+    pointer-events: none;
+  }
+
+  .macvue-stepper:focus-visible {
+    outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+}

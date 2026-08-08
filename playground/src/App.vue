@@ -6,6 +6,8 @@ import {
   MacRadioGroup,
   MacSearchField,
   MacSecureField,
+  MacSlider,
+  MacStepper,
   MacSwitch,
   MacTextField,
 } from 'macvue'
@@ -103,6 +105,8 @@ const switchOn = ref(true)
 const fieldValue = ref('')
 const fieldPassword = ref('')
 const fieldQuery = ref('')
+const sliderValue = ref(50)
+const stepperValue = ref(5)
 
 function textStyleCss(name: string) {
   return {
@@ -335,6 +339,58 @@ function textStyleCss(name: string) {
         <MacTextField
           disabled
           model-value="Disabled value"
+          aria-label="Disabled"
+        />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Slider
+      </h2>
+      <div class="control-column">
+        <MacSlider
+          v-model="sliderValue"
+          aria-label="Value"
+          style="width: 240px"
+        />
+        <MacSlider
+          v-model="sliderValue"
+          :ticks="5"
+          snap-to-ticks
+          aria-label="Snapping value"
+          style="width: 240px"
+        />
+        <MacSlider
+          disabled
+          :default-value="60"
+          aria-label="Disabled"
+          style="width: 240px"
+        />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        Stepper ({{ stepperValue }})
+      </h2>
+      <div class="control-column">
+        <MacStepper
+          v-model="stepperValue"
+          :min="0"
+          :max="10"
+          aria-label="Value"
+        />
+        <MacStepper
+          v-model="stepperValue"
+          :min="0"
+          :max="10"
+          wraps
+          aria-label="Wrapping value"
+        />
+        <MacStepper
+          disabled
+          :default-value="5"
           aria-label="Disabled"
         />
       </div>

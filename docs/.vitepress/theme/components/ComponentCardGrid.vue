@@ -6,6 +6,8 @@ import {
   MacRadioGroup,
   MacSearchField,
   MacSecureField,
+  MacSlider,
+  MacStepper,
   MacSwitch,
   MacTextField,
 } from 'macvue'
@@ -16,6 +18,8 @@ const checked = ref(true)
 const sortBy = ref('name')
 const enabled = ref(true)
 const query = ref('')
+const volume = ref(50)
+const copies = ref(1)
 const serverName = ref('')
 const passphrase = ref('')
 </script>
@@ -67,6 +71,27 @@ const passphrase = ref('')
       <MacSwitch v-model="enabled">
         Wi-Fi
       </MacSwitch>
+    </ComponentCard>
+    <ComponentCard
+      title="Slider"
+      href="/components/slider"
+    >
+      <MacSlider
+        v-model="volume"
+        aria-label="Volume"
+        style="width: 180px"
+      />
+    </ComponentCard>
+    <ComponentCard
+      title="Stepper"
+      href="/components/stepper"
+    >
+      <MacStepper
+        v-model="copies"
+        :min="1"
+        :max="99"
+        aria-label="Copies"
+      />
     </ComponentCard>
     <ComponentCard
       title="Text Field"

@@ -8,6 +8,8 @@ export {
   type MacRadioGroupProps,
   type MacRadioProps,
 } from './components/radio-group'
+export { MacSlider, type MacSliderProps } from './components/slider'
+export { MacStepper, type MacStepperProps } from './components/stepper'
 export { MacSwitch, type MacSwitchProps } from './components/switch'
 export {
   MacSearchField,

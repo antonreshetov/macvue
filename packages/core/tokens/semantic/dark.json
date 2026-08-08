@@ -114,6 +114,10 @@
     "separator": {
       "$value": "{ref.white-100}"
     },
+    "separator-vibrant": {
+      "$value": "{ref.gray-dark-quaternary}",
+      "$description": "Kit-27 stepper separator: Dark Vibrant 4 Quaternary"
+    },
     "border-control": {
       "$value": "{ref.white-40}",
       "$description": "Kit-27 dark input-field border: rgba(255,255,255,0.04), 1px outside"

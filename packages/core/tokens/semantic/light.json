@@ -112,6 +112,10 @@
     "separator": {
       "$value": "{ref.black-100}"
     },
+    "separator-vibrant": {
+      "$value": "{ref.gray-tertiary}",
+      "$description": "Solid separator on vibrant surfaces (kit-26 stepper: Light Vibrant 3 Tertiary; kit 27 shows 4 Quaternary #D9D9D9 — kit 26 wins)"
+    },
     "border-control": {
       "$value": "{ref.black-80}",
       "$description": "Kit input-field border: rgba(0,0,0,0.08), 1px outside"

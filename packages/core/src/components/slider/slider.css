@@ -1,0 +1,169 @@
+@layer macvue.components {
+  /* The base rule assigns the regular set as a safety net for invalid size
+     values; the size modifiers below override it. `--_macvue-*` bridge
+     variables are INTERNAL — the public override surface is the per-size
+     `--macvue-slider-*-<size>` tokens they point at. */
+  .macvue-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    touch-action: none;
+    /* macOS uses the arrow cursor on controls, not the hand. */
+    cursor: default;
+    user-select: none;
+    --_macvue-slider-height: var(--macvue-slider-height-regular);
+    --_macvue-slider-track-size: var(--macvue-slider-track-size-regular);
+    --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-regular);
+    --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-regular);
+    --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-regular);
+  }
+
+  .macvue-slider--extra-large {
+    --_macvue-slider-height: var(--macvue-slider-height-extra-large);
+    --_macvue-slider-track-size: var(--macvue-slider-track-size-extra-large);
+    --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-extra-large);
+    --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-extra-large);
+    --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-extra-large);
+  }
+
+  .macvue-slider--large {
+    --_macvue-slider-height: var(--macvue-slider-height-large);
+    --_macvue-slider-track-size: var(--macvue-slider-track-size-large);
+    --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-large);
+    --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-large);
+    --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-large);
+  }
+
+  .macvue-slider--regular {
+    --_macvue-slider-height: var(--macvue-slider-height-regular);
+    --_macvue-slider-track-size: var(--macvue-slider-track-size-regular);
+    --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-regular);
+    --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-regular);
+    --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-regular);
+  }
+
+  .macvue-slider--small {
+    --_macvue-slider-height: var(--macvue-slider-height-small);
+    --_macvue-slider-track-size: var(--macvue-slider-track-size-small);
+    --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-small);
+    --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-small);
+    --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-small);
+  }
+
+  .macvue-slider--mini {
+    --_macvue-slider-height: var(--macvue-slider-height-mini);
+    --_macvue-slider-track-size: var(--macvue-slider-track-size-mini);
+    --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-mini);
+    --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-mini);
+    --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-mini);
+  }
+
+  .macvue-slider[data-orientation='horizontal'] {
+    width: 100%;
+    height: var(--_macvue-slider-height);
+  }
+
+  /* Vertical geometry is unverified — the kit has no vertical masters. */
+  .macvue-slider[data-orientation='vertical'] {
+    flex-direction: column;
+    width: var(--_macvue-slider-height);
+    height: 100%;
+  }
+
+  .macvue-slider-track {
+    position: relative;
+    flex-grow: 1;
+    background: var(--macvue-slider-track);
+    border-radius: var(--macvue-ref-radius-full);
+    /* The kit draws a hairline ring around the unfilled track. */
+    box-shadow: var(--macvue-slider-track-shadow);
+  }
+
+  .macvue-slider[data-orientation='horizontal'] .macvue-slider-track {
+    height: var(--_macvue-slider-track-size);
+  }
+
+  .macvue-slider[data-orientation='vertical'] .macvue-slider-track {
+    width: var(--_macvue-slider-track-size);
+  }
+
+  .macvue-slider-range {
+    position: absolute;
+    background: var(--macvue-slider-range);
+    border-radius: inherit;
+  }
+
+  .macvue-slider[data-orientation='horizontal'] .macvue-slider-range {
+    height: 100%;
+  }
+
+  .macvue-slider[data-orientation='vertical'] .macvue-slider-range {
+    width: 100%;
+  }
+
+  /* The Tahoe knob is a lozenge, wider than tall, perpendicular in
+     vertical orientation. */
+  .macvue-slider-thumb {
+    display: block;
+    width: var(--_macvue-slider-thumb-width);
+    height: var(--_macvue-slider-thumb-height);
+    border-radius: var(--_macvue-slider-thumb-radius);
+    background: var(--macvue-slider-thumb-bg);
+    box-shadow: var(--macvue-slider-thumb-shadow);
+  }
+
+  .macvue-slider[data-orientation='vertical'] .macvue-slider-thumb {
+    width: var(--_macvue-slider-thumb-height);
+    height: var(--_macvue-slider-thumb-width);
+  }
+
+  .macvue-slider-ticks {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  /* Insets align the first/last tick with the contained thumb centers. */
+  .macvue-slider[data-orientation='horizontal'] .macvue-slider-ticks {
+    inset-inline: calc(
+      var(--_macvue-slider-thumb-width) / 2 - var(--macvue-slider-tick-size) / 2
+    );
+    top: calc(
+      50% + var(--_macvue-slider-track-size) / 2 + var(--macvue-slider-tick-gap)
+    );
+  }
+
+  .macvue-slider[data-orientation='vertical'] .macvue-slider-ticks {
+    flex-direction: column;
+    inset-block: calc(
+      var(--_macvue-slider-thumb-width) / 2 - var(--macvue-slider-tick-size) / 2
+    );
+    left: calc(
+      50% + var(--_macvue-slider-track-size) / 2 + var(--macvue-slider-tick-gap)
+    );
+  }
+
+  .macvue-slider-tick {
+    width: var(--macvue-slider-tick-size);
+    height: var(--macvue-slider-tick-size);
+    border-radius: 50%;
+    background: var(--macvue-slider-tick);
+  }
+
+  .macvue-slider[data-disabled] .macvue-slider-track {
+    background: var(--macvue-slider-track-disabled);
+  }
+
+  .macvue-slider[data-disabled] .macvue-slider-range {
+    background: var(--macvue-slider-range-disabled);
+  }
+
+  .macvue-slider[data-disabled] .macvue-slider-tick {
+    background: var(--macvue-slider-tick-disabled);
+  }
+
+  .macvue-slider-thumb:focus-visible {
+    outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+}

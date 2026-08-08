@@ -4,6 +4,8 @@ import {
   MacCheckbox,
   MacRadio,
   MacRadioGroup,
+  MacSlider,
+  MacStepper,
   MacSwitch,
 } from 'macvue'
 import { ref } from 'vue'
@@ -19,6 +21,8 @@ const wifi = ref(true)
 const bluetooth = ref(true)
 const showExtensions = ref(true)
 const showHidden = ref(false)
+const brightness = ref(70)
+const autoHideDelay = ref(5)
 </script>
 
 <template>
@@ -59,6 +63,28 @@ const showHidden = ref(false)
           <MacSwitch
             v-model="bluetooth"
             aria-label="Bluetooth"
+          />
+        </div>
+      </div>
+
+      <div class="mv-scene-settings-group">
+        <div class="mv-scene-settings-row">
+          <span class="mv-scene-settings-label">Brightness</span>
+          <MacSlider
+            v-model="brightness"
+            size="small"
+            aria-label="Brightness"
+            style="width: 160px"
+          />
+        </div>
+        <div class="mv-scene-settings-row">
+          <span class="mv-scene-settings-label">Hide toolbar after {{ autoHideDelay }} s</span>
+          <MacStepper
+            v-model="autoHideDelay"
+            :min="1"
+            :max="30"
+            size="small"
+            aria-label="Hide toolbar delay"
           />
         </div>
       </div>

@@ -52,6 +52,8 @@ export default defineConfig({
           { text: 'Radio Group', link: '/components/radio-group' },
           { text: 'Search Field', link: '/components/search-field' },
           { text: 'Secure Field', link: '/components/secure-field' },
+          { text: 'Slider', link: '/components/slider' },
+          { text: 'Stepper', link: '/components/stepper' },
           { text: 'Switch', link: '/components/switch' },
           { text: 'Text Field', link: '/components/text-field' },
         ],
