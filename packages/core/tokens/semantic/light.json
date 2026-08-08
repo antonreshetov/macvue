@@ -24,6 +24,10 @@
       "$value": "#FFFFFF",
       "$description": "Mirrors NSColor.controlBackgroundColor — background of content areas (lists, tables). Not the button bezel — use `control` for bezels"
     },
+    "control-bg-disabled": {
+      "$value": "{ref.white-500}",
+      "$description": "Kit disabled input-field fill: #FFF at 0.5"
+    },
     "control": {
       "$value": "{ref.black-50}",
       "$description": "Bezel fill of push buttons and toggles, mirrors NSColor.controlColor"
@@ -76,7 +80,12 @@
       "$description": "Accent 50% for controls that are additionally dimmed by disabled-opacity 0.5 — effective 25% as in the kit"
     },
     "focus-ring": {
-      "$value": "color-mix(in srgb, var(--macvue-accent), transparent 50%)"
+      "$value": "color-mix(in srgb, var(--macvue-accent), transparent 75%)",
+      "$description": "Kit focused-field ring: accent 25%"
+    },
+    "focus-ring-border": {
+      "$value": "color-mix(in srgb, var(--macvue-accent), transparent 85%)",
+      "$description": "Kit focused-field hairline: accent 15%, 1px outside"
     },
     "label-on-accent-disabled": {
       "$value": "{semantic.label-on-accent}",
@@ -104,8 +113,8 @@
       "$value": "{ref.black-100}"
     },
     "border-control": {
-      "$value": "{ref.black-100}",
-      "$description": "unverified. Tahoe controls are borderless; kept for non-control strokes"
+      "$value": "{ref.black-80}",
+      "$description": "Kit input-field border: rgba(0,0,0,0.08), 1px outside"
     },
     "material-sidebar-bg": {
       "$value": "rgb(255 255 255 / 0.7)"

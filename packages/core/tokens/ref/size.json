@@ -28,6 +28,14 @@
       "$type": "dimension",
       "$value": "6.5px"
     },
+    "radius-7": {
+      "$type": "dimension",
+      "$value": "7px"
+    },
+    "radius-9": {
+      "$type": "dimension",
+      "$value": "9px"
+    },
     "radius-8": {
       "$type": "dimension",
       "$value": "8px"

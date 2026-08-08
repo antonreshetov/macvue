@@ -23,7 +23,8 @@
   --macvue-accent-pressed-soft: color-mix(in srgb, var(--macvue-accent), black 8%);
   --macvue-accent-disabled: color-mix(in srgb, var(--macvue-accent) 25%, transparent);
   --macvue-accent-disabled-strong: color-mix(in srgb, var(--macvue-accent) 50%, transparent);
-  --macvue-focus-ring: color-mix(in srgb, var(--macvue-accent), transparent 50%);
+  --macvue-focus-ring: color-mix(in srgb, var(--macvue-accent), transparent 75%);
+  --macvue-focus-ring-border: color-mix(in srgb, var(--macvue-accent), transparent 85%);
   --macvue-selection-bg: var(--macvue-accent);
   --macvue-button-bg-prominent: var(--macvue-accent);
   --macvue-button-bg-prominent-pressed: var(--macvue-accent-pressed-soft);
@@ -50,7 +51,8 @@
   --macvue-accent-pressed-soft: color-mix(in srgb, var(--macvue-accent), white 10%);
   --macvue-accent-disabled: color-mix(in srgb, var(--macvue-accent) 40%, transparent);
   --macvue-accent-disabled-strong: color-mix(in srgb, var(--macvue-accent) 90%, transparent);
-  --macvue-focus-ring: color-mix(in srgb, var(--macvue-accent), transparent 50%);
+  --macvue-focus-ring: color-mix(in srgb, var(--macvue-accent), transparent 75%);
+  --macvue-focus-ring-border: color-mix(in srgb, var(--macvue-accent), transparent 85%);
   --macvue-selection-bg: var(--macvue-accent);
   --macvue-button-bg-prominent: var(--macvue-accent);
   --macvue-button-bg-prominent-pressed: var(--macvue-accent-pressed-soft);

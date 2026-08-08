@@ -22,7 +22,11 @@
     },
     "control-bg": {
       "$value": "#1E1E1E",
-      "$description": "unverified. Mirrors NSColor.controlBackgroundColor — background of content areas (lists, tables). Not the button bezel — use `control` for bezels"
+      "$description": "Kit-27 dark input-field fill. Mirrors NSColor.controlBackgroundColor — background of content areas (lists, tables). Not the button bezel — use `control` for bezels"
+    },
+    "control-bg-disabled": {
+      "$value": "rgb(30 30 30 / 0.5)",
+      "$description": "Kit-27 dark disabled input-field fill: #1E1E1E at 0.5"
     },
     "control": {
       "$value": "{ref.white-100}",
@@ -78,7 +82,12 @@
       "$description": "Kit-27 dark disabled checked toggle sits at opacity 0.45; doubled to compensate the disabled-opacity 0.5 row dim"
     },
     "focus-ring": {
-      "$value": "color-mix(in srgb, var(--macvue-accent), transparent 50%)"
+      "$value": "color-mix(in srgb, var(--macvue-accent), transparent 75%)",
+      "$description": "unverified. Kit 27 has no dark focus masters; light formula kept"
+    },
+    "focus-ring-border": {
+      "$value": "color-mix(in srgb, var(--macvue-accent), transparent 85%)",
+      "$description": "unverified. Kit 27 has no dark focus masters; light formula kept"
     },
     "label-on-accent-disabled": {
       "$value": "{ref.white-500}",
@@ -106,8 +115,8 @@
       "$value": "{ref.white-100}"
     },
     "border-control": {
-      "$value": "{ref.white-100}",
-      "$description": "unverified. Tahoe controls are borderless; kept for non-control strokes"
+      "$value": "{ref.white-40}",
+      "$description": "Kit-27 dark input-field border: rgba(255,255,255,0.04), 1px outside"
     },
     "material-sidebar-bg": {
       "$value": "rgb(30 30 30 / 0.7)"

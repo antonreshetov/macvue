@@ -136,6 +136,50 @@ describe('tokens.gen.css', () => {
     expect(lightCss).toContain('--macvue-switch-thumb-height-mini: 13px')
   })
 
+  it('emits per-size field tokens for all five control sizes', () => {
+    const sizes = ['extra-large', 'large', 'regular', 'small', 'mini']
+    const prefixes = [
+      '--macvue-field-height-',
+      '--macvue-field-radius-',
+      '--macvue-field-padding-x-',
+      '--macvue-field-font-size-',
+      '--macvue-field-search-icon-width-',
+      '--macvue-field-search-icon-height-',
+      '--macvue-field-clear-size-',
+    ]
+    for (const prefix of prefixes) {
+      for (const size of sizes) expect(lightCss).toContain(`${prefix}${size}:`)
+    }
+    // Spot-check kit values.
+    expect(lightCss).toContain('--macvue-field-height-extra-large: 36px')
+    expect(lightCss).toContain(
+      '--macvue-field-radius-mini: var(--macvue-ref-radius-4)',
+    )
+    expect(lightCss).toContain(
+      '--macvue-field-search-radius: var(--macvue-ref-radius-full)',
+    )
+  })
+
+  it('re-declares themed field tokens in both theme islands', () => {
+    const lightBlock = lightCss.match(
+      /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
+    )?.[1]
+    const darkBlock = darkCss.match(
+      /\[data-macvue-appearance='dark'\] \{([^}]*)\}/,
+    )?.[1]
+    for (const block of [lightBlock, darkBlock]) {
+      expect(block).toBeDefined()
+      expect(block).toContain('--macvue-field-bg: var(--macvue-control-bg)')
+      expect(block).toContain(
+        '--macvue-field-bg-disabled: var(--macvue-control-bg-disabled)',
+      )
+      expect(block).toContain(
+        '--macvue-field-border: var(--macvue-border-control)',
+      )
+      expect(block).toContain('--macvue-focus-ring-border:')
+    }
+  })
+
   it('re-declares the 2x disabled-compensation tokens in both theme islands', () => {
     const lightBlock = lightCss.match(
       /\[data-macvue-appearance='light'\] \{([^}]*)\}/,
