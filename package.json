@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "pnpm --filter macvue build",
-    "play": "pnpm --filter @macvue/playground dev",
+    "play": "pnpm --filter macvue build:tokens && pnpm --filter @macvue/playground dev",
     "docs:dev": "pnpm --filter @macvue/docs dev",
     "docs:build": "pnpm --filter @macvue/docs build",
     "test": "vitest run",
