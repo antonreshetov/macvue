@@ -122,6 +122,24 @@ describe('macSlider', () => {
     ).toBe('vertical')
   })
 
+  it('submits a flat scalar name through native form data', async () => {
+    const { container } = render({
+      render() {
+        return h('form', [
+          h(MacSlider, {
+            'aria-label': 'Volume',
+            'modelValue': 50,
+            'name': 'volume',
+          }),
+        ])
+      },
+    })
+    await nextTick()
+    const data = new FormData(container.querySelector('form')!)
+    expect(data.get('volume')).toBe('50')
+    expect(data.get('volume[0]')).toBeNull()
+  })
+
   it('renders a modifier class for every control size', async () => {
     const sizes = ['extra-large', 'large', 'regular', 'small', 'mini'] as const
     for (const size of sizes) {

@@ -43,12 +43,14 @@ const classes = computed(() => [
 // listeners) belongs on the actual control, not on a generic <label>.
 const attrs = useAttrs()
 const labelAttrs = computed(() => {
-  // Only keys present in $attrs: an always-present `style` key would
-  // SSR-render as an empty style="" attribute.
+  // Property reads, not `in`: the attrs proxy has no `has` trap, so an
+  // `in` check is not tracked and the computed would cache the first
+  // (possibly empty) result forever. Undefined keys are dropped so an
+  // absent style does not SSR-render as an empty style="" attribute.
   const result: Record<string, unknown> = {}
-  if ('class' in attrs)
+  if (attrs.class !== undefined)
     result.class = attrs.class
-  if ('style' in attrs)
+  if (attrs.style !== undefined)
     result.style = attrs.style
   return result
 })

@@ -110,6 +110,23 @@ describe('macStepper', () => {
     expect(emitted('update:modelValue')).toEqual([[6], [4], [0], [20]])
   })
 
+  it('submits a flat scalar name through native form data', () => {
+    const { container } = render({
+      render() {
+        return h('form', [
+          h(MacStepper, {
+            'aria-label': 'Copies',
+            'modelValue': 7,
+            'name': 'copies',
+          }),
+        ])
+      },
+    })
+    const data = new FormData(container.querySelector('form')!)
+    expect(data.get('copies')).toBe('7')
+    expect(data.get('copies[0]')).toBeNull()
+  })
+
   it('renders a hidden input when name is set', () => {
     const { container } = renderStepper({ modelValue: 7, name: 'copies' })
     const input = container.querySelector(
@@ -136,13 +153,37 @@ describe('macStepper', () => {
       disabled: true,
     })
     const root = getByRole('spinbutton')
-    expect(root.getAttribute('tabindex')).toBe('-1')
+    expect(root.hasAttribute('tabindex')).toBe(false)
     expect(root.getAttribute('aria-disabled')).toBe('true')
     const { up } = buttons(container)
     expect(up.disabled).toBe(true)
     await fireEvent.pointerDown(up, { button: 0 })
     await fireEvent.pointerUp(up)
     expect(emitted('update:modelValue')).toBeUndefined()
+  })
+
+  it('does not focus a disabled stepper through the exposed focus()', async () => {
+    interface Exposed {
+      focus: () => void
+    }
+    let exposed: Exposed | undefined
+    const { getByRole } = render({
+      setup() {
+        const stepper = ref<Exposed>()
+        onMounted(() => {
+          exposed = stepper.value
+        })
+        return () =>
+          h(MacStepper, {
+            'ref': stepper,
+            'aria-label': 'Copies',
+            'disabled': true,
+          })
+      },
+    })
+    await nextTick()
+    exposed!.focus()
+    expect(document.activeElement).not.toBe(getByRole('spinbutton'))
   })
 
   it('exposes focus(), blur() and el pointing at the spinbutton', async () => {
@@ -260,6 +301,49 @@ describe('macStepper', () => {
       await fireEvent.pointerLeave(up)
       vi.advanceTimersByTime(2000)
       expect(emitted('update:modelValue')).toHaveLength(1)
+    })
+
+    it('cancels the repeat on pointercancel', async () => {
+      const { container, emitted } = renderStepper({ defaultValue: 0 })
+      const { up } = buttons(container)
+
+      await fireEvent.pointerDown(up, { button: 0 })
+      await fireEvent.pointerCancel(up)
+      vi.advanceTimersByTime(2000)
+      expect(emitted('update:modelValue')).toHaveLength(1)
+    })
+
+    it('cancels the repeat and removes the listener on window blur', async () => {
+      const { container, emitted } = renderStepper({ defaultValue: 0 })
+      const { up } = buttons(container)
+
+      await fireEvent.pointerDown(up, { button: 0 })
+      window.dispatchEvent(new Event('blur'))
+      vi.advanceTimersByTime(2000)
+      expect(emitted('update:modelValue')).toHaveLength(1)
+
+      // The blur listener is removed with the repeat: a later blur must
+      // not interfere with a fresh press.
+      await fireEvent.pointerUp(up)
+      await fireEvent.pointerDown(up, { button: 0 })
+      expect(emitted('update:modelValue')).toHaveLength(2)
+      window.dispatchEvent(new Event('blur'))
+      await fireEvent.pointerDown(up, { button: 0 })
+      vi.advanceTimersByTime(500)
+      expect((emitted('update:modelValue') ?? []).length).toBeGreaterThan(3)
+    })
+
+    it('stops a running repeat when the component unmounts mid-press', async () => {
+      const { container, emitted, unmount } = renderStepper({
+        defaultValue: 0,
+      })
+      const { up } = buttons(container)
+
+      await fireEvent.pointerDown(up, { button: 0 })
+      expect(emitted('update:modelValue')).toHaveLength(1)
+      unmount()
+      // onBeforeUnmount cancels the pending repeat timer.
+      expect(vi.getTimerCount()).toBe(0)
     })
   })
 

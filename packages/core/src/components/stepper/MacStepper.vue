@@ -60,13 +60,21 @@ function stepBy(direction: 1 | -1): boolean {
 const repeatUp = useAutoRepeat(() => stepBy(1))
 const repeatDown = useAutoRepeat(() => stepBy(-1))
 
+// pointerdown only starts the repeat: calling preventDefault here would
+// cancel the mouse-compatibility stream in Blink/WebKit and with it the
+// :active state (the pressed fill). Focus suppression lives on mousedown
+// instead — its default action is the focus/selection change.
 function onPointerDown(event: PointerEvent, repeat: { start: () => void }) {
   if (props.disabled || event.button !== 0)
     return
-  // The buttons are presentation-only; focus stays on the spinbutton root.
-  event.preventDefault()
-  el.value?.focus()
   repeat.start()
+}
+
+// The buttons are presentation-only; focus stays on the spinbutton root
+// (the .prevent modifier stops the button from stealing it).
+function focusRoot() {
+  if (!props.disabled)
+    el.value?.focus()
 }
 
 function onKeydown(event: KeyboardEvent) {
@@ -92,7 +100,7 @@ const classes = computed(() => [
 
 defineExpose({
   el,
-  focus: () => el.value?.focus(),
+  focus: focusRoot,
   blur: () => el.value?.blur(),
 })
 </script>
@@ -104,7 +112,7 @@ defineExpose({
   <div
     ref="el"
     role="spinbutton"
-    :tabindex="disabled ? -1 : 0"
+    :tabindex="disabled ? undefined : 0"
     :aria-valuenow="current"
     :aria-valuemin="min"
     :aria-valuemax="max"
@@ -119,6 +127,7 @@ defineExpose({
       aria-hidden="true"
       :disabled="disabled"
       @pointerdown="onPointerDown($event, repeatUp)"
+      @mousedown.prevent="focusRoot"
       @pointerup="repeatUp.cancel()"
       @pointercancel="repeatUp.cancel()"
       @pointerleave="repeatUp.cancel()"
@@ -144,6 +153,7 @@ defineExpose({
       aria-hidden="true"
       :disabled="disabled"
       @pointerdown="onPointerDown($event, repeatDown)"
+      @mousedown.prevent="focusRoot"
       @pointerup="repeatDown.cancel()"
       @pointercancel="repeatDown.cancel()"
       @pointerleave="repeatDown.cancel()"

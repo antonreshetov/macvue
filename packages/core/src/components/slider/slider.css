@@ -102,7 +102,10 @@
   }
 
   /* The Tahoe knob is a lozenge, wider than tall, perpendicular in
-     vertical orientation. */
+     vertical orientation. Known deviation: the kit's ticked mini/small
+     knobs are TALLER vertical pills (8×16 / 10×18) that clear the tick
+     row; we render the regular knob for every size, so the knob passes
+     over the ticks (which the kit also does for regular and up). */
   .macvue-slider-thumb {
     display: block;
     width: var(--_macvue-slider-thumb-width);

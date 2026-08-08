@@ -111,7 +111,6 @@ defineExpose({
     :step="effectiveStep"
     :orientation="orientation"
     :disabled="disabled"
-    :name="name"
     thumb-alignment="contain"
     :class="classes"
     v-bind="rootAttrs"
@@ -137,5 +136,13 @@ defineExpose({
       class="macvue-slider-thumb"
       v-bind="thumbAttrs"
     />
+    <!-- Own hidden input: Reka's VisuallyHiddenInput would submit the
+         array form (name[0]) — NSSlider is a single scalar. -->
+    <input
+      v-if="name"
+      type="hidden"
+      :name="name"
+      :value="current"
+    >
   </SliderRoot>
 </template>

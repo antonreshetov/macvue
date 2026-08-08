@@ -60,6 +60,10 @@
       "$value": "#262626",
       "$description": "Kit-27 Labels/Dark Vibrant/4 Quaternary — stepper separator in dark"
     },
+    "gray-knob-dark": {
+      "$value": "#DEDEDE",
+      "$description": "Kit-27 dark slider-knob fill (solid)"
+    },
     "black-850": {
       "$value": "rgb(0 0 0 / 0.85)"
     },

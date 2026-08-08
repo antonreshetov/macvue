@@ -184,6 +184,37 @@ describe('tokens.gen.css', () => {
     }
   })
 
+  it('emits per-size slider and stepper tokens with kit values', () => {
+    const sizes = ['extra-large', 'large', 'regular', 'small', 'mini']
+    const prefixes = [
+      '--macvue-slider-height-',
+      '--macvue-slider-track-size-',
+      '--macvue-slider-thumb-width-',
+      '--macvue-slider-thumb-height-',
+      '--macvue-slider-thumb-radius-',
+      '--macvue-stepper-width-',
+      '--macvue-stepper-height-',
+      '--macvue-stepper-radius-',
+      '--macvue-stepper-separator-width-',
+      '--macvue-stepper-chevron-width-',
+      '--macvue-stepper-chevron-height-',
+    ]
+    for (const prefix of prefixes) {
+      for (const size of sizes) expect(lightCss).toContain(`${prefix}${size}:`)
+    }
+    // Spot-check kit values.
+    expect(lightCss).toContain('--macvue-slider-thumb-width-regular: 20px')
+    expect(lightCss).toContain('--macvue-slider-track-size-mini: 4px')
+    expect(lightCss).toContain(
+      '--macvue-slider-thumb-radius-large: var(--macvue-ref-radius-10)',
+    )
+    expect(lightCss).toContain('--macvue-stepper-width-extra-large: 30px')
+    expect(lightCss).toContain(
+      '--macvue-stepper-separator-width-regular: 14px',
+    )
+    expect(lightCss).toContain('--macvue-stepper-chevron-width-mini: 6.8px')
+  })
+
   it('re-declares the 2x disabled-compensation tokens in both theme islands', () => {
     const lightBlock = lightCss.match(
       /\[data-macvue-appearance='light'\] \{([^}]*)\}/,

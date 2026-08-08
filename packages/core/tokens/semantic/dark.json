@@ -18,7 +18,8 @@
       "$description": "Mirrors NSColor.disabledControlTextColor; kit-27 dark disabled labels use Labels/Dark/3 Tertiary"
     },
     "window-bg": {
-      "$value": "#323232"
+      "$value": "#1E1E1E",
+      "$description": "Live-system eyedrop of the dark System Settings pane; matches the kit-27 Window Backgrounds/Dark swatch and the kit-27 field idle fill. User feedback: prior #323232 read too light"
     },
     "control-bg": {
       "$value": "#1E1E1E",
@@ -51,8 +52,8 @@
       "$description": "Approximation: kit-27 dark clicked track is a flat #FFF 19%"
     },
     "content-bg": {
-      "$value": "#1E1E1E",
-      "$description": "unverified"
+      "$value": "#272727",
+      "$description": "Live-system eyedrop: content card/group fill on dark panes"
     },
     "under-page-bg": {
       "$value": "#282828",
@@ -186,6 +187,11 @@
       "$type": "color",
       "$value": "{ref.white-850}",
       "$description": "Kit-27 dark knob: white 0.85"
+    },
+    "slider-knob": {
+      "$type": "color",
+      "$value": "{ref.gray-knob-dark}",
+      "$description": "Kit-27 dark slider knob: solid #DEDEDE"
     }
   }
 }

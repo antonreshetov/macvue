@@ -18,7 +18,8 @@
       "$description": "Mirrors NSColor.disabledControlTextColor"
     },
     "window-bg": {
-      "$value": "#F6F6F6"
+      "$value": "#F6F6F6",
+      "$description": "System Settings panel gray; kit-27 swatch Window Backgrounds/Light Background is #FFFFFF (content-area white) — panel gray kept for control canvases"
     },
     "control-bg": {
       "$value": "#FFFFFF",
@@ -184,6 +185,11 @@
       "$type": "color",
       "$value": "{ref.white-870}",
       "$description": "Live-system eyedrop #DFEBFF over accent ≈ white 0.87; kit-26 stack flatten confirmed, kit-27 'solid white' rejected"
+    },
+    "slider-knob": {
+      "$type": "color",
+      "$value": "{ref.white}",
+      "$description": "Live-system eyedrop: solid white, unlike the translucent switch knob"
     }
   }
 }
