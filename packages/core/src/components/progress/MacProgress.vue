@@ -58,6 +58,9 @@ const fillStyle = computed(() =>
       v-else
       class="macvue-progress-comet"
       aria-hidden="true"
-    />
+    >
+      <span class="macvue-progress-comet-forward" />
+      <span class="macvue-progress-comet-backward" />
+    </div>
   </ProgressRoot>
 </template>

@@ -19,11 +19,6 @@
     "fill": {
       "$type": "color",
       "$value": "{semantic.accent}"
-    },
-    "indeterminate-width": {
-      "$type": "dimension",
-      "$value": "34%",
-      "$description": "Kit comet: 48/140 of the track width"
     }
   }
 }

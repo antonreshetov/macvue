@@ -180,8 +180,8 @@
     },
     "progress-indeterminate-duration": {
       "$type": "duration",
-      "$value": "2000ms",
-      "$description": "unverified. One full ping-pong of the indeterminate comet; excluded from the global reduced-motion zeroing (the bar gets a static busy look instead)"
+      "$value": "1900ms",
+      "$description": "Full indeterminate cycle (grow, catch-up, dot pause, mirrored) — live capture 30fps, 2026-08-08. Excluded from the global reduced-motion zeroing (the bar gets a static busy look instead)"
     },
     "spinner-duration": {
       "$type": "duration",

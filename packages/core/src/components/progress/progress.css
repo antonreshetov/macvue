@@ -26,58 +26,163 @@
     transition: width var(--macvue-duration-fast) var(--macvue-easing-default);
   }
 
-  /* Indeterminate comet: a solid head with a gradient tail, ping-ponging
-     across the track (mirrored on the way back). Runs on its own duration
-     token, deliberately outside the global reduced-motion zeroing. */
+  /* Indeterminate, calibrated against a live capture (details in the
+     internal metrics doc): two direction spans, transform/opacity only;
+     the opacity swap happens at the collapse dots where it is invisible. */
   .macvue-progress-comet {
     position: absolute;
-    inset-block: 0;
-    width: var(--macvue-progress-indeterminate-width);
-    border-radius: var(--macvue-ref-radius-full);
-    animation: macvue-progress-comet var(--macvue-progress-indeterminate-duration)
-      var(--macvue-easing-default) infinite;
+    inset: 0;
   }
 
-  @keyframes macvue-progress-comet {
+  .macvue-progress-comet-forward,
+  .macvue-progress-comet-backward {
+    position: absolute;
+    inset-block: 0;
+    width: 100%;
+    border-radius: var(--macvue-ref-radius-full);
+  }
+
+  .macvue-progress-comet-forward {
+    transform-origin: left center;
+    background: linear-gradient(
+      to right,
+      rgb(from var(--macvue-progress-fill) r g b / 0%),
+      var(--macvue-progress-fill) 45%
+    );
+    animation: macvue-progress-comet-forward
+      var(--macvue-progress-indeterminate-duration) linear infinite;
+  }
+
+  .macvue-progress-comet-backward {
+    transform-origin: right center;
+    background: linear-gradient(
+      to left,
+      rgb(from var(--macvue-progress-fill) r g b / 0%),
+      var(--macvue-progress-fill) 45%
+    );
+    animation: macvue-progress-comet-backward
+      var(--macvue-progress-indeterminate-duration) linear infinite;
+  }
+
+  /* Solid overlay: the gradient drains out at the edge, the dot stays solid. */
+  .macvue-progress-comet-forward::before,
+  .macvue-progress-comet-backward::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--macvue-progress-fill);
+    opacity: 0;
+  }
+
+  .macvue-progress-comet-forward::before {
+    animation: macvue-progress-solidify-forward
+      var(--macvue-progress-indeterminate-duration) linear infinite;
+  }
+
+  .macvue-progress-comet-backward::before {
+    animation: macvue-progress-solidify-backward
+      var(--macvue-progress-indeterminate-duration) linear infinite;
+  }
+
+  @keyframes macvue-progress-solidify-forward {
+    0%,
+    36% {
+      opacity: 0;
+    }
+
+    42%,
+    49% {
+      opacity: 1;
+    }
+
+    49.01%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes macvue-progress-solidify-backward {
+    0%,
+    86% {
+      opacity: 0;
+    }
+
+    91%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes macvue-progress-comet-forward {
     0% {
-      inset-inline-start: 0%;
-      background: linear-gradient(
-        to right,
-        transparent,
-        var(--macvue-progress-fill) 65%
-      );
+      transform: translateX(0%) scaleX(0.03);
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
     }
 
-    50% {
-      inset-inline-start: 66%;
-      background: linear-gradient(
-        to right,
-        transparent,
-        var(--macvue-progress-fill) 65%
-      );
+    10.5% {
+      transform: translateX(8%) scaleX(0.92);
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.35, 0, 0.75, 0.9);
     }
 
-    51% {
-      inset-inline-start: 66%;
-      background: linear-gradient(
-        to left,
-        transparent,
-        var(--macvue-progress-fill) 65%
-      );
+    42% {
+      transform: translateX(97%) scaleX(0.03);
+      opacity: 1;
+    }
+
+    49% {
+      transform: translateX(97%) scaleX(0.03);
+      opacity: 1;
+    }
+
+    49.01% {
+      transform: translateX(97%) scaleX(0.03);
+      opacity: 0;
     }
 
     100% {
-      inset-inline-start: 0%;
-      background: linear-gradient(
-        to left,
-        transparent,
-        var(--macvue-progress-fill) 65%
-      );
+      transform: translateX(97%) scaleX(0.03);
+      opacity: 0;
     }
   }
 
-  /* Reduced motion: the bar must still read as busy — the comet is
-     replaced by a static muted accent fill. */
+  @keyframes macvue-progress-comet-backward {
+    0% {
+      transform: translateX(0%) scaleX(0.03);
+      opacity: 0;
+    }
+
+    48.99% {
+      transform: translateX(0%) scaleX(0.03);
+      opacity: 0;
+    }
+
+    49% {
+      transform: translateX(0%) scaleX(0.03);
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    59.5% {
+      transform: translateX(-8%) scaleX(0.92);
+      opacity: 1;
+      animation-timing-function: cubic-bezier(0.35, 0, 0.75, 0.9);
+    }
+
+    91% {
+      transform: translateX(-97%) scaleX(0.03);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateX(-97%) scaleX(0.03);
+      opacity: 1;
+    }
+  }
+
+  /* Reduced motion: static busy fill instead of the animation. */
   @media (prefers-reduced-motion: reduce) {
     .macvue-progress-comet {
       display: none;

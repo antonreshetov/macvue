@@ -48,6 +48,13 @@ describe('macProgress', () => {
     expect(bar.hasAttribute('aria-valuenow')).toBe(false)
     expect(bar.getAttribute('data-state')).toBe('indeterminate')
     expect(container.querySelector('.macvue-progress-comet')).toBeTruthy()
+    // Two direction halves swapping at the collapse dots.
+    expect(
+      container.querySelector('.macvue-progress-comet-forward'),
+    ).toBeTruthy()
+    expect(
+      container.querySelector('.macvue-progress-comet-backward'),
+    ).toBeTruthy()
     expect(container.querySelector('.macvue-progress-fill')).toBeNull()
   })
 
@@ -142,6 +149,26 @@ describe('macProgress', () => {
           'var(--macvue-progress-indeterminate-duration)',
         )
         expect(animation).not.toContain('--macvue-duration-fast')
+      }
+    })
+
+    it('animates the comet halves with transform and opacity only', () => {
+      // Both keyframe sets must stay compositor-friendly.
+      const keyframeBlocks = css.match(/@keyframes[\s\S]*?\n {2}\}/g) ?? []
+      // Two movement halves + two solid-overlay fades.
+      expect(keyframeBlocks).toHaveLength(4)
+      for (const block of keyframeBlocks) {
+        // Comments would leak fake "properties" into the extraction.
+        const code = block.replaceAll(/\/\*[\s\S]*?\*\//g, '')
+        const declarations = [...code.matchAll(/([a-z-]+):/g)].map(
+          match => match[1],
+        )
+        for (const property of declarations) {
+          expect(
+            ['transform', 'opacity', 'animation-timing-function'],
+            `unexpected animated property ${property}`,
+          ).toContain(property)
+        }
       }
     })
 
