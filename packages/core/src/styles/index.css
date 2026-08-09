@@ -9,6 +9,7 @@
   @media (prefers-reduced-motion: reduce) {
     :root {
       --macvue-duration-fast: 0ms;
+      --macvue-duration-switch-press: 0ms;
     }
   }
 }

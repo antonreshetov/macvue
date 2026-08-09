@@ -75,6 +75,6 @@ With `name` set, the switch renders a hidden input inside a `<form>` and partici
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `el` | `Ref<HTMLButtonElement \| null>` | The underlying switch button. |
+| `el` | `Ref<HTMLInputElement \| null>` | The underlying range input. |
 | `focus` | `() => void` | Focuses the switch. |
 | `blur` | `() => void` | Removes focus from the switch. |

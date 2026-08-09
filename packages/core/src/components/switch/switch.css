@@ -8,9 +8,9 @@
     font-size: var(--macvue-switch-font-size-regular);
     font-weight: var(--macvue-control-text-weight);
     color: var(--macvue-switch-label);
-    /* macOS uses the arrow cursor on controls, not the hand. */
     cursor: default;
     user-select: none;
+    touch-action: pan-y;
     --_macvue-switch-track-width: var(--macvue-switch-track-width-regular);
     --_macvue-switch-track-height: var(--macvue-switch-track-height-regular);
     --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-regular);
@@ -18,12 +18,7 @@
     --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-regular);
   }
 
-  /* Size modifiers assign the per-size tokens to `--_macvue-*` bridge
-     variables; the geometry rules below (including the thumb travel
-     formula) consume only the bridges. The bridges are INTERNAL — the
-     public override surface is the per-size tokens they point at. The
-     base rule above carries the regular set as a safety net for invalid
-     size values. */
+  /* Internal bridges keep the thumb travel formula size-independent. */
   .macvue-switch--extra-large {
     font-size: var(--macvue-switch-font-size-extra-large);
     --_macvue-switch-track-width: var(--macvue-switch-track-width-extra-large);
@@ -69,10 +64,54 @@
     --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-mini);
   }
 
-  /* :has() keys off Reka's data-disabled on the control itself, so any
-     source of disabling (prop or future context) dims the whole row. */
   .macvue-switch:has(.macvue-switch-control[data-disabled]) {
     opacity: var(--macvue-disabled-opacity);
+  }
+
+  .macvue-switch-slider {
+    position: relative;
+    flex: none;
+    display: block;
+    width: var(--_macvue-switch-track-width);
+    height: var(--_macvue-switch-track-height);
+  }
+
+  .macvue-switch-input {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: default;
+    touch-action: pan-y;
+    appearance: none;
+    background: transparent;
+  }
+
+  .macvue-switch-input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  .macvue-switch-input::-webkit-slider-thumb {
+    width: var(--_macvue-switch-thumb-width);
+    height: var(--_macvue-switch-thumb-height);
+    appearance: none;
+  }
+
+  .macvue-switch-input::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  .macvue-switch-input::-moz-range-thumb {
+    width: var(--_macvue-switch-thumb-width);
+    height: var(--_macvue-switch-thumb-height);
+    border: 0;
   }
 
   .macvue-switch-control {
@@ -89,13 +128,10 @@
     /* The kit draws a hairline ring around the off track only. */
     box-shadow: var(--macvue-switch-track-shadow);
     cursor: default;
-    /* The only animated control in the library; timings come from the
-       motion tokens so prefers-reduced-motion can zero them globally.
-       box-shadow is animated too so the off-track ring fades with the
-       fill instead of snapping when the state flips. */
     transition:
       background-color var(--macvue-duration-fast) var(--macvue-easing-default),
       box-shadow var(--macvue-duration-fast) var(--macvue-easing-default);
+    pointer-events: none;
   }
 
   /* :active on the label: in AppKit the title is part of the hit-area, so
@@ -119,8 +155,8 @@
     background: var(--macvue-switch-track-on-disabled);
   }
 
-  /* The Tahoe thumb is a capsule, wider than tall. */
   .macvue-switch-thumb {
+    position: relative;
     display: block;
     width: var(--_macvue-switch-thumb-width);
     height: var(--_macvue-switch-thumb-height);
@@ -139,7 +175,39 @@
     );
   }
 
-  .macvue-switch-control:focus-visible {
+  /* backdrop-filter cannot animate, so the press lens fades as a layer. */
+  .macvue-switch-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--macvue-material-glass-regular-bg);
+    box-shadow: var(--macvue-material-glass-regular-shadow);
+    opacity: 0;
+    transform: scale(1);
+    transition:
+      opacity var(--macvue-duration-fast) var(--macvue-easing-default),
+      transform var(--macvue-duration-fast) var(--macvue-easing-default);
+    pointer-events: none;
+    -webkit-backdrop-filter: saturate(
+        var(--macvue-material-glass-regular-saturation)
+      )
+      blur(var(--macvue-material-glass-regular-blur));
+    backdrop-filter: saturate(var(--macvue-material-glass-regular-saturation))
+      blur(var(--macvue-material-glass-regular-blur));
+  }
+
+  .macvue-switch:active
+    .macvue-switch-control:not([data-disabled])
+    .macvue-switch-thumb::after {
+    opacity: 1;
+    transform: scale(1.6);
+    transition:
+      opacity var(--macvue-duration-switch-press) var(--macvue-easing-default),
+      transform var(--macvue-duration-switch-press) var(--macvue-easing-default);
+  }
+
+  .macvue-switch-input:focus-visible + .macvue-switch-control {
     outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
   }
 }

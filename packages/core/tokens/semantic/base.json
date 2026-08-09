@@ -178,6 +178,11 @@
       "$value": "150ms",
       "$description": "unverified"
     },
+    "duration-switch-press": {
+      "$type": "duration",
+      "$value": "170ms",
+      "$description": "Knob press-stretch enter — live capture 60fps, 2026-08-09 (~10 frames, ease-out); deliberately slower than duration-fast, release rides duration-fast. In the zeroable duration-* namespace: the stretch is decorative motion"
+    },
     "progress-indeterminate-duration": {
       "$type": "duration",
       "$value": "1900ms",
