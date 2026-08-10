@@ -51,6 +51,7 @@ export default defineConfig({
           { text: 'Box', link: '/components/box' },
           { text: 'Button', link: '/components/button' },
           { text: 'Checkbox', link: '/components/checkbox' },
+          { text: 'Glass Panel', link: '/components/glass-panel' },
           { text: 'Help Button', link: '/components/help-button' },
           { text: 'Label', link: '/components/label' },
           { text: 'Progress', link: '/components/progress' },

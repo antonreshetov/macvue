@@ -38,3 +38,32 @@ export const switchGlassPreset = {
   saturation: 3,
   specularOpacity: 0.18,
 } satisfies GlassLensPreset
+
+export const regularPanelGlassPreset = {
+  ...baseGlassPreset,
+  materialVariant: 'regular',
+  surfaceProfile: 'convex',
+  bezelRatio: 0.12,
+  displacementStrength: 0.24,
+  horizontalDirection: 1,
+  smoothingPasses: 1,
+  blur: 12,
+  saturation: 1,
+  specularOpacity: 0.05,
+} satisfies GlassLensPreset
+
+export const clearPanelGlassPreset = {
+  ...baseGlassPreset,
+  refractiveIndex: 1.3,
+  glassThickness: 90,
+  materialVariant: 'clear',
+  surfaceProfile: 'convex',
+  bezelRatio: 1,
+  displacementStrength: 0.7,
+  horizontalDirection: -1,
+  verticalDirection: -1,
+  smoothingPasses: 0,
+  blur: 2,
+  saturation: 1,
+  specularOpacity: 0.07,
+} satisfies GlassLensPreset

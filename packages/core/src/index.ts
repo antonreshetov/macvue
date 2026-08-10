@@ -5,6 +5,11 @@ export { MacBox, type MacBoxProps } from './components/box'
 export { MacButton, type MacButtonProps } from './components/button'
 export { MacCheckbox, type MacCheckboxProps } from './components/checkbox'
 export {
+  MacGlassPanel,
+  type MacGlassPanelMaterial,
+  type MacGlassPanelProps,
+} from './components/glass-panel'
+export {
   MacHelpButton,
   type MacHelpButtonProps,
 } from './components/help-button'

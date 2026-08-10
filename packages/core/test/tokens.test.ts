@@ -332,6 +332,12 @@ describe('tokens-dark.gen.css', () => {
     expect(darkCss).toContain(
       '--macvue-button-bg-prominent: var(--macvue-accent)',
     )
+    expect(darkCss).toContain(
+      '--macvue-glass-panel-bg-clear: var(--macvue-material-glass-clear-bg)',
+    )
+    expect(darkCss).toContain(
+      '--macvue-glass-panel-bg-regular: var(--macvue-material-glass-regular-bg)',
+    )
   })
 
   it('keeps ref definitions and ref-only component tokens out of overrides', () => {

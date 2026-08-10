@@ -1,9 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import { createGlassMapData } from '../src/components/glass/glassMaps'
 import {
+  clearPanelGlassPreset,
+  regularPanelGlassPreset,
   sliderGlassPreset,
   switchGlassPreset,
 } from '../src/components/glass/glassPresets'
+
+function redChannelAt(
+  data: Uint8ClampedArray,
+  width: number,
+  x: number,
+  y: number,
+) {
+  return data[(y * width + x) * 4]
+}
 
 function greenChannelAt(
   data: Uint8ClampedArray,
@@ -102,5 +113,54 @@ describe('glass map engine', () => {
 
     expect(topEdge).not.toBe(128)
     expect(center).toBe(128)
+  })
+
+  it('keeps regular and clear panel optics as distinct production presets', () => {
+    expect(regularPanelGlassPreset.materialVariant).toBe('regular')
+    expect(clearPanelGlassPreset.materialVariant).toBe('clear')
+    expect(clearPanelGlassPreset.surfaceProfile).toBe('convex')
+    expect(clearPanelGlassPreset.horizontalDirection).toBe(-1)
+    expect(regularPanelGlassPreset).not.toEqual(clearPanelGlassPreset)
+    expect(clearPanelGlassPreset.bezelRatio).toBeGreaterThan(
+      regularPanelGlassPreset.bezelRatio,
+    )
+    expect(clearPanelGlassPreset.blur).toBeLessThan(
+      regularPanelGlassPreset.blur,
+    )
+  })
+
+  it('pulls clear-panel samples inward without an overscan region', () => {
+    const maps = createGlassMapData({
+      width: 455,
+      height: 100,
+      cornerRadius: 24,
+      devicePixelRatio: 1,
+      preset: clearPanelGlassPreset,
+    })
+    const leftEdge = redChannelAt(maps.displacement, maps.pixelWidth, 0, 50)
+    const topEdge = greenChannelAt(maps.displacement, maps.pixelWidth, 227, 0)
+    const center = greenChannelAt(maps.displacement, maps.pixelWidth, 227, 50)
+
+    expect(leftEdge).toBeGreaterThan(128)
+    expect(topEdge).toBeGreaterThan(128)
+    expect(center).toBe(128)
+  })
+
+  it('keeps the clear refraction field active across the native-width bezel', () => {
+    const maps = createGlassMapData({
+      width: 455,
+      height: 100,
+      cornerRadius: 24,
+      devicePixelRatio: 1,
+      preset: clearPanelGlassPreset,
+    })
+    const topBezel = greenChannelAt(
+      maps.displacement,
+      maps.pixelWidth,
+      227,
+      16,
+    )
+
+    expect(topBezel).toBeGreaterThan(128)
   })
 })

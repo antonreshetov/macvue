@@ -163,9 +163,13 @@
       "$value": "rgb(255 255 255 / 0.7)",
       "$description": "Liquid Glass Light/Regular - Medium top fill"
     },
+    "material-glass-regular-opaque-bg": {
+      "$value": "#F2F2F2",
+      "$description": "Opaque accessibility fallback for the regular material"
+    },
     "material-glass-regular-blur": {
       "$type": "dimension",
-      "$value": "{ref.blur-10}"
+      "$value": "{ref.blur-12}"
     },
     "material-glass-regular-saturation": {
       "$type": "dimension",
@@ -173,8 +177,35 @@
     },
     "material-glass-regular-shadow": {
       "$type": "shadow",
-      "$value": "0 8px 40px rgb(0 0 0 / 0.12), 0 0 8px 1px rgb(0 0 0 / 0.2), inset 0 1px 2px rgb(255 255 255 / 0.7), inset 0 -1px 2px rgb(26 26 26 / 0.15)",
-      "$description": "Practical subset of the kit Light/Regular - Medium shadow pack: drop + ring + top/bottom rim speculars (rim alphas approximated)"
+      "$value": "inset 0 0 0 1px rgb(0 0 0 / 0.2), inset 0 1px 2px rgb(255 255 255 / 0.7), inset 0 -1px 2px rgb(26 26 26 / 0.15)",
+      "$description": "Regular rim without a separate drop shadow"
+    },
+    "material-glass-regular-rim": {
+      "$value": "rgb(0 0 0 / 0.2)"
+    },
+    "material-glass-clear-bg": {
+      "$value": "rgb(255 255 255 / 0.28)",
+      "$description": "Liquid Glass Light/Clear top fill for media-rich backdrops"
+    },
+    "material-glass-clear-opaque-bg": {
+      "$value": "#E6E6E6",
+      "$description": "Opaque accessibility fallback for the clear material"
+    },
+    "material-glass-clear-blur": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-1}"
+    },
+    "material-glass-clear-saturation": {
+      "$type": "dimension",
+      "$value": "190%"
+    },
+    "material-glass-clear-shadow": {
+      "$type": "shadow",
+      "$value": "inset 0 0 0 1px rgb(0 0 0 / 0.18), inset 0 1px 2px rgb(255 255 255 / 0.62), inset 0 -1px 2px rgb(26 26 26 / 0.12)",
+      "$description": "Clear material keeps a lighter fill and a distinct rim without a drop shadow"
+    },
+    "material-glass-clear-rim": {
+      "$value": "rgb(0 0 0 / 0.18)"
     },
     "shadow-window": {
       "$type": "shadow",

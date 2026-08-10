@@ -162,12 +162,16 @@
       "$value": "rgb(0 0 0 / 0.65)"
     },
     "material-glass-regular-bg": {
-      "$value": "rgb(0 0 0 / 0.4)",
-      "$description": "Liquid Glass Dark/Regular - Medium top fill"
+      "$value": "rgb(0 0 0 / 0.32)",
+      "$description": "Dark regular dimming layer calibrated against NSGlassEffectView"
+    },
+    "material-glass-regular-opaque-bg": {
+      "$value": "#262626",
+      "$description": "Opaque accessibility fallback for the regular material"
     },
     "material-glass-regular-blur": {
       "$type": "dimension",
-      "$value": "{ref.blur-8}"
+      "$value": "{ref.blur-12}"
     },
     "material-glass-regular-saturation": {
       "$type": "dimension",
@@ -175,8 +179,35 @@
     },
     "material-glass-regular-shadow": {
       "$type": "shadow",
-      "$value": "0 8px 40px rgb(0 0 0 / 0.12), 0 0 8px rgb(0 0 0 / 0.1), inset 0 1px 2px rgb(76 76 76 / 0.7), inset 0 -1px 2px rgb(26 26 26 / 0.7)",
-      "$description": "Practical subset of the kit Dark/Regular - Medium shadow pack: drops + rim speculars (rim alphas approximated)"
+      "$value": "inset 0 0 0 100px rgb(255 255 255 / 0.06), inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 1px rgb(255 255 255 / 0.06)",
+      "$description": "Regular luminosity wash and restrained native-like rim"
+    },
+    "material-glass-regular-rim": {
+      "$value": "rgb(255 255 255 / 0.1)"
+    },
+    "material-glass-clear-bg": {
+      "$value": "rgb(0 0 0 / 0.12)",
+      "$description": "Liquid Glass Dark/Clear top fill for media-rich backdrops"
+    },
+    "material-glass-clear-opaque-bg": {
+      "$value": "#171717",
+      "$description": "Opaque accessibility fallback for the clear material"
+    },
+    "material-glass-clear-blur": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-1}"
+    },
+    "material-glass-clear-saturation": {
+      "$type": "dimension",
+      "$value": "160%"
+    },
+    "material-glass-clear-shadow": {
+      "$type": "shadow",
+      "$value": "inset 0 0 0 100px rgb(255 255 255 / 0.1), inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 1px rgb(255 255 255 / 0.08)",
+      "$description": "Clear luminosity wash keeps a lighter fill, backdrop detail and the same native-like rim"
+    },
+    "material-glass-clear-rim": {
+      "$value": "rgb(255 255 255 / 0.14)"
     },
     "shadow-window": {
       "$type": "shadow",

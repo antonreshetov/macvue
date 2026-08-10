@@ -4,6 +4,7 @@ import {
   MacBox,
   MacButton,
   MacCheckbox,
+  MacGlassPanel,
   MacHelpButton,
   MacLabel,
   MacProgress,
@@ -194,6 +195,25 @@ const passphrase = ref('')
         <MacLabel>Displays</MacLabel>
         <MacSeparator />
         <MacLabel>Wallpaper</MacLabel>
+      </div>
+    </ComponentCard>
+    <ComponentCard
+      title="Glass Panel"
+      href="/components/glass-panel"
+    >
+      <div
+        data-macvue-glass="on"
+        style="
+          padding: 22px;
+          background: linear-gradient(135deg, #087cff, #8c50ff);
+        "
+      >
+        <MacGlassPanel
+          material="clear"
+          style="padding: 18px 28px; color: white"
+        >
+          Media controls
+        </MacGlassPanel>
       </div>
     </ComponentCard>
     <ComponentCard

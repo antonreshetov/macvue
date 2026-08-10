@@ -48,6 +48,14 @@
       "$type": "dimension",
       "$value": "12px"
     },
+    "radius-20": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "radius-24": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
     "radius-full": {
       "$type": "dimension",
       "$value": "999px"
@@ -123,6 +131,10 @@
     "blur-10": {
       "$type": "dimension",
       "$value": "10px"
+    },
+    "blur-12": {
+      "$type": "dimension",
+      "$value": "12px"
     },
     "blur-20": {
       "$type": "dimension",

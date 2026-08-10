@@ -1,0 +1,105 @@
+@layer macvue.components {
+  .macvue-glass-panel {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: var(--macvue-glass-panel-radius);
+  }
+
+  .macvue-glass-panel--regular {
+    border: var(--macvue-glass-panel-rim-width) solid
+      var(--macvue-glass-panel-rim-regular);
+    background: var(--macvue-glass-panel-bg-regular);
+    box-shadow: var(--macvue-glass-panel-shadow-regular);
+  }
+
+  .macvue-glass-panel--clear {
+    border: var(--macvue-glass-panel-rim-width) solid
+      var(--macvue-glass-panel-rim-clear);
+    background: var(--macvue-glass-panel-bg-clear);
+    box-shadow: var(--macvue-glass-panel-shadow-clear);
+  }
+
+  .macvue-glass-panel-lens {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .macvue-glass-panel > :not(.macvue-glass-panel-lens, .macvue-glass-panel-filter) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .macvue-glass-panel-filter {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  @supports ((backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0))) {
+    .macvue-glass-panel--regular {
+      -webkit-backdrop-filter: blur(var(--macvue-glass-panel-blur-regular))
+        saturate(var(--macvue-glass-panel-saturation-regular));
+      backdrop-filter: blur(var(--macvue-glass-panel-blur-regular))
+        saturate(var(--macvue-glass-panel-saturation-regular));
+    }
+
+    .macvue-glass-panel--clear {
+      -webkit-backdrop-filter: blur(var(--macvue-glass-panel-blur-clear))
+        saturate(var(--macvue-glass-panel-saturation-clear));
+      backdrop-filter: blur(var(--macvue-glass-panel-blur-clear))
+        saturate(var(--macvue-glass-panel-saturation-clear));
+    }
+
+    .macvue-glass-panel[data-macvue-glass-ready] {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .macvue-glass-panel[data-macvue-glass-ready]
+      > .macvue-glass-panel-lens {
+      opacity: 1;
+      -webkit-backdrop-filter: var(--_macvue-glass-filter);
+      backdrop-filter: var(--_macvue-glass-filter);
+    }
+
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .macvue-glass-panel--regular {
+      background: var(--macvue-glass-panel-opaque-bg-regular);
+    }
+
+    .macvue-glass-panel--clear {
+      background: var(--macvue-glass-panel-opaque-bg-clear);
+    }
+
+    .macvue-glass-panel,
+    .macvue-glass-panel-lens {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .macvue-glass-panel-lens {
+      display: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .macvue-glass-panel {
+      background: Canvas;
+      border: var(--macvue-glass-panel-forced-colors-border) solid CanvasText;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .macvue-glass-panel-lens,
+    .macvue-glass-panel-filter {
+      display: none;
+    }
+  }
+}

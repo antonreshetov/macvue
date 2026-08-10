@@ -1,0 +1,64 @@
+{
+  "glass-panel": {
+    "radius": {
+      "$type": "dimension",
+      "$value": "{ref.radius-24}"
+    },
+    "rim-width": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-1}"
+    },
+    "bg-regular": {
+      "$type": "color",
+      "$value": "{semantic.material-glass-regular-bg}"
+    },
+    "opaque-bg-regular": {
+      "$type": "color",
+      "$value": "{semantic.material-glass-regular-opaque-bg}"
+    },
+    "blur-regular": {
+      "$type": "dimension",
+      "$value": "{semantic.material-glass-regular-blur}"
+    },
+    "saturation-regular": {
+      "$type": "dimension",
+      "$value": "{semantic.material-glass-regular-saturation}"
+    },
+    "shadow-regular": {
+      "$type": "shadow",
+      "$value": "{semantic.material-glass-regular-shadow}"
+    },
+    "rim-regular": {
+      "$type": "color",
+      "$value": "{semantic.material-glass-regular-rim}"
+    },
+    "bg-clear": {
+      "$type": "color",
+      "$value": "{semantic.material-glass-clear-bg}"
+    },
+    "opaque-bg-clear": {
+      "$type": "color",
+      "$value": "{semantic.material-glass-clear-opaque-bg}"
+    },
+    "blur-clear": {
+      "$type": "dimension",
+      "$value": "{semantic.material-glass-clear-blur}"
+    },
+    "saturation-clear": {
+      "$type": "dimension",
+      "$value": "{semantic.material-glass-clear-saturation}"
+    },
+    "shadow-clear": {
+      "$type": "shadow",
+      "$value": "{semantic.material-glass-clear-shadow}"
+    },
+    "rim-clear": {
+      "$type": "color",
+      "$value": "{semantic.material-glass-clear-rim}"
+    },
+    "forced-colors-border": {
+      "$type": "dimension",
+      "$value": "{ref.spacing-1}"
+    }
+  }
+}
