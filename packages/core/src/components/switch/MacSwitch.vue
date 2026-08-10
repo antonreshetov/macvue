@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { MacControlSize } from '../../types'
 import { computed, ref, useAttrs } from 'vue'
+import GlassLens from '../glass/GlassLens.vue'
+import { switchGlassPreset } from '../glass/glassPresets'
 import './switch.css'
 
 export interface MacSwitchProps {
@@ -45,6 +47,8 @@ const classes = computed(() => [
   'macvue-switch',
   `macvue-switch--${props.size}`,
 ])
+
+const glassAvailable = ref(false)
 
 const attrs = useAttrs()
 const labelAttrs = computed(() => {
@@ -272,8 +276,16 @@ defineExpose({
         <span
           class="macvue-switch-thumb"
           :data-state="dataState"
+          :data-macvue-glass-ready="glassAvailable ? '' : undefined"
           :style="thumbStyle"
-        />
+        >
+          <GlassLens
+            lens-class="macvue-switch-glass-lens"
+            filter-class="macvue-switch-glass-filter"
+            :preset="switchGlassPreset"
+            @availability="glassAvailable = $event"
+          />
+        </span>
       </span>
     </span>
   </label>

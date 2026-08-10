@@ -54,6 +54,50 @@ describe('macSlider', () => {
     ).toBe('horizontal')
   })
 
+  it('renders an inert glass lens with a unique SSR-safe filter id', async () => {
+    const { container, getAllByRole } = render({
+      render() {
+        return h('div', [
+          h(MacSlider, { 'aria-label': 'First' }),
+          h(MacSlider, { 'aria-label': 'Second' }),
+        ])
+      },
+    })
+    await nextTick()
+    const firstLens = container.querySelector('.macvue-slider-glass-lens')
+    const filters = Array.from(
+      container.querySelectorAll('.macvue-slider-glass-filter filter'),
+    )
+
+    expect(firstLens?.getAttribute('aria-hidden')).toBe('true')
+    expect(filters.every(filter => filter?.id)).toBe(true)
+    expect(new Set(filters.map(filter => filter.id)).size).toBe(2)
+    expect(getAllByRole('slider')[0]?.contains(firstLens)).toBe(true)
+    expect(filters[0]?.getAttribute('color-interpolation-filters')).toBe(
+      'sRGB',
+    )
+    expect(
+      Array.from(filters[0]!.children, child => child.localName),
+    ).toEqual([
+      'feGaussianBlur',
+      'feImage',
+      'feDisplacementMap',
+      'feColorMatrix',
+      'feImage',
+      'feComposite',
+      'feColorMatrix',
+      'feColorMatrix',
+      'feBlend',
+      'feBlend',
+    ])
+    for (const image of Array.from(filters[0]!.querySelectorAll('feImage'))) {
+      expect(image.hasAttribute('x')).toBe(true)
+      expect(image.hasAttribute('y')).toBe(true)
+      expect(image.hasAttribute('width')).toBe(true)
+      expect(image.hasAttribute('height')).toBe(true)
+    }
+  })
+
   it('emits a plain number on keyboard interaction', async () => {
     const user = userEvent.setup()
     const { getByRole, emitted } = await renderSlider({ modelValue: 50 })
@@ -231,9 +275,19 @@ describe('macSlider', () => {
       )
     })
 
-    it('has no :hover and no transition (macOS sliders have neither)', async () => {
+    it('has no :hover and limits transitions to glass opacity/transform', async () => {
       expect(css).not.toContain(':hover')
-      expect(css).not.toContain('transition')
+      const transitionValues = css
+        .split('transition:')
+        .slice(1)
+        .map(value => value.split(';', 1)[0])
+      expect(transitionValues.length).toBeGreaterThan(0)
+      for (const value of transitionValues) {
+        expect(value).not.toMatch(
+          /backdrop-filter|filter|background|box-shadow/,
+        )
+        expect(value).toMatch(/opacity|transform/)
+      }
     })
 
     it('keeps the macOS arrow cursor and non-selectable control', async () => {

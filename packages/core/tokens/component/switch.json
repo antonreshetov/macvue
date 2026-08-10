@@ -80,6 +80,56 @@
       "$type": "dimension",
       "$value": "13px"
     },
+    "glass-lens-width-extra-large": {
+      "$type": "dimension",
+      "$value": "73px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-width-large": {
+      "$type": "dimension",
+      "$value": "59px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-width-regular": {
+      "$type": "dimension",
+      "$value": "50px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-width-small": {
+      "$type": "dimension",
+      "$value": "40px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-width-mini": {
+      "$type": "dimension",
+      "$value": "33px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-height-extra-large": {
+      "$type": "dimension",
+      "$value": "45px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-height-large": {
+      "$type": "dimension",
+      "$value": "37px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-height-regular": {
+      "$type": "dimension",
+      "$value": "31px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-height-small": {
+      "$type": "dimension",
+      "$value": "26px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
+    "glass-lens-height-mini": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$description": "Apple macOS 27 UI Kit clicked toggle knob glow"
+    },
     "thumb-inset-extra-large": {
       "$type": "dimension",
       "$value": "{ref.spacing-3}"
@@ -156,6 +206,10 @@
     "thumb-shadow": {
       "$type": "shadow",
       "$value": "{semantic.shadow-switch-thumb}"
+    },
+    "glass-lens-shadow": {
+      "$type": "shadow",
+      "$value": "0 1.25px 7px rgb(0 0 0 / 0.1)"
     },
     "label": {
       "$type": "color",

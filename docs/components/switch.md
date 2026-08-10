@@ -43,6 +43,22 @@ All five macOS control sizes; `regular` is the default.
 
 </ComponentPreview>
 
+## Liquid Glass
+
+The base switch keeps its solid knob at the native size. Add `data-macvue-glass="on"` to an ancestor to enable Liquid Glass; the switch automatically shows its enlarged clicked lens only during press or drag.
+
+<Callout variant="warning" title="Browser support">
+
+The refracted lens currently requires Chromium. Safari and Firefox automatically keep the solid native-size knob.
+
+</Callout>
+
+<ComponentPreview name="switch/Glass">
+
+<<< @/demos/switch/Glass.vue
+
+</ComponentPreview>
+
 ## API
 
 ### Props

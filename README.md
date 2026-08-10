@@ -1,4 +1,4 @@
-# macvue
+# MacVue
 
 > macOS UI components for Vue.
 
@@ -17,4 +17,4 @@ pnpm docs:dev    # documentation site
 
 [MIT](./LICENSE)
 
-macvue is an independent open source project and is not affiliated with, endorsed by, or sponsored by Apple Inc. macOS is a trademark of Apple Inc.
+MacVue is an independent open source project and is not affiliated with, endorsed by, or sponsored by Apple Inc. macOS is a trademark of Apple Inc.

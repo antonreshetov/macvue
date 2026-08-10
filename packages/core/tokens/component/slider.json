@@ -80,6 +80,56 @@
       "$type": "dimension",
       "$value": "12px"
     },
+    "glass-lens-width-extra-large": {
+      "$type": "dimension",
+      "$value": "30px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-width-large": {
+      "$type": "dimension",
+      "$value": "30px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-width-regular": {
+      "$type": "dimension",
+      "$value": "25px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-width-small": {
+      "$type": "dimension",
+      "$value": "23px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-width-mini": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-height-extra-large": {
+      "$type": "dimension",
+      "$value": "25px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-height-large": {
+      "$type": "dimension",
+      "$value": "25px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-height-regular": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-height-small": {
+      "$type": "dimension",
+      "$value": "18px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
+    "glass-lens-height-mini": {
+      "$type": "dimension",
+      "$value": "15px",
+      "$description": "Apple macOS 27 UI Kit over-glass clicked knob"
+    },
     "thumb-radius-extra-large": {
       "$type": "dimension",
       "$value": "{ref.radius-10}"

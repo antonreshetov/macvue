@@ -3,6 +3,8 @@ import type { ComponentPublicInstance } from 'vue'
 import type { MacControlSize } from '../../types'
 import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from 'reka-ui'
 import { computed, ref, useAttrs } from 'vue'
+import GlassLens from '../glass/GlassLens.vue'
+import { sliderGlassPreset } from '../glass/glassPresets'
 import './slider.css'
 
 export interface MacSliderProps {
@@ -90,6 +92,8 @@ const classes = computed(() => [
   `macvue-slider--${props.size}`,
 ])
 
+const glassAvailable = ref(false)
+
 // Not useTemplateRef: it landed in Vue 3.5 and the peer range starts at 3.4.
 // ComponentPublicInstance because Reka components are generic function
 // components with no construct signature for InstanceType.
@@ -134,8 +138,16 @@ defineExpose({
     <SliderThumb
       ref="thumb"
       class="macvue-slider-thumb"
+      :data-macvue-glass-ready="glassAvailable ? '' : undefined"
       v-bind="thumbAttrs"
-    />
+    >
+      <GlassLens
+        lens-class="macvue-slider-glass-lens"
+        filter-class="macvue-slider-glass-filter"
+        :preset="sliderGlassPreset"
+        @availability="glassAvailable = $event"
+      />
+    </SliderThumb>
     <!-- Own hidden input: Reka's VisuallyHiddenInput would submit the
          array form (name[0]) — NSSlider is a single scalar. -->
     <input

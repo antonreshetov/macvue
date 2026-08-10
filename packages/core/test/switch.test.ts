@@ -42,6 +42,22 @@ describe('macSwitch', () => {
     ).toBeTruthy()
   })
 
+  it('renders an inert glass lens without changing the base knob state', async () => {
+    const { container, getByRole } = renderSwitch()
+    await nextTick()
+    const thumb = container.querySelector('.macvue-switch-thumb')
+    const lens = container.querySelector('.macvue-switch-glass-lens')
+    const filter = container.querySelector(
+      '.macvue-switch-glass-filter filter',
+    )
+
+    expect(getByRole('slider').contains(lens)).toBe(false)
+    expect(thumb?.contains(lens)).toBe(true)
+    expect(lens?.getAttribute('aria-hidden')).toBe('true')
+    expect(filter?.id).toBeTruthy()
+    expect(thumb?.hasAttribute('data-macvue-glass-ready')).toBe(false)
+  })
+
   it('renders a modifier class for every control size and keeps size off the control', () => {
     const sizes = ['extra-large', 'large', 'regular', 'small', 'mini'] as const
     for (const size of sizes) {
@@ -250,33 +266,27 @@ describe('macSwitch', () => {
       }
     })
 
-    it('shows a glass lens over the pressed knob', () => {
-      // The lens is a separate ::after layer (backdrop-filter is not
-      // animatable, so the glass fades in via opacity+scale) built from
-      // the material-glass tokens; it activates under the label :active
-      // (the caption is part of the hit-area) and never for disabled.
-      expect(css).toContain('.macvue-switch-thumb::after')
+    it('keeps the base knob solid and gates enlargement behind glass opt-in', () => {
+      expect(css).not.toContain('.macvue-switch-thumb::after')
+      expect(css).toContain('.macvue-switch-glass-lens')
       expect(css).toContain('backdrop-filter')
-      expect(css).toContain('var(--macvue-material-glass-regular-bg)')
-      expect(css).toContain('var(--macvue-material-glass-regular-blur)')
-      expect(css).toContain('var(--macvue-material-glass-regular-saturation)')
-      expect(css).toContain('var(--macvue-material-glass-regular-shadow)')
-      // Comments mention the scale too — strip them before matching.
       const lensRules = (css.match(/[^{}]+\{[^{}]*\}/g) ?? [])
-        .map(rule => rule.replaceAll(/\/\*[\s\S]*?\*\//g, ''))
-        .filter(rule => rule.includes('scale(1.6)'))
+        .filter(rule => rule.includes('.macvue-switch-glass-lens'))
+        .filter(rule => rule.includes('scale(1)'))
       expect(lensRules).toHaveLength(1)
       const selector = lensRules[0].slice(0, lensRules[0].indexOf('{'))
+      expect(selector).toContain('[data-macvue-glass=\'on\']')
       expect(selector).toContain('.macvue-switch:active')
       expect(selector).toContain(':not([data-disabled])')
-      expect(selector).toContain('::after')
-      // The enter runs on its own (zeroable) duration token.
       expect(css).toContain('var(--macvue-duration-switch-press)')
     })
 
-    it('doubles the disabled-on fill so the row dim lands on the kit value', () => {
+    it('dims the disabled-on track without fading the native knob', () => {
       expect(css).toContain('[data-state=\'checked\'][data-disabled]')
       expect(css).toContain('var(--macvue-switch-track-on-disabled)')
+      expect(css).not.toContain(
+        '.macvue-switch:has(.macvue-switch-control[data-disabled]) {',
+      )
     })
 
     it('has no keyframe animations', () => {

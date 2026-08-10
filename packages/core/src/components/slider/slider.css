@@ -16,6 +16,8 @@
     --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-regular);
     --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-regular);
     --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-regular);
+    --_macvue-slider-glass-lens-width: var(--macvue-slider-glass-lens-width-regular);
+    --_macvue-slider-glass-lens-height: var(--macvue-slider-glass-lens-height-regular);
   }
 
   .macvue-slider--extra-large {
@@ -24,6 +26,8 @@
     --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-extra-large);
     --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-extra-large);
     --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-extra-large);
+    --_macvue-slider-glass-lens-width: var(--macvue-slider-glass-lens-width-extra-large);
+    --_macvue-slider-glass-lens-height: var(--macvue-slider-glass-lens-height-extra-large);
   }
 
   .macvue-slider--large {
@@ -32,6 +36,8 @@
     --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-large);
     --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-large);
     --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-large);
+    --_macvue-slider-glass-lens-width: var(--macvue-slider-glass-lens-width-large);
+    --_macvue-slider-glass-lens-height: var(--macvue-slider-glass-lens-height-large);
   }
 
   .macvue-slider--regular {
@@ -40,6 +46,8 @@
     --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-regular);
     --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-regular);
     --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-regular);
+    --_macvue-slider-glass-lens-width: var(--macvue-slider-glass-lens-width-regular);
+    --_macvue-slider-glass-lens-height: var(--macvue-slider-glass-lens-height-regular);
   }
 
   .macvue-slider--small {
@@ -48,6 +56,8 @@
     --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-small);
     --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-small);
     --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-small);
+    --_macvue-slider-glass-lens-width: var(--macvue-slider-glass-lens-width-small);
+    --_macvue-slider-glass-lens-height: var(--macvue-slider-glass-lens-height-small);
   }
 
   .macvue-slider--mini {
@@ -56,6 +66,8 @@
     --_macvue-slider-thumb-width: var(--macvue-slider-thumb-width-mini);
     --_macvue-slider-thumb-height: var(--macvue-slider-thumb-height-mini);
     --_macvue-slider-thumb-radius: var(--macvue-slider-thumb-radius-mini);
+    --_macvue-slider-glass-lens-width: var(--macvue-slider-glass-lens-width-mini);
+    --_macvue-slider-glass-lens-height: var(--macvue-slider-glass-lens-height-mini);
   }
 
   .macvue-slider[data-orientation='horizontal'] {
@@ -107,12 +119,110 @@
      row; we render the regular knob for every size, so the knob passes
      over the ticks (which the kit also does for regular and up). */
   .macvue-slider-thumb {
+    position: relative;
     display: block;
     width: var(--_macvue-slider-thumb-width);
     height: var(--_macvue-slider-thumb-height);
     border-radius: var(--_macvue-slider-thumb-radius);
     background: var(--macvue-slider-thumb-bg);
     box-shadow: var(--macvue-slider-thumb-shadow);
+  }
+
+  .macvue-slider-glass-lens {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: var(--_macvue-slider-glass-lens-width);
+    height: var(--_macvue-slider-glass-lens-height);
+    border-radius: calc(var(--_macvue-slider-glass-lens-height) / 2);
+    background: color-mix(
+      in srgb,
+      var(--macvue-slider-thumb-bg) 10%,
+      transparent
+    );
+    box-shadow: var(--macvue-slider-thumb-shadow);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition:
+      opacity var(--macvue-duration-fast) var(--macvue-easing-default),
+      transform var(--macvue-duration-fast) var(--macvue-easing-default);
+    pointer-events: none;
+  }
+
+  .macvue-slider-glass-filter {
+    position: absolute;
+  }
+
+  [data-macvue-glass='on']
+    .macvue-slider-thumb[data-macvue-glass-ready] {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  [data-macvue-glass='on']
+    .macvue-slider-thumb[data-macvue-glass-ready]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--macvue-slider-thumb-bg);
+    box-shadow: var(--macvue-slider-thumb-shadow);
+    opacity: 1;
+    transition: opacity var(--macvue-duration-fast) var(--macvue-easing-default);
+  }
+
+  [data-macvue-glass='on']
+    .macvue-slider[data-orientation='horizontal']
+    .macvue-slider-thumb[data-macvue-glass-ready]::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset-inline-start: calc(
+      (var(--_macvue-slider-thumb-width) - var(--_macvue-slider-glass-lens-width)) /
+        2
+    );
+    top: 50%;
+    width: var(--_macvue-slider-track-size);
+    height: var(--_macvue-slider-track-size);
+    border-radius: var(--macvue-ref-radius-full);
+    background: var(--macvue-slider-range);
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity var(--macvue-duration-fast) var(--macvue-easing-default);
+    pointer-events: none;
+  }
+
+  [data-macvue-glass='on']
+    .macvue-slider:not([data-disabled])
+    .macvue-slider-thumb[data-macvue-glass-ready]:active::before,
+  [data-macvue-glass='on'][data-macvue-glass-force-active]
+    .macvue-slider:not([data-disabled])
+    .macvue-slider-thumb[data-macvue-glass-ready]::before {
+    opacity: 0;
+  }
+
+  [data-macvue-glass='on']
+    .macvue-slider:not([data-disabled])
+    .macvue-slider-thumb[data-macvue-glass-ready]:active::after,
+  [data-macvue-glass='on'][data-macvue-glass-force-active]
+    .macvue-slider:not([data-disabled])
+    .macvue-slider-thumb[data-macvue-glass-ready]::after {
+    opacity: 1;
+  }
+
+  [data-macvue-glass='on']
+    .macvue-slider:not([data-disabled])
+    .macvue-slider-thumb[data-macvue-glass-ready]:active
+    .macvue-slider-glass-lens,
+  [data-macvue-glass='on'][data-macvue-glass-force-active]
+    .macvue-slider:not([data-disabled])
+    .macvue-slider-thumb[data-macvue-glass-ready]
+    .macvue-slider-glass-lens {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-backdrop-filter: var(--_macvue-glass-filter);
+    backdrop-filter: var(--_macvue-glass-filter);
   }
 
   .macvue-slider[data-orientation='vertical'] .macvue-slider-thumb {
@@ -168,5 +278,21 @@
 
   .macvue-slider-thumb:focus-visible {
     outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+
+  @media (prefers-reduced-transparency: reduce), (forced-colors: active) {
+    .macvue-slider-glass-lens {
+      display: none;
+    }
+
+    [data-macvue-glass='on']
+      .macvue-slider-thumb[data-macvue-glass-ready]::after {
+      display: none;
+    }
+
+    [data-macvue-glass='on']
+      .macvue-slider-thumb[data-macvue-glass-ready]::before {
+      opacity: 1;
+    }
   }
 }

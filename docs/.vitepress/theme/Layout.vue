@@ -81,7 +81,7 @@ function resolveHref(link: string) {
         <a
           class="mv-logo"
           :href="withBase('/')"
-        >macvue</a>
+        >MacVue</a>
         <nav class="mv-nav">
           <a
             v-for="item in theme.nav"

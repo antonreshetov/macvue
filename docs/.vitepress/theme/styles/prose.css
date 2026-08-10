@@ -154,6 +154,23 @@
   background: var(--docs-surface);
 }
 
+.mv-preview-stage:has(> .mv-glass-demo) {
+  min-height: 320px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.mv-glass-demo {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  background-color: var(--macvue-window-bg);
+  background-image:
+    linear-gradient(var(--macvue-separator) 1px, transparent 1px),
+    linear-gradient(90deg, var(--macvue-separator) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 .mv-preview-code {
   position: relative;
 }

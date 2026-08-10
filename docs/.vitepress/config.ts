@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'macvue',
+  title: 'MacVue',
   description: 'macOS UI components for Vue',
   cleanUrls: true,
   head: [

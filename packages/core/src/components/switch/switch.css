@@ -16,6 +16,8 @@
     --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-regular);
     --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-regular);
     --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-regular);
+    --_macvue-switch-glass-lens-width: var(--macvue-switch-glass-lens-width-regular);
+    --_macvue-switch-glass-lens-height: var(--macvue-switch-glass-lens-height-regular);
   }
 
   /* Internal bridges keep the thumb travel formula size-independent. */
@@ -26,6 +28,8 @@
     --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-extra-large);
     --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-extra-large);
     --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-extra-large);
+    --_macvue-switch-glass-lens-width: var(--macvue-switch-glass-lens-width-extra-large);
+    --_macvue-switch-glass-lens-height: var(--macvue-switch-glass-lens-height-extra-large);
   }
 
   .macvue-switch--large {
@@ -35,6 +39,8 @@
     --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-large);
     --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-large);
     --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-large);
+    --_macvue-switch-glass-lens-width: var(--macvue-switch-glass-lens-width-large);
+    --_macvue-switch-glass-lens-height: var(--macvue-switch-glass-lens-height-large);
   }
 
   .macvue-switch--regular {
@@ -44,6 +50,8 @@
     --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-regular);
     --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-regular);
     --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-regular);
+    --_macvue-switch-glass-lens-width: var(--macvue-switch-glass-lens-width-regular);
+    --_macvue-switch-glass-lens-height: var(--macvue-switch-glass-lens-height-regular);
   }
 
   .macvue-switch--small {
@@ -53,6 +61,8 @@
     --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-small);
     --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-small);
     --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-small);
+    --_macvue-switch-glass-lens-width: var(--macvue-switch-glass-lens-width-small);
+    --_macvue-switch-glass-lens-height: var(--macvue-switch-glass-lens-height-small);
   }
 
   .macvue-switch--mini {
@@ -62,9 +72,12 @@
     --_macvue-switch-thumb-width: var(--macvue-switch-thumb-width-mini);
     --_macvue-switch-thumb-height: var(--macvue-switch-thumb-height-mini);
     --_macvue-switch-thumb-inset: var(--macvue-switch-thumb-inset-mini);
+    --_macvue-switch-glass-lens-width: var(--macvue-switch-glass-lens-width-mini);
+    --_macvue-switch-glass-lens-height: var(--macvue-switch-glass-lens-height-mini);
   }
 
-  .macvue-switch:has(.macvue-switch-control[data-disabled]) {
+  .macvue-switch:has(.macvue-switch-control[data-disabled])
+    .macvue-switch-label {
     opacity: var(--macvue-disabled-opacity);
   }
 
@@ -149,8 +162,6 @@
     background: var(--macvue-switch-track-on-pressed);
   }
 
-  /* Accent at 2× the kit's disabled alpha: the row's disabled-opacity 0.5
-     halves it back to the kit's effective fill. */
   .macvue-switch-control[data-state='checked'][data-disabled] {
     background: var(--macvue-switch-track-on-disabled);
   }
@@ -175,33 +186,73 @@
     );
   }
 
-  /* backdrop-filter cannot animate, so the press lens fades as a layer. */
-  .macvue-switch-thumb::after {
-    content: '';
+  .macvue-switch-glass-lens {
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: var(--macvue-material-glass-regular-bg);
-    box-shadow: var(--macvue-material-glass-regular-shadow);
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: var(--_macvue-switch-glass-lens-width);
+    height: var(--_macvue-switch-glass-lens-height);
+    border-radius: calc(var(--_macvue-switch-glass-lens-height) / 2);
+    background: color-mix(
+      in srgb,
+      var(--macvue-switch-thumb-bg) 12%,
+      transparent
+    );
+    box-shadow: var(--macvue-switch-glass-lens-shadow);
     opacity: 0;
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(0.64);
     transition:
       opacity var(--macvue-duration-fast) var(--macvue-easing-default),
       transform var(--macvue-duration-fast) var(--macvue-easing-default);
     pointer-events: none;
-    -webkit-backdrop-filter: saturate(
-        var(--macvue-material-glass-regular-saturation)
-      )
-      blur(var(--macvue-material-glass-regular-blur));
-    backdrop-filter: saturate(var(--macvue-material-glass-regular-saturation))
-      blur(var(--macvue-material-glass-regular-blur));
   }
 
-  .macvue-switch:active
-    .macvue-switch-control:not([data-disabled])
-    .macvue-switch-thumb::after {
+  .macvue-switch-glass-filter {
+    position: absolute;
+  }
+
+  [data-macvue-glass='on']
+    .macvue-switch-thumb[data-macvue-glass-ready] {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  [data-macvue-glass='on']
+    .macvue-switch-thumb[data-macvue-glass-ready]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--macvue-switch-thumb-bg);
+    box-shadow: var(--macvue-switch-thumb-shadow);
     opacity: 1;
-    transform: scale(1.6);
+    transition: opacity var(--macvue-duration-fast) var(--macvue-easing-default);
+  }
+
+  [data-macvue-glass='on']
+    .macvue-switch:active
+    .macvue-switch-control:not([data-disabled])
+    .macvue-switch-thumb[data-macvue-glass-ready]::before,
+  [data-macvue-glass='on'][data-macvue-glass-force-active]
+    .macvue-switch-control:not([data-disabled])
+    .macvue-switch-thumb[data-macvue-glass-ready]::before {
+    opacity: 0;
+  }
+
+  [data-macvue-glass='on']
+    .macvue-switch:active
+    .macvue-switch-control:not([data-disabled])
+    .macvue-switch-thumb[data-macvue-glass-ready]
+    .macvue-switch-glass-lens,
+  [data-macvue-glass='on'][data-macvue-glass-force-active]
+    .macvue-switch-control:not([data-disabled])
+    .macvue-switch-thumb[data-macvue-glass-ready]
+    .macvue-switch-glass-lens {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-backdrop-filter: var(--_macvue-glass-filter);
+    backdrop-filter: var(--_macvue-glass-filter);
     transition:
       opacity var(--macvue-duration-switch-press) var(--macvue-easing-default),
       transform var(--macvue-duration-switch-press) var(--macvue-easing-default);
@@ -209,5 +260,16 @@
 
   .macvue-switch-input:focus-visible + .macvue-switch-control {
     outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+
+  @media (prefers-reduced-transparency: reduce), (forced-colors: active) {
+    .macvue-switch-glass-lens {
+      display: none;
+    }
+
+    [data-macvue-glass='on']
+      .macvue-switch-thumb[data-macvue-glass-ready]::before {
+      opacity: 1;
+    }
   }
 }
