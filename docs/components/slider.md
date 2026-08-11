@@ -26,16 +26,6 @@ const volume = ref(50)
 </template>
 ```
 
-## Sizes
-
-All five macOS control sizes; `regular` is the default.
-
-<ComponentPreview name="slider/Sizes">
-
-<<< @/demos/slider/Sizes.vue
-
-</ComponentPreview>
-
 ## Tick marks
 
 `ticks` renders evenly spaced marks under the track. With `snapToTicks` the step is derived from the tick count: `step = (max - min) / (ticks - 1)`. When the range does not divide evenly, the derived step — and the emitted values — are fractional; no rounding is applied.
@@ -46,30 +36,6 @@ All five macOS control sizes; `regular` is the default.
 
 </ComponentPreview>
 
-## Liquid Glass
-
-Add `data-macvue-glass="on"` to an ancestor to enable Liquid Glass. The slider automatically uses refraction while its knob is pressed.
-
-The pressed lens follows the clicked knob geometry from the macOS UI kit. Use the preview button to enlarge the refraction without changing the component geometry.
-
-<Callout variant="warning" title="Browser support">
-
-The refracted lens currently requires Chromium. Safari and Firefox automatically keep the solid native-size knob.
-
-</Callout>
-
-<Callout title="Implementation reference">
-
-The SVG filter pipeline and edge-refraction model were informed by [Kube's technical Liquid Glass article](https://kube.io/blog/liquid-glass-css-svg/). MacVue generates its own maps from measured control geometry and calibrates them against the native macOS references.
-
-</Callout>
-
-<ComponentPreview name="slider/Glass">
-
-<<< @/demos/slider/Glass.vue
-
-</ComponentPreview>
-
 ## Vertical
 
 The vertical geometry is an interpolation — the reference kit has horizontal masters only.
@@ -77,6 +43,34 @@ The vertical geometry is an interpolation — the reference kit has horizontal m
 <ComponentPreview name="slider/Vertical">
 
 <<< @/demos/slider/Vertical.vue
+
+</ComponentPreview>
+
+## Sizes
+
+All five macOS control sizes; `regular` is the default.
+
+<ComponentPreview name="slider/Sizes">
+
+<<< @/demos/slider/Sizes.vue
+
+</ComponentPreview>
+
+## Liquid Glass
+
+Add `data-macvue-glass="on"` to an ancestor to enable Liquid Glass. The slider automatically uses refraction while its knob is pressed.
+
+The pressed lens follows the clicked knob geometry from the macOS UI kit. Use the preview button to enlarge the refraction without changing the component geometry. See the [Liquid Glass guide](/liquid-glass) for the opt-in boundary, fallbacks and prior art.
+
+<Callout variant="warning" title="Browser support">
+
+The refracted lens currently requires Chromium. Safari and Firefox automatically keep the solid native-size knob.
+
+</Callout>
+
+<ComponentPreview name="slider/Glass">
+
+<<< @/demos/slider/Glass.example.vue
 
 </ComponentPreview>
 
@@ -106,7 +100,7 @@ The vertical geometry is an interpolation — the reference kit has horizontal m
 | `disabled` | `boolean` | `false` |
 | `name` | `string` | — |
 
-With `name` set, the slider participates in native form submission.
+With `name` set, the slider renders a hidden input inside a `<form>` and participates in native form submission.
 
 ### Events
 

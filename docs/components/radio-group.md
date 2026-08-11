@@ -43,19 +43,9 @@ The group is vertical by default; set `orientation="horizontal"` for a row.
 
 </ComponentPreview>
 
-## Disabled
-
-Disable the whole group or individual items.
-
-<ComponentPreview name="radio-group/Disabled">
-
-<<< @/demos/radio-group/Disabled.vue
-
-</ComponentPreview>
-
 ## Sizes
 
-All five macOS control sizes. Like `controlSize` in AppKit, `size` is set on the group and inherited by every `MacRadio` in it — individual radios have no `size` prop.
+All five macOS control sizes; `regular` is the default. Like `controlSize` in AppKit, `size` is set on the group and inherited by every `MacRadio` in it — individual radios have no `size` prop.
 
 <ComponentPreview name="radio-group/Sizes">
 
@@ -63,9 +53,19 @@ All five macOS control sizes. Like `controlSize` in AppKit, `size` is set on the
 
 </ComponentPreview>
 
+## Disabled
+
+Disable the whole group or individual radios.
+
+<ComponentPreview name="radio-group/Disabled">
+
+<<< @/demos/radio-group/Disabled.vue
+
+</ComponentPreview>
+
 ## API
 
-### MacRadioGroup props
+### MacRadioGroup Props
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -79,19 +79,19 @@ All five macOS control sizes. Like `controlSize` in AppKit, `size` is set on the
 
 `orientation` only affects the layout: all four arrow keys move the selection either way, as the ARIA radio-group pattern prescribes. With `name` set, the group renders a hidden input inside a `<form>` and participates in native form submission.
 
-### MacRadioGroup events
+### MacRadioGroup Events
 
 | Event | Payload |
 | --- | --- |
 | `update:modelValue` | `string` |
 
-### MacRadioGroup slots
+### MacRadioGroup Slots
 
 | Slot | Description |
 | --- | --- |
 | `default` | `MacRadio` items. |
 
-### MacRadioGroup exposed
+### MacRadioGroup Exposed
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -99,20 +99,20 @@ All five macOS control sizes. Like `controlSize` in AppKit, `size` is set on the
 | `focus` | `() => void` | Focuses the current radio in the group. |
 | `blur` | `() => void` | Removes focus from the group. |
 
-### MacRadio props
+### MacRadio Props
 
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `string` | — (required) |
 | `disabled` | `boolean` | `false` |
 
-### MacRadio slots
+### MacRadio Slots
 
 | Slot | Description |
 | --- | --- |
 | `default` | Radio caption. |
 
-### MacRadio exposed
+### MacRadio Exposed
 
 | Name | Type | Description |
 | --- | --- | --- |

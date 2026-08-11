@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import { MacCheckbox, MacSwitch } from 'macvue'
+import {
+  MacCheckbox,
+  MacSegment,
+  MacSegmentedControl,
+  MacSwitch,
+} from 'macvue'
 import { ref } from 'vue'
 
+const appearance = ref('dark')
 const forceActive = ref(true)
 </script>
 
 <template>
   <div
     class="mv-glass-demo switch-glass-demo"
+    :data-macvue-appearance="appearance"
     data-macvue-glass="on"
     :data-macvue-glass-force-active="forceActive ? '' : undefined"
   >
@@ -28,12 +35,23 @@ const forceActive = ref(true)
       />
     </div>
 
-    <MacCheckbox
-      v-model="forceActive"
-      class="switch-glass-demo__pin"
-    >
-      Force active
-    </MacCheckbox>
+    <div class="switch-glass-demo__pin">
+      <MacSegmentedControl
+        v-model="appearance"
+        size="small"
+        aria-label="Scene appearance"
+      >
+        <MacSegment value="light">
+          Light
+        </MacSegment>
+        <MacSegment value="dark">
+          Dark
+        </MacSegment>
+      </MacSegmentedControl>
+      <MacCheckbox v-model="forceActive">
+        Force active
+      </MacCheckbox>
+    </div>
   </div>
 </template>
 
@@ -58,6 +76,9 @@ const forceActive = ref(true)
 }
 
 .switch-glass-demo__pin {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   grid-column: 1 / -1;
   justify-self: center;
   margin-bottom: 24px;

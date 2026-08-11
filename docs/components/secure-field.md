@@ -27,6 +27,16 @@ const password = ref('')
 </template>
 ```
 
+## Sizes
+
+All five macOS control sizes; `regular` is the default.
+
+<ComponentPreview name="secure-field/Sizes">
+
+<<< @/demos/secure-field/Sizes.vue
+
+</ComponentPreview>
+
 ## Disabled
 
 <ComponentPreview name="secure-field/Disabled">
@@ -48,6 +58,8 @@ const password = ref('')
 | `placeholder` | `string` | — |
 | `name` | `string` | — |
 | `required` | `boolean` | `false` |
+
+With `name` set, the field participates in native form submission.
 
 ### Events
 

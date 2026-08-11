@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { MacCheckbox, MacGlassPanel } from 'macvue'
+import {
+  MacCheckbox,
+  MacGlassPanel,
+  MacSegment,
+  MacSegmentedControl,
+} from 'macvue'
 import { reactive, ref } from 'vue'
 
 type Material = 'regular' | 'clear'
@@ -8,6 +13,7 @@ const offsets = reactive<Record<Material, { x: number, y: number }>>({
   regular: { x: 0, y: 0 },
   clear: { x: 0, y: 0 },
 })
+const appearance = ref('dark')
 const useDetailedBackground = ref(false)
 
 let drag:
@@ -76,8 +82,8 @@ function stopDrag(event: PointerEvent) {
 <template>
   <div
     class="mv-glass-demo glass-materials"
-    :class="{ 'glass-materials--detailed': useDetailedBackground }"
-    data-macvue-appearance="dark"
+    :class="{ 'mv-glass-demo--detailed': useDetailedBackground }"
+    :data-macvue-appearance="appearance"
     data-macvue-glass="on"
   >
     <MacGlassPanel
@@ -104,12 +110,23 @@ function stopDrag(event: PointerEvent) {
       <strong>Clear</strong>
       <span>More backdrop detail for media.</span>
     </MacGlassPanel>
-    <MacCheckbox
-      v-model="useDetailedBackground"
-      class="glass-materials__background-toggle"
-    >
-      Detailed backdrop
-    </MacCheckbox>
+    <div class="glass-materials__controls">
+      <MacSegmentedControl
+        v-model="appearance"
+        size="small"
+        aria-label="Scene appearance"
+      >
+        <MacSegment value="light">
+          Light
+        </MacSegment>
+        <MacSegment value="dark">
+          Dark
+        </MacSegment>
+      </MacSegmentedControl>
+      <MacCheckbox v-model="useDetailedBackground">
+        Detailed backdrop
+      </MacCheckbox>
+    </div>
   </div>
 </template>
 
@@ -123,61 +140,26 @@ function stopDrag(event: PointerEvent) {
   gap: 24px;
   overflow: hidden;
   padding: 40px 24px;
-  background-position: calc(
+  --mv-grid-offset: calc(
       (100% - min(455px, calc(100% - 48px))) / 2 - 12px
     ) -4px;
 }
 
-.glass-materials--detailed {
-  background-color: #080713;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgb(7 7 22 / 0.56) 0,
-      rgb(7 7 22 / 0.16) 16px,
-      rgb(166 99 255 / 0.3) 17px,
-      rgb(15 11 37 / 0.72) 19px
-    ),
-    radial-gradient(
-      ellipse 34% 72% at 12% 52%,
-      rgb(255 244 255 / 0.98) 0%,
-      rgb(214 119 255 / 0.92) 18%,
-      rgb(123 57 255 / 0.62) 42%,
-      transparent 72%
-    ),
-    radial-gradient(
-      ellipse 44% 58% at 48% 106%,
-      rgb(255 243 255 / 0.96) 0%,
-      rgb(190 67 255 / 0.82) 20%,
-      rgb(73 53 231 / 0.48) 48%,
-      transparent 74%
-    ),
-    radial-gradient(
-      ellipse 48% 52% at 72% 56%,
-      rgb(87 60 229 / 0.7) 0%,
-      rgb(42 31 129 / 0.42) 48%,
-      transparent 78%
-    ),
-    linear-gradient(118deg, #12103a 0%, #100b29 46%, #03040b 100%);
-  background-position: center;
-  background-size: 100% 100%;
-}
-
-.glass-materials--detailed::before {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
-  content: "";
-  opacity: 0.14;
-  pointer-events: none;
-}
-
-.glass-materials__background-toggle {
-  justify-self: center;
-  color: white;
+/* The inspectors belong under the glass — seeing them blurred through a
+   panel is the point. Their own stacking context keeps the segmented
+   control's internal z-index from escaping above the panels. */
+.glass-materials__controls {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .glass-materials__panel {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +168,7 @@ function stopDrag(event: PointerEvent) {
   width: 100%;
   height: 100px;
   padding: 20px 24px;
-  color: white;
+  color: var(--macvue-label);
   cursor: grab;
   text-align: center;
   touch-action: none;
@@ -203,7 +185,7 @@ function stopDrag(event: PointerEvent) {
 }
 
 .glass-materials__panel span {
-  color: rgb(255 255 255 / 0.76);
+  color: var(--macvue-label-secondary);
   font-size: 12px;
 }
 </style>

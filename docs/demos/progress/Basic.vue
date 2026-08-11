@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacProgress } from 'macvue'
+import { MacProgress, MacSlider } from 'macvue'
 import { ref } from 'vue'
 
 const progress = ref(40)
@@ -11,12 +11,9 @@ const progress = ref(40)
       :value="progress"
       aria-label="Progress"
     />
-    <input
-      v-model.number="progress"
-      type="range"
-      min="0"
-      max="100"
+    <MacSlider
+      v-model="progress"
       aria-label="Demo value"
-    >
+    />
   </div>
 </template>

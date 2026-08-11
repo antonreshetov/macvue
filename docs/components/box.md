@@ -8,6 +8,20 @@ A macOS group box (`NSBox`): a rounded container with a quaternary fill and no b
 
 </ComponentPreview>
 
+## Usage
+
+```vue
+<script setup lang="ts">
+import { MacBox } from 'macvue'
+</script>
+
+<template>
+  <MacBox title="Appearance">
+    Box content
+  </MacBox>
+</template>
+```
+
 ## API
 
 ### Props

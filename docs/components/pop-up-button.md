@@ -1,24 +1,10 @@
 # Pop-Up Button
 
-A Tahoe-style pair matching the two `NSPopUpButton` modes. `MacPopUpButton` chooses and displays one value. `MacPullDownButton` runs a command and does not retain a selection.
-
-Both controls share the same compact trigger scale and stable menu material, while keeping their different selection and command semantics explicit. Experimental Liquid Glass refraction is opt-in.
+A macOS pop-up button (`NSPopUpButton`). The two AppKit modes ship as separate components: `MacPopUpButton` chooses and displays one value, `MacPullDownButton` runs a command and does not retain a selection. Both share the trigger scale and the menu material; only their selection and command semantics differ.
 
 <ComponentPreview name="pop-up-button/Basic">
 
 <<< @/demos/pop-up-button/Basic.vue
-
-</ComponentPreview>
-
-## Liquid Glass
-
-Liquid Glass is experimental and disabled by default. The open menu uses the stable CSS material until an ancestor explicitly sets `data-macvue-glass="on"`. The isolated preview below enables it explicitly, following the same pattern as Switch. Safari, Firefox, reduced transparency, and `data-macvue-glass="off"` keep the fallback.
-
-Because the menu teleports to `body` by default, keep it inside the glass boundary with `:teleport-to="false"`, or provide a portal target inside that boundary. The 24px grid below makes displacement at the rounded edge visible.
-
-<ComponentPreview name="pop-up-button/Glass">
-
-<<< @/demos/pop-up-button/Glass.vue
 
 </ComponentPreview>
 
@@ -67,7 +53,7 @@ Use the command-oriented companion without modelling a selected value:
 
 ## Sizes
 
-Both modes follow the five-size AppKit control scale. The matrix keeps Pop-Up and Pull-Down triggers side by side so their native menu registration can be compared at every size. `regular` is 24px high.
+All five macOS control sizes; `regular` is the default. The matrix keeps Pop-Up and Pull-Down triggers side by side so their native menu registration can be compared at every size.
 
 <ComponentPreview name="pop-up-button/Sizes">
 
@@ -75,9 +61,27 @@ Both modes follow the five-size AppKit control scale. The matrix keeps Pop-Up an
 
 </ComponentPreview>
 
-## States
+## Liquid Glass
 
-Items and the whole control can be disabled.
+Liquid Glass is experimental and disabled by default. The open menu uses the stable CSS material until an ancestor explicitly sets `data-macvue-glass="on"`; `data-macvue-glass="off"` and reduced transparency keep the fallback.
+
+Because the menu teleports to `body` by default, keep it inside the glass boundary with `:teleport-to="false"`, or provide a portal target inside that boundary. See the [Liquid Glass guide](/liquid-glass) for the opt-in boundary, fallbacks and prior art.
+
+<Callout variant="warning" title="Browser support">
+
+The refracted menu currently requires Chromium. Safari and Firefox automatically use the CSS material fallback.
+
+</Callout>
+
+<ComponentPreview name="pop-up-button/Glass">
+
+<<< @/demos/pop-up-button/Glass.example.vue
+
+</ComponentPreview>
+
+## Disabled
+
+Disable the whole control or individual items.
 
 <ComponentPreview name="pop-up-button/States">
 
@@ -109,6 +113,8 @@ The menu teleports to `body` by default. When the control lives inside a locally
 | `placeholder` | `string` | `''` |
 | `teleportTo` | `string \| false` | `body` |
 
+With `name` set, the button participates in native form submission.
+
 ### MacPopUpButton Events
 
 | Event | Payload |
@@ -125,9 +131,13 @@ The menu teleports to `body` by default. When the control lives inside a locally
 
 ### MacPopUpButton Exposed
 
-`el`, `focus()`, and `blur()` target the semantic trigger button.
+| Name | Type | Description |
+| --- | --- | --- |
+| `el` | `Ref<HTMLButtonElement \| null>` | The semantic trigger button. |
+| `focus` | `() => void` | Focuses the trigger. |
+| `blur` | `() => void` | Removes focus from the trigger. |
 
-### MacPopUpButtonItem
+### MacPopUpButtonItem Props
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -135,9 +145,23 @@ The menu teleports to `body` by default. When the control lives inside a locally
 | `disabled` | `boolean` | `false` |
 | `textValue` | `string` | item text |
 
-The default slot is the item label and may contain custom inline content. Set `textValue` when that content is not plain text. An empty-string `value` is reserved for clearing the selection and is not a valid item value.
+Set `textValue` when the item content is not plain text. An empty-string `value` is reserved for clearing the selection and is not a valid item value.
 
-### MacPullDownButton
+### MacPopUpButtonItem Slots
+
+| Slot | Description |
+| --- | --- |
+| `default` | Item label; may contain custom inline content. |
+
+### MacPopUpButtonItem Exposed
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `el` | `Ref<HTMLElement \| null>` | The underlying menu item element. |
+| `focus` | `() => void` | Focuses the item. |
+| `blur` | `() => void` | Removes focus from the item. |
+
+### MacPullDownButton Props
 
 | Prop | Type | Default |
 | --- | --- | --- |
@@ -149,4 +173,50 @@ The default slot is the item label and may contain custom inline content. Set `t
 | `label` | `string` | `''` |
 | `teleportTo` | `string \| false` | `body` |
 
-The default slot contains `MacPullDownButtonItem` commands. The optional `trigger` slot replaces `label`; without either, the trigger is the compact chevron-only form. Items emit a cancellable `select` event.
+### MacPullDownButton Events
+
+| Event | Payload |
+| --- | --- |
+| `update:open` | `boolean` |
+
+### MacPullDownButton Slots
+
+| Slot | Description |
+| --- | --- |
+| `default` | `MacPullDownButtonItem` commands. |
+| `trigger` | Replaces `label`; without either, the trigger is the compact chevron-only form. |
+
+### MacPullDownButton Exposed
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `el` | `Ref<HTMLButtonElement \| null>` | The semantic trigger button. |
+| `focus` | `() => void` | Focuses the trigger. |
+| `blur` | `() => void` | Removes focus from the trigger. |
+
+### MacPullDownButtonItem Props
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `disabled` | `boolean` | `false` |
+| `textValue` | `string` | item text |
+
+### MacPullDownButtonItem Events
+
+| Event | Payload |
+| --- | --- |
+| `select` | `Event` — cancellable |
+
+### MacPullDownButtonItem Slots
+
+| Slot | Description |
+| --- | --- |
+| `default` | Command label. |
+
+### MacPullDownButtonItem Exposed
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `el` | `Ref<HTMLElement \| null>` | The underlying menu item element. |
+| `focus` | `() => void` | Focuses the item. |
+| `blur` | `() => void` | Removes focus from the item. |

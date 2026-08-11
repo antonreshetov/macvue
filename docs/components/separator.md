@@ -1,12 +1,24 @@
 # Separator
 
-A hairline separator (`NSBox` with the `.separator` type in AppKit). Exposed with the `separator` role and correct `aria-orientation`; `decorative` hides it from assistive technology entirely.
+A macOS hairline separator (`NSBox` `.separator`). Exposed with the `separator` role and correct `aria-orientation`; `decorative` hides it from assistive technology entirely.
 
 <ComponentPreview name="separator/Basic">
 
 <<< @/demos/separator/Basic.vue
 
 </ComponentPreview>
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import { MacSeparator } from 'macvue'
+</script>
+
+<template>
+  <MacSeparator />
+</template>
+```
 
 ## Vertical
 

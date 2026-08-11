@@ -1,6 +1,6 @@
 # Segmented Control
 
-A macOS segmented control (`NSSegmentedControl`). Segments share the container width equally — the AppKit default distribution. In single mode the accent selection slides between segments; a selected segment cannot be deselected by clicking it again, matching AppKit. Tahoe has a single visual style, so there is no `variant`; momentary (button-like) segments are not modeled — use `MacButton`s for that.
+A macOS segmented control (`NSSegmentedControl`). Segments share the container width equally — the AppKit default distribution. In single mode the accent selection slides between segments; a selected segment cannot be deselected by clicking it again, matching AppKit. Tahoe has a single visual style, so there is no `variant`; momentary (button-like) segments are not modeled — use `MacButton`s for that. Arrow keys move focus between segments; Space or Enter selects the focused segment.
 
 <ComponentPreview name="segmented-control/Basic">
 
@@ -33,8 +33,6 @@ const view = ref('list')
 </template>
 ```
 
-Arrow keys move focus between segments; Space or Enter selects the focused segment.
-
 ## Multiple
 
 `type="multiple"` switches the model to an array (`selectAny` in AppKit). Selected segments can be toggled off; there is no sliding pill.
@@ -57,7 +55,7 @@ All five macOS control sizes; `regular` is the default. Large and extra-large ar
 
 ## Disabled
 
-The whole group or individual segments.
+Disable the whole group or individual segments.
 
 <ComponentPreview name="segmented-control/Disabled">
 
@@ -106,3 +104,11 @@ With `name` set, hidden inputs carry the selection in native form submission.
 | Slot | Description |
 | --- | --- |
 | `default` | Segment label content. |
+
+### MacSegment Exposed
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `el` | `Ref<HTMLButtonElement \| null>` | The underlying segment button. |
+| `focus` | `() => void` | Focuses the segment. |
+| `blur` | `() => void` | Removes focus from the segment. |

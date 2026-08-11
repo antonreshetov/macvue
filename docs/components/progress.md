@@ -33,7 +33,7 @@ import { MacProgress } from 'macvue'
 
 ## Sizes
 
-The bar ships in two sizes — `regular` (10px) and `small` (6px) — the only two in the reference kit.
+Two sizes — `regular` (10px) and `small` (6px) — the only two in the reference kit.
 
 <ComponentPreview name="progress/Sizes">
 

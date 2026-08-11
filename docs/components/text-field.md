@@ -36,16 +36,6 @@ The field ships without a built-in label — `NSTextField` labels are separate e
 
 </ComponentPreview>
 
-## Sizes
-
-All five macOS control sizes; `regular` is the default.
-
-<ComponentPreview name="text-field/Sizes">
-
-<<< @/demos/text-field/Sizes.vue
-
-</ComponentPreview>
-
 ## Placeholder
 
 Native attributes such as `autocomplete`, `readonly` and `maxlength` fall through to the inner `<input>`; `class` and `style` land on the wrapper.
@@ -53,6 +43,16 @@ Native attributes such as `autocomplete`, `readonly` and `maxlength` fall throug
 <ComponentPreview name="text-field/Placeholder">
 
 <<< @/demos/text-field/Placeholder.vue
+
+</ComponentPreview>
+
+## Sizes
+
+All five macOS control sizes; `regular` is the default.
+
+<ComponentPreview name="text-field/Sizes">
+
+<<< @/demos/text-field/Sizes.vue
 
 </ComponentPreview>
 

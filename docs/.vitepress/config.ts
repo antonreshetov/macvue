@@ -41,6 +41,7 @@ export default defineConfig({
         items: [
           { text: 'Introduction', link: '/introduction' },
           { text: 'Installation', link: '/installation' },
+          { text: 'Liquid Glass', link: '/liquid-glass' },
         ],
       },
       {

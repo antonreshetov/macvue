@@ -5,9 +5,12 @@ import {
   MacPopUpButtonItem,
   MacPullDownButton,
   MacPullDownButtonItem,
+  MacSegment,
+  MacSegmentedControl,
 } from 'macvue'
 import { ref } from 'vue'
 
+const appearance = ref('dark')
 const color = ref('red')
 const useDetailedBackground = ref(false)
 </script>
@@ -15,8 +18,8 @@ const useDetailedBackground = ref(false)
 <template>
   <div
     class="mv-glass-demo pop-up-glass-demo"
-    :class="{ 'pop-up-glass-demo--detailed': useDetailedBackground }"
-    data-macvue-appearance="dark"
+    :class="{ 'mv-glass-demo--detailed': useDetailedBackground }"
+    :data-macvue-appearance="appearance"
     data-macvue-glass="on"
   >
     <div class="pop-up-glass-demo__row">
@@ -49,12 +52,23 @@ const useDetailedBackground = ref(false)
         <MacPullDownButtonItem>Save</MacPullDownButtonItem>
       </MacPullDownButton>
     </div>
-    <MacCheckbox
-      v-model="useDetailedBackground"
-      class="pop-up-glass-demo__background-toggle"
-    >
-      Detailed backdrop
-    </MacCheckbox>
+    <div class="pop-up-glass-demo__controls">
+      <MacSegmentedControl
+        v-model="appearance"
+        size="small"
+        aria-label="Scene appearance"
+      >
+        <MacSegment value="light">
+          Light
+        </MacSegment>
+        <MacSegment value="dark">
+          Dark
+        </MacSegment>
+      </MacSegmentedControl>
+      <MacCheckbox v-model="useDetailedBackground">
+        Detailed backdrop
+      </MacCheckbox>
+    </div>
   </div>
 </template>
 
@@ -68,52 +82,7 @@ const useDetailedBackground = ref(false)
   justify-content: center;
   gap: 8px;
   overflow: hidden;
-  background-position: calc(50% - 12px) calc(50% - 12px);
-}
-
-.pop-up-glass-demo--detailed {
-  background-color: #080713;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgb(7 7 22 / 0.56) 0,
-      rgb(7 7 22 / 0.16) 16px,
-      rgb(166 99 255 / 0.3) 17px,
-      rgb(15 11 37 / 0.72) 19px
-    ),
-    radial-gradient(
-      ellipse 34% 72% at 12% 52%,
-      rgb(255 244 255 / 0.98) 0%,
-      rgb(214 119 255 / 0.92) 18%,
-      rgb(123 57 255 / 0.62) 42%,
-      transparent 72%
-    ),
-    radial-gradient(
-      ellipse 44% 58% at 48% 106%,
-      rgb(255 243 255 / 0.96) 0%,
-      rgb(190 67 255 / 0.82) 20%,
-      rgb(73 53 231 / 0.48) 48%,
-      transparent 74%
-    ),
-    radial-gradient(
-      ellipse 48% 52% at 72% 56%,
-      rgb(87 60 229 / 0.7) 0%,
-      rgb(42 31 129 / 0.42) 48%,
-      transparent 78%
-    ),
-    linear-gradient(118deg, #12103a 0%, #100b29 46%, #03040b 100%);
-  background-position: center;
-  background-size: 100% 100%;
-}
-
-.pop-up-glass-demo--detailed::before {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
-  content: "";
-  opacity: 0.14;
-  pointer-events: none;
+  --mv-grid-offset: calc(50% - 12px) calc(50% - 12px);
 }
 
 .pop-up-glass-demo__row {
@@ -124,12 +93,14 @@ const useDetailedBackground = ref(false)
   gap: 8px;
 }
 
-.pop-up-glass-demo__background-toggle {
+.pop-up-glass-demo__controls {
   position: absolute;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   inset-block-end: 24px;
   inset-inline-start: 50%;
-  color: white;
   transform: translateX(-50%);
   white-space: nowrap;
 }

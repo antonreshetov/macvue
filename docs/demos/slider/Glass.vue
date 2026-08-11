@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { MacButton, MacCheckbox, MacSlider } from 'macvue'
+import {
+  MacButton,
+  MacCheckbox,
+  MacSegment,
+  MacSegmentedControl,
+  MacSlider,
+} from 'macvue'
 import { ref } from 'vue'
 
+const appearance = ref('dark')
 const enlarged = ref(false)
 const forceActive = ref(true)
 const volume = ref(42)
@@ -11,6 +18,7 @@ const volume = ref(42)
   <div
     class="mv-glass-demo slider-glass-demo"
     :class="{ 'slider-glass-demo--enlarged': enlarged }"
+    :data-macvue-appearance="appearance"
     data-macvue-glass="on"
     :data-macvue-glass-force-active="forceActive ? '' : undefined"
   >
@@ -19,6 +27,18 @@ const volume = ref(42)
       aria-label="Glass volume"
     />
     <div class="slider-glass-demo__controls">
+      <MacSegmentedControl
+        v-model="appearance"
+        size="small"
+        aria-label="Scene appearance"
+      >
+        <MacSegment value="light">
+          Light
+        </MacSegment>
+        <MacSegment value="dark">
+          Dark
+        </MacSegment>
+      </MacSegmentedControl>
       <MacCheckbox v-model="forceActive">
         Force active
       </MacCheckbox>

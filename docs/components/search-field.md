@@ -26,7 +26,15 @@ const query = ref('')
 </template>
 ```
 
-The placeholder defaults to `Search`.
+## Clearing
+
+The clear button empties the field and returns focus to the input. Keyboard users clear with Escape.
+
+<ComponentPreview name="search-field/Clearing">
+
+<<< @/demos/search-field/Clearing.vue
+
+</ComponentPreview>
 
 ## Sizes
 
@@ -38,13 +46,11 @@ All five macOS control sizes; `regular` is the default.
 
 </ComponentPreview>
 
-## Clearing
+## Disabled
 
-The clear button empties the field and returns focus to the input. Keyboard users clear with Escape.
+<ComponentPreview name="search-field/Disabled">
 
-<ComponentPreview name="search-field/Clearing">
-
-<<< @/demos/search-field/Clearing.vue
+<<< @/demos/search-field/Disabled.vue
 
 </ComponentPreview>
 
@@ -62,6 +68,8 @@ The clear button empties the field and returns focus to the input. Keyboard user
 | `clearLabel` | `string` | `'Clear text'` |
 | `name` | `string` | — |
 | `required` | `boolean` | `false` |
+
+With `name` set, the field participates in native form submission.
 
 ### Events
 

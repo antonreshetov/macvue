@@ -31,6 +31,20 @@
   color: var(--macvue-label);
 }
 
+/* VitePress marks external links with target="_blank"; the glyph is masked so
+   it inherits the link color in both appearances. */
+.mv-content a[target='_blank']::after {
+  display: inline-block;
+  width: 0.72em;
+  height: 0.72em;
+  margin-left: 0.15em;
+  vertical-align: -0.02em;
+  background-color: currentcolor;
+  content: '';
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%20fill='none'%20stroke='%23000'%20stroke-width='1.7'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M5.5%2010.5%2010.5%205.5'/%3E%3Cpath%20d='M6%205.5h4.5V10'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
 .mv-content blockquote {
   margin: 16px 0;
   padding: 0 16px;
@@ -168,7 +182,67 @@
   background-image:
     linear-gradient(var(--macvue-separator) 1px, transparent 1px),
     linear-gradient(90deg, var(--macvue-separator) 1px, transparent 1px);
+
+  /* Half a cell in, so the first line never lands on the stage edge and
+     reads as a border. Scenes centre the grid on their control by setting
+     --mv-grid-offset — never by overriding background-position, which the
+     gradient backdrop needs for itself. */
+  background-position: var(--mv-grid-offset, -12px -12px);
   background-size: 24px 24px;
+}
+
+/* Media-like backdrop for the `Detailed backdrop` inspector: it proves the
+   material against real content the way the grid proves geometry. Dark in
+   both appearances, since it stands in for media rather than for a window
+   surface — hence the label tokens are pinned here too. */
+.mv-glass-demo--detailed {
+  --macvue-label: #fff;
+  --macvue-label-secondary: rgb(255 255 255 / 0.76);
+
+  position: relative;
+  background-color: #080713;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgb(7 7 22 / 0.56) 0,
+      rgb(7 7 22 / 0.16) 16px,
+      rgb(166 99 255 / 0.3) 17px,
+      rgb(15 11 37 / 0.72) 19px
+    ),
+    radial-gradient(
+      ellipse 34% 72% at 12% 52%,
+      rgb(255 244 255 / 0.98) 0%,
+      rgb(214 119 255 / 0.92) 18%,
+      rgb(123 57 255 / 0.62) 42%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 44% 58% at 48% 106%,
+      rgb(255 243 255 / 0.96) 0%,
+      rgb(190 67 255 / 0.82) 20%,
+      rgb(73 53 231 / 0.48) 48%,
+      transparent 74%
+    ),
+    radial-gradient(
+      ellipse 48% 52% at 72% 56%,
+      rgb(87 60 229 / 0.7) 0%,
+      rgb(42 31 129 / 0.42) 48%,
+      transparent 78%
+    ),
+    linear-gradient(118deg, #12103a 0%, #100b29 46%, #03040b 100%);
+  background-position: center;
+  background-size: 100% 100%;
+  color: var(--macvue-label);
+}
+
+.mv-glass-demo--detailed::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+  content: "";
+  opacity: 0.14;
+  pointer-events: none;
 }
 
 .mv-preview-code {

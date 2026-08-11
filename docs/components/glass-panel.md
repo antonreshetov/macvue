@@ -4,7 +4,7 @@ A macOS Liquid Glass surface (`NSGlassEffectView`) for custom controls and media
 
 Use `regular` when content needs stronger blur and luminosity control. Use `clear` over media-rich backgrounds where preserving backdrop detail is more important.
 
-The base panel keeps its CSS material fallback. Add `data-macvue-glass="on"` to an ancestor to enable edge refraction; the nearest `data-macvue-glass` boundary wins, so a nested `off` disables refraction locally. Reduced transparency uses an opaque surface, and forced colors uses system colors.
+The base panel keeps its CSS material fallback. Add `data-macvue-glass="on"` to an ancestor to enable edge refraction; the nearest `data-macvue-glass` boundary wins, so a nested `off` disables refraction locally. Reduced transparency uses an opaque surface, and forced colors uses system colors. See the [Liquid Glass guide](/liquid-glass) for the opt-in boundary, fallbacks and prior art.
 
 <Callout variant="warning" title="Browser support">
 
@@ -12,15 +12,9 @@ The refracted surface currently requires Chromium. Safari and Firefox automatica
 
 </Callout>
 
-<Callout title="Implementation reference">
-
-The SVG filter pipeline and edge-refraction model were informed by [Kube's technical Liquid Glass article](https://kube.io/blog/liquid-glass-css-svg/). MacVue generates its own maps from the panel geometry and calibrates them against native macOS references.
-
-</Callout>
-
 <ComponentPreview name="glass-panel/Basic">
 
-<<< @/demos/glass-panel/Basic.vue
+<<< @/demos/glass-panel/Basic.example.vue
 
 </ComponentPreview>
 

@@ -1,6 +1,6 @@
 # Stepper
 
-A macOS stepper (`NSStepper`): two stacked segments that increment and decrement a number. Press-and-hold auto-repeats with acceleration. The whole control is a single tab stop with `role="spinbutton"`; the segments themselves stay out of the tab order — keyboard users step with the arrow keys.
+A macOS stepper (`NSStepper`): two stacked segments that increment and decrement a number. Press-and-hold auto-repeats with acceleration. The whole control is a single tab stop with `role="spinbutton"`; the segments themselves stay out of the tab order — keyboard users step with the arrow keys: Up/Down move by `step`, Home/End jump to `min`/`max`.
 
 <ComponentPreview name="stepper/Basic">
 
@@ -27,8 +27,6 @@ const copies = ref(1)
   />
 </template>
 ```
-
-Keyboard: Up/Down step by `step`, Home/End jump to `min`/`max`.
 
 ## With a text field
 
@@ -74,7 +72,7 @@ All five macOS control sizes; `regular` is the default.
 | `disabled` | `boolean` | `false` |
 | `name` | `string` | — |
 
-`wraps` mirrors `NSStepper.valueWraps`: stepping past a bound continues from the opposite one. With `name` set, a hidden input carries the value in native form submission.
+`wraps` mirrors `NSStepper.valueWraps`: stepping past a bound continues from the opposite one. With `name` set, the stepper renders a hidden input inside a `<form>` and participates in native form submission.
 
 ### Events
 

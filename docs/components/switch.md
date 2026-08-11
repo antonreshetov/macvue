@@ -25,14 +25,6 @@ const enabled = ref(true)
 </template>
 ```
 
-## Disabled
-
-<ComponentPreview name="switch/Disabled">
-
-<<< @/demos/switch/Disabled.vue
-
-</ComponentPreview>
-
 ## Sizes
 
 All five macOS control sizes; `regular` is the default.
@@ -45,7 +37,7 @@ All five macOS control sizes; `regular` is the default.
 
 ## Liquid Glass
 
-The base switch keeps its solid knob at the native size. Add `data-macvue-glass="on"` to an ancestor to enable Liquid Glass; the switch automatically shows its enlarged clicked lens only during press or drag.
+The base switch keeps its solid knob at the native size. Add `data-macvue-glass="on"` to an ancestor to enable Liquid Glass; the switch automatically shows its enlarged clicked lens only during press or drag. See the [Liquid Glass guide](/liquid-glass) for the opt-in boundary, fallbacks and prior art.
 
 <Callout variant="warning" title="Browser support">
 
@@ -55,7 +47,15 @@ The refracted lens currently requires Chromium. Safari and Firefox automatically
 
 <ComponentPreview name="switch/Glass">
 
-<<< @/demos/switch/Glass.vue
+<<< @/demos/switch/Glass.example.vue
+
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview name="switch/Disabled">
+
+<<< @/demos/switch/Disabled.vue
 
 </ComponentPreview>
 

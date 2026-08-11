@@ -30,6 +30,8 @@ import { MacButton } from 'macvue'
 
 ## Sizes
 
+All five macOS control sizes; `regular` is the default.
+
 <ComponentPreview name="button/Sizes">
 
 <<< @/demos/button/Sizes.vue
