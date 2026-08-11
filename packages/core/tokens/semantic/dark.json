@@ -208,8 +208,8 @@
     },
     "material-glass-regular-shadow": {
       "$type": "shadow",
-      "$value": "inset 0 0 0 100px rgb(255 255 255 / 0.06), inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 1px rgb(255 255 255 / 0.06)",
-      "$description": "Regular luminosity wash and restrained native-like rim"
+      "$value": "inset 0 0 0 9999px rgb(255 255 255 / 0.06), inset 0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 1px rgb(255 255 255 / 0.06)",
+      "$description": "Regular luminosity wash and restrained native-like rim. The wash spread must exceed half of any surface it covers, otherwise the centre stays unwashed"
     },
     "material-glass-regular-rim": {
       "$value": "rgb(255 255 255 / 0.1)"
@@ -232,8 +232,8 @@
     },
     "material-glass-clear-shadow": {
       "$type": "shadow",
-      "$value": "inset 0 0 0 100px rgb(255 255 255 / 0.1), inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 1px rgb(255 255 255 / 0.08)",
-      "$description": "Clear luminosity wash keeps a lighter fill, backdrop detail and the same native-like rim"
+      "$value": "inset 0 0 0 9999px rgb(255 255 255 / 0.1), inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 1px rgb(255 255 255 / 0.08)",
+      "$description": "Clear luminosity wash keeps a lighter fill, backdrop detail and the same native-like rim. The wash spread must exceed half of any surface it covers, otherwise the centre stays unwashed"
     },
     "material-glass-clear-rim": {
       "$value": "rgb(255 255 255 / 0.14)"
