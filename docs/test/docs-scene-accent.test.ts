@@ -33,14 +33,11 @@ function declarations(block: string) {
 }
 
 beforeAll(async () => {
-  const stylesDir = join(import.meta.dirname, '../src/styles')
+  const stylesDir = join(import.meta.dirname, '../../packages/core/src/styles')
   lightCss = await readFile(join(stylesDir, 'tokens.gen.css'), 'utf8')
   darkCss = await readFile(join(stylesDir, 'tokens-dark.gen.css'), 'utf8')
   scenesCss = await readFile(
-    join(
-      import.meta.dirname,
-      '../../../docs/.vitepress/theme/styles/scenes.css',
-    ),
+    join(import.meta.dirname, '../.vitepress/theme/styles/scenes.css'),
     'utf8',
   )
 })

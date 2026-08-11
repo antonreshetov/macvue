@@ -91,6 +91,15 @@ export default defineConfig({
       },
       {
         extends: true,
+        // Guards for the docs site live with the site, not in the package:
+        // a commit touching them must not read as a change to macvue.
+        test: {
+          name: 'docs',
+          include: ['docs/test/**/*.test.ts'],
+        },
+      },
+      {
+        extends: true,
         // @testing-library/vue reads process.env at import time; there is
         // no Node globals shim in the real browser.
         define: { 'process.env': '{}' },

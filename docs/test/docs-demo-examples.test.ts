@@ -8,7 +8,7 @@ import { parse } from 'vue/compiler-sfc'
 // `<Section>.example.vue`. Examples are rendered nowhere, which makes this
 // guard the only thing standing between them and silent rot.
 
-const docsDir = join(import.meta.dirname, '../../../docs')
+const docsDir = join(import.meta.dirname, '..')
 const demosDir = join(docsDir, 'demos')
 
 let examples: string[]
@@ -33,7 +33,7 @@ beforeAll(async () => {
   const all = await vueFiles(demosDir)
   examples = all.filter(file => file.endsWith('.example.vue'))
   exports = await readFile(
-    join(import.meta.dirname, '../src/index.ts'),
+    join(import.meta.dirname, '../../packages/core/src/index.ts'),
     'utf8',
   )
   markdown = await Promise.all(
