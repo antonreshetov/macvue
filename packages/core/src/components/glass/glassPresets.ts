@@ -44,7 +44,7 @@ export const regularPanelGlassPreset = {
   materialVariant: 'regular',
   surfaceProfile: 'convex',
   bezelRatio: 0.12,
-  displacementStrength: 0.24,
+  displacementStrength: 0.38,
   horizontalDirection: 1,
   smoothingPasses: 1,
   blur: 12,
