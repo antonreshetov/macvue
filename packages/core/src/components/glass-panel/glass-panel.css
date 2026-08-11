@@ -1,6 +1,10 @@
 @layer macvue.components {
   .macvue-glass-panel {
     position: relative;
+    /* Own stacking context so the lens, which sits at z-index -1, is painted
+       after this panel's own background instead of falling behind an
+       ancestor's. */
+    isolation: isolate;
     box-sizing: border-box;
     overflow: hidden;
     border-radius: var(--macvue-glass-panel-radius);
@@ -20,18 +24,16 @@
     box-shadow: var(--macvue-glass-panel-shadow-clear);
   }
 
+  /* Below the content rather than above it: a positioned lens over the slot
+     blurred bare text through its backdrop-filter, and wrapping the slot to
+     fix that would break the panel's own flex layout. */
   .macvue-glass-panel-lens {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
     border-radius: inherit;
     pointer-events: none;
     opacity: 0;
-  }
-
-  .macvue-glass-panel > :not(.macvue-glass-panel-lens, .macvue-glass-panel-filter) {
-    position: relative;
-    z-index: 1;
   }
 
   .macvue-glass-panel-filter {
