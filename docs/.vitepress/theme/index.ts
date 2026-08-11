@@ -12,9 +12,10 @@ import './styles/scenes.css'
 const GA_TAG_ID = 'G-DVKQNQHWQ1'
 
 // VitePress is a SPA: the tag only counts the first load on its own, so route
-// changes are reported by hand. Loaded lazily and never during SSR.
+// changes are reported by hand. Loaded lazily, never during SSR, and never in
+// dev — local page views would otherwise land in the production property.
 function initGtag(context: EnhanceAppContext) {
-  if (import.meta.env.SSR)
+  if (import.meta.env.SSR || !import.meta.env.PROD)
     return
 
   import('vue-gtag').then(({ configure, pageview }) => {
