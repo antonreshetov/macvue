@@ -224,17 +224,14 @@ const color = ref('red')
       title="Glass Panel"
       href="/components/glass-panel"
     >
+      <!-- Refraction off on the overview — the thumbnail is too small for the
+           edge to read. The grid stays: it is what shows the panel is
+           translucent, the same way the component page proves it. -->
       <div
-        data-macvue-glass="on"
-        style="
-          padding: 22px;
-          background: linear-gradient(135deg, #087cff, #8c50ff);
-        "
+        class="mv-card-glass-stage"
+        data-macvue-glass="off"
       >
-        <MacGlassPanel
-          material="clear"
-          style="padding: 18px 28px; color: white"
-        >
+        <MacGlassPanel material="clear">
           Media controls
         </MacGlassPanel>
       </div>

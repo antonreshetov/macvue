@@ -99,7 +99,7 @@
 .mv-scene-light {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
+  border-radius: 47% 53% 49% 51% / 52% 47% 53% 48%;
   border: 0.5px solid rgb(0 0 0 / 0.15);
 }
 
@@ -318,52 +318,85 @@
 /* Home page */
 
 .mv-home {
-  max-width: var(--docs-page-width);
-  margin: 0 auto;
-  padding: 64px 24px 96px;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0b0b0d;
+  color: #f5f5f7;
+  --docs-surface: #1b1b1d;
+  --docs-surface-secondary: #202023;
+  --docs-card-border: rgb(255 255 255 / 0.09);
+  --docs-card-border-hover: rgb(255 255 255 / 0.18);
 }
 
 .mv-hero {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 24px;
-  text-align: center;
+  min-height: min(760px, calc(100vh - 49px));
+  /* Full-bleed stage, content still bound to the shared column: a boxed hero
+     reads as a card once the section below it bleeds to the edges. The inset
+     matches --docs-page-width plus the 24px gutter the other containers use. */
+  padding: 72px max(24px, calc(50vw - 666px)) 64px;
+  border-bottom: 1px solid rgb(255 255 255 / 0.07);
+}
+
+.mv-hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(47%, 580px);
+}
+
+.mv-kicker {
+  margin: 0 0 14px;
+  color: #a8a8ae;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .mv-hero-title {
   margin: 0;
-  max-width: 720px;
-  font-size: clamp(36px, 8vw, var(--docs-display-size-xl));
+  max-width: 610px;
+  font-size: clamp(48px, 5.1vw, 76px);
   font-weight: var(--docs-display-weight);
-  letter-spacing: var(--docs-display-tracking);
-  line-height: var(--docs-display-leading);
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+  white-space: pre-line;
 }
 
 .mv-hero-tagline {
-  margin: 0;
-  max-width: 560px;
-  font-size: var(--macvue-text-title-3-size);
-  color: var(--macvue-label-secondary);
+  max-width: 500px;
+  margin: 24px 0 0;
+  color: #aaaab1;
+  font-size: clamp(17px, 1.55vw, 21px);
+  line-height: 1.48;
 }
 
 .mv-hero-actions {
   display: flex;
   gap: 10px;
+  margin-top: 28px;
 }
 
 .mv-cta {
-  padding: 8px 20px;
-  border: 1px solid var(--docs-card-border);
+  padding: 9px 19px;
+  border: 1px solid rgb(255 255 255 / 0.13);
   border-radius: var(--docs-radius-pill);
-  background: var(--docs-surface);
-  color: var(--macvue-label);
+  background: rgb(255 255 255 / 0.035);
+  color: #f5f5f7;
   font-weight: 500;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
 }
 
 .mv-cta:hover {
   text-decoration: none;
-  filter: brightness(0.97);
+  border-color: rgb(255 255 255 / 0.24);
+  background: rgb(255 255 255 / 0.07);
+  transform: translateY(-1px);
 }
 
 .mv-cta--primary {
@@ -374,78 +407,645 @@
 
 .mv-cta--primary:hover {
   background: var(--macvue-accent-hover);
-  filter: none;
 }
 
-.mv-hero-scene {
-  width: min(560px, 100%);
-  margin-top: 24px;
-}
-
-.mv-hero-controls {
-  display: flex;
+.mv-install {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.mv-segment {
-  display: flex;
-  gap: 2px;
-  padding: 2px;
-  border: 1px solid var(--docs-card-border);
-  border-radius: var(--docs-radius-pill);
-  background: var(--docs-surface);
-}
-
-.mv-segment-button {
-  padding: 3px 12px;
-  border: none;
-  border-radius: var(--docs-radius-pill);
-  background: transparent;
-  color: var(--macvue-label-secondary);
-  font-family: inherit;
-  font-size: var(--macvue-text-callout-size);
+  gap: 10px;
+  width: min(100%, 318px);
+  margin-top: 34px;
+  padding: 12px 13px;
+  border: 1px solid rgb(255 255 255 / 0.10);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.025);
+  color: #7e8795;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
 }
 
-.mv-segment-button--active {
-  background: var(--macvue-label-quaternary);
-  color: var(--macvue-label);
+.mv-install:hover {
+  border-color: rgb(255 255 255 / 0.18);
+  background: rgb(255 255 255 / 0.045);
 }
 
-.mv-home-section-title {
-  margin: 96px 0 24px;
-  font-size: clamp(28px, 5vw, var(--docs-display-size));
-  font-weight: var(--docs-display-weight);
-  letter-spacing: var(--docs-display-tracking);
-  line-height: var(--docs-display-leading);
+.mv-install code {
+  color: #d6d6dc;
+  font-size: 13px;
+}
+
+.mv-install-copy {
+  color: #8c8c92;
+  font-size: 11px;
+}
+
+/* No z-index: the wrapper must not open a stacking context, otherwise the dragged
+   panel (z-index 3) could never travel above the hero copy (z-index 2). */
+.mv-hero-visual {
+  position: absolute;
+  inset: 0;
+}
+
+.mv-hero-optics {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.86;
+}
+
+.mv-hero-optics-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.mv-hero-knob {
+  --mv-hero-knob-x: 0px;
+  --mv-hero-knob-y: 0px;
+
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  z-index: 2;
+  width: clamp(210px, 17vw, 260px);
+  aspect-ratio: 1.18;
+  border-radius: 999px;
+  transform: translate(
+    calc(-50% + var(--mv-hero-knob-x)),
+    calc(-50% + var(--mv-hero-knob-y))
+  );
+  pointer-events: none;
+}
+
+.mv-hero-glass-lens {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(226 238 255 / 0.58);
+  border-radius: inherit;
+  background: rgb(122 157 212 / 0.045);
+  box-shadow:
+    0 26px 70px rgb(0 0 0 / 0.38),
+    0 0 32px rgb(104 149 255 / 0.10),
+    inset -18px -20px 36px rgb(0 5 18 / 0.22),
+    inset 12px 14px 28px rgb(234 242 255 / 0.10);
+  -webkit-backdrop-filter: var(--_macvue-glass-filter);
+  backdrop-filter: var(--_macvue-glass-filter);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.mv-hero-knob[data-glass-ready] .mv-hero-glass-lens {
+  opacity: 1;
+}
+
+.mv-hero-optics-wrap[data-hero-variant='aurora-flow'] .mv-hero-knob {
+  top: 65%;
+}
+
+.mv-hero-panel-stage {
+  position: absolute;
+  top: 54%;
+  right: 10.5%;
+  z-index: 3;
+  width: min(38vw, 470px);
+  transform: translateY(-50%);
+}
+
+.mv-hero-control-panel {
+  --mv-hero-panel-x: 0px;
+  --mv-hero-panel-y: 0px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  box-shadow:
+    0 34px 70px rgb(0 0 0 / 0.42),
+    var(--macvue-glass-panel-shadow-clear);
+  color: var(--macvue-label);
+  cursor: grab;
+  transform: translate(var(--mv-hero-panel-x), var(--mv-hero-panel-y));
+  user-select: none;
+}
+
+.mv-hero-control-panel--dragging {
+  cursor: grabbing;
+}
+
+.mv-hero-panel-support {
+  margin: 14px 0 0;
+  color: #bebec5;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  text-shadow:
+    0 1px 4px rgb(0 0 0 / 0.95),
+    0 2px 14px rgb(0 0 0 / 0.9);
+}
+
+.mv-hero-control-panel-header {
+  display: flex;
+  align-items: center;
+  padding: 1px 2px 5px;
+  touch-action: none;
+}
+
+.mv-hero-control-panel-header strong {
+  font-size: 15px;
+  letter-spacing: -0.02em;
+}
+
+.mv-hero-control-group {
+  border: 1px solid rgb(255 255 255 / 0.10);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.055);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.025);
+}
+
+.mv-hero-control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 46px;
+  padding: 10px 14px;
+  font-size: var(--macvue-control-text-size-regular);
+}
+
+.mv-hero-control-row + .mv-hero-control-row {
+  border-top: 1px solid rgb(245 249 255 / 0.11);
+}
+
+.mv-hero-control-row--slider .macvue-slider {
+  width: min(52%, 210px);
+}
+
+.mv-hero-glass-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.mv-hero-visual-caption {
+  position: absolute;
+  right: 28px;
+  bottom: 22px;
+  z-index: 2;
+  margin: 0;
+  color: rgb(255 255 255 / 0.32);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mv-bento {
+  /* Figures follow the accent the swatches set, lifted for dark tiles. */
+  --mv-bento-accent: color-mix(in srgb, var(--macvue-accent), white 18%);
+
+  /* The swatches set --macvue-accent here, but every derived token resolves at
+     :root, so the whole dark chain is redeclared for the tiles — same formulas
+     as the dark .mv-scene mirror, guarded by docs-scene-accent.test.ts. The
+     section is always dark; the light appearance tile only differs in
+     pressed/disabled shades. */
+  --macvue-accent-hover: color-mix(in srgb, var(--macvue-accent), white 6%);
+  --macvue-accent-pressed: color-mix(in srgb, var(--macvue-accent), white 8%);
+  --macvue-accent-pressed-soft: color-mix(in srgb, var(--macvue-accent), white 10%);
+  --macvue-accent-disabled: color-mix(in srgb, var(--macvue-accent) 40%, transparent);
+  --macvue-accent-disabled-strong: color-mix(in srgb, var(--macvue-accent) 90%, transparent);
+  --macvue-focus-ring: color-mix(in srgb, var(--macvue-accent), transparent 75%);
+  --macvue-focus-ring-border: color-mix(in srgb, var(--macvue-accent), transparent 85%);
+  --macvue-selection-bg: var(--macvue-accent);
+  --macvue-button-bg-prominent: var(--macvue-accent);
+  --macvue-button-bg-prominent-pressed: var(--macvue-accent-pressed-soft);
+  --macvue-button-bg-prominent-disabled: var(--macvue-accent-disabled);
+  --macvue-checkbox-bg-on: var(--macvue-accent);
+  --macvue-checkbox-bg-on-pressed: var(--macvue-accent-pressed);
+  --macvue-checkbox-bg-on-disabled: var(--macvue-accent-disabled-strong);
+  --macvue-radio-bg-on: var(--macvue-accent);
+  --macvue-radio-bg-on-pressed: var(--macvue-accent-pressed);
+  --macvue-radio-bg-on-disabled: var(--macvue-accent-disabled-strong);
+  --macvue-switch-track-on: var(--macvue-accent);
+  --macvue-switch-track-on-pressed: var(--macvue-accent-pressed-soft);
+  --macvue-switch-track-on-disabled: var(--macvue-accent-disabled-strong);
+  --macvue-slider-range: var(--macvue-accent);
+  --macvue-slider-range-disabled: var(--macvue-accent-disabled);
+  --macvue-segmented-on-pressed: color-mix(in srgb, var(--macvue-accent), white 14%);
+  --macvue-segmented-on-bg: var(--macvue-accent);
+  --macvue-segmented-on-bg-pressed: var(--macvue-segmented-on-pressed);
+  --macvue-segmented-on-bg-disabled: var(--macvue-accent-disabled);
+  --macvue-progress-fill: var(--macvue-accent);
+
+  position: relative;
+  max-width: var(--docs-page-width);
+  margin: 0 auto;
+  padding: 120px 24px 0;
+}
+
+/* Two full-bleed layers behind the grid: colour, then grain over it. Without
+   the colour the frosted tiles have nothing to sit on and read as flat grey;
+   the grain keeps the gradient from looking like a smooth CSS wash. */
+.mv-bento::before,
+.mv-bento::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 0;
+  width: 100vw;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.mv-bento::before {
+  background:
+    radial-gradient(46% 40% at 22% 28%, rgb(94 63 255 / 0.32), transparent 72%),
+    radial-gradient(44% 42% at 78% 60%, rgb(10 132 255 / 0.28), transparent 72%),
+    radial-gradient(38% 34% at 50% 100%, rgb(191 90 242 / 0.20), transparent 74%);
+}
+
+.mv-bento::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+  /* Grain amplitude: raise toward 0.3 for a coarser texture, drop to 0.1 to
+     make it barely perceptible. */
+  opacity: 0.05;
+}
+
+.mv-bento-heading,
+.mv-bento-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.mv-bento-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 34px;
+}
+
+.mv-bento-heading h2 {
+  margin: 0;
+  max-width: 640px;
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+}
+
+.mv-bento-heading a {
+  flex: none;
+  padding-bottom: 4px;
+  color: #2997ff;
+}
+
+.mv-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: 140px;
+  /* Dense: narrower breakpoints regroup the spans and would otherwise leave
+     holes next to an odd tile. */
+  grid-auto-flow: dense;
+  gap: 10px;
+}
+
+.mv-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  grid-column: span 3;
+  min-width: 0;
+  padding: 20px 22px;
+  border: 1px solid rgb(255 255 255 / 0.11);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.06);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
   text-align: center;
 }
 
-/* Wall of scenes — CSS columns give the shadcn-like masonry flow where
-   cards keep their natural heights instead of stretching to a row. */
+.mv-tile--w2 { grid-column: span 2; }
+.mv-tile--w3 { grid-column: span 3; }
+.mv-tile--w4 { grid-column: span 4; }
+.mv-tile--w6 { grid-column: span 6; }
+.mv-tile--h2 { grid-row: span 2; }
 
-.mv-wall {
-  columns: 3 300px;
-  column-gap: 16px;
+.mv-tile-top,
+.mv-tile-label {
+  margin: 0;
+  color: rgb(245 245 247 / 0.62);
+  font-size: 12px;
+  line-height: 1.35;
 }
 
-.mv-wall-card {
-  display: flex;
+.mv-tile-figure {
+  display: block;
+  color: var(--mv-bento-accent);
+  font-size: clamp(38px, 4.4vw, 62px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.mv-tile-figure--small {
+  font-size: clamp(28px, 3vw, 42px);
+}
+
+.mv-tile-code {
+  display: block;
+  color: #f5f5f7;
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.mv-tile--claim {
   justify-content: center;
-  break-inside: avoid;
-  margin-bottom: 16px;
-  padding: 24px;
-  border: 1px solid var(--docs-card-border);
-  border-radius: var(--docs-radius-card);
-  background: var(--docs-surface);
 }
 
-.mv-wall-card > * {
-  min-width: 0;
+.mv-tile--claim strong {
+  color: var(--mv-bento-accent);
+  font-size: clamp(19px, 1.9vw, 27px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.mv-tile--control {
+  align-items: center;
+  gap: 16px;
+}
+
+.mv-tile--control > :not(.mv-tile-label) {
+  flex: none;
+}
+
+.mv-tile-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.mv-tile-row .macvue-progress {
   flex: 1;
+  min-width: 0;
+}
+
+.mv-tile-row .macvue-search-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.mv-tile--control .macvue-slider {
+  width: 78%;
+}
+
+.mv-tile--appearance {
+  transition: background 220ms ease;
+}
+
+.mv-tile--appearance[data-macvue-appearance='light'] {
+  border-color: rgb(255 255 255 / 0.5);
+  background: rgb(255 255 255 / 0.78);
+}
+
+.mv-tile--appearance[data-macvue-appearance='light'] .mv-tile-label {
+  color: rgb(23 23 25 / 0.56);
+}
+
+.mv-tile--accent {
+  justify-content: center;
+  gap: 14px;
+}
+
+.mv-tile--accent .mv-swatches {
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.mv-tile--accent .mv-swatch {
+  width: 26px;
+  height: 26px;
+}
+
+.mv-tile--glass {
+  position: relative;
+  justify-content: center;
+  gap: 20px;
+  padding: 26px 24px;
+  background:
+    radial-gradient(80% 42% at 50% 56%, rgb(140 96 255 / 0.62), transparent 70%),
+    radial-gradient(120% 90% at 16% 0%, rgb(94 63 255 / 0.42), transparent 62%),
+    radial-gradient(110% 80% at 90% 100%, rgb(10 132 255 / 0.40), transparent 58%),
+    #0a0a0d;
+}
+
+.mv-tile-glass-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at 50% 58%, black 40%, transparent 92%);
+}
+
+.mv-tile--glass > :not(.mv-tile-glass-grid) {
+  position: relative;
+  z-index: 1;
+}
+
+.mv-tile-glass-claim {
+  color: #f5f5f7;
+  font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.mv-tile-glass-panel {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  align-self: center;
+  width: 92%;
+  padding: 18px 20px;
+}
+
+.mv-tile-glass-panel .macvue-slider {
+  flex: 1;
+  min-width: 0;
+}
+
+/* The centre tile is the keynote object: dark stage, window cropped by the
+   tile the way the M2 die is cropped by its slide. */
+.mv-tile--panel {
+  justify-content: flex-end;
+  padding: 0;
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgb(94 63 255 / 0.34), transparent 62%),
+    radial-gradient(110% 80% at 88% 100%, rgb(10 132 255 / 0.30), transparent 58%),
+    #0a0a0d;
+}
+
+.mv-tile--panel .mv-scene-settings {
+  width: 100%;
+}
+
+.mv-tile--panel .mv-scene {
+  width: min(94%, 520px);
+  /* Pushed down so the tile crops the pane mid-group instead of ending flush
+     with the tile edge, which read as an accident. */
+  margin: 58px auto 0;
+  box-shadow:
+    0 2px 4px rgb(0 0 0 / 0.28),
+    0 26px 52px rgb(0 0 0 / 0.44);
+}
+
+
+@media (max-width: 980px) {
+  .mv-hero {
+    min-height: 700px;
+    padding-inline: 28px;
+  }
+
+  .mv-hero-copy {
+    width: 52%;
+  }
+
+  .mv-hero-title {
+    font-size: clamp(44px, 7vw, 64px);
+  }
+
+  .mv-hero-knob {
+    left: 72%;
+    width: clamp(204px, 25vw, 244px);
+  }
+
+  .mv-hero-panel-stage {
+    right: 3%;
+    width: min(44vw, 440px);
+  }
+
+  .mv-bento-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .mv-tile,
+  .mv-tile--w2,
+  .mv-tile--w3 {
+    grid-column: span 3;
+  }
+
+  .mv-tile--w4,
+  .mv-tile--w6 {
+    grid-column: span 6;
+  }
+
+  /* Odd count of half-width tiles: the last one fills the row. */
+  .mv-tile--w2:last-child {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 680px) {
+  .mv-home {
+    padding-bottom: 72px;
+  }
+
+  .mv-hero {
+    align-items: flex-start;
+    min-height: 800px;
+    padding: 54px 20px 38px;
+  }
+
+  .mv-hero--panel {
+    min-height: 900px;
+  }
+
+  .mv-hero-copy {
+    width: 100%;
+  }
+
+  .mv-hero-title {
+    max-width: 520px;
+    font-size: clamp(42px, 13vw, 58px);
+  }
+
+  .mv-hero-tagline {
+    max-width: 440px;
+    font-size: 16px;
+  }
+
+  .mv-hero-optics-wrap {
+    top: 280px;
+  }
+
+  .mv-hero-knob {
+    left: 58%;
+    width: clamp(184px, 48vw, 220px);
+  }
+
+  .mv-hero-panel-stage {
+    top: 62%;
+    right: 16px;
+    width: calc(100% - 32px);
+    transform: translateY(-50%) scale(0.92);
+  }
+
+  .mv-hero-visual-caption {
+    right: 18px;
+    bottom: 14px;
+  }
+
+  .mv-bento {
+    padding: 80px 14px 0;
+  }
+
+  .mv-bento-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .mv-bento-heading h2 {
+    font-size: clamp(38px, 12vw, 52px);
+  }
+
+  .mv-bento-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mv-tile,
+  .mv-tile--w2,
+  .mv-tile--w3,
+  .mv-tile--w4,
+  .mv-tile--w6 {
+    grid-column: span 2;
+  }
+
+  .mv-tile--w2 {
+    grid-column: span 1;
+  }
+
+  /* Odd count of half-width tiles: the last one takes the full row so the
+     grid never ends on a hole. */
+  .mv-tile--w2:last-child {
+    grid-column: span 2;
+  }
+
+  .mv-tile--panel {
+    grid-row: span 2;
+  }
 }
 
 /* Component cards (bento index) */
@@ -483,6 +1083,33 @@
   min-height: 140px;
   padding: 24px;
   background: var(--docs-surface-secondary);
+}
+
+/* Glass Panel card: the stage fills the whole preview and carries the same
+   24px grid as the component page, so the material reads as translucent. */
+.mv-card-preview:has(> .mv-card-glass-stage) {
+  padding: 0;
+}
+
+.mv-card-glass-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex: 1;
+  padding: 24px;
+  /* Same grid as the component page: window surface, separator lines, 24px
+     cells offset by half a cell so no line lands on the edge. */
+  background-color: var(--macvue-window-bg);
+  background-image:
+    linear-gradient(var(--macvue-separator) 1px, transparent 1px),
+    linear-gradient(90deg, var(--macvue-separator) 1px, transparent 1px);
+  background-position: -12px -12px;
+  background-size: 24px 24px;
+}
+
+.mv-card-glass-stage .macvue-glass-panel {
+  padding: 18px 28px;
 }
 
 .mv-card-title {

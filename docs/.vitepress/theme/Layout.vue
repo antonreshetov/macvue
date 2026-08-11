@@ -5,6 +5,7 @@ import AppearanceToggle from './components/AppearanceToggle.vue'
 import HomePage from './components/HomePage.vue'
 import OnThisPage from './components/OnThisPage.vue'
 import PrevNext from './components/PrevNext.vue'
+import SiteFooter from './components/SiteFooter.vue'
 
 const { theme, page, frontmatter } = useData()
 const route = useRoute()
@@ -75,7 +76,12 @@ function resolveHref(link: string) {
 </script>
 
 <template>
-  <div class="mv-app">
+  <!-- The home page is a dark showcase: pin the appearance for the chrome too,
+       so the header does not follow the saved docs preference there. -->
+  <div
+    class="mv-app"
+    :data-macvue-appearance="isHome ? 'dark' : undefined"
+  >
     <header class="mv-header">
       <div class="mv-header-inner">
         <a
@@ -134,7 +140,9 @@ function resolveHref(link: string) {
             </div>
           </div>
         </details>
-        <AppearanceToggle />
+        <!-- The home page pins its own dark appearance, so the toggle would
+             have nothing to switch there. -->
+        <AppearanceToggle v-if="!isHome" />
       </div>
     </header>
 
@@ -180,5 +188,7 @@ function resolveHref(link: string) {
 
       <OnThisPage />
     </div>
+
+    <SiteFooter v-if="!isHome" />
   </div>
 </template>

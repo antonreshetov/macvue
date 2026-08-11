@@ -2,7 +2,8 @@
    Kept out of @layer so they always win over layered library CSS. */
 
 :root {
-  --docs-page-width: 1280px;
+  /* One column for the whole site: home, docs and the header all sit on it. */
+  --docs-page-width: 1380px;
   --docs-page-bg: #f5f5f7;
   --docs-surface: #ffffff;
   --docs-surface-secondary: #fafafc;
@@ -33,6 +34,13 @@
   --docs-surface-secondary: #fafafc;
   --docs-card-border: rgb(0 0 0 / 0.06);
   --docs-card-border-hover: rgb(0 0 0 / 0.12);
+
+  /* Material aliases resolve where they are declared, so a page that pins its
+     own appearance (the home page) needs them re-declared per attribute —
+     otherwise the header keeps the :root material. */
+  --docs-header-bg: var(--macvue-material-glass-regular-bg);
+  --docs-header-blur: var(--macvue-material-glass-regular-blur);
+  --docs-header-saturation: var(--macvue-material-glass-regular-saturation);
 }
 
 [data-macvue-appearance='dark'] {
@@ -42,4 +50,7 @@
   --docs-surface-secondary: #252527;
   --docs-card-border: rgb(255 255 255 / 0.08);
   --docs-card-border-hover: rgb(255 255 255 / 0.16);
+  --docs-header-bg: var(--macvue-material-glass-regular-bg);
+  --docs-header-blur: var(--macvue-material-glass-regular-blur);
+  --docs-header-saturation: var(--macvue-material-glass-regular-saturation);
 }

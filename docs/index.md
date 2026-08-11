@@ -2,12 +2,14 @@
 layout: home
 title: MacVue
 hero:
-  title: macOS UI components for Vue
-  tagline: Native-looking macOS controls, built with Vue. Light, dark, and any accent — straight from design tokens.
+  title: |-
+    macOS-inspired controls.
+    Built for Vue.
+  tagline: Drop in controls with AppKit metrics, states, and keyboard behavior — including opt-in Liquid Glass refraction.
   actions:
     - text: Get Started
       link: /introduction
       variant: prominent
-    - text: GitHub
-      link: https://github.com/antonreshetov/macvue
+    - text: View Components
+      link: /components/
 ---
