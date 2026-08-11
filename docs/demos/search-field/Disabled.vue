@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacSearchField } from 'macvue'
+import { MacSearchField } from '@macvue/core'
 </script>
 
 <template>

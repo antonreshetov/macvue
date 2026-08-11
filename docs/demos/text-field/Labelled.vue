@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacTextField } from 'macvue'
+import { MacTextField } from '@macvue/core'
 import { ref } from 'vue'
 
 const server = ref('')

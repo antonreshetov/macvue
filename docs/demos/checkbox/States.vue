@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacCheckbox } from 'macvue'
+import { MacCheckbox } from '@macvue/core'
 </script>
 
 <template>

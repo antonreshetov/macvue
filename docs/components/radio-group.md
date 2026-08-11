@@ -12,7 +12,7 @@ A group of macOS radio buttons (`NSButton` `.radio`). Exactly one option is sele
 
 ```vue
 <script setup lang="ts">
-import { MacRadio, MacRadioGroup } from 'macvue'
+import { MacRadio, MacRadioGroup } from '@macvue/core'
 import { ref } from 'vue'
 
 const sortBy = ref('name')

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacProgress, MacSlider } from 'macvue'
+import { MacProgress, MacSlider } from '@macvue/core'
 import { ref } from 'vue'
 
 const progress = ref(40)

@@ -22,7 +22,7 @@ The refracted surface currently requires Chromium. Safari and Firefox automatica
 
 ```vue
 <script setup lang="ts">
-import { MacGlassPanel } from 'macvue'
+import { MacGlassPanel } from '@macvue/core'
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { GlassLensPreset } from '../../../../packages/core/src/components/glass/glassMaps'
-import { MacGlassPanel, MacSlider, MacSwitch } from 'macvue'
+import { MacGlassPanel, MacSlider, MacSwitch } from '@macvue/core'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import GlassLens from '../../../../packages/core/src/components/glass/GlassLens.vue'
 

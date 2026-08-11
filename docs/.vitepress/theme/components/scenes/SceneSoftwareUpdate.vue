@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacButton, MacCheckbox } from 'macvue'
+import { MacButton, MacCheckbox } from '@macvue/core'
 import { ref } from 'vue'
 
 defineProps<{ appearance?: 'light' | 'dark' }>()

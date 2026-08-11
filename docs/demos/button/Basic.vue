@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacButton } from 'macvue'
+import { MacButton } from '@macvue/core'
 </script>
 
 <template>

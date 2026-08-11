@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacButton, MacSecureField, MacTextField } from 'macvue'
+import { MacButton, MacSecureField, MacTextField } from '@macvue/core'
 import { ref } from 'vue'
 import SceneFrame from './SceneFrame.vue'
 

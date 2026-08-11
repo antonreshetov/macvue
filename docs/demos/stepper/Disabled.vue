@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacStepper } from 'macvue'
+import { MacStepper } from '@macvue/core'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacStepper, MacTextField } from 'macvue'
+import { MacStepper, MacTextField } from '@macvue/core'
 import { computed, ref } from 'vue'
 
 const copies = ref(1)

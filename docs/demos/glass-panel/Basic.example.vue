@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacGlassPanel } from 'macvue'
+import { MacGlassPanel } from '@macvue/core'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacBadge, MacLabel } from 'macvue'
+import { MacBadge, MacLabel } from '@macvue/core'
 </script>
 
 <template>

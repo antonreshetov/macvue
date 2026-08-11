@@ -22,7 +22,7 @@ import {
   MacStepper,
   MacSwitch,
   MacTextField,
-} from 'macvue'
+} from '@macvue/core'
 import { ref } from 'vue'
 import ComponentCard from './ComponentCard.vue'
 

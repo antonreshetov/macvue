@@ -12,7 +12,7 @@ A macOS group box (`NSBox`): a rounded container with a quaternary fill and no b
 
 ```vue
 <script setup lang="ts">
-import { MacBox } from 'macvue'
+import { MacBox } from '@macvue/core'
 </script>
 
 <template>

@@ -9,7 +9,7 @@ import {
   MacSlider,
   MacStepper,
   MacSwitch,
-} from 'macvue'
+} from '@macvue/core'
 import { ref } from 'vue'
 import SceneFrame from './SceneFrame.vue'
 

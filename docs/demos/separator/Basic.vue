@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacLabel, MacSeparator } from 'macvue'
+import { MacLabel, MacSeparator } from '@macvue/core'
 </script>
 
 <template>

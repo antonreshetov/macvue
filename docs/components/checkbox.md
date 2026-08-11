@@ -12,7 +12,7 @@ A macOS checkbox (`NSButton` `.switch`). Supports checked, unchecked, and mixed 
 
 ```vue
 <script setup lang="ts">
-import { MacCheckbox } from 'macvue'
+import { MacCheckbox } from '@macvue/core'
 import { ref } from 'vue'
 
 const checked = ref(false)

@@ -12,7 +12,7 @@ A macOS text label (a non-editable `NSTextField`). `variant` selects one of the 
 
 ```vue
 <script setup lang="ts">
-import { MacLabel } from 'macvue'
+import { MacLabel } from '@macvue/core'
 </script>
 
 <template>

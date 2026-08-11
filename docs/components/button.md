@@ -12,7 +12,7 @@ A macOS push button (`NSButton`). Supports default, prominent, and destructive v
 
 ```vue
 <script setup lang="ts">
-import { MacButton } from 'macvue'
+import { MacButton } from '@macvue/core'
 </script>
 
 <template>

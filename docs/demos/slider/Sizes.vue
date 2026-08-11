@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { MacControlSize } from 'macvue'
-import { MacSlider } from 'macvue'
+import type { MacControlSize } from '@macvue/core'
+import { MacSlider } from '@macvue/core'
 
 const sizes: MacControlSize[] = [
   'extra-large',

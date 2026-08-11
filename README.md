@@ -20,7 +20,7 @@ Vue 3 components carrying AppKit metrics, states and keyboard behaviour — incl
 ## Installation
 
 ```bash
-pnpm add macvue
+pnpm add @macvue/core
 ```
 
 Vue 3.4 or newer is a peer dependency.
@@ -29,9 +29,9 @@ Vue 3.4 or newer is a peer dependency.
 
 ```vue
 <script setup lang="ts">
-import { MacButton, MacSwitch } from 'macvue'
+import { MacButton, MacSwitch } from '@macvue/core'
 import { ref } from 'vue'
-import 'macvue/style.css'
+import '@macvue/core/style.css'
 
 const wifi = ref(true)
 </script>

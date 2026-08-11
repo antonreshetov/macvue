@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacSecureField } from 'macvue'
+import { MacSecureField } from '@macvue/core'
 import { ref } from 'vue'
 
 const password = ref('')

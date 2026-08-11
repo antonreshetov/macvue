@@ -12,7 +12,7 @@ A macOS switch (`NSSwitch`). The caption sits to the left of the toggle, as in S
 
 ```vue
 <script setup lang="ts">
-import { MacSwitch } from 'macvue'
+import { MacSwitch } from '@macvue/core'
 import { ref } from 'vue'
 
 const enabled = ref(true)

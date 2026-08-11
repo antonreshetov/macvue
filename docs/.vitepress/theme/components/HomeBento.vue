@@ -11,7 +11,7 @@ import {
   MacSpinner,
   MacStepper,
   MacSwitch,
-} from 'macvue'
+} from '@macvue/core'
 import { ref } from 'vue'
 import AccentSwatches from './AccentSwatches.vue'
 import SceneSettings from './scenes/SceneSettings.vue'

@@ -9,7 +9,7 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "macvue": "workspace:*",
+    "@macvue/core": "workspace:*",
     "three": "^0.185.1",
     "vue-gtag": "^3.7.1"
   },

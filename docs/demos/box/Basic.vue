@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacBox, MacSwitch } from 'macvue'
+import { MacBox, MacSwitch } from '@macvue/core'
 import { ref } from 'vue'
 
 const wifi = ref(true)

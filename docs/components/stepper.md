@@ -12,7 +12,7 @@ A macOS stepper (`NSStepper`): two stacked segments that increment and decrement
 
 ```vue
 <script setup lang="ts">
-import { MacStepper } from 'macvue'
+import { MacStepper } from '@macvue/core'
 import { ref } from 'vue'
 
 const copies = ref(1)

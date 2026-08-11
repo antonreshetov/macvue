@@ -159,10 +159,10 @@ export default defineConfig({
       alias: {
         // Resolve macvue straight to sources so docs pick up edits without
         // a prior `pnpm build`.
-        'macvue/style.css': fileURLToPath(
+        '@macvue/core/style.css': fileURLToPath(
           new URL('../../packages/core/src/styles/index.css', import.meta.url),
         ),
-        'macvue': fileURLToPath(
+        '@macvue/core': fileURLToPath(
           new URL('../../packages/core/src/index.ts', import.meta.url),
         ),
       },

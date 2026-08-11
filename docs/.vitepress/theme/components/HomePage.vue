@@ -12,7 +12,7 @@ function isExternal(link: string) {
 }
 
 async function copyInstall() {
-  await navigator.clipboard.writeText('pnpm add macvue')
+  await navigator.clipboard.writeText('pnpm add @macvue/core')
   copied.value = true
   window.setTimeout(() => (copied.value = false), 1600)
 }
@@ -61,7 +61,7 @@ async function copyInstall() {
           @click="copyInstall"
         >
           <span aria-hidden="true">$</span>
-          <code>pnpm add macvue</code>
+          <code>pnpm add @macvue/core</code>
           <span class="mv-install-copy">{{ copied ? "Copied" : "Copy" }}</span>
         </button>
       </div>

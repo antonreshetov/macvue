@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacButton, MacProgress, MacSpinner } from 'macvue'
+import { MacButton, MacProgress, MacSpinner } from '@macvue/core'
 import SceneFrame from './SceneFrame.vue'
 
 defineProps<{ accent?: string, appearance?: 'light' | 'dark' }>()

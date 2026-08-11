@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacSlider } from 'macvue'
+import { MacSlider } from '@macvue/core'
 import { ref } from 'vue'
 
 const level = ref(50)

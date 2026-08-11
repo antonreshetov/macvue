@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { MacLabelVariant } from 'macvue'
-import { MacLabel } from 'macvue'
+import type { MacLabelVariant } from '@macvue/core'
+import { MacLabel } from '@macvue/core'
 
 const variants: MacLabelVariant[] = [
   'large-title',

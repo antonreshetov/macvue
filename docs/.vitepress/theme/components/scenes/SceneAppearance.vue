@@ -5,7 +5,7 @@ import {
   MacRadioGroup,
   MacSegment,
   MacSegmentedControl,
-} from 'macvue'
+} from '@macvue/core'
 import { ref } from 'vue'
 import SceneFrame from './SceneFrame.vue'
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacSegment, MacSegmentedControl } from 'macvue'
+import { MacSegment, MacSegmentedControl } from '@macvue/core'
 import { ref } from 'vue'
 
 const view = ref('list')

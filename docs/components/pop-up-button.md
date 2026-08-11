@@ -17,7 +17,7 @@ import {
   MacPopUpButtonItem,
   MacPullDownButton,
   MacPullDownButtonItem,
-} from 'macvue'
+} from '@macvue/core'
 import { ref } from 'vue'
 
 const color = ref('red')

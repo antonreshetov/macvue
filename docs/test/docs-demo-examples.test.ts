@@ -58,7 +58,9 @@ describe('docs demo examples', () => {
   it('only imports components the package actually exports', async () => {
     for (const file of examples) {
       const source = await readFile(file, 'utf8')
-      const imported = source.match(/import \{([^}]*)\} from 'macvue'/)?.[1]
+      const imported = source.match(
+        /import \{([^}]*)\} from '@macvue\/core'/,
+      )?.[1]
       expect(
         imported,
         `${basename(file)} must import from macvue`,

@@ -4,7 +4,7 @@ import {
   MacGlassPanel,
   MacSegment,
   MacSegmentedControl,
-} from 'macvue'
+} from '@macvue/core'
 import { reactive, ref } from 'vue'
 
 type Material = 'regular' | 'clear'

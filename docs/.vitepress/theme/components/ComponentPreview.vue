@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
-import { MacButton } from 'macvue'
+import { MacButton } from '@macvue/core'
 import { computed, ref } from 'vue'
 
 const props = defineProps<{ name: string }>()

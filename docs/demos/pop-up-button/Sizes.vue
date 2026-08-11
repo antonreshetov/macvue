@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { MacControlSize } from 'macvue'
+import type { MacControlSize } from '@macvue/core'
 import {
   MacPopUpButton,
   MacPopUpButtonItem,
   MacPullDownButton,
   MacPullDownButtonItem,
-} from 'macvue'
+} from '@macvue/core'
 
 const sizes: MacControlSize[] = [
   'mini',

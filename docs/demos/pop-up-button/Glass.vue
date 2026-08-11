@@ -7,7 +7,7 @@ import {
   MacPullDownButtonItem,
   MacSegment,
   MacSegmentedControl,
-} from 'macvue'
+} from '@macvue/core'
 import { ref } from 'vue'
 
 const appearance = ref('dark')

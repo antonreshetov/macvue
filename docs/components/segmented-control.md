@@ -12,7 +12,7 @@ A macOS segmented control (`NSSegmentedControl`). Segments share the container w
 
 ```vue
 <script setup lang="ts">
-import { MacSegment, MacSegmentedControl } from 'macvue'
+import { MacSegment, MacSegmentedControl } from '@macvue/core'
 import { ref } from 'vue'
 
 const view = ref('list')

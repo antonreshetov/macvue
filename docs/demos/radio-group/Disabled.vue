@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacRadio, MacRadioGroup } from 'macvue'
+import { MacRadio, MacRadioGroup } from '@macvue/core'
 </script>
 
 <template>

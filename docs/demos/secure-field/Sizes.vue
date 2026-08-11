@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { MacControlSize } from 'macvue'
-import { MacSecureField } from 'macvue'
+import type { MacControlSize } from '@macvue/core'
+import { MacSecureField } from '@macvue/core'
 
 const sizes: { size: MacControlSize, label: string }[] = [
   { size: 'extra-large', label: 'Extra large' },

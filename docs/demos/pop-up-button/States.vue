@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacPopUpButton, MacPopUpButtonItem } from 'macvue'
+import { MacPopUpButton, MacPopUpButtonItem } from '@macvue/core'
 </script>
 
 <template>

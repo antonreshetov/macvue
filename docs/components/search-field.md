@@ -12,7 +12,7 @@ A macOS search field (`NSSearchField`): a capsule at every size, with a magnifie
 
 ```vue
 <script setup lang="ts">
-import { MacSearchField } from 'macvue'
+import { MacSearchField } from '@macvue/core'
 import { ref } from 'vue'
 
 const query = ref('')

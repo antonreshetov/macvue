@@ -12,7 +12,7 @@ A macOS progress bar (`NSProgressIndicator`, bar style). Omit `value` (or pass `
 
 ```vue
 <script setup lang="ts">
-import { MacProgress } from 'macvue'
+import { MacProgress } from '@macvue/core'
 </script>
 
 <template>

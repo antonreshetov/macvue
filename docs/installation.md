@@ -3,20 +3,20 @@
 Install the package:
 
 ```sh
-pnpm add macvue
+pnpm add @macvue/core
 ```
 
 Import the stylesheet once, at your app entry:
 
 ```ts
-import 'macvue/style.css'
+import '@macvue/core/style.css'
 ```
 
 ## Usage
 
 ```vue
 <script setup lang="ts">
-import { MacButton } from 'macvue'
+import { MacButton } from '@macvue/core'
 </script>
 
 <template>

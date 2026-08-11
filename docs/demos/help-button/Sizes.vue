@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { MacControlSize } from 'macvue'
-import { MacHelpButton } from 'macvue'
+import type { MacControlSize } from '@macvue/core'
+import { MacHelpButton } from '@macvue/core'
 
 const sizes: MacControlSize[] = [
   'extra-large',

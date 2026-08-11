@@ -12,7 +12,7 @@ A macOS sidebar count badge (`NSTableCellView` badge): a translucent neutral cap
 
 ```vue
 <script setup lang="ts">
-import { MacBadge } from 'macvue'
+import { MacBadge } from '@macvue/core'
 </script>
 
 <template>

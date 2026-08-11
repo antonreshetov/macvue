@@ -12,7 +12,7 @@ A macOS hairline separator (`NSBox` `.separator`). Exposed with the `separator` 
 
 ```vue
 <script setup lang="ts">
-import { MacSeparator } from 'macvue'
+import { MacSeparator } from '@macvue/core'
 </script>
 
 <template>

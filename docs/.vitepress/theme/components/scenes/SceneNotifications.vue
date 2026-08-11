@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MacSwitch } from 'macvue'
+import { MacSwitch } from '@macvue/core'
 import { reactive } from 'vue'
 import SceneFrame from './SceneFrame.vue'
 
