@@ -10,3 +10,5 @@ output/
 docs/.vitepress/cache
 *.gen.css
 *.gen.ts
+# Copied from the repo root by the package prepack script.
+packages/core/README.md

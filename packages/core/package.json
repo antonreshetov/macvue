@@ -47,7 +47,9 @@
   "scripts": {
     "build": "pnpm run build:tokens && vite build",
     "build:tokens": "node scripts/build-tokens.mjs",
-    "typecheck": "vue-tsc --noEmit && vue-tsc --noEmit -p tsconfig.test.json"
+    "typecheck": "vue-tsc --noEmit && vue-tsc --noEmit -p tsconfig.test.json",
+    "prepack": "cp ../../README.md README.md",
+    "postpack": "rm -f README.md"
   },
   "peerDependencies": {
     "vue": "^3.4.0"
