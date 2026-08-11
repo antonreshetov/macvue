@@ -2,6 +2,8 @@
 import {
   MacButton,
   MacCheckbox,
+  MacPopUpButton,
+  MacPopUpButtonItem,
   MacRadio,
   MacRadioGroup,
   MacSlider,
@@ -23,6 +25,7 @@ const showExtensions = ref(true)
 const showHidden = ref(false)
 const brightness = ref(70)
 const autoHideDelay = ref(5)
+const highlightColor = ref('blue')
 </script>
 
 <template>
@@ -33,6 +36,25 @@ const autoHideDelay = ref(5)
   >
     <div class="mv-scene-settings">
       <div class="mv-scene-settings-group">
+        <div class="mv-scene-settings-row">
+          <span class="mv-scene-settings-label">Highlight color</span>
+          <MacPopUpButton
+            v-model="highlightColor"
+            size="small"
+            aria-label="Highlight color"
+            :teleport-to="false"
+          >
+            <MacPopUpButtonItem value="blue">
+              Blue
+            </MacPopUpButtonItem>
+            <MacPopUpButtonItem value="purple">
+              Purple
+            </MacPopUpButtonItem>
+            <MacPopUpButtonItem value="graphite">
+              Graphite
+            </MacPopUpButtonItem>
+          </MacPopUpButton>
+        </div>
         <div class="mv-scene-settings-row">
           <span class="mv-scene-settings-label">Appearance</span>
           <MacRadioGroup

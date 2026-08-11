@@ -18,6 +18,16 @@ export {
   type MacLabelProps,
   type MacLabelVariant,
 } from './components/label'
+export {
+  MacPopUpButton,
+  MacPopUpButtonItem,
+  type MacPopUpButtonItemProps,
+  type MacPopUpButtonProps,
+  MacPullDownButton,
+  MacPullDownButtonItem,
+  type MacPullDownButtonItemProps,
+  type MacPullDownButtonProps,
+} from './components/pop-up-button'
 export { MacProgress, type MacProgressProps } from './components/progress'
 export {
   MacRadio,

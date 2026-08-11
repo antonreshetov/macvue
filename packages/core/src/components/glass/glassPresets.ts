@@ -67,3 +67,15 @@ export const clearPanelGlassPreset = {
   saturation: 1,
   specularOpacity: 0.07,
 } satisfies GlassLensPreset
+
+// Compact menus use the same clear material pipeline as MacGlassPanel. The
+// separate alias leaves room for size-specific calibration without changing
+// the display panel.
+export const popUpMenuGlassPreset = {
+  ...clearPanelGlassPreset,
+  displacementStrength: 0.24,
+  smoothingPasses: 1,
+  blur: 4,
+  saturation: 1.2,
+  specularOpacity: 0.09,
+} satisfies GlassLensPreset

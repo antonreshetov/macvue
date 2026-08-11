@@ -33,6 +33,21 @@
       "$value": "{ref.white-100}",
       "$description": "Kit-27 dark toggles use Fills/Dark/1 Primary; dark neutral buttons are #FFF 7% — the toggle scale wins, divergence noted in 11-tahoe-metrics"
     },
+    "control-button": {
+      "$value": "{ref.white-70}",
+      "$description": "Live Tahoe neutral button bezel in dark appearance; NSPopUpButton resolves to #2D2D2D over the #1E1E1E window"
+    },
+    "control-button-pressed": {
+      "$value": "{ref.white-160}",
+      "$description": "Kit-27 dark neutral button clicked bezel"
+    },
+    "control-button-opaque": {
+      "$value": "#2D2D2D",
+      "$description": "Resolved Tahoe neutral button bezel for controls rendered over detailed backdrops"
+    },
+    "control-button-pressed-opaque": {
+      "$value": "#444444"
+    },
     "segmented-container": {
       "$value": "{ref.white-80}",
       "$description": "Kit-27 dark segmented container: Fills/Dark/2 Secondary"
@@ -155,6 +170,20 @@
       "$description": "unverified"
     },
     "material-popover-blur": {
+      "$type": "dimension",
+      "$value": "{ref.blur-24}"
+    },
+    "material-menu-bg": {
+      "$value": "rgb(46 46 46 / 0.96)",
+      "$description": "Stable native menu material; deliberately separate from experimental Liquid Glass"
+    },
+    "material-menu-opaque-bg": {
+      "$value": "#2E2E2E"
+    },
+    "material-menu-rim": {
+      "$value": "rgb(255 255 255 / 0.16)"
+    },
+    "material-menu-blur": {
       "$type": "dimension",
       "$value": "{ref.blur-24}"
     },

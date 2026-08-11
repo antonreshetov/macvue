@@ -7,6 +7,8 @@ import {
   MacGlassPanel,
   MacHelpButton,
   MacLabel,
+  MacPopUpButton,
+  MacPopUpButtonItem,
   MacProgress,
   MacRadio,
   MacRadioGroup,
@@ -33,6 +35,7 @@ const view = ref('list')
 const copies = ref(1)
 const serverName = ref('')
 const passphrase = ref('')
+const color = ref('red')
 </script>
 
 <!-- The single source for component showcase cards: used by both the home
@@ -99,6 +102,26 @@ const passphrase = ref('')
           Icons
         </MacSegment>
       </MacSegmentedControl>
+    </ComponentCard>
+    <ComponentCard
+      title="Pop-Up Button"
+      href="/components/pop-up-button"
+    >
+      <MacPopUpButton
+        v-model="color"
+        aria-label="Color"
+        :teleport-to="false"
+      >
+        <MacPopUpButtonItem value="red">
+          Red
+        </MacPopUpButtonItem>
+        <MacPopUpButtonItem value="green">
+          Green
+        </MacPopUpButtonItem>
+        <MacPopUpButtonItem value="blue">
+          Blue
+        </MacPopUpButtonItem>
+      </MacPopUpButton>
     </ComponentCard>
     <ComponentCard
       title="Progress"

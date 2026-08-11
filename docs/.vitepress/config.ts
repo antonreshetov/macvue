@@ -54,6 +54,7 @@ export default defineConfig({
           { text: 'Glass Panel', link: '/components/glass-panel' },
           { text: 'Help Button', link: '/components/help-button' },
           { text: 'Label', link: '/components/label' },
+          { text: 'Pop-Up Button', link: '/components/pop-up-button' },
           { text: 'Progress', link: '/components/progress' },
           { text: 'Radio Group', link: '/components/radio-group' },
           { text: 'Search Field', link: '/components/search-field' },

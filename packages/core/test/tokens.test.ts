@@ -49,12 +49,14 @@ describe('tokens.gen.css', () => {
   })
 
   it('emits component tokens as references to semantic variables', () => {
-    expect(lightCss).toContain('--macvue-button-bg: var(--macvue-control)')
+    expect(lightCss).toContain(
+      '--macvue-button-bg: var(--macvue-control-button)',
+    )
     expect(lightCss).toContain(
       '--macvue-button-bg-prominent: var(--macvue-accent)',
     )
     expect(lightCss).toContain(
-      '--macvue-button-bg-pressed: var(--macvue-control-pressed)',
+      '--macvue-button-bg-pressed: var(--macvue-control-button-pressed)',
     )
     expect(lightCss).toContain(
       '--macvue-button-font-size-regular: var(--macvue-control-text-size-regular)',
@@ -77,7 +79,9 @@ describe('tokens.gen.css', () => {
     expect(lightBlock).toContain('--macvue-accent-hover:')
     expect(lightBlock).toContain('--macvue-accent-pressed:')
     expect(lightBlock).toContain('--macvue-focus-ring:')
-    expect(lightBlock).toContain('--macvue-button-bg: var(--macvue-control)')
+    expect(lightBlock).toContain(
+      '--macvue-button-bg: var(--macvue-control-button)',
+    )
     expect(lightBlock).toContain('--macvue-button-label: var(--macvue-label)')
   })
 
@@ -327,7 +331,9 @@ describe('tokens-dark.gen.css', () => {
   })
 
   it('re-declares semantic-dependent component tokens so scoped dark themes recompute them', () => {
-    expect(darkCss).toContain('--macvue-button-bg: var(--macvue-control)')
+    expect(darkCss).toContain(
+      '--macvue-button-bg: var(--macvue-control-button)',
+    )
     expect(darkCss).toContain('--macvue-button-label: var(--macvue-label)')
     expect(darkCss).toContain(
       '--macvue-button-bg-prominent: var(--macvue-accent)',

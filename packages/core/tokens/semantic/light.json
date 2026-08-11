@@ -33,6 +33,21 @@
       "$value": "{ref.black-50}",
       "$description": "Bezel fill of push buttons and toggles, mirrors NSColor.controlColor"
     },
+    "control-button": {
+      "$value": "{ref.black-50}",
+      "$description": "Neutral button bezel; identical to control in light appearance"
+    },
+    "control-button-pressed": {
+      "$value": "{ref.black-150}",
+      "$description": "Neutral button clicked bezel"
+    },
+    "control-button-opaque": {
+      "$value": "#F2F2F2",
+      "$description": "Resolved Tahoe neutral button bezel for controls rendered over detailed backdrops"
+    },
+    "control-button-pressed-opaque": {
+      "$value": "#D9D9D9"
+    },
     "segmented-container": {
       "$value": "{ref.black-50}",
       "$description": "Kit-26 segmented container = neutral control fill; kit 27 shows 0.08 — kit 26 wins"
@@ -153,6 +168,20 @@
       "$description": "unverified"
     },
     "material-popover-blur": {
+      "$type": "dimension",
+      "$value": "{ref.blur-24}"
+    },
+    "material-menu-bg": {
+      "$value": "rgb(246 246 246 / 0.94)",
+      "$description": "Stable native menu material; deliberately separate from experimental Liquid Glass"
+    },
+    "material-menu-opaque-bg": {
+      "$value": "#F6F6F6"
+    },
+    "material-menu-rim": {
+      "$value": "rgb(0 0 0 / 0.18)"
+    },
+    "material-menu-blur": {
       "$type": "dimension",
       "$value": "{ref.blur-24}"
     },

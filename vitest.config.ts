@@ -37,6 +37,45 @@ const keyPress: BrowserCommand<[key: string]> = async (ctx, key) => {
   await ctx.page.keyboard.press(key)
 }
 
+const dragSelectOption: BrowserCommand<
+  [triggerName: string, optionName: string]
+> = async (ctx, triggerName, optionName) => {
+  let appFrame
+  for (const frame of ctx.page.frames()) {
+    if (await frame.getByRole('combobox', { name: triggerName }).count()) {
+      appFrame = frame
+      break
+    }
+  }
+  if (!appFrame)
+    throw new Error(`Combobox "${triggerName}" was not found in a test frame`)
+
+  const trigger = appFrame.getByRole('combobox', { name: triggerName })
+  const triggerBounds = await trigger.boundingBox()
+  if (!triggerBounds)
+    throw new Error(`Combobox "${triggerName}" has no layout bounds`)
+
+  const start = {
+    x: triggerBounds.x + triggerBounds.width / 2,
+    y: triggerBounds.y + triggerBounds.height / 2,
+  }
+  await ctx.page.mouse.move(start.x, start.y)
+  await ctx.page.mouse.down()
+
+  const option = appFrame.getByRole('option', { name: optionName })
+  await option.waitFor()
+  const optionBounds = await option.boundingBox()
+  if (!optionBounds)
+    throw new Error(`Option "${optionName}" has no layout bounds`)
+
+  await ctx.page.mouse.move(
+    optionBounds.x + optionBounds.width / 2,
+    optionBounds.y + optionBounds.height / 2,
+    { steps: 5 },
+  )
+  await ctx.page.mouse.up()
+}
+
 export default defineConfig({
   plugins: [vue()],
   test: {
@@ -64,7 +103,13 @@ export default defineConfig({
             headless: true,
             screenshotFailures: false,
             instances: [{ browser: 'chromium' }],
-            commands: { mouseDown, mouseMove, mouseUp, keyPress },
+            commands: {
+              mouseDown,
+              mouseMove,
+              mouseUp,
+              keyPress,
+              dragSelectOption,
+            },
           },
         },
       },

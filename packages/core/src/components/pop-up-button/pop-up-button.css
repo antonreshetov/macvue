@@ -1,0 +1,399 @@
+@layer macvue.components {
+  .macvue-pop-up-button-anchor {
+    position: relative;
+    display: inline-flex;
+    width: max-content;
+  }
+
+  .macvue-pop-up-button {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--macvue-pop-up-button-chevron-gap-regular);
+    min-width: var(--macvue-pop-up-button-min-width);
+    height: var(--macvue-pop-up-button-height-regular);
+    padding: 0 var(--macvue-pop-up-button-padding-end-regular) 0
+      var(--macvue-pop-up-button-padding-start-regular);
+    border: 0;
+    border-radius: var(--macvue-pop-up-button-radius-regular);
+    background: var(--macvue-pop-up-button-bg);
+    color: var(--macvue-pop-up-button-label);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-pop-up-button-font-size-regular);
+    font-weight: var(--macvue-control-text-weight);
+    cursor: default;
+    user-select: none;
+  }
+
+  .macvue-pop-up-button[data-state='open'],
+  .macvue-pop-up-button:active:not(:disabled) {
+    background: var(--macvue-pop-up-button-bg-pressed);
+  }
+
+  .macvue-pop-up-button:disabled {
+    background: var(--macvue-pop-up-button-bg-disabled);
+    color: var(--macvue-pop-up-button-label-disabled);
+  }
+
+  .macvue-pop-up-button:focus-visible {
+    outline: var(--macvue-focus-ring-width) solid var(--macvue-focus-ring);
+  }
+
+  .macvue-pop-up-button-value {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .macvue-pop-up-button[data-placeholder]
+    .macvue-pop-up-button-value {
+    color: var(--macvue-pop-up-button-placeholder);
+  }
+
+  .macvue-pop-up-button-chevron {
+    flex: none;
+    width: var(--macvue-pop-up-button-chevron-width);
+    height: var(--macvue-pop-up-button-chevron-height);
+    stroke-width: var(--macvue-pop-up-button-chevron-stroke);
+  }
+
+  .macvue-pop-up-button.macvue-pull-down-button--icon-only {
+    justify-content: center;
+    min-width: var(--macvue-pop-up-button-pull-down-icon-width);
+    width: var(--macvue-pop-up-button-pull-down-icon-width);
+    padding-inline: 0;
+  }
+
+  .macvue-pull-down-button:not(.macvue-pull-down-button--icon-only) {
+    min-width: var(--macvue-pop-up-button-pull-down-min-width);
+  }
+
+  .macvue-pull-down-button.macvue-pop-up-button--extra-large:not(.macvue-pull-down-button--icon-only) {
+    min-width: var(--macvue-pop-up-button-pull-down-min-width-extra-large);
+  }
+
+  .macvue-pull-down-button.macvue-pop-up-button--large:not(.macvue-pull-down-button--icon-only) {
+    min-width: var(--macvue-pop-up-button-pull-down-min-width-large);
+  }
+
+  .macvue-pull-down-button.macvue-pop-up-button--regular:not(.macvue-pull-down-button--icon-only) {
+    min-width: var(--macvue-pop-up-button-pull-down-min-width-regular);
+  }
+
+  .macvue-pull-down-button.macvue-pop-up-button--small:not(.macvue-pull-down-button--icon-only) {
+    min-width: var(--macvue-pop-up-button-pull-down-min-width-small);
+  }
+
+  .macvue-pull-down-button.macvue-pop-up-button--mini:not(.macvue-pull-down-button--icon-only) {
+    min-width: var(--macvue-pop-up-button-pull-down-min-width-mini);
+  }
+
+  .macvue-pull-down-button-chevron {
+    flex: none;
+    width: var(--macvue-pop-up-button-chevron-width);
+    height: var(--macvue-pop-up-button-pull-down-chevron-height);
+    stroke-width: var(--macvue-pop-up-button-chevron-stroke);
+  }
+
+  .macvue-pop-up-button--extra-large {
+    min-width: var(--macvue-pop-up-button-min-width-extra-large);
+    height: var(--macvue-pop-up-button-height-extra-large);
+    padding-inline: var(--macvue-pop-up-button-padding-start-extra-large)
+      var(--macvue-pop-up-button-padding-end-extra-large);
+    border-radius: var(--macvue-pop-up-button-radius-extra-large);
+    font-size: var(--macvue-pop-up-button-font-size-extra-large);
+    gap: var(--macvue-pop-up-button-chevron-gap-extra-large);
+  }
+
+  .macvue-pop-up-button--large {
+    min-width: var(--macvue-pop-up-button-min-width-large);
+    height: var(--macvue-pop-up-button-height-large);
+    padding-inline: var(--macvue-pop-up-button-padding-start-large)
+      var(--macvue-pop-up-button-padding-end-large);
+    border-radius: var(--macvue-pop-up-button-radius-large);
+    font-size: var(--macvue-pop-up-button-font-size-large);
+    gap: var(--macvue-pop-up-button-chevron-gap-large);
+  }
+
+  .macvue-pop-up-button--regular {
+    min-width: var(--macvue-pop-up-button-min-width-regular);
+    height: var(--macvue-pop-up-button-height-regular);
+    padding-inline: var(--macvue-pop-up-button-padding-start-regular)
+      var(--macvue-pop-up-button-padding-end-regular);
+    border-radius: var(--macvue-pop-up-button-radius-regular);
+    font-size: var(--macvue-pop-up-button-font-size-regular);
+    gap: var(--macvue-pop-up-button-chevron-gap-regular);
+  }
+
+  .macvue-pop-up-button--small {
+    min-width: var(--macvue-pop-up-button-min-width-small);
+    height: var(--macvue-pop-up-button-height-small);
+    padding-inline: var(--macvue-pop-up-button-padding-start-small)
+      var(--macvue-pop-up-button-padding-end-small);
+    border-radius: var(--macvue-pop-up-button-radius-small);
+    font-size: var(--macvue-pop-up-button-font-size-small);
+    gap: var(--macvue-pop-up-button-chevron-gap-small);
+  }
+
+  .macvue-pop-up-button--mini {
+    min-width: var(--macvue-pop-up-button-min-width-mini);
+    height: var(--macvue-pop-up-button-height-mini);
+    padding-inline: var(--macvue-pop-up-button-padding-start-mini)
+      var(--macvue-pop-up-button-padding-end-mini);
+    border-radius: var(--macvue-pop-up-button-radius-mini);
+    font-size: var(--macvue-pop-up-button-font-size-mini);
+    gap: var(--macvue-pop-up-button-chevron-gap-mini);
+  }
+
+  .macvue-pop-up-button-content {
+    z-index: var(--macvue-pop-up-button-menu-z-index);
+    width: min-content;
+    max-height: var(--reka-select-content-available-height);
+    outline: none;
+  }
+
+  .macvue-pull-down-button-content {
+    z-index: var(--macvue-pop-up-button-menu-z-index);
+    outline: none;
+  }
+
+  .macvue-pop-up-button-content--extra-large {
+    --macvue-pop-up-button-current-item-height: var(--macvue-pop-up-button-item-height-extra-large);
+    --macvue-pop-up-button-current-item-font-size: var(--macvue-pop-up-button-item-font-size-extra-large);
+    --macvue-pop-up-button-current-item-min-width: var(--macvue-pop-up-button-item-min-width-extra-large);
+    min-width: var(--macvue-pop-up-button-min-width-extra-large);
+  }
+
+  .macvue-pop-up-button-content--large {
+    --macvue-pop-up-button-current-item-height: var(--macvue-pop-up-button-item-height-large);
+    --macvue-pop-up-button-current-item-font-size: var(--macvue-pop-up-button-item-font-size-large);
+    --macvue-pop-up-button-current-item-min-width: var(--macvue-pop-up-button-item-min-width-large);
+    min-width: var(--macvue-pop-up-button-min-width-large);
+  }
+
+  .macvue-pop-up-button-content--regular {
+    --macvue-pop-up-button-current-item-height: var(--macvue-pop-up-button-item-height-regular);
+    --macvue-pop-up-button-current-item-font-size: var(--macvue-pop-up-button-item-font-size-regular);
+    --macvue-pop-up-button-current-item-min-width: var(--macvue-pop-up-button-item-min-width-regular);
+    min-width: var(--macvue-pop-up-button-min-width-regular);
+  }
+
+  .macvue-pop-up-button-content--small {
+    --macvue-pop-up-button-current-item-height: var(--macvue-pop-up-button-item-height-small);
+    --macvue-pop-up-button-current-item-font-size: var(--macvue-pop-up-button-item-font-size-small);
+    --macvue-pop-up-button-current-item-min-width: var(--macvue-pop-up-button-item-min-width-small);
+    min-width: var(--macvue-pop-up-button-min-width-small);
+  }
+
+  .macvue-pop-up-button-content--mini {
+    --macvue-pop-up-button-current-item-height: var(--macvue-pop-up-button-item-height-mini);
+    --macvue-pop-up-button-current-item-font-size: var(--macvue-pop-up-button-item-font-size-mini);
+    --macvue-pop-up-button-current-item-min-width: var(--macvue-pop-up-button-item-min-width-mini);
+    min-width: var(--macvue-pop-up-button-min-width-mini);
+  }
+
+  .macvue-pop-up-button-content.macvue-pop-up-button-content--extra-large {
+    margin-inline-start: var(--macvue-pop-up-button-menu-item-aligned-offset-extra-large);
+    margin-block-start: var(--macvue-pop-up-button-menu-item-aligned-block-offset-extra-large);
+  }
+
+  .macvue-pop-up-button-content.macvue-pop-up-button-content--large {
+    margin-inline-start: var(--macvue-pop-up-button-menu-item-aligned-offset-large);
+    margin-block-start: var(--macvue-pop-up-button-menu-item-aligned-block-offset-large);
+  }
+
+  .macvue-pop-up-button-content.macvue-pop-up-button-content--regular {
+    margin-inline-start: var(--macvue-pop-up-button-menu-item-aligned-offset-regular);
+    margin-block-start: var(--macvue-pop-up-button-menu-item-aligned-block-offset-regular);
+  }
+
+  .macvue-pop-up-button-content.macvue-pop-up-button-content--small {
+    margin-inline-start: var(--macvue-pop-up-button-menu-item-aligned-offset-small);
+    margin-block-start: var(--macvue-pop-up-button-menu-item-aligned-block-offset-small);
+  }
+
+  .macvue-pop-up-button-content.macvue-pop-up-button-content--mini {
+    margin-inline-start: var(--macvue-pop-up-button-menu-item-aligned-offset-mini);
+    margin-block-start: var(--macvue-pop-up-button-menu-item-aligned-block-offset-mini);
+  }
+
+  .macvue-pull-down-button-content.macvue-pop-up-button-content--extra-large {
+    margin-inline-start: var(--macvue-pop-up-button-pull-down-menu-offset-extra-large);
+  }
+
+  .macvue-pull-down-button-content.macvue-pop-up-button-content--large {
+    margin-inline-start: var(--macvue-pop-up-button-pull-down-menu-offset-large);
+  }
+
+  .macvue-pull-down-button-content.macvue-pop-up-button-content--regular {
+    margin-inline-start: var(--macvue-pop-up-button-pull-down-menu-offset-regular);
+  }
+
+  .macvue-pull-down-button-content.macvue-pop-up-button-content--small {
+    margin-inline-start: var(--macvue-pop-up-button-pull-down-menu-offset-small);
+  }
+
+  .macvue-pull-down-button-content.macvue-pop-up-button-content--mini {
+    margin-inline-start: var(--macvue-pop-up-button-pull-down-menu-offset-mini);
+  }
+
+  .macvue-pop-up-button-menu {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: var(--macvue-pop-up-button-menu-rim-width) solid
+      var(--macvue-pop-up-button-menu-rim);
+    border-radius: var(--macvue-pop-up-button-menu-radius);
+    background: var(--macvue-pop-up-button-menu-bg);
+    box-shadow: var(--macvue-pop-up-button-menu-shadow);
+  }
+
+  .macvue-pop-up-button-menu[data-macvue-glass-ready] {
+    border-color: var(--macvue-pop-up-button-menu-glass-rim);
+    background: var(--macvue-pop-up-button-menu-glass-bg);
+    box-shadow:
+      var(--macvue-pop-up-button-menu-glass-shadow),
+      var(--macvue-pop-up-button-menu-shadow);
+  }
+
+  .macvue-pop-up-button-menu-lens {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .macvue-pop-up-button-menu-filter {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .macvue-pop-up-button-viewport {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: var(--macvue-pop-up-button-menu-padding);
+  }
+
+  .macvue-pop-up-button-item {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    min-width: var(--macvue-pop-up-button-current-item-min-width, var(--macvue-pop-up-button-item-min-width));
+    height: var(--macvue-pop-up-button-current-item-height, var(--macvue-pop-up-button-item-height));
+    padding: 0 var(--macvue-pop-up-button-item-padding-end) 0
+      var(--macvue-pop-up-button-item-padding-start);
+    border-radius: var(--macvue-pop-up-button-item-radius);
+    color: var(--macvue-pop-up-button-item-label);
+    font-family: var(--macvue-font-family);
+    font-size: var(--macvue-pop-up-button-current-item-font-size, var(--macvue-pop-up-button-item-font-size));
+    font-weight: var(--macvue-control-text-weight);
+    line-height: inherit;
+    cursor: default;
+    outline: none;
+    user-select: none;
+  }
+
+  .macvue-pull-down-button-item {
+    padding-inline-start: var(--macvue-pop-up-button-padding-end-regular);
+  }
+
+  .macvue-pop-up-button-content--small .macvue-pop-up-button-item:not(.macvue-pull-down-button-item) {
+    padding-inline-start: var(--macvue-pop-up-button-item-padding-start-small);
+  }
+
+  .macvue-pop-up-button-content--mini .macvue-pop-up-button-item:not(.macvue-pull-down-button-item) {
+    padding-inline: var(--macvue-pop-up-button-item-padding-start-mini)
+      var(--macvue-pop-up-button-item-padding-end-mini);
+  }
+
+  .macvue-pop-up-button-content--small .macvue-pull-down-button-item {
+    padding-inline-start: var(--macvue-pop-up-button-padding-end-small);
+  }
+
+  .macvue-pop-up-button-content--mini .macvue-pull-down-button-item {
+    padding-inline-start: var(--macvue-pop-up-button-padding-end-mini);
+  }
+
+  .macvue-pop-up-button-item[data-highlighted]:is(:hover, :focus-visible) {
+    background: var(--macvue-pop-up-button-item-bg-highlighted);
+    color: var(--macvue-pop-up-button-item-label-highlighted);
+  }
+
+  .macvue-pop-up-button-item[data-disabled] {
+    color: var(--macvue-pop-up-button-item-label-disabled);
+  }
+
+  .macvue-pop-up-button-item-indicator {
+    position: absolute;
+    inset-inline-start: var(--macvue-pop-up-button-item-indicator-inset);
+    display: inline-flex;
+  }
+
+  .macvue-pop-up-button-check {
+    width: var(--macvue-pop-up-button-check-width);
+    height: var(--macvue-pop-up-button-check-height);
+    stroke-width: var(--macvue-pop-up-button-check-stroke);
+  }
+
+  @supports ((backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0))) {
+    .macvue-pop-up-button-menu {
+      -webkit-backdrop-filter: blur(var(--macvue-pop-up-button-menu-blur))
+        saturate(var(--macvue-pop-up-button-menu-saturation));
+      backdrop-filter: blur(var(--macvue-pop-up-button-menu-blur))
+        saturate(var(--macvue-pop-up-button-menu-saturation));
+    }
+
+    .macvue-pop-up-button-menu[data-macvue-glass-ready] {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .macvue-pop-up-button-menu[data-macvue-glass-ready]
+      > .macvue-pop-up-button-menu-lens {
+      opacity: 1;
+      -webkit-backdrop-filter: var(--_macvue-glass-filter);
+      backdrop-filter: var(--_macvue-glass-filter);
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .macvue-pop-up-button-menu {
+      background: var(--macvue-pop-up-button-menu-opaque-bg);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .macvue-pop-up-button-menu-lens {
+      display: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .macvue-pop-up-button,
+    .macvue-pop-up-button-menu,
+    .macvue-pop-up-button-item[data-highlighted] {
+      border: var(--macvue-pop-up-button-forced-colors-border) solid CanvasText;
+      background: Canvas;
+      color: CanvasText;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .macvue-pop-up-button-item[data-highlighted] {
+      background: Highlight;
+      color: HighlightText;
+    }
+
+    .macvue-pop-up-button-menu-lens,
+    .macvue-pop-up-button-menu-filter {
+      display: none;
+    }
+  }
+}

@@ -4,6 +4,8 @@ cache
 .DS_Store
 *.log
 coverage
+output/
+.playwright-cli/
 .vite
 docs/.vitepress/cache
 *.gen.css
