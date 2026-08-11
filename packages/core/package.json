@@ -1,7 +1,7 @@
 {
   "name": "macvue",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "macOS UI components for Vue",
   "author": {
     "name": "Anton Reshetov",
