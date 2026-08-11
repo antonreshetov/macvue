@@ -56,4 +56,7 @@ export {
 } from './components/text-field'
 export type { MacControlSize } from './types'
 
-export const version = '0.0.0'
+declare const __MACVUE_VERSION__: string | undefined
+
+export const version: string
+  = typeof __MACVUE_VERSION__ === 'undefined' ? '0.0.0-dev' : __MACVUE_VERSION__
