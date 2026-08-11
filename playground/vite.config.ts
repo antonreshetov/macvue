@@ -8,11 +8,11 @@ export default defineConfig({
     alias: {
       // Resolve macvue straight to sources so `pnpm play` picks up edits
       // with HMR and no prior `pnpm build`.
-      'macvue/style.css': path.resolve(
+      '@macvue/core/style.css': path.resolve(
         import.meta.dirname,
         '../packages/core/src/styles/index.css',
       ),
-      'macvue': path.resolve(
+      '@macvue/core': path.resolve(
         import.meta.dirname,
         '../packages/core/src/index.ts',
       ),

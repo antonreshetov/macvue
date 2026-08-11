@@ -14,7 +14,7 @@ import {
   MacStepper,
   MacSwitch,
   MacTextField,
-} from 'macvue'
+} from '@macvue/core'
 import { ref } from 'vue'
 
 type Appearance = 'light' | 'dark' | 'auto'

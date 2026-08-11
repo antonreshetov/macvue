@@ -59,7 +59,7 @@ importers:
 
   docs:
     dependencies:
-      macvue:
+      '@macvue/core':
         specifier: workspace:*
         version: link:../packages/core
       three:
@@ -118,7 +118,7 @@ importers:
 
   playground:
     dependencies:
-      macvue:
+      '@macvue/core':
         specifier: workspace:*
         version: link:../packages/core
       vue:

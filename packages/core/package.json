@@ -1,5 +1,5 @@
 {
-  "name": "macvue",
+  "name": "@macvue/core",
   "type": "module",
   "version": "0.1.0",
   "description": "macOS UI components for Vue",

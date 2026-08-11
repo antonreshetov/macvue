@@ -13,14 +13,14 @@
     "pnpm": ">=10.0.0"
   },
   "scripts": {
-    "build": "pnpm --filter macvue build",
-    "play": "pnpm --filter macvue build:tokens && pnpm --filter @macvue/playground dev",
+    "build": "pnpm --filter @macvue/core build",
+    "play": "pnpm --filter @macvue/core build:tokens && pnpm --filter @macvue/playground dev",
     "docs:dev": "pnpm --filter @macvue/docs dev",
     "docs:build": "pnpm --filter @macvue/docs build",
     "test": "vitest run --project unit --project docs",
     "test:browser": "vitest run --project browser",
     "test:watch": "vitest --project unit",
-    "typecheck": "pnpm --filter macvue typecheck",
+    "typecheck": "pnpm --filter @macvue/core typecheck",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "release": "bumpy",
