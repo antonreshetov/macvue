@@ -1,6 +1,7 @@
 ---
 layout: home
 title: MacVue
+titleTemplate: ':title — macOS-inspired controls for Vue'
 hero:
   title: |-
     macOS-inspired controls.
