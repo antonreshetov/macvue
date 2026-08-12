@@ -1,0 +1,48 @@
+name: Deploy docs
+
+on:
+  push:
+    tags: ['@macvue/core@*']
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-docs
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+
+      - run: pnpm docs:build
+
+      - name: Deploy to macvue.dev
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy
+          chmod 600 ~/.ssh/deploy
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          # The key is pinned to `rrsync /var/www/macvue.dev/public` on the
+          # server, so the destination is a path relative to that root and no
+          # other command can run over this connection.
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy -o BatchMode=yes" \
+            docs/.vitepress/dist/ "$SSH_USER@$SSH_HOST:."
