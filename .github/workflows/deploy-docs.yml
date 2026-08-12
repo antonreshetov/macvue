@@ -2,7 +2,7 @@ name: Deploy docs
 
 on:
   push:
-    tags: ['@macvue/core@*']
+    tags: ["@macvue/core@*"]
   workflow_dispatch:
 
 concurrency:
@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
+        with:
+          version: 10.29.2
 
       - uses: actions/setup-node@v4
         with:
