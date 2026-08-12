@@ -1,10 +1,30 @@
-# MacVue
+<h1 align="center">MacVue</h1>
 
-> macOS-inspired controls, built for Vue.
+<p align="center">
+  macOS-inspired controls, built for Vue.
+</p>
 
-![The MacVue home page: a Display panel built from MacSlider and MacSwitch, over a procedural aurora](./hero.png)
+<p align="center">
+  <strong>Vue 3 components carrying AppKit metrics, states and keyboard behaviour.</strong>
+  <br>
+  Including opt-in Liquid Glass refraction.
+</p>
 
-Vue 3 components carrying AppKit metrics, states and keyboard behaviour — including opt-in Liquid Glass refraction.
+<p align="center">
+  <a href="https://www.npmjs.com/package/@macvue/core"><img alt="npm version" src="https://img.shields.io/npm/v/@macvue/core?color=0a84ff&label=npm"></a>
+  <a href="https://www.npmjs.com/package/@macvue/core"><img alt="npm downloads" src="https://img.shields.io/npm/dm/@macvue/core?color=0a84ff"></a>
+  <a href="./LICENSE"><img alt="license" src="https://img.shields.io/npm/l/@macvue/core?color=0a84ff"></a>
+</p>
+
+<p align="center">
+  <a href="https://macvue.dev">Documentation</a> &nbsp;|&nbsp;
+  <a href="https://macvue.dev/components/">Components</a> &nbsp;|&nbsp;
+  <a href="https://macvue.dev/liquid-glass">Liquid Glass</a>
+</p>
+
+<p align="center">
+  <img src="./hero.png" alt="The MacVue home page: a Display panel built from MacSlider and MacSwitch, over a procedural aurora">
+</p>
 
 **Work in progress.** Until 1.0 the design tokens (`--macvue-*` names and scales) are **not a stable contract**: renames and removals may land in minor releases while the library is calibrated against the macOS Tahoe reference.
 
@@ -98,7 +118,7 @@ Refraction is built on an SVG displacement filter applied through `backdrop-filt
 
 ## Documentation
 
-The site is not deployed yet. Run it locally:
+[macvue.dev](https://macvue.dev) carries every component with live demos and its API. To run the site locally:
 
 ```bash
 pnpm install
