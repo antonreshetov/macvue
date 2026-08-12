@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter macvue build:tokens && vitepress dev",
-    "build": "pnpm --filter macvue build:tokens && vitepress build",
+    "dev": "pnpm --filter @macvue/core build:tokens && vitepress dev",
+    "build": "pnpm --filter @macvue/core build:tokens && vitepress build",
     "preview": "vitepress preview"
   },
   "dependencies": {

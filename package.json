@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@10.29.2",
   "description": "macOS UI components for Vue",
   "author": {
     "name": "Anton Reshetov",
