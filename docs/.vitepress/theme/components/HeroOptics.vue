@@ -49,8 +49,15 @@ function clampAxis(value: number, min: number, max: number, fallback: number) {
 function isPanelDragHandle(target: EventTarget | null, pointerType: string) {
   if (!(target instanceof Element))
     return false
-  if (target.closest('input, button, a, select, textarea, label'))
+  // Custom controls are not form elements, and a click on the slider track lands
+  // on its root, which carries no role — hence the component class as well.
+  if (
+    target.closest(
+      'input, button, a, select, textarea, label, .macvue-slider, [role="slider"], [role="switch"], [role="spinbutton"]',
+    )
+  ) {
     return false
+  }
   // Touch drags only from the header, so a finger on the panel body still scrolls the page.
   return (
     pointerType !== 'touch'
