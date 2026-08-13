@@ -14,13 +14,21 @@
   /* Native macOS steps the blades discretely — steps(8) over one turn.
      The animation deliberately keeps running with reduced motion enabled
      (essential motion: it is the only busy signal) and runs on its own
-     duration token, outside the global zeroing. */
-  .macvue-spinner svg {
-    display: block;
+     duration token, outside the global zeroing.
+     The rotor is a plain HTML element on purpose: Chromium cannot composite
+     a transform animation on the <svg> itself, and the resulting main-thread
+     rotation repaints at display rate — even off-screen. */
+  .macvue-spinner-rotor {
     width: 100%;
     height: 100%;
     animation: macvue-spinner-rotate var(--macvue-spinner-duration) steps(8)
       infinite;
+  }
+
+  .macvue-spinner svg {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   @keyframes macvue-spinner-rotate {
