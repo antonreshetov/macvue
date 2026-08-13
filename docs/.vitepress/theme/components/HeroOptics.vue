@@ -453,7 +453,7 @@ onMounted(async () => {
     canvas: element,
     alpha: false,
     antialias: false,
-    powerPreference: 'high-performance',
+    powerPreference: 'low-power',
   })
   renderer.setClearColor(0x000000, 1)
 
@@ -489,11 +489,49 @@ onMounted(async () => {
   const reducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   ).matches
+  let staticTime: number | null = reducedMotion ? 8 : null
   const startedAt = performance.now()
   let frame = 0
   let visible = true
   let width = 0
   let height = 0
+
+  const FRAME_INTERVAL_MS = 1000 / 30
+  const FRAME_EPSILON_MS = 4
+  let lastRenderAt = 0
+
+  const WATCHDOG_SAMPLES = 60
+  const WATCHDOG_SLOW_MS = 40
+  const WATCHDOG_PAUSE_MS = 250
+  const WATCHDOG_SLOW_LIMIT = 10
+  const WATCHDOG_WARMUP_MS = 1000
+  let watchdogWarmupUntil = 0
+  let watchdogSeen = 0
+  let watchdogSlow = 0
+  let lastTickAt = 0
+
+  function sampleWatchdog(now: number) {
+    const isFirstTick = lastTickAt === 0
+    const delta = now - lastTickAt
+    lastTickAt = now
+    if (isFirstTick) {
+      if (watchdogWarmupUntil === 0)
+        watchdogWarmupUntil = now + WATCHDOG_WARMUP_MS
+      return
+    }
+    if (
+      now < watchdogWarmupUntil
+      || watchdogSeen >= WATCHDOG_SAMPLES
+      || delta <= 0
+      || delta > WATCHDOG_PAUSE_MS
+    ) {
+      return
+    }
+    watchdogSeen++
+    watchdogSlow = delta > WATCHDOG_SLOW_MS ? watchdogSlow + 1 : 0
+    if (watchdogSlow >= WATCHDOG_SLOW_LIMIT)
+      staticTime = uniforms.time.value
+  }
 
   function resize() {
     const nextWidth = Math.max(element.clientWidth, 1)
@@ -503,29 +541,35 @@ onMounted(async () => {
 
     width = nextWidth
     height = nextHeight
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25))
     renderer.setSize(width, height, false)
     uniforms.resolution.value.set(element.width, element.height)
   }
 
   function render() {
     resize()
-    uniforms.time.value = reducedMotion
-      ? 8
-      : (performance.now() - startedAt) / 1000
+    uniforms.time.value = staticTime ?? (performance.now() - startedAt) / 1000
     renderer.render(scene, camera)
   }
 
-  function animate() {
-    if (!visible || document.hidden)
+  function animate(now = performance.now()) {
+    if (!visible || document.hidden || staticTime !== null)
       return
-    render()
-    if (!reducedMotion)
-      frame = requestAnimationFrame(animate)
+    sampleWatchdog(now)
+    const elapsed = now - lastRenderAt
+    if (elapsed >= FRAME_INTERVAL_MS - FRAME_EPSILON_MS) {
+      lastRenderAt
+        = elapsed >= FRAME_INTERVAL_MS
+          ? now - (elapsed % FRAME_INTERVAL_MS)
+          : now
+      render()
+    }
+    frame = requestAnimationFrame(animate)
   }
 
   function onVisibilityChange() {
     cancelAnimationFrame(frame)
+    lastTickAt = 0
     if (visible && !document.hidden)
       animate()
   }
@@ -534,6 +578,7 @@ onMounted(async () => {
   const intersectionObserver = new IntersectionObserver(([entry]) => {
     visible = entry?.isIntersecting ?? false
     cancelAnimationFrame(frame)
+    lastTickAt = 0
     if (visible)
       animate()
   })
@@ -542,7 +587,7 @@ onMounted(async () => {
   intersectionObserver.observe(element)
   document.addEventListener('visibilitychange', onVisibilityChange)
   render()
-  if (!reducedMotion)
+  if (staticTime === null)
     animate()
 
   teardown = () => {
