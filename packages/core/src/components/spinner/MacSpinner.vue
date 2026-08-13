@@ -35,22 +35,24 @@ const blades = Array.from({ length: 8 }, (_, index) => ({
     :aria-label="label"
     :class="classes"
   >
-    <svg
-      viewBox="0 0 32 32"
-      aria-hidden="true"
-    >
-      <rect
-        v-for="blade in blades"
-        :key="blade.rotation"
-        x="14"
-        y="0"
-        width="4"
-        height="10"
-        rx="2"
-        fill="currentColor"
-        :opacity="blade.opacity"
-        :transform="`rotate(${blade.rotation} 16 16)`"
-      />
-    </svg>
+    <div class="macvue-spinner-rotor">
+      <svg
+        viewBox="0 0 32 32"
+        aria-hidden="true"
+      >
+        <rect
+          v-for="blade in blades"
+          :key="blade.rotation"
+          x="14"
+          y="0"
+          width="4"
+          height="10"
+          rx="2"
+          fill="currentColor"
+          :opacity="blade.opacity"
+          :transform="`rotate(${blade.rotation} 16 16)`"
+        />
+      </svg>
+    </div>
   </ProgressRoot>
 </template>
